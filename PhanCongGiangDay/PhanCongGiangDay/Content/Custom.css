@@ -1,0 +1,610 @@
+﻿.bg-primary {
+    background-color: #1565c0 !important;
+}
+
+@media (min-width: 768px) {
+    .navbar-toggleable-sm {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+}
+
+.navbar {
+    display: flex;
+    padding: 1rem 1rem;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.table-information td {
+    border-top: 0 !important;
+    border-bottom: 1px solid #eceeef;
+}
+
+.input-group-addon .material-icons {
+    font-size: 1.2rem;
+}
+
+.input-required {
+    color: red;
+    padding: 2px;
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
+
+.empty-data {
+    color: dimgrey;
+}
+
+    .empty-data strong {
+        font-weight: normal !important;
+    }
+
+.table-custom > thead {
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+}
+
+.table-custom thead th a {
+    color: #fff;
+    display: block;
+}
+
+    .table-custom thead th a:hover {
+        text-decoration: none;
+    }
+
+.table-custom thead th, .table-custom thead td, .table-custom tbody td {
+    vertical-align: middle;
+}
+
+@media (min-width: 1240px) {
+    .table-custom thead th, .table-custom thead td, .table-custom tbody td {
+        white-space: nowrap;
+    }
+}
+
+.table-custom tbody td.custom-wrap {
+    white-space: normal;
+}
+
+.table-custom tbody .dataTables_empty {
+    color: dimgrey;
+    /*font-weight: bold;*/
+}
+
+.bootstrap-datetimepicker-widget thead > tr > th {
+    padding: 1px;
+    border: none;
+}
+
+.bootstrap-datetimepicker-widget tbody > tr > td {
+    padding: 1px;
+    border: none;
+}
+
+.bootstrap-datetimepicker-widget table {
+    border: none;
+}
+
+.bootstrap-datetimepicker-widget tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.bootstrap-datetimepicker-widget thead tr:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.btn-custom {
+    color: #fff;
+    background-color: crimson;
+    border: solid 2px crimson;
+}
+
+    .btn-custom:hover {
+        color: red !important;
+        background-color: #fff;
+        border: solid 2px #d9534f;
+    }
+
+    .btn-custom:focus {
+        color: #fff;
+    }
+
+.btn-custom-size {
+    font-size: 1.7em;
+    border: none;
+}
+
+/* style error*/
+.error,
+.field-validation-error {
+    color: #d9534f !important;
+}
+
+input.error, select.error, textarea.error {
+    border: 1px solid red;
+    background-color: #fee;
+}
+
+input.input-validation-error,
+select.input-validation-error {
+    border: 1px solid red;
+    background-color: #fee;
+}
+
+label.error {
+    margin-bottom: 0;
+}
+
+.form-group.row > .field-validation-error {
+    margin-top: 3px;
+    margin-left: 15px
+}
+
+.input-border-readonly {
+    background-color: white !important;
+    border: 1px solid #f3f3f3 !important;
+}
+
+.cursor-link {
+    cursor: pointer;
+}
+
+.underline-custom {
+    text-decoration: underline;
+}
+
+.modal-extra-lg {
+    max-width: 1000px;
+}
+
+.align-text-right {
+    text-align: right;
+}
+
+.form-group.border-bottom {
+    border-bottom: 1px solid #cccccc;
+}
+
+.modal-dialog .form-group > label {
+    color: #58595b;
+}
+
+/* color trang thai*/
+.state-nhandon {
+    color: #E2499D;
+    border: 1px solid #E2499D;
+}
+
+.state-thuly {
+    color: #31A38D;
+    border: 1px solid #31A38D;
+}
+
+.state-chuanbixetxu {
+    color: #D85515;
+    border: 1px solid #D85515;
+}
+
+.state-ketquaxetxu {
+    color: #C32A48;
+    border: 1px solid #C32A48;
+}
+
+.state-sauxetxu {
+    color: #71A830;
+    border: 1px solid #71A830;
+}
+
+.state-luukho {
+    color: #6CA0B6;
+    border: 1px solid #6CA0B6;
+}
+
+/* remove outline focus button state*/
+a.remove-outline:focus,
+a.remove-outline:hover {
+    outline: none;
+}
+
+/* style div content image avata*/
+.circleImage {
+    border-radius: 50%;
+    behavior: url(PIE.htc);
+    width: 100%;
+    height: 100%;
+    border: 5px solid gray;
+    background: none
+}
+
+.info-nhan-vien-content {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.info-nhan-vien-detail {
+    background-color: #fdfdfd;
+}
+
+.info-nv-menu-content {
+    /*padding: 15px 40px 0 0;*/
+    /*font-size: 1.3em;*/
+}
+
+.info-nhan-vien-button {
+    color: #58595b !important;
+}
+
+    .info-nhan-vien-button:hover,
+    .info-nhan-vien-button:focus,
+    .info-nhan-vien-button:active {
+        color: #0275d8 !important;
+    }
+
+/* disable button edit*/
+.edit-disabled {
+    pointer-events: none;
+    cursor: no-drop;
+    color: #ababab;
+}
+
+    .edit-disabled:hover {
+        color: #fff !important;
+        background-color: #ababab;
+        border-color: #ababab;
+    }
+
+.add-disabled {
+    pointer-events: none;
+    cursor: no-drop;
+    color: white;
+    background-color: #ababab;
+    border-color: #ababab;
+}
+
+.edit-disabled span {
+    color: #ababab !important;
+    border: 1px solid #ababab !important;
+}
+
+.label-cell {
+    border: solid 1px #d9534f;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    display: inline-block
+}
+
+.label-cell-state {
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    font-weight: bold
+}
+
+.btn-cong-doan-size {
+    font-size: 0.9rem;
+}
+
+/* style danh sach toa an home page*/
+.custom-active-toa-an {
+    z-index: 2;
+    background-color: #d6d8db
+}
+
+.btn-icon-size {
+    font-size: 1.4em; /*should go with btn-sm bootstrap*/
+}
+
+.btn-icon-word-size {
+    font-size: 1.1em;
+}
+
+a.btn-primary:focus {
+    color: #ffffff;
+    box-shadow: none;
+}
+
+a.btn-outline-primary:focus {
+    color: #0275d8;
+    box-shadow: none;
+}
+
+    a.btn-outline-primary:focus:hover {
+        color: #ffffff;
+    }
+
+.custom-a {
+    text-decoration: none;
+    color: #2B2B30;
+}
+
+    .custom-a:hover {
+        text-decoration: none;
+        color: #0275d8;
+    }
+
+    .custom-a:focus {
+        text-decoration: none;
+        color: #0275d8;
+    }
+
+    .custom-a i {
+        width: 30px;
+        /*height: 30px;*/
+    }
+    .custom-a-active {
+        text-decoration: none;
+        color: #0275d8;
+    }
+/*custom css of jQuery UI*/
+.ui-menu {
+    border-color: #17a2b8 !important;
+    border-radius: 0.5rem;
+}
+
+.ui-front {
+    z-index: 1100;
+}
+
+.ui-autocomplete {
+    position: fixed;
+    max-height: 167px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    max-width: 600px !important;
+    overflow-x: auto;
+    /*white-space: pre-wrap;*/
+}
+
+.ui-menu .ui-menu-item {
+    list-style-image: none;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    position: relative;
+    padding: 6px 1em 6px .4em;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: none;
+    background: #F8F1BE;
+    color: #333333;
+    text-decoration: none;
+}
+
+.ui-menu .ui-state-focus, .ui-menu .ui-state-active {
+    margin: 0;
+}
+
+.border-bottom-custom {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.tooltip {
+    font-size: 1rem;
+}
+
+.tooltip-inner {
+    max-width: 350px;
+}
+
+#formTimKiem .input-validation-error {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.btn-span-with-tooltip:focus {
+    outline: none;
+}
+
+.text-value-bold {
+    font-weight: bold;
+    text-align: right;
+}
+
+::-webkit-input-placeholder {
+    color: #8c8e90 !important;
+}
+
+:-moz-placeholder {
+    color: #8c8e90 !important;
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: #8c8e90 !important;
+    opacity: 1;
+}
+
+::-ms-input-placeholder {
+    color: #8c8e90 !important;
+}
+
+::placeholder {
+    color: #8c8e90 !important;
+}
+
+.dropzone {
+    border-color: #58595b !important;
+}
+
+    .dropzone .dz-message {
+        font-size: 1rem !important;
+    }
+
+.itemChucDanhChaSoDoToChuc {
+    cursor: pointer;
+}
+
+.border-group {
+    border: 1px solid #000000;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 1rem .5rem;
+}
+
+.cus-col-hourmin {
+    width: 37% !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.text-vertical-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.table td .table-left-col {
+    min-width: 150px;
+}
+
+.next-prev-state {
+    padding: 0.4rem 0.4rem;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.remove-box-shadow:focus {
+    box-shadow: none;
+}
+
+.captcha-background {
+    /*width: 100%;*/
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background-color: #fff;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    /*border: 1px solid rgba(0, 0, 0, 0.15);*/
+    border-radius: 0.25rem;
+}
+
+.scroll-danhsachdukhuyet {
+    height: 300px;
+    overflow: scroll;
+}
+
+.scroll-danhsachdukhuyet-chitiet {
+    min-height: 200px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+#bao-cao-thong-ke-table_wrapper,
+#thong-ke-luu-kho-table_wrapper,
+#bieu-do-an-huy-sua-table_wrapper,
+#danh-sach-thong-ke-huy-sua-table_wrapper,
+#ho-so-vu-an-giam-sat-table_wrapper,
+#ma-hoa-ho-so-table_wrapper {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#thong-ke-truc-tuyen-table {
+    font-size: 12px;
+}
+
+#thong-ke-truc-tuyen-table th,
+#thong-ke-truc-tuyen-table td {
+    padding: 0.25rem;
+}
+
+#bao-cao-thong-ke-table th, 
+#bao-cao-thong-ke-table td {
+    padding: 0.5rem;
+}
+
+#danh-sach-thong-ke-huy-sua-table th,
+#danh-sach-thong-ke-huy-sua-table td {
+     padding: 0.5rem;
+}
+
+#danh-sach-thong-ke-huy-sua-table {
+    font-size: 13px;
+}
+
+.custom-a-underline {
+    color: #0275d8 !important;
+    text-decoration: underline !important;
+}
+
+.btn-refresh-captcha {
+    border: none;
+    background: none;
+    color: #1565c0;
+}
+.btn-refresh-captcha:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/*.table-ketqua-tracuu * {
+    border-color: black !important;
+}*/
+
+.table-information-hinhsu {
+    border-top: 0 !important;
+    border-bottom: 1px solid #eceeef;
+}
+
+.custom-option {
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+}
+
+
+#thong-ke-truc-tuyen-table {
+    overflow: hidden;
+}
+
+    #thong-ke-truc-tuyen-table tbody tr:hover {
+        background-color: rgba(191, 191, 191, 0.075);
+    }
+
+    #thong-ke-truc-tuyen-table td, th {
+        position: relative;
+        
+    }
+
+    #thong-ke-truc-tuyen-table tbody td:hover::after{
+        content: "";
+        position: absolute;
+        background-color: rgba(140, 140, 140, 0.075);
+        left: 0;
+        top: -5000px;
+        height: 10000px;
+        width: 100%;
+        z-index: -1;
+    }   
+
+    #thong-ke-truc-tuyen-table .column-tong {
+        background-color: #b8d0ec !important;
+    }
+#thong-ke-truc-tuyen-table .row-dark-color {
+    background-color: #efefef;
+}
+
+.tong-cong-dark-color {
+    background-color: #e4e4e4;
+}
+
+#thong-ke-truc-tuyen-table .col-nhoman-st {
+    min-width: 3em;
+}
+#thong-ke-truc-tuyen-table .col-nhoman {
+    min-width: 2.1em;
+}
+#thong-ke-truc-tuyen-table .col-nhoman-ad {
+    min-width: 3.5em;
+}

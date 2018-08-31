@@ -1,0 +1,47 @@
+.treegrid-indent {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    position: relative;
+    margin: 5px 5px 5px 5px;
+}
+
+.treegrid-expander {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+    padding: 0 0 5px 5px;
+}
+
+    .treegrid-expander:before {
+        vertical-align: super;
+    }
+
+.tree, .tree-ddlist {
+    line-height: 2em;
+    font-size: 1em;
+}
+
+    .tree td {
+        padding: 0 10px 0 0;
+        vertical-align: middle;
+        border-top: none;
+        border-bottom: 1px solid #eceeef;
+    }
+
+.tree-ddlist {
+    margin-bottom: 0;
+}
+    .tree-ddlist td {
+        border: none;
+        border-bottom: 1px solid #eceeef;
+    }
+
+.btn-treeview {
+    font-size: 1.7em;
+    border: none;
+    box-shadow: none;
+}

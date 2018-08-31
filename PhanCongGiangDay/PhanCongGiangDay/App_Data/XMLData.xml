@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<autobind>
+  <currency>
+    <item text="VND" value="VNĐ" />
+    <item text="USD" value="USD" />
+  </currency>
+  
+  <gender>
+    <item text="Nam" value="Nam" />
+    <item text="Nữ" value="Nữ" />
+  </gender>
+  
+  <trangthaihoatdong>
+    <item text="Đang hoạt động" value="1" />
+    <item text="Không hoạt động" value="0" />
+  </trangthaihoatdong>
+  
+  <vietnam_city_province>
+    <item text="An Giang" value="An Giang" />
+    <item text="Bà Rịa - Vũng Tàu" value="Bà Rịa - Vũng Tàu" />
+    <item text="Bắc Giang" value="Bắc Giang" />
+    <item text="Bắc Kạn" value="Bắc Kạn" />
+    <item text="Bạc Liêu" value="Bạc Liêu" />
+    <item text="Bắc Ninh" value="Bắc Ninh" />
+    <item text="Bến Tre" value="Bến Tre" />
+    <item text="Bình Định" value="Bình Định" />
+    <item text="Bình Dương" value="Bình Dương" />
+    <item text="Bình Phước" value="Bình Phước" />
+    <item text="Bình Thuận" value="Bình Thuận" />
+    <item text="Cà Mau" value="Cà Mau" />
+    <item text="Cần Thơ" value="Cần Thơ" />
+    <item text="Cao Bằng" value="Cao Bằng" />
+    <item text="Đà Nẵng" value="Đà Nẵng" />
+    <item text="Đắk Lắk" value="Đắk Lắk" />
+    <item text="Đắk Nông" value="Đắk Nông" />
+    <item text="Điện Biên" value="Điện Biên" />
+    <item text="Đồng Nai" value="Đồng Nai" />
+    <item text="Đồng Tháp" value="Đồng Tháp" />
+    <item text="Gia Lai" value="Gia Lai" />
+    <item text="Hà Giang" value="Hà Giang" />
+    <item text="Hà Nam" value="Hà Nam" />
+    <item text="Hà Nội" value="Hà Nội" />
+    <item text="Hà Tĩnh" value="Hà Tĩnh" />
+    <item text="Hải Dương" value="Hải Dương" />
+    <item text="Hải Phòng" value="Hải Phòng" />
+    <item text="Hậu Giang" value="Hậu Giang" />
+    <item text="Hòa Bình" value="Hòa Bình" />
+    <item text="Hưng Yên" value="Hưng Yên" />
+    <item text="Khánh Hòa" value="Khánh Hòa" />
+    <item text="Kiên Giang" value="Kiên Giang" />
+    <item text="Kon Tum" value="Kon Tum" />
+    <item text="Lai Châu" value="Lai Châu" />
+    <item text="Lâm Đồng" value="Lâm Đồng" />
+    <item text="Lạng Sơn" value="Lạng Sơn" />
+    <item text="Lào Cai" value="Lào Cai" />
+    <item text="Long An" value="Long An" />
+    <item text="Nam Định" value="Nam Định" />
+    <item text="Nghệ An" value="Nghệ An" />
+    <item text="Ninh Bình" value="Ninh Bình" />
+    <item text="Ninh Thuận" value="Ninh Thuận" />
+    <item text="Phú Thọ" value="Phú Thọ" />
+    <item text="Phú Yên" value="Phú Yên" />
+    <item text="Quảng Bình" value="Quảng Bình" />
+    <item text="Quảng Nam" value="Quảng Nam" />
+    <item text="Quảng Ngãi" value="Quảng Ngãi" />
+    <item text="Quảng Ninh" value="Quảng Ninh" />
+    <item text="Quảng Trị" value="Quảng Trị" />
+    <item text="Sóc Trăng" value="Sóc Trăng" />
+    <item text="Sơn La" value="Sơn La" />
+    <item text="Tây Ninh" value="Tây Ninh" />
+    <item text="Thái Bình" value="Thái Bình" />
+    <item text="Thái Nguyên" value="Thái Nguyên" />
+    <item text="Thanh Hóa" value="Thanh Hóa" />
+    <item text="Thừa Thiên Huế" value="Thừa Thiên Huế" />
+    <item text="Tiền Giang" value="Tiền Giang" />
+    <item text="Hồ Chí Minh" value="Hồ Chí Minh" />
+    <item text="Trà Vinh" value="Trà Vinh" />
+    <item text="Tuyên Quang" value="Tuyên Quang" />
+    <item text="Vĩnh Long" value="Vĩnh Long" />
+    <item text="Vĩnh Phúc" value="Vĩnh Phúc" />
+    <item text="Yên Bái" value="Yên Bái" />
+  </vietnam_city_province>
+
+  <hcm_district>
+    <item text="Quận 1" value="Quận 1" />
+    <item text="Quận 2" value="Quận 2" />
+    <item text="Quận 3" value="Quận 3" />
+    <item text="Quận 4" value="Quận 4" />
+    <item text="Quận 5" value="Quận 5" />
+    <item text="Quận 6" value="Quận 6" />
+    <item text="Quận 7" value="Quận 7" />
+    <item text="Quận 8" value="Quận 8" />
+    <item text="Quận 9" value="Quận 9" />
+    <item text="Quận 10" value="Quận 10" />
+    <item text="Quận 11" value="Quận 11" />
+    <item text="Quận 12" value="Quận 12" />
+    <item text="Quận Gò Vấp" value="Quận Gò Vấp" />
+    <item text="Quận Tân Bình" value="Quận Tân Bình" />
+    <item text="Quận Tân Phú" value="Quận Tân Phú" />
+    <item text="Quận Bình Thạnh" value="Quận Bình Thạnh" />
+    <item text="Quận Phú Nhuận" value="Quận Phú Nhuận" />
+    <item text="Quận Thủ Đức" value="Quận Thủ Đức" />
+    <item text="Quận Bình Tân" value="Quận Bình Tân" />
+    <item text="Quận Bình Chánh" value="Quận Bình Chánh" />
+    <item text="Huyện Củ Chi" value="Huyện Củ Chi" />
+    <item text="Huyện Hóc Môn" value="Huyện Hóc Môn" />
+    <item text="Huyện Nhà Bè" value="Huyện Nhà Bè" />
+    <item text="Huyện Cần Giờ" value="Huyện Cần Giờ" />
+  </hcm_district>
+
+  <month>
+    <item value="1" text="1" />
+    <item value="2" text="2" />
+    <item value="3" text="3" />
+    <item value="4" text="4" />
+    <item value="5" text="5" />
+    <item value="6" text="6" />
+    <item value="7" text="7" />
+    <item value="8" text="8" />
+    <item value="9" text="9" />
+    <item value="10" text="10" />
+    <item value="11" text="11" />
+    <item value="12" text="12" />
+  </month>
+
+  <city_province>
+    <item value="1" text="An Giang" />
+    <item value="2" text="Bà Rịa - Vũng Tàu" />
+    <item value="3" text="Bắc Giang" />
+    <item value="4" text="Bắc Kạn" />
+    <item value="5" text="Bạc Liêu" />
+    <item value="6" text="Bắc Ninh" />
+    <item value="7" text="Bến Tre" />
+    <item value="8" text="Bình Định" />
+    <item value="9" text="Bình Dương" />
+    <item value="10" text="Bình Phước" />
+    <item value="11" text="Bình Thuận" />
+    <item value="12" text="Cà Mau" />
+    <item value="13" text="Cao Bằng" />
+    <item value="14" text="Đắk Lắk" />
+    <item value="15" text="Đắk Nông" />
+    <item value="16" text="Điện Biên" />
+    <item value="17" text="Đồng Nai" />
+    <item value="18" text="Đồng Tháp" />
+    <item value="19" text="Gia Lai" />
+    <item value="20" text="Hà Giang" />
+    <item value="21" text="Hà Nam" />
+    <item value="22" text="Hà Tĩnh" />
+    <item value="23" text="Hải Dương" />
+    <item value="24" text="Hậu Giang" />
+    <item value="25" text="Hòa Bình" />
+    <item value="26" text="Hưng Yên" />
+    <item value="27" text="Khánh Hòa" />
+    <item value="28" text="Kiên Giang" />
+    <item value="29" text="Kon Tum" />
+    <item value="30" text="Lai Châu" />
+    <item value="31" text="Lâm Đồng" />
+    <item value="32" text="Lạng Sơn" />
+    <item value="33" text="Lào Cai" />
+    <item value="34" text="Long An" />
+    <item value="35" text="Nam Định" />
+    <item value="36" text="Nghệ An" />
+    <item value="37" text="Ninh Bình" />
+    <item value="38" text="Ninh Thuận" />
+    <item value="39" text="Phú Thọ" />
+    <item value="40" text="Quảng Bình" />
+    <item value="41" text="Quảng Nam" />
+    <item value="42" text="Quảng Ngãi" />
+    <item value="43" text="Quảng Ninh" />
+    <item value="44" text="Quảng Trị" />
+    <item value="45" text="Sóc Trăng" />
+    <item value="46" text="Sơn La" />
+    <item value="47" text="Tây Ninh" />
+    <item value="48" text="Thái Bình" />
+    <item value="49" text="Thái Nguyên" />
+    <item value="50" text="Thanh Hóa" />
+    <item value="51" text="Thừa Thiên Huế" />
+    <item value="52" text="Tiền Giang" />
+    <item value="53" text="Trà Vinh" />
+    <item value="54" text="Tuyên Quang" />
+    <item value="55" text="Vĩnh Long" />
+    <item value="56" text="Vĩnh Phúc" />
+    <item value="57" text="Yên Bái" />
+    <item value="58" text="Phú Yên" />
+    <item value="59" text="Cần Thơ" />
+    <item value="60" text="Đà Nẵng" />
+    <item value="61" text="Hải Phòng" />
+    <item value="62" text="Hà Nội" />
+    <item value="63" text="Hồ Chí Minh" />
+  </city_province>
+  
+  <Hour>
+    <item text="0" value="0" />
+    <item text="1" value="1" />
+    <item text="2" value="2" />
+    <item text="3" value="3" />
+    <item text="4" value="4" />
+    <item text="5" value="5" />
+    <item text="6" value="6" />
+    <item text="7" value="7" />
+    <item text="8" value="8" />
+    <item text="9" value="9" />
+    <item text="10" value="10" />
+    <item text="11" value="11" />
+    <item text="12" value="12" />
+    <item text="13" value="13" />
+    <item text="14" value="14" />
+    <item text="15" value="15" />
+    <item text="16" value="16" />
+    <item text="17" value="17" />
+    <item text="18" value="18" />
+    <item text="19" value="19" />
+    <item text="20" value="20" />
+    <item text="21" value="21" />
+    <item text="22" value="22" />
+    <item text="23" value="23" />
+  </Hour>
+  
+  <Minute>
+    <item text="00" value="0" />
+    <item text="01" value="1" />
+    <item text="02" value="2" />
+    <item text="03" value="3" />
+    <item text="04" value="4" />
+    <item text="05" value="5" />
+    <item text="06" value="6" />
+    <item text="07" value="7" />
+    <item text="08" value="8" />
+    <item text="09" value="9" />
+    <item text="10" value="10" />
+    <item text="11" value="11" />
+    <item text="12" value="12" />
+    <item text="13" value="13" />
+    <item text="14" value="14" />
+    <item text="15" value="15" />
+    <item text="16" value="16" />
+    <item text="17" value="17" />
+    <item text="18" value="18" />
+    <item text="19" value="19" />
+    <item text="20" value="20" />
+    <item text="21" value="21" />
+    <item text="22" value="22" />
+    <item text="23" value="23" />
+    <item text="24" value="24" />
+    <item text="25" value="25" />
+    <item text="26" value="26" />
+    <item text="27" value="27" />
+    <item text="28" value="28" />
+    <item text="29" value="29" />
+    <item text="30" value="30" />
+    <item text="31" value="31" />
+    <item text="32" value="32" />
+    <item text="33" value="33" />
+    <item text="34" value="34" />
+    <item text="35" value="35" />
+    <item text="36" value="36" />
+    <item text="37" value="37" />
+    <item text="38" value="38" />
+    <item text="39" value="39" />
+    <item text="40" value="40" />
+    <item text="41" value="41" />
+    <item text="42" value="42" />
+    <item text="43" value="43" />
+    <item text="44" value="44" />
+    <item text="45" value="45" />
+    <item text="46" value="46" />
+    <item text="47" value="47" />
+    <item text="48" value="48" />
+    <item text="49" value="49" />
+    <item text="50" value="50" />
+    <item text="51" value="51" />
+    <item text="52" value="52" />
+    <item text="53" value="53" />
+    <item text="54" value="54" />
+    <item text="55" value="55" />
+    <item text="56" value="56" />
+    <item text="57" value="57" />
+    <item text="58" value="58" />
+    <item text="59" value="59" />
+  </Minute>    
+</autobind>
