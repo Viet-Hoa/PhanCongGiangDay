@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
+
+<div class="text-center mb-3"><a href="@Url.Action("Login", "Account")" class="btn btn-custom text-uppercase font-weight-bold">ĐĂNG NHẬP</a></div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            var screenHeight = $(window).height();
+            var screenWidth = $(window).width();
+            var loginHeight = $('.login-wrap').height();
+            if (loginHeight > 0 && loginHeight < screenHeight) {
+                $('.login-wrap').css('margin-top', (screenHeight - loginHeight) / 7 + 'px');
+                $('#footer').css('margin-top', (screenHeight - loginHeight) / 4 + 'px');
+                $('.login-btn').css('margin-top', (screenHeight - loginHeight) / 8 + 'px');
+            }
+        });
+    </script>
+}
+

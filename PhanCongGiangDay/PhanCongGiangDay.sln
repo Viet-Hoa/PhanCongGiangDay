@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhanCongGiangDay", "PhanCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Setting", "Lib.Setting\Lib.Setting.csproj", "{B5D6B5C5-B810-4504-881E-69D1DAF35767}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Account", "Lib.Account\Lib.Account.csproj", "{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B5D6B5C5-B810-4504-881E-69D1DAF35767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5D6B5C5-B810-4504-881E-69D1DAF35767}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5D6B5C5-B810-4504-881E-69D1DAF35767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

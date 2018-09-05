@@ -1,0 +1,40 @@
+﻿@model PhanCongGiangDay.UtilityHelpers.DropzoneOptions
+@using Lib.Resources.Resources
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_UPDATEPROFILEPICTURE</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <form action="@Model.Url" method="POST" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.MaxFiles, new { id = "maxFiles" })
+                @Html.HiddenFor(m => m.MaxFileSize, new { id = "maxFileSize" })
+                @Html.HiddenFor(m => m.AcceptedFiles, new { id = "acceptedFiles" })
+                <div class="dz-message" data-dz-message>
+                    @Html.Raw(ViewText.TEXT_UPLOADPROFILEPICTURE)
+                </div>
+            </form>
+            <br />
+            <span>@string.Format(ViewText.TEXT_SUPPORTEDFILES, Model.AcceptedFiles)</span>
+            <br />
+            <span>@string.Format(ViewText.TEXT_SUPPORTESIZE, Model.MaxFileSize)</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+    <button type="button" class="btn btn-danger text-uppercase pull-right" id="uploadDocument">@ViewText.BUTTON_LUU</button>
+</div>
+
+<script>
+    $(function () {
+        UploadImageModule.InitUploadDocuments();
+    });
+</script>
+

@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace PhanCongGiangDay.Controllers
 {
-    public class HomeController : BizController
+    public class AccountController : BizController
     {
-        public ActionResult Index()
+        // GET: Account
+        public ActionResult Login()
         {
             return View();
         }
-
-        
     }
 }

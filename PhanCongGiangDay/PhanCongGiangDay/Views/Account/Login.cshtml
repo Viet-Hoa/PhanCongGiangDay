@@ -1,0 +1,130 @@
+﻿@model Lib.Account.Model.AcountModel
+@{
+    ViewBag.Title = "ĐĂNG NHẬP";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="login-frame">
+    <h2 class="text-center text-uppercase mb-4">ĐĂNG NHẬP</h2>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "loginForm", name = "loginForm" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", maxlength = 50, placeholder = "Tên đăng nhập" , @autofocus="" })
+                            <small class="form-text text-danger"><span for="UserName"></span></small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", maxlength = 50, @type = "password", placeholder = "Mật khẩu" })
+                            <small class="form-text text-danger"><span for="Password"></span></small>
+                        </div>
+                    </div>
+                    
+                    <div class="row text-center mb-3">
+                        <div class="col-12">
+                            <button class="btn btn-custom cursor-link text-uppercase font-weight-bold" type="submit">ĐĂNG NHẬP</button>
+                        </div>
+                    </div>
+                    <div class="text-center mb-3" style="text-decoration: underline"><a href="@Url.Action("ForgotPassword", "Account")" class="text-gray-dark">Quên mật khẩu</a></div>
+
+                }
+            </div>
+        </div>
+    </div>
+    
+</div>
+@section Scripts{
+<script type="text/javascript">
+        $(function () {
+            (function () {
+                var screenHeight = $(window).height();
+                var screenWidth = $(window).width();
+                var loginHeight = $('.login-wrap').height();
+                if (loginHeight > 0 && loginHeight < screenHeight) {
+                    $('.login-wrap').css('margin-top', (screenHeight - loginHeight) / 7 + 'px');
+                    //$('#footer').css('bottom', (screenHeight - loginHeight) / 6 + 'px');
+                }
+
+                //var sliderBox = $("#viewport");
+                //if (sliderBox.length > 0) {
+                //    sliderBox.css('left', ((screenWidth - 300) / 2 - sliderBox.width()) / 2 + 'px');
+                //}
+
+                //$('#box').boxSlider({
+                //    speed: 500,
+                //    autoScroll: true,
+                //    effect: 'tile3d',
+                //    timeout: 2000
+                //});
+            })();
+        });
+
+
+        $("#loginForm").on("submit",
+            function () {
+                if ($("#loginForm").valid()) {
+                    showLoadingOverlay();
+                    $.ajax({
+                        type: $("#loginForm").prop("method"),
+                        url: $("#loginForm").prop("action"),
+                        data: $("#loginForm").serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages[0] }, { type: "danger" });                                
+                            }
+                            else {
+                                window.location = response.Messages[0];
+                            }
+                        },
+                        complete: function () {
+                            hideLoadingOverlay();
+                        }
+                    });
+                }
+                return false;
+            }
+        );
+
+        $("#loginForm").validate({
+            ignore: '',
+            rules: {
+                "UserName": {
+                    required: true
+                },
+                "Password": {
+                    required: true
+                },
+                "captcha": {
+                    required: true,
+                    maxlength: 20
+                }
+            },
+            messages:
+            {
+                "UserName": {
+                    required: "Tên đăng nhập không được để trống."
+                },
+                "Password": {
+                    required: "Mật khẩu không được để trống."
+                }
+            },
+            errorPlacement: function (error) {
+                var htmlFor = error[0].htmlFor;
+
+                $('span[for="' + htmlFor + '"]').each(function () {
+                    $(this).append(error);
+                });
+            },
+            success: function (error) {
+                error.remove();
+            }
+        });
+</script>
+}

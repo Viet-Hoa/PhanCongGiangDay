@@ -1,0 +1,47 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHÂN CÔNG GIẢNG DẠY</title>
+    @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="container-fluid mb-5">
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <a href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/Images/logo.png")" alt="" class="logo-large"></a>
+                </div>
+                <div class="col-12 text-center">
+                    <h1 class="text-uppercase mb-0 large-title">@Html.Raw("HỆ THỐNG PHẦN MỀM PHÂN CÔNG GIẢNG DẠY")</h1>
+                </div>
+            </div>
+        </div>
+        <div>
+            @*<div>@Html.Partial("_Alerts")</div>*@
+            @RenderBody()
+        </div>
+        <section id="footer">
+            <div class="container-fluid">
+                @{ Html.RenderPartial("_LayoutFooter"); }
+            </div>
+        </section>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/loadingOverlay")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimepicker")
+    @Scripts.Render("~/bundles/notify")
+    @Scripts.Render("~/bundles/biz")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+    

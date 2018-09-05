@@ -1,0 +1,15 @@
+﻿@using PhanCongGiangDay.Controllers
+
+@foreach (var key in BizController.Alerts.AllAlerts)
+{
+    if (TempData.ContainsKey(key))
+    {
+        <div style="padding-top: 10px" id="page_alert">
+            <div class="alert alert-@key">
+                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                @*<h4 class="alert-heading">Attention!</h4>*@
+                @TempData[key]
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,66 @@
+﻿@using System.Collections
+@using System.Globalization
+@using System.Resources
+@using Lib.Resources.Resources
+@{
+    Layout = null;
+    // Get a set of resources appropriate to
+    // the culture defined by the browser
+    ResourceSet resourceSetAccountMessage = AccountMessage.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+    ResourceSet resourceSetEmailTemplate = EmailTemplate.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+    ResourceSet resourceSetNotifyMessage = NotifyMessage.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+    ResourceSet resourceSetSetting = Setting.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+    ResourceSet resourceSetStaticMessage = StaticMessage.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+    ResourceSet resourceSetValidationMessages = ValidationMessages.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+    ResourceSet resourceSetViewText = ViewText.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+}
+
+// Define the empty object in javascript
+var ViewText = {};
+@foreach (DictionaryEntry res in resourceSetViewText)
+{
+    // Create a property on the javascript object for each text resource
+    @:ViewText.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}
+
+var AccountMessage = {};
+@foreach (DictionaryEntry res in resourceSetAccountMessage)
+{
+    // Create a property on the javascript object for each text resource
+    @:AccountMessage.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}
+
+var EmailTemplate = {};
+@foreach (DictionaryEntry res in resourceSetEmailTemplate)
+{
+    // Create a property on the javascript object for each text resource
+    @:EmailTemplate.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}
+
+var NotifyMessage = {};
+@foreach (DictionaryEntry res in resourceSetNotifyMessage)
+{
+    // Create a property on the javascript object for each text resource
+    @:NotifyMessage.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}
+
+var Setting = {};
+@foreach (DictionaryEntry res in resourceSetSetting)
+{
+    // Create a property on the javascript object for each text resource
+    @:Setting.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}
+
+var StaticMessage = {};
+@foreach (DictionaryEntry res in resourceSetStaticMessage)
+{
+    // Create a property on the javascript object for each text resource
+    @:StaticMessage.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}
+
+var ValidationMessages = {};
+@foreach (DictionaryEntry res in resourceSetValidationMessages)
+{
+    // Create a property on the javascript object for each text resource
+    @:ValidationMessages.@res.Key = "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))";
+}

@@ -3,40 +3,92 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title class="text-uppercase">PHÂN CÔNG GIẢNG DẠY</title>
     @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <header id="header">
+        <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-primary">
+            <div id="title_header">
+                @{ Html.RenderPartial("_PageTitleHeader"); }
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="panel">
+                <div id="login_partial">
+                    @{ Html.RenderPartial("_LoginPartial"); }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="main">
+        @RenderSection("Title", false)
+        @RenderSection("VerticalMenu", false)
+        @RenderBody()
+        <div class="clearfix"></div>
+    </section>
+
+    <section id="footer">
+        @Html.Partial("_LayoutFooter")
+    </section>
+
+    @***************************MODAL************************************@
+    <div class="modal fade" id="modal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+    <div class="modal fade" id="modalLarge" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/loadingOverlay")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimepicker")
+    @Scripts.Render("~/bundles/notify")
+    @Scripts.Render("~/bundles/tinymce")
+    @Scripts.Render("~/bundles/biz")
+    @Scripts.Render("~/bundles/TimKiem")
+    @Scripts.Render("~/bundles/MauIn")
+    @Scripts.Render("~/bundles/jqplot")
+    @Scripts.Render("~/bundles/underscore")
+    @RenderSection("Scripts", required: false)
+    @RenderSection("Styles", required: false)
 </body>
 </html>
+<script type="text/javascript">
+    $.widget.bridge("tooltipUI", $.ui.tooltip); //in case you want to use tooltip of jQueryUI, use .tooltipUI() instead
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $("#btnChuyenGiaiDoan").on("click",
+        function () {
+            $.ajax({
+                type: "GET",
+                url: "/NhanDon/CapNhatGiaiDoanHoSo",
+                success: function () {
+                    location.reload();
+                }
+            });
+        });
+</script>
+
+@*have to declare this here instead of putting it in bundles because if u do that magical error will happen when building beta*@
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@*declaring the action which convert resources to javascript object*@
+<script src="/Home/ConvertResourcesToJavascript"></script>
