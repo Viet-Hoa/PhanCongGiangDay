@@ -1,4 +1,4 @@
-﻿@model Lib.Account.Model.AcountModel
+﻿@model Lib.Account.Model.AccountModel
 @{
     ViewBag.Title = "ĐĂNG NHẬP";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
@@ -15,7 +15,7 @@
                     @Html.AntiForgeryToken()
 
                     <div class="row mb-3">
-                        <div class="col-12">
+                        <div class="col-12 p-2">
                             @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", maxlength = 50, placeholder = "Tên đăng nhập" , @autofocus="" })
                             <small class="form-text text-danger"><span for="UserName"></span></small>
                         </div>

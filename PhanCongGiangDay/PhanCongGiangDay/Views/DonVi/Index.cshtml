@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "ĐƠN VỊ";
+}
+
+<h3 class="text-uppercase pt-3">Đơn vị</h3>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+                <div class="search-box">
+                    @Html.TextBox("DonVi-search", null, new { @class = "form-control", @maxlength = "20" })
+                    <button type="button" class="search-button"><i class="material-icons">search</i></button>
+                </div>
+            </div>
+            <div class="col-3 text-right">
+                <a id="btnThemDonVi" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modal" data-url="@Url.Action("ThemDonVi", "DonVi")"><i class="fa fa-plus btn-icon-word-size"></i>Thêm đơn vị</a>
+            </div>
+        </div>
+        <div class="row">
+            <div id="don-vi-container" style="width: 100%">
+                <table class="table table-hover table-bordered table-custom pl-0 pr-0" cellspacing="0" id="don-vi-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>STT</td>
+                            <td>Mã đơn vị</td>
+                            <td>Tên đơn vị</td>
+                            <td style="min-width:140px; max-width:200px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/donvi")
+    <script>
+        $(function () {
+            DonViModule.timKiem();
+        });
+    </script>
+
+}

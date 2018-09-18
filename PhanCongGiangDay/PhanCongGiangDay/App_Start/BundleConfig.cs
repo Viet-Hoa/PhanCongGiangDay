@@ -80,6 +80,9 @@ namespace PhanCongGiangDay
 
             bundles.Add(new ScriptBundle("~/bundles/underscore").Include(
                "~/Scripts/underscore-min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/donvi").Include(
+               "~/Scripts/Custom/DonVi/DonVi.js"));
         }
     }
 }

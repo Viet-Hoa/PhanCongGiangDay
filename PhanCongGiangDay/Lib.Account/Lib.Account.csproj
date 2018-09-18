@@ -42,9 +42,14 @@
   <ItemGroup>
     <Compile Include="DataAccess\AccountDataAccess.cs" />
     <Compile Include="IDataAccess\IAccountDataAccess.cs" />
-    <Compile Include="Model\AcountModel.cs" />
+    <Compile Include="Model\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Lib.Setting\Lib.Setting.csproj">
+      <Project>{b5d6b5c5-b810-4504-881e-69d1daf35767}</Project>
+      <Name>Lib.Setting</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

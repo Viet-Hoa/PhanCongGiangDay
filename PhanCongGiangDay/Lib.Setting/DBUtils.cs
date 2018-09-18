@@ -13,10 +13,10 @@ namespace Lib.Setting
         public static string LibConnectionString(bool isEncrypted = true)
         {
             string _connectionString = string.Empty;
-            _connectionString = ConfigurationManager.ConnectionStrings["PhanCongGiangDay"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["freeaspconnection"].ConnectionString;
 
-            if (isEncrypted)
-                _connectionString = Cryptography.DecryptBase64(_connectionString);
+            //if (isEncrypted)
+            //    _connectionString = Cryptography.DecryptBase64(_connectionString);
 
             return _connectionString;
         }

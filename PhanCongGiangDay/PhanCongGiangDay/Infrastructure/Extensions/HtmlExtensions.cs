@@ -29,33 +29,6 @@ namespace PhanCongGiangDay.Infrastructure.Extensions
             return active ? "active" : String.Empty;
         }
 
-        public static string UrlCongDoanHoSo(int congDoan, int hoSoVuAnID)
-        {
-            UrlHelper u = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            string url = u.Action("ChiTietHoSo", "NhanDon", new { id = hoSoVuAnID });
-
-            switch (congDoan)
-            {
-                case 2:
-                    url = u.Action("Index", "ThuLy", new { id = hoSoVuAnID });
-                    break;
-                case 3:
-                    url = u.Action("Index", "ChuanBiXetXu", new { id = hoSoVuAnID });
-                    break;
-                case 4:
-                    url = u.Action("Index", "KetQuaXetXu", new { id = hoSoVuAnID });
-                    break;
-                case 5:
-                    url = u.Action("Index", "SauXetXu", new { id = hoSoVuAnID });
-                    break;
-                case -1:
-                    url = u.Action("Index", "SauXetXu", new { id = hoSoVuAnID });
-                    break;
-            }
-
-            return url;
-        }
-
         public static string ClassSortOrder(string field, string sortOrder)
         {
             string className = "sorting";

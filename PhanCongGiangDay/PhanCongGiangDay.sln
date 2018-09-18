@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Setting", "Lib.Setting\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Account", "Lib.Account\Lib.Account.csproj", "{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.DonVi", "Lib.DonVi\Lib.DonVi.csproj", "{A4A41405-76F4-4F17-943F-1A5106666EB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE797E1-24A8-49E1-9E66-3DF7034E7E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4A41405-76F4-4F17-943F-1A5106666EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4A41405-76F4-4F17-943F-1A5106666EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4A41405-76F4-4F17-943F-1A5106666EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4A41405-76F4-4F17-943F-1A5106666EB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

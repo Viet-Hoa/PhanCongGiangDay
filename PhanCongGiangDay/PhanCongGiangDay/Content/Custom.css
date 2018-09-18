@@ -103,14 +103,14 @@
 
 .btn-custom {
     color: #fff;
-    background-color: crimson;
-    border: solid 2px crimson;
+    background-color: darkblue;
+    border: solid 2px darkblue;
 }
 
     .btn-custom:hover {
-        color: red !important;
+        color: darkblue !important;
         background-color: #fff;
-        border: solid 2px #d9534f;
+        border: solid 2px darkblue;
     }
 
     .btn-custom:focus {

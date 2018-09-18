@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using PhanCongGiangDay.Infrastructure.Extensions;
 
-namespace Biz.TACM.Models.ViewModel.Shared
+namespace PhanCongGiangDay.Models.ViewModel.Shared
 {
     public class JsonResponseViewModel
     {

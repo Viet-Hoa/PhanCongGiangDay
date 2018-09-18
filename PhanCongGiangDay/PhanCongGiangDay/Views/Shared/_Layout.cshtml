@@ -58,10 +58,7 @@
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/datetimepicker")
     @Scripts.Render("~/bundles/notify")
-    @Scripts.Render("~/bundles/tinymce")
     @Scripts.Render("~/bundles/biz")
-    @Scripts.Render("~/bundles/TimKiem")
-    @Scripts.Render("~/bundles/MauIn")
     @Scripts.Render("~/bundles/jqplot")
     @Scripts.Render("~/bundles/underscore")
     @RenderSection("Scripts", required: false)
@@ -74,21 +71,10 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
-
-    $("#btnChuyenGiaiDoan").on("click",
-        function () {
-            $.ajax({
-                type: "GET",
-                url: "/NhanDon/CapNhatGiaiDoanHoSo",
-                success: function () {
-                    location.reload();
-                }
-            });
-        });
 </script>
 
 @*have to declare this here instead of putting it in bundles because if u do that magical error will happen when building beta*@
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
-@*declaring the action which convert resources to javascript object*@
-<script src="/Home/ConvertResourcesToJavascript"></script>
+@*declaring the action which convert resources to javascript object
+<script src="/Home/ConvertResourcesToJavascript"></script>*@
