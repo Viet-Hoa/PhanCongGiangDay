@@ -83,6 +83,10 @@ namespace PhanCongGiangDay
 
             bundles.Add(new ScriptBundle("~/bundles/donvi").Include(
                "~/Scripts/Custom/DonVi/DonVi.js"));
+            bundles.Add(new ScriptBundle("~/bundles/namhoc").Include(
+               "~/Scripts/Custom/NamHoc/NamHoc.js"));
+            bundles.Add(new ScriptBundle("~/bundles/khoa").Include(
+               "~/Scripts/Custom/Khoa/Khoa.js"));
         }
     }
 }

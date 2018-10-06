@@ -202,6 +202,8 @@
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\KhoaController.cs" />
+    <Compile Include="Controllers\NamHocController.cs" />
     <Compile Include="Controllers\DonViController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
@@ -216,9 +218,13 @@
     <Compile Include="Infrastructure\Extensions\ExceptionExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlExtensions.cs" />
     <Compile Include="Infrastructure\Modules\InfrastructureModule.cs" />
+    <Compile Include="IServices\IKhoaService.cs" />
+    <Compile Include="IServices\INamHocService.cs" />
     <Compile Include="IServices\IDonViService.cs" />
     <Compile Include="Models\ViewModel\Shared\JsonResponseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\KhoaService.cs" />
+    <Compile Include="Services\NamHocService.cs" />
     <Compile Include="Services\DonViService.cs" />
     <Compile Include="UtilityHelpers\DropzoneOptions.cs" />
   </ItemGroup>
@@ -241,6 +247,7 @@
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\clear.png" />
     <Content Include="Content\Images\icon\icons8-batch-assign-filled-50.png" />
+    <Content Include="Content\Images\icon\icons8-calendar-31-filled-50.png" />
     <Content Include="Content\Images\icon\icons8-classroom-filled-50.png" />
     <Content Include="Content\Images\icon\icons8-course-assign-filled-50.png" />
     <Content Include="Content\Images\icon\icons8-course-filled-50.png" />
@@ -344,6 +351,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Scripts\Custom\Khoa\Khoa.js" />
+    <Content Include="Scripts\Custom\NamHoc\NamHoc.js" />
     <Content Include="Scripts\Custom\DonVi\DonVi.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -786,6 +795,13 @@
     <Content Include="Views\DonVi\_ThemDonVi.cshtml" />
     <Content Include="Views\DonVi\_XoaDonVi.cshtml" />
     <Content Include="Views\DonVi\_SuaDonVi.cshtml" />
+    <Content Include="Views\NamHoc\_SuaNamHoc.cshtml" />
+    <Content Include="Views\Khoa\_SuaKhoa.cshtml" />
+    <Content Include="Views\Khoa\_ThemKhoa.cshtml" />
+    <Content Include="Views\Khoa\_XoaKhoa.cshtml" />
+    <Content Include="Views\Khoa\Index.cshtml" />
+    <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
+    <Content Include="Views\NamHoc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Model\" />
@@ -803,6 +819,18 @@
     <ProjectReference Include="..\Lib.DonVi\Lib.DonVi.csproj">
       <Project>{a4a41405-76f4-4f17-943f-1a5106666eb5}</Project>
       <Name>Lib.DonVi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.Khoa\Lib.Khoa.csproj">
+      <Project>{3cf0c2b8-5188-455a-ba7a-431a447031e8}</Project>
+      <Name>Lib.Khoa</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.NamHoc\Lib.NamHoc.csproj">
+      <Project>{4f8cdc9f-a3cc-4c29-95a9-475000cd7c50}</Project>
+      <Name>Lib.NamHoc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.PhanCongNhomLop\Lib.PhanCongNhomLop.csproj">
+      <Project>{d7bf8255-55db-4852-ac40-46915b44c97a}</Project>
+      <Name>Lib.PhanCongNhomLop</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lib.Setting\Lib.Setting.csproj">
       <Project>{b5d6b5c5-b810-4504-881e-69d1daf35767}</Project>

@@ -1,0 +1,63 @@
+﻿@model Lib.Khoa.Model.KhoaModel
+@using (Html.BeginForm("SuaKhoa", "Khoa", FormMethod.Post, new { id = "formSuaKhoa" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.KhoaID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa khoá</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Tên khoá</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.TenKhoa, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenKhoa)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Năm bắt đầu</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.NamBatDau, (SelectList)ViewBag.startyear, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamBatDau)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Năm kết thúc</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.NamKetThuc, (SelectList)ViewBag.endyear, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamKetThuc)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Chương trình đào tạo</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.CTDTID, (SelectList)ViewBag.ctdt, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.CTDTID)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaKhoa">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaKhoaModule.init();
+    });
+</script>
