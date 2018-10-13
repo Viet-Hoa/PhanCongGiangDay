@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7BF8255-55DB-4852-AC40-46915B44C97A}</ProjectGuid>
+    <ProjectGuid>{B3B0FE8A-CE9D-44EB-9F79-ED22F4AC2ADB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lib.PhanCongNhomLop</RootNamespace>
-    <AssemblyName>Lib.PhanCongNhomLop</AssemblyName>
+    <RootNamespace>Lib.HocPhan</RootNamespace>
+    <AssemblyName>Lib.HocPhan</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\PhanCongNhomLopDataAccess.cs" />
-    <Compile Include="IDataAccess\IPhanCongNhomLopDataAccess.cs" />
-    <Compile Include="Model\PhanCongNhomLopModel.cs" />
+    <Compile Include="DataAccess\HocPhanDataAccess.cs" />
+    <Compile Include="IDataAccess\IHocPhanDataAccess.cs" />
+    <Compile Include="Model\HocPhanModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
