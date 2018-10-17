@@ -15,20 +15,23 @@ namespace Lib.PhanCongNhomLop.Model
         public int KhoaID { get; set; }
         [Required(ErrorMessage = "Học phần không được để trống.")]
         public int HocPhanLogID { get; set; }
+        [Required(ErrorMessage = "Số lượng nhóm lớp không được để trống.")]
         public int SoLuongNhomLop { get; set; }
+        [Required(ErrorMessage = "LT còn lại không được để trống.")]
         public int SoLuongConLaiLT { get; set; }
+        [Required(ErrorMessage = "TH còn lại không được để trống.")]
         public int SoLuongConLaiTH { get; set; }
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }
 
 
-        public string MaHocPhan { get; set; }
+        public string MaHP { get; set; }
         public string TenHocPhan { get; set; }
         public string MaVaTenHP
         {
             get
             {
-                return "(" + MaHocPhan + ") " + TenHocPhan;
+                return "(" + MaHP + ") " + TenHocPhan;
             }
         }
     }

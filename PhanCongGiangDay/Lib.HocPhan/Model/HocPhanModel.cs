@@ -13,7 +13,7 @@ namespace Lib.HocPhan.Model
         public int HocPhanID { get; set; }
         public int HocPhanLogID { get; set; }
         [Required(ErrorMessage = "Mã học phần không được để trống.")]
-        public string MaHocPhan { get; set; }
+        public string MaHP { get; set; }
         [Required(ErrorMessage = "Tên học phần không được để trống.")]
         public string TenHocPhan { get; set; }
         [Required(ErrorMessage = "Số tín chỉ không được để trống.")]
@@ -29,7 +29,7 @@ namespace Lib.HocPhan.Model
         {
             get
             {
-                return "(" + MaHocPhan + ") " + TenHocPhan;
+                return "(" + MaHP + ") " + TenHocPhan;
             }
         }
     }

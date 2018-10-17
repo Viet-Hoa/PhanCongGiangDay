@@ -92,7 +92,7 @@ namespace Lib.HocPhan.DataAccess
             try
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@MaHocPhan", model.MaHocPhan));
+                listParameter.Add(new SqlParameter("@MaHP", model.MaHP));
                 listParameter.Add(new SqlParameter("@TenHocPhan", model.TenHocPhan));
                 listParameter.Add(new SqlParameter("@SoTC", model.SoTC));
                 listParameter.Add(new SqlParameter("@SoTietLT", model.SoTietLT));
@@ -114,7 +114,7 @@ namespace Lib.HocPhan.DataAccess
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@HocPhanID", model.HocPhanID));
-                listParameter.Add(new SqlParameter("@MaHocPhan", model.MaHocPhan));
+                listParameter.Add(new SqlParameter("@MaHP", model.MaHP));
                 listParameter.Add(new SqlParameter("@TenHocPhan", model.TenHocPhan));
                 listParameter.Add(new SqlParameter("@SoTC", model.SoTC));
                 listParameter.Add(new SqlParameter("@SoTietLT", model.SoTietLT));

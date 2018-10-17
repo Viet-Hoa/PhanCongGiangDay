@@ -27,7 +27,7 @@ namespace PhanCongGiangDay.Controllers
         // GET: PhanCongNhomLop
         public ActionResult Index()
         {
-            var model = NamHocService.DanhSachNamHoc();
+            var model = NamHocService.DanhSachNamHoc().ToList();
             return View(model);
         }
         public ActionResult Khoa(int NamHoc)
@@ -38,13 +38,13 @@ namespace PhanCongGiangDay.Controllers
             return View(model);
         }
         public ActionResult PhanCong(int NamHoc, int Khoa)
-        {
-            var model = KhoaService.DanhSachKhoa();
+        {            
             ViewBag.namhocID = NamHoc;
             ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
             ViewBag.khoaID = Khoa;
-            ViewBag.khoa = KhoaService.ChiTietKhoa(Khoa).TenKhoa;
-            return View(model);
+            var k = KhoaService.ChiTietKhoa(Khoa);
+            ViewBag.khoa = k.TenKhoa + "(" + k.SLSV + " SV)";
+            return View();
         }
         public ActionResult DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID)
         {
@@ -53,9 +53,14 @@ namespace PhanCongGiangDay.Controllers
         }
 
         [HttpGet]
-        public ActionResult ThemPhanCongNhomLop(int? KhoaID)
+        public ActionResult ThemPhanCongNhomLop(int BangPhanCongID, int? KhoaID)
         {
-            ViewBag.hocphan = new SelectList(HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID), "HocPhanLogID", "MaVaTenHP");
+            var dshp = HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID);
+            ViewBag.bangpcIDvb = BangPhanCongID;
+            ViewBag.khoaidvb = KhoaID;
+            ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
+            ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
+            ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
             return PartialView("_ThemPhanCongNhomLop");
         }
 
@@ -87,6 +92,10 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult SuaPhanCongNhomLop(int id)
         {
             var viewModel = PhanCongNhomLopService.ChiTietPhanCongNhomLop(id);
+            var dshp = HocPhanService.DanhSachHocPhanTheoKhoa(viewModel.KhoaID);
+            ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
+            ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
+            ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
             return PartialView("_SuaPhanCongNhomLop",viewModel);
         }
 

@@ -1,1 +1,69 @@
-﻿
+﻿@model Lib.PhanCongNhomLop.Model.PhanCongNhomLopModel
+
+@Html.DropDownList("sotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
+@Html.DropDownList("sotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
+@using (Html.BeginForm("SuaPhanCongNhomLop", "PhanCongNhomLop", FormMethod.Post, new { id = "formSuaPhanCongNhomLop" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PhanCongNhomLopID)
+    @Html.HiddenFor(x => x.BangPhanCongID)
+    @Html.HiddenFor(x => x.KhoaID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa phân công nhóm lớp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Học phần</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HocPhanLogID)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số lượng nhóm lớp</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoLuongNhomLop, new { @class = "form-control", type = "number", max = "50" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLop)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">LT còn lại</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoLuongConLaiLT, new { @class = "form-control", type = "number", max = "50" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongConLaiLT)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">TH còn lại</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoLuongConLaiTH, new { @class = "form-control", type = "number", max = "50" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongConLaiTH)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaPhanCongNhomLop">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaPhanCongNhomLopModule.init();
+    });
+</script>
+

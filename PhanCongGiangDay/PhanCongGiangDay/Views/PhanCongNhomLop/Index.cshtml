@@ -1,7 +1,27 @@
-﻿
+﻿@model List<Lib.NamHoc.Model.NamHocModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "PHÂN CÔNG NHÓM LỚP - NĂM HỌC";
 }
 
-<h2>Index</h2>
+<h3 class="text-uppercase pt-3">PHÂN CÔNG NHÓM LỚP > NĂM HỌC</h3>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @foreach (var item in Model)
+                {
+                    <div class="box_home_app card-hover" title="@item.NamHoc">
+                        <a href="@Url.Action("Khoa","PhanCongNhomLop",new { NamHoc=item.BangPhanCongID})">
+                            <div class="box_home_app_header">
+                                <h4>Năm học @item.NamHoc</h4>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>        
+    </div>
+</div>
+
+
 
