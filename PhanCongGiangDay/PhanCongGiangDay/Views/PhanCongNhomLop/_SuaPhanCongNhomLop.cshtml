@@ -3,6 +3,7 @@
 @Html.DropDownList("sotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
 @Html.DropDownList("sotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
 @Html.DropDownList("sotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
+@Html.DropDownList("sotietddl", (SelectList)ViewBag.hocphanst, null, new { @class = "d-none" })
 @using (Html.BeginForm("SuaPhanCongNhomLop", "PhanCongNhomLop", FormMethod.Post, new { id = "formSuaPhanCongNhomLop" }))
 {
     @Html.AntiForgeryToken()
@@ -33,6 +34,14 @@
                     </div>
                     <div class="col-6">
                         @Html.TextBox("SoTinChi", null, new { @class = "form-control", @readonly = true })
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số tiết HP</label>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBox("SoTiet", null, new { @class = "form-control", @readonly = true })
                     </div>
                 </div>
                 <div class="row mb-2">

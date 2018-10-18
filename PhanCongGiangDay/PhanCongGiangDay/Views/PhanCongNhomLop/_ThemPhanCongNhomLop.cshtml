@@ -3,6 +3,7 @@
 @Html.DropDownList("tsotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
 @Html.DropDownList("tsotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
 @Html.DropDownList("tsotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
+@Html.DropDownList("tsotietddl", (SelectList)ViewBag.hocphanst, null, new { @class = "d-none" })
 
 
 <div class="col-12 p-3" id="Them_panel" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.5rem;margin:auto">
@@ -10,7 +11,7 @@
     {
         @Html.AntiForgeryToken()
         <div class="row">
-            <div class="col-5">
+            <div class="col-4">
                 <div class="row">
                     <divc></divc>
                     <div class="col-12">
@@ -22,12 +23,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <div class="col-12">
                     <label class="font-weight-bold">Số tín chỉ</label>
                 </div>
                 <div class="col-12">
                     @Html.TextBox("tSoTinChi", null, new { @class = "form-control", @readonly = true })
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="col-12">
+                    <label class="font-weight-bold">Số tiết HP</label>
+                </div>
+                <div class="col-12">
+                    @Html.TextBox("tSoTiet", null, new { @class = "form-control", @readonly = true })
                 </div>
             </div>
             <div class="col-4">

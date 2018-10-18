@@ -32,5 +32,13 @@ namespace Lib.HocPhan.Model
                 return "(" + MaHP + ") " + TenHocPhan;
             }
         }
+
+        public int SoTietHP
+        {
+            get
+            {
+                return (int)(SoTietLT+SoTietTH/2);
+            }
+        }
     }
 }

@@ -138,7 +138,12 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
             });
             $("#tsotinchiddl > option").each(function () {
                 if ($(this).val() == $('#tHocPhanLogID').val()) {
-                    $('#tSoTinChi').val($(this).val());
+                    $('#tSoTinChi').val($(this).text());
+                }
+            });
+            $("#tsotietddl > option").each(function () {
+                if ($(this).val() == $('#tHocPhanLogID').val()) {
+                    $('#tSoTiet').val($(this).text());
                 }
             });
         });
@@ -222,7 +227,12 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
             });
             $("#sotinchiddl > option").each(function () {
                 if ($(this).val() == $('#HocPhanLogID').val()) {
-                    $('#SoTinChi').val($(this).val());
+                    $('#SoTinChi').val($(this).text());
+                }
+            });
+            $("#sotietddl > option").each(function () {
+                if ($(this).val() == $('#HocPhanLogID').val()) {
+                    $('#SoTiet').val($(this).text());
                 }
             });
         });
