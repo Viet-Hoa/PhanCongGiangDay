@@ -43,7 +43,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
             ViewBag.khoaID = Khoa;
             var k = KhoaService.ChiTietKhoa(Khoa);
-            ViewBag.khoa = k.TenKhoa + "(" + k.SLSV + " SV)";
+            ViewBag.khoa = k.TenKhoa + " (" + k.SLSV + " SV)";
             return View();
         }
         public ActionResult DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID)
@@ -61,6 +61,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
             ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
+            ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
             return PartialView("_ThemPhanCongNhomLop");
         }
 
@@ -96,6 +97,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
             ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
+            ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
             return PartialView("_SuaPhanCongNhomLop",viewModel);
         }
 

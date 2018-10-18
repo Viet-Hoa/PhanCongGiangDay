@@ -2,6 +2,7 @@
 
 @Html.DropDownList("sotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
 @Html.DropDownList("sotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
+@Html.DropDownList("sotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
 @using (Html.BeginForm("SuaPhanCongNhomLop", "PhanCongNhomLop", FormMethod.Post, new { id = "formSuaPhanCongNhomLop" }))
 {
     @Html.AntiForgeryToken()
@@ -24,6 +25,14 @@
                     <div class="col-6">
                         @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HocPhanLogID)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số tín chỉ</label>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBox("SoTinChi", null, new { @class = "form-control", @readonly = true })
                     </div>
                 </div>
                 <div class="row mb-2">

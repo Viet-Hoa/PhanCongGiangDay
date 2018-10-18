@@ -15,7 +15,6 @@ var PhanCongNhomLopModule = (function () {
     function showThemPanel() {
         $('#btnThemPhanCongNhomLop').click(function () {
             $('#btnThemPhanCongNhomLop').addClass("add-disabled");
-            $('.btn-grid').addClass("edit-disabled");
             $('#panelThemPCNL').addClass("pb-4");
             $.ajax({
                 type: "GET",
@@ -108,14 +107,13 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
             $('#panelThemPCNL').html("");
             $('#Them_panel').hide();
             $('#btnThemPhanCongNhomLop').removeClass("add-disabled");
-            $('.btn-grid').removeClass("edit-disabled");
         });
     }
 
     function setNumber() {
-        $('#HocPhanLogID').change(function () {
-            $("#sotietltddl > option").each(function () {
-                if ($(this).val() == $('#HocPhanLogID').val()) {
+        $('#tHocPhanLogID').change(function () {
+            $("#tsotietltddl > option").each(function () {
+                if ($(this).val() == $('#tHocPhanLogID').val()) {
                     var x = parseInt($(this).text());
                     if (x > 0) {
                         lt = 1
@@ -123,11 +121,11 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     else {
                         lt = 0;
                     }
-                    $('#conlaiLT').val(lt * $('#SoLuongNhomLop').val());
+                    $('#tconlaiLT').val(lt * $('#tSoLuongNhomLop').val());
                 }
             });
-            $("#sotietthddl > option").each(function () {
-                if ($(this).val() == $('#HocPhanLogID').val()) {
+            $("#tsotietthddl > option").each(function () {
+                if ($(this).val() == $('#tHocPhanLogID').val()) {
                     var x = parseInt($(this).text());
                     if (x > 0) {
                         th = 1
@@ -135,7 +133,12 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     else {
                         th = 0;
                     }
-                    $('#conlaiTH').val(th * $('#SoLuongNhomLop').val());
+                    $('#tconlaiTH').val(th * $('#tSoLuongNhomLop').val());
+                }
+            });
+            $("#tsotinchiddl > option").each(function () {
+                if ($(this).val() == $('#tHocPhanLogID').val()) {
+                    $('#tSoTinChi').val($(this).val());
                 }
             });
         });
@@ -143,9 +146,9 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
     }
 
     function setHiddenValue() {
-        $('#SoLuongNhomLop').change(function () {
-            $('#conlaiLT').val(lt * $(this).val());
-            $('#conlaiTH').val(th * $(this).val());
+        $('#tSoLuongNhomLop').change(function () {
+            $('#tconlaiLT').val(lt * $(this).val());
+            $('#tconlaiTH').val(th * $(this).val());            
         });
     }
 
@@ -188,6 +191,7 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
         setNumber();
         setValue();
         bindFormActions();
+        $('#HocPhanLogID').change();
     }
 
     function setNumber() {
@@ -214,6 +218,11 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                         th = 0;
                     }
                     $('#SoLuongConLaiTH').val(th * $('#SoLuongNhomLop').val());
+                }
+            });
+            $("#sotinchiddl > option").each(function () {
+                if ($(this).val() == $('#HocPhanLogID').val()) {
+                    $('#SoTinChi').val($(this).val());
                 }
             });
         });

@@ -1,7 +1,8 @@
 ﻿@model Lib.PhanCongNhomLop.Model.PhanCongNhomLopModel
 
-@Html.DropDownList("sotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
-@Html.DropDownList("sotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
+@Html.DropDownList("tsotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
+@Html.DropDownList("tsotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
+@Html.DropDownList("tsotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
 
 
 <div class="col-12 p-3" id="Them_panel" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.5rem;margin:auto">
@@ -9,29 +10,38 @@
     {
         @Html.AntiForgeryToken()
         <div class="row">
-            <div class="col-7">
+            <div class="col-5">
                 <div class="row">
-                    <div class="col-3">
+                    <divc></divc>
+                    <div class="col-12">
                         <label class="font-weight-bold">Học phần</label><span class="input-required">*</span>
                     </div>
-                    <div class="col-9">
-                        @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control" })
+                    <div class="col-12">
+                        @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control", id = "tHocPhanLogID" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HocPhanLogID)</small>
                     </div>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-3">
+                <div class="col-12">
+                    <label class="font-weight-bold">Số tín chỉ</label>
+                </div>
+                <div class="col-12">
+                    @Html.TextBox("tSoTinChi", null, new { @class = "form-control", @readonly = true })
+                </div>
+            </div>
+            <div class="col-4">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12">
                         <label class="font-weight-bold">Số lượng nhóm lớp</label><span class="input-required">*</span>
                     </div>
-                    <div class="col-8">
-                        @Html.TextBoxFor(x => x.SoLuongNhomLop, new { @class = "form-control", type = "number", max = "50" })
+                    <div class="col-12">
+                        @Html.TextBoxFor(x => x.SoLuongNhomLop, new { @class = "form-control", type = "number", max = "50", id = "tSoLuongNhomLop" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLop)</small>
                     </div>
                 </div>
-                <input type="hidden" id="conlaiLT" name="SoLuongConLaiLT" value="0" />
-                <input type="hidden" id="conlaiTH" name="SoLuongConLaiTH" value="0" />
+                <input type="hidden" id="tconlaiLT" name="SoLuongConLaiLT" value="0" />
+                <input type="hidden" id="tconlaiTH" name="SoLuongConLaiTH" value="0" />
                 <input type="hidden" name="BangPhanCongID" value="@ViewBag.bangpcIDvb" />
                 <input type="hidden" name="KhoaID" value="@ViewBag.khoaidvb" />
             </div>
