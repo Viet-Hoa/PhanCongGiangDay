@@ -135,11 +135,11 @@ namespace PhanCongGiangDay.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult XoaPhanCongNhomLopConfirmed(int id)
+        public ActionResult XoaPhanCongNhomLopConfirmed(int PhanCongNhomLopid)
         {
             try
             {
-                var result = PhanCongNhomLopService.XoaPhanCongNhomLop(id, "");//làm xong phần accout sẽ bổ sung
+                var result = PhanCongNhomLopService.XoaPhanCongNhomLop(PhanCongNhomLopid, "");//làm xong phần accout sẽ bổ sung
                 if (result != null && result.ResponseCode == 1)
                 {
                     return Json(JsonResponseViewModel.CreateSuccess("Xoá phân công nhóm lớp thành công."));

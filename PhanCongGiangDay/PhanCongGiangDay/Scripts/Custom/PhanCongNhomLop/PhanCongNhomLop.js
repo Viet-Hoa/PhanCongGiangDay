@@ -99,6 +99,7 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
         setNumber();
         setHiddenValue();
         bindFormActions();
+        initValidation();
     }
     
     function hideThemPanel() {
@@ -174,6 +175,7 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                                 $.notify({ message: response.Messages }, { type: "success" });
                                 lt = 0;
                                 th = 0;
+                                $("#formThemPhanCongNhomLop").trigger("reset");
                             }
                         },
                         complete: function () {
@@ -183,6 +185,43 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                 }
                 return false;
             });
+    }
+
+    function initValidation() {
+        $("#formThemPhanCongNhomLop").validate({
+            ignore: '',
+            rules: {
+                "tHocPhanLogID": {
+                    required: true
+                },
+                "tSoLuongNhomLop": {
+                    required: true,
+                    max: 50,
+                    min: 1
+                }
+            },
+            messages:
+                {
+                    "HocPhanLogID": {
+                        required: "Học phần không được để trống"
+                    },
+                    "SoLuongNhomLop": {
+                        required: "Số lượng nhóm lớp không được để trống",
+                        max: "Số lượng nhóm lớp phải nhỏ hơn 50",
+                        min: "Số lượng nhóm lớp phải lớn hơn 0"
+                    }
+                },
+            errorPlacement: function (error) {
+                var htmlFor = error[0].htmlFor;
+
+                $('span[for="' + htmlFor + '"]').each(function () {
+                    $(this).append(error);
+                });
+            },
+            success: function (error) {
+                error.remove();
+            }
+        });
     }
 
     return {
@@ -293,7 +332,7 @@ var XoaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                 $.ajax({
                     type: $("#formXoaPhanCongNhomLop").prop("method"),
                     url: $("#formXoaPhanCongNhomLop").prop("action"),
-                    data: { id: $('#PhanCongNhomLopid').val(), },
+                    data: $("#formXoaPhanCongNhomLop").serialize(),
                     success: function (response) {
                         if (!response.IsSuccess) {
                             $.notify({ message: response.Messages }, { type: "danger" });

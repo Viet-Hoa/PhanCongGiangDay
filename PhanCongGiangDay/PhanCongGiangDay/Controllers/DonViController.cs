@@ -98,11 +98,11 @@ namespace PhanCongGiangDay.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult XoaDonViConfirmed(int id)
+        public ActionResult XoaDonViConfirmed(int DonViid)
         {
             try
             {
-                var result = DonViService.XoaDonvi(id, "");//làm xong phần accout sẽ bổ sung
+                var result = DonViService.XoaDonvi(DonViid, "");//làm xong phần accout sẽ bổ sung
                 if (result != null && result.ResponseCode == 1)
                 {
                     return Json(JsonResponseViewModel.CreateSuccess("Xoá đơn vị thành công."));

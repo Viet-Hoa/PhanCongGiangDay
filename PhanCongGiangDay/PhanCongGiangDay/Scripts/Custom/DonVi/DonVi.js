@@ -160,7 +160,7 @@ var XoaDonViModule = (function (DonViModule) {
                 $.ajax({
                     type: $("#formXoaDonVi").prop("method"),
                     url: $("#formXoaDonVi").prop("action"),
-                    data: { id: $('#DonViid').val(), },
+                    data: $("#formXoaDonVi").serialize(),
                     success: function (response) {
                         if (!response.IsSuccess) {
                             $.notify({ message: response.Messages }, { type: "danger" });
