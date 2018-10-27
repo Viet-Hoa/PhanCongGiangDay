@@ -72,17 +72,32 @@ namespace PhanCongGiangDay.Controllers
         {
             try
             {
-                var result = PhanCongNhomLopService.ThemPhanCongNhomLop(model);
-                if (result != null && result.ResponseCode == 1)
-                {
-                    return Json(JsonResponseViewModel.CreateSuccess("Thêm phân công nhóm lớp thành công."));
-                }
-                else if (result != null && result.ResponseCode == -1)
-                {
-                    return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
-                }
-                else
-                    return Json(JsonResponseViewModel.CreateFail("Thêm phân công nhóm lớp thất bại."));
+               if(ModelState.IsValid)
+               {
+                    var result = PhanCongNhomLopService.ThemPhanCongNhomLop(model);
+                    if (result != null && result.ResponseCode == 1)
+                    {
+                        return Json(JsonResponseViewModel.CreateSuccess("Thêm phân công nhóm lớp thành công."));
+                    }
+                    else if (result != null && result.ResponseCode == -1)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                    }
+                    else
+                        return Json(JsonResponseViewModel.CreateFail("Thêm phân công nhóm lớp thất bại."));
+               }
+               else
+               {
+                    var dshp = HocPhanService.DanhSachHocPhanTheoKhoa(model.KhoaID);
+                    ViewBag.bangpcIDvb = model.BangPhanCongID;
+                    ViewBag.khoaidvb = model.KhoaID;
+                    ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
+                    ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
+                    ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
+                    ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
+                    ViewBag.hocphanst = new SelectList(dshp, "HocPhanLogID", "SoTietHP");
+                    return PartialView("_ThemPhanCongNhomLop");
+               }
             }
             catch (Exception ex)
             {

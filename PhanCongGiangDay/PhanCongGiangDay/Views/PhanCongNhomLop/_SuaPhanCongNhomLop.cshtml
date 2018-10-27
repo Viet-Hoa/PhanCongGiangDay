@@ -46,11 +46,20 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col-6">
-                        <label class="font-weight-bold">Số lượng nhóm lớp</label><span class="input-required">*</span>
+                        <label class="font-weight-bold">Số lượng nhóm lớp LT</label><span class="input-required">*</span>
                     </div>
                     <div class="col-6">
-                        @Html.TextBoxFor(x => x.SoLuongNhomLop, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "50" })
-                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLop)</small>
+                        @Html.TextBoxFor(x => x.SoLuongNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max="100" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopLT)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số lượng nhóm lớp TH</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoLuongNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max="100" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopTH)</small>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -58,7 +67,7 @@
                         <label class="font-weight-bold">LT còn lại</label><span class="input-required">*</span>
                     </div>
                     <div class="col-6">
-                        @Html.TextBoxFor(x => x.SoLuongConLaiLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "50" })
+                        @Html.TextBoxFor(x => x.SoLuongConLaiLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max="100" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongConLaiLT)</small>
                     </div>
                 </div>
@@ -67,7 +76,7 @@
                         <label class="font-weight-bold">TH còn lại</label><span class="input-required">*</span>
                     </div>
                     <div class="col-6">
-                        @Html.TextBoxFor(x => x.SoLuongConLaiTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "50" })
+                        @Html.TextBoxFor(x => x.SoLuongConLaiTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max="100" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongConLaiTH)</small>
                     </div>
                 </div>
