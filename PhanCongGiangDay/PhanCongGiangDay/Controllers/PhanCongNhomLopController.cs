@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Lib.Setting.Model;
+using Lib.Setting;
 using Lib.PhanCongNhomLop.Model;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Services;
@@ -24,6 +24,7 @@ namespace PhanCongGiangDay.Controllers
         {
             PhanCongNhomLopService = _PhanCongNhomLopService;
         }
+        private int khoaID = 0;
         // GET: PhanCongNhomLop
         public ActionResult Index()
         {
@@ -35,10 +36,12 @@ namespace PhanCongGiangDay.Controllers
             var model = KhoaService.DanhSachKhoa();
             ViewBag.namhocID = NamHoc;
             ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
+            ViewBag.loai = new SelectList(XMLUtils.BindData("chedoxempcnl"), "value", "text");
             return View(model);
         }
         public ActionResult PhanCong(int NamHoc, int Khoa)
-        {            
+        {
+            khoaID = Khoa;
             ViewBag.namhocID = NamHoc;
             ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
             ViewBag.khoaID = Khoa;
@@ -72,7 +75,12 @@ namespace PhanCongGiangDay.Controllers
         {
             try
             {
-               if(ModelState.IsValid)
+                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, khoaID).Where(x=>x.HocPhanLogID==model.HocPhanLogID).FirstOrDefault();
+                if(c!=null)
+                {
+                    ModelState.AddModelError("HocPhanLogID", "Học phần \""+model.TenHocPhan+"\" đã phân công nhóm lớp");
+                }
+                if (ModelState.IsValid)
                {
                     var result = PhanCongNhomLopService.ThemPhanCongNhomLop(model);
                     if (result != null && result.ResponseCode == 1)

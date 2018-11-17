@@ -11,7 +11,7 @@
     {
         @Html.AntiForgeryToken()
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <div class="row">
                 <divc></divc>
                 <div class="col-12">
@@ -23,48 +23,73 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
-            <div class="col-12">
-                <label class="font-weight-bold">Số tín chỉ</label>
-            </div>
-            <div class="col-12">
-                @Html.TextBox("tSoTinChi", null, new { @class = "form-control", @readonly = true })
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="col-12">
-                <label class="font-weight-bold">Số tiết HP</label>
-            </div>
-            <div class="col-12">
-                @Html.TextBox("tSoTiet", null, new { @class = "form-control", @readonly = true })
-            </div>
-        </div>
-        <div class="col-2">
+        <div class="col-9">
             <div class="row">
-                <div class="col-12">
-                    <label class="font-weight-bold">Số lượng nhóm lớp LT</label><span class="input-required">*</span>
+                <div class="col-2">
+                    <div class="col-12">
+                        <label class="font-weight-bold">Số tín chỉ</label>
+                    </div>
+                    <div class="col-12">
+                        @Html.TextBox("tSoTinChi", null, new { @class = "form-control", @readonly = true })
+                    </div>
                 </div>
-                <div class="col-12">
-                    @Html.TextBoxFor(x => x.SoLuongNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSoLuongNhomLopLT" })
-                    <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopLT)</small>
+                <div class="col-2">
+                    <div class="col-12">
+                        <label class="font-weight-bold">Số tiết HP</label>
+                    </div>
+                    <div class="col-12">
+                        @Html.TextBox("tSoTiet", null, new { @class = "form-control", @readonly = true })
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="font-weight-bold">SLSV lớp LT</label><span class="input-required">*</span>
+                        </div>
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.SLSVNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSLSVNhomLopLT" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLopLT)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="font-weight-bold">SLSV lớp TH</label><span class="input-required">*</span>
+                        </div>
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.SLSVNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSLSVNhomLopTH" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLopTH)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="font-weight-bold">SL nhóm lớp LT</label><span class="input-required">*</span>
+                        </div>
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.SoLuongNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSoLuongNhomLopLT" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopLT)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="font-weight-bold">SL nhóm lớp TH</label><span class="input-required">*</span>
+                        </div>
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.SoLuongNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSoLuongNhomLopTH" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopTH)</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-2">
-            <div class="row">
-                <div class="col-12">
-                    <label class="font-weight-bold">Số lượng nhóm lớp TH</label><span class="input-required">*</span>
-                </div>
-                <div class="col-12">
-                    @Html.TextBoxFor(x => x.SoLuongNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSoLuongNhomLopTH" })
-                    <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopTH)</small>
-                </div>
-            </div>
-        </div>
-        <input type="hidden" id="tconlaiLT" name="SoLuongConLaiLT" value="0" />
-        <input type="hidden" id="tconlaiTH" name="SoLuongConLaiTH" value="0" />
         <input type="hidden" name="BangPhanCongID" value="@ViewBag.bangpcIDvb" />
         <input type="hidden" name="KhoaID" value="@ViewBag.khoaidvb" />
+        <input type="hidden" name="TenHocPhan" value="" id="tenhpfor-em"/>
     </div>
         <div class="row pt-2">
             <div class="col-12">

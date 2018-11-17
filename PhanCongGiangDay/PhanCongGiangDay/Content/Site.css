@@ -666,3 +666,12 @@ select.form-control.error {
     height: 50px;
 }
 
+.table-form tbody td{
+    padding-left:8px;
+    padding-right:8px
+}
+.table-form thead td {
+    padding-left: 8px;
+    padding-right: 8px
+}
+

@@ -1,0 +1,65 @@
+﻿@model List<PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien.PhanCongGiangVienViewModel>
+@{
+    ViewBag.Title = "PHÂN CÔNG GIẢNG VIÊN - PHÂN CÔNG";
+}
+<input type="hidden" id="bangpc" value="@ViewBag.namhocID" />
+<h3 class="text-uppercase pt-3">PHÂN CÔNG GIẢNG VIÊN > <a style="color: #1565c0" href="@Url.Action("Index","PhanCongGiangVien")">NĂM HỌC @ViewBag.namhoc</a></h3>
+<div id="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-9">
+                <div class="search-box">
+                    @Html.TextBox("PhanCongGiangVien-search", null, new { @class = "form-control", @maxlength = "20" })
+                    <button type="button" class="search-button"><i class="material-icons">search</i></button>
+                </div>
+            </div>
+            <div class="col-3">
+                @Html.DropDownList("Loc", (SelectList)ViewBag.loai, "-- Tất cả --", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div id="PhanCongGiangVien-container" style="width: 100%">
+                <table class="table table-hover table-bordered table-custom pl-0 pr-0" cellspacing="0" id="phanCongGiangVien-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>STT</td>
+                            <td>Họ tên</td>
+                            <td>Số tiết giảng dạy</td>
+                            <td>Số tiết thực tế</td>
+                            <td style="min-width:100px; max-width:200px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalPhanCong" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-phancong-custom">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    @@media (min-width: 1000px) {
+        .modal-phancong-custom {
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+    }
+</style>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/pcgv")
+    <script>
+        $(function () {
+            PhanCongGiangVienModule.init();
+            PhanCongGiangVienModule.timKiem();
+        });
+    </script>
+
+}
+
+

@@ -33,10 +33,10 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult ThemNamHoc()
         {
-            var listyear = new List<int>();
+            var listyear = new List<string>();
             for (int i = (DateTime.Now.Year - 5); i <= (DateTime.Now.Year + 5); i++)
-                listyear.Add(i);
-            ViewBag.year = new SelectList(listyear, DateTime.Now.Year);
+                listyear.Add(i+" - "+(i+1));
+            ViewBag.year = new SelectList(listyear, (DateTime.Now.Year+" - "+(DateTime.Now.Year+1)));
             return PartialView("_ThemNamHoc");
         }
 
@@ -68,10 +68,10 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult SuaNamHoc(int id)
         {
             var viewModel = NamHocService.ChiTietNamHoc(id);
-            var listyear = new List<int>();
+            var listyear = new List<string>();
             for (int i = (DateTime.Now.Year - 5); i <= (DateTime.Now.Year + 5); i++)
-                listyear.Add(i);
-            ViewBag.year = new SelectList(listyear, DateTime.Now.Year.ToString());
+                listyear.Add(i + " - " + (i + 1));
+            ViewBag.year = new SelectList(listyear);
             ViewBag.active = new SelectList(XMLUtils.BindData("trangthaihoatdong"), "value", "text");
             return PartialView("_SuaNamHoc",viewModel);
         }

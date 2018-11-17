@@ -89,6 +89,8 @@ namespace PhanCongGiangDay
                "~/Scripts/Custom/Khoa/Khoa.js"));
             bundles.Add(new ScriptBundle("~/bundles/pcnl").Include(
               "~/Scripts/Custom/PhanCongNhomLop/PhanCongNhomLop.js"));
+            bundles.Add(new ScriptBundle("~/bundles/pcgv").Include(
+              "~/Scripts/Custom/PhanCongGiangVien/PhanCongGiangVien.js"));
         }
     }
 }

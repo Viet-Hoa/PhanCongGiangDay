@@ -178,6 +178,7 @@
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\PhanCongGiangVienController.cs" />
     <Compile Include="Controllers\PhanCongNhomLopController.cs" />
     <Compile Include="Controllers\KhoaController.cs" />
     <Compile Include="Controllers\NamHocController.cs" />
@@ -196,15 +197,20 @@
     <Compile Include="Infrastructure\Extensions\HtmlExtensions.cs" />
     <Compile Include="Infrastructure\Modules\InfrastructureModule.cs" />
     <Compile Include="IServices\ICTDTService.cs" />
+    <Compile Include="IServices\ICongTacKhacService.cs" />
     <Compile Include="IServices\IHocPhanService.cs" />
+    <Compile Include="IServices\IPhanCongGiangVienService.cs" />
     <Compile Include="IServices\IPhanCongNhomLopService.cs" />
     <Compile Include="IServices\IKhoaService.cs" />
     <Compile Include="IServices\INamHocService.cs" />
     <Compile Include="IServices\IDonViService.cs" />
+    <Compile Include="Models\ViewModel\PhanCongGiangVien\PhanCongGiangVienViewModel.cs" />
     <Compile Include="Models\ViewModel\Shared\JsonResponseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CTDTService.cs" />
+    <Compile Include="Services\CongTacKhacService.cs" />
     <Compile Include="Services\HocPhanService.cs" />
+    <Compile Include="Services\PhanCongGiangVienService.cs" />
     <Compile Include="Services\PhanCongNhomLopService.cs" />
     <Compile Include="Services\KhoaService.cs" />
     <Compile Include="Services\NamHocService.cs" />
@@ -212,7 +218,9 @@
     <Compile Include="UtilityHelpers\DropzoneOptions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\XMLData.xml" />
+    <Content Include="App_Data\XMLData.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -337,6 +345,7 @@
     <Content Include="Scripts\Custom\Khoa\Khoa.js" />
     <Content Include="Scripts\Custom\NamHoc\NamHoc.js" />
     <Content Include="Scripts\Custom\DonVi\DonVi.js" />
+    <Content Include="Scripts\Custom\PhanCongGiangVien\PhanCongGiangVien.js" />
     <Content Include="Scripts\Custom\PhanCongNhomLop\PhanCongNhomLop.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -728,6 +737,12 @@
     <Content Include="Views\PhanCongNhomLop\_ThemPhanCongNhomLop.cshtml" />
     <Content Include="Views\PhanCongNhomLop\_SuaPhanCongNhomLop.cshtml" />
     <Content Include="Views\PhanCongNhomLop\_XoaPhanCongNhomLop.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\_CapNhatPhanCongGiangVien.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\_ThemPhanCongCongTac.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\Index.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\PhanCong.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\_ThemPhanCongGiangVien.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\_ChiTietPhanCongGiangVien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Model\" />
@@ -746,9 +761,17 @@
       <Project>{5345ac50-2121-4818-82be-990f436816b1}</Project>
       <Name>Lib.ChuongTrinhDaoTao</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lib.CongTacKhac\Lib.CongTacKhac.csproj">
+      <Project>{0fe637ce-ef30-438a-8d0a-da0ec8290d68}</Project>
+      <Name>Lib.CongTacKhac</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lib.DonVi\Lib.DonVi.csproj">
       <Project>{a4a41405-76f4-4f17-943f-1a5106666eb5}</Project>
       <Name>Lib.DonVi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.GiangVien\Lib.GiangVien.csproj">
+      <Project>{dde71d45-87e8-409b-ad61-62fc99e60445}</Project>
+      <Name>Lib.GiangVien</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lib.HocPhan\Lib.HocPhan.csproj">
       <Project>{b3b0fe8a-ce9d-44eb-9f79-ed22f4ac2adb}</Project>
@@ -761,6 +784,10 @@
     <ProjectReference Include="..\Lib.NamHoc\Lib.NamHoc.csproj">
       <Project>{4f8cdc9f-a3cc-4c29-95a9-475000cd7c50}</Project>
       <Name>Lib.NamHoc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.PhanCongGiangVien\Lib.PhanCongGiangVien.csproj">
+      <Project>{7a06d892-5e03-430b-9021-29fd04c3fb62}</Project>
+      <Name>Lib.PhanCongGiangVien</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lib.PhanCongNhomLop\Lib.PhanCongNhomLop.csproj">
       <Project>{d7bf8255-55db-4852-ac40-46915b44c97a}</Project>

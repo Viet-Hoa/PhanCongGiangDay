@@ -12,7 +12,7 @@ namespace Lib.NamHoc.Model
         public int STT { get; set; }
         public int BangPhanCongID { get; set; }
         [Required(ErrorMessage = "Năm học không được để trống.")]
-        public int NamHoc { get; set; }
+        public string NamHoc { get; set; }
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }
     }

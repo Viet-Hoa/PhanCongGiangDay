@@ -53,10 +53,10 @@ namespace Lib.PhanCongNhomLop.DataAccess
                 listParameter.Add(new SqlParameter("@BangPhanCongID", model.BangPhanCongID));
                 listParameter.Add(new SqlParameter("@KhoaID", model.KhoaID));
                 listParameter.Add(new SqlParameter("@HocPhanLogID", model.HocPhanLogID));
+                listParameter.Add(new SqlParameter("@SLSVNhomLopLT", model.SLSVNhomLopLT));
+                listParameter.Add(new SqlParameter("@SLSVNhomLopTH", model.SLSVNhomLopTH));
                 listParameter.Add(new SqlParameter("@SoLuongNhomLopLT", model.SoLuongNhomLopLT));
                 listParameter.Add(new SqlParameter("@SoLuongNhomLopTH", model.SoLuongNhomLopTH));
-                listParameter.Add(new SqlParameter("@SoLuongConLaiLT", model.SoLuongConLaiLT));
-                listParameter.Add(new SqlParameter("@SoLuongConLaiTH", model.SoLuongConLaiTH));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_PhanCongNhomLop_Them", listParameter);
             }
@@ -76,10 +76,10 @@ namespace Lib.PhanCongNhomLop.DataAccess
                 listParameter.Add(new SqlParameter("@BangPhanCongID", model.BangPhanCongID));
                 listParameter.Add(new SqlParameter("@KhoaID", model.KhoaID));
                 listParameter.Add(new SqlParameter("@HocPhanLogID", model.HocPhanLogID));
+                listParameter.Add(new SqlParameter("@SLSVNhomLopLT", model.SLSVNhomLopLT));
+                listParameter.Add(new SqlParameter("@SLSVNhomLopTH", model.SLSVNhomLopTH));
                 listParameter.Add(new SqlParameter("@SoLuongNhomLopLT", model.SoLuongNhomLopLT));
                 listParameter.Add(new SqlParameter("@SoLuongNhomLopTH", model.SoLuongNhomLopTH));
-                listParameter.Add(new SqlParameter("@SoLuongConLaiLT", model.SoLuongConLaiLT));
-                listParameter.Add(new SqlParameter("@SoLuongConLaiTH", model.SoLuongConLaiTH));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_PhanCongNhomLop_Sua", listParameter);
             }

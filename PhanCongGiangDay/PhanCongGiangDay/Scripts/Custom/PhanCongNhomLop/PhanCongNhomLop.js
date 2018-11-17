@@ -1,7 +1,4 @@
-﻿$(function () {
-    PhanCongNhomLopModule.init();
-});
-
+﻿
 var PhanCongNhomLopModule = (function () {
     var $PhanCongNhomLopTable;
 
@@ -89,7 +86,7 @@ var PhanCongNhomLopModule = (function () {
         init: init,
         timKiem: timKiem,
         reloadPhanCongNhomLopTable: reloadPhanCongNhomLopTable,
-
+        loadPhanCongNhomLop: loadPhanCongNhomLop
     }
 })();
 
@@ -98,7 +95,6 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
     function init() {
         hideThemPanel();
         setNumber();
-        setHiddenValue();
         bindFormActions();
     }
     
@@ -113,21 +109,23 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
 
     function setNumber() {
         $('#tHocPhanLogID').change(function () {
+            $('#tenhpfor-em').val($("#tHocPhanLogID option:selected").text());
             $("#tsotietltddl > option").each(function () {
                 if ($(this).val() == $('#tHocPhanLogID').val()) {
                     var x = parseInt($(this).text());
                     if (x > 0) {
                         lt = 1;
                         $('#tSoLuongNhomLopLT').attr("readonly", false);
-                        $('#tconlaiLT').val(lt * $('#tSoLuongNhomLopLT').val());
+                        $('#tSLSVNhomLopLT').attr("readonly", false);
                     }
                     else {
                         lt = 0;
                         $('#tSoLuongNhomLopLT').val(0);
                         $('#tSoLuongNhomLopLT').attr("readonly", true);
-                        $('#tconlaiLT').val(0);
+                        $('#tSLSVNhomLopLT').val(0);
+                        $('#tSLSVNhomLopLT').attr("readonly", true);
                     }                    
-                }
+                }                
             });
             $("#tsotietthddl > option").each(function () {
                 if ($(this).val() == $('#tHocPhanLogID').val()) {
@@ -135,13 +133,14 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     if (x > 0) {
                         th = 1;
                         $('#tSoLuongNhomLopTH').attr("readonly", false);
-                        $('#tconlaiTH').val(th * $('#tSoLuongNhomLopTH').val());
+                        $('#tSLSVNhomLopTH').attr("readonly", false);
                     }
                     else {
                         th = 0;
                         $('#tSoLuongNhomLopTH').val(0);
                         $('#tSoLuongNhomLopTH').attr("readonly", true);
-                        $('#tconlaiTH').val(0);
+                        $('#tSLSVNhomLopTH').val(0);
+                        $('#tSLSVNhomLopTH').attr("readonly", true);
                     }                    
                 }
             });
@@ -157,15 +156,6 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
             });
         });
         
-    }
-
-    function setHiddenValue() {
-        $('#tSoLuongNhomLopLT').change(function () {
-            $('#tconlaiLT').val(lt * $(this).val());            
-        });
-        $('#tSoLuongNhomLopTH').change(function () {
-            $('#tconlaiTH').val(th * $(this).val());
-        });
     }
 
     function bindFormActions() {
@@ -185,6 +175,10 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                                 $.notify({ message: response.Messages }, { type: "success" });
                                 lt = 0;
                                 th = 0;
+                                $('.field-validation-error').hide();
+                                $('.field-validation-error').addClass('field-validation-valid');
+                                $('.field-validation-error').removeClass('field-validation-error');
+                                $('.input-validation-error').removeClass('input-validation-error');
                                 $("#formThemPhanCongNhomLop").trigger("reset");
                             }
                         },
@@ -206,7 +200,6 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
     var lt = 0, th = 0;
     function init() {
         setNumber();
-        setValue();
         bindFormActions();
         $('#HocPhanLogID').change();
     }
@@ -219,13 +212,13 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     if (x > 0) {
                         lt = 1;
                         $('#SoLuongNhomLopLT').attr("readonly", false);
-                        $('#SoLuongConLaiLT').val(lt * $('#SoLuongNhomLopLT').val());
                     }
                     else {
                         lt = 0;
                         $('#SoLuongNhomLopLT').val(0);
                         $('#SoLuongNhomLopLT').attr("readonly", true);
-                        $('#SoLuongConLaiLT').val(0);
+                        $('#SLSVNhomLopLT').val(0);
+                        $('#SLSVNhomLopLT').attr("readonly", true);
                     }                    
                 }
             });
@@ -235,13 +228,13 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     if (x > 0) {
                         th = 1;
                         $('#SoLuongNhomLopTH').attr("readonly", false);
-                        $('#SoLuongConLaiTH').val(th * $('#SoLuongNhomLopTH').val());
                     }
                     else {
                         th = 0;
                         $('#SoLuongNhomLopTH').val(0);
                         $('#SoLuongNhomLopTH').attr("readonly", true);
-                        $('#SoLuongConLaiTH').val(0);
+                        $('#SLSVNhomLopTH').val(0);
+                        $('#SLSVNhomLopTH').attr("readonly", true);
                     }                    
                 }
             });
@@ -257,15 +250,6 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
             });
         });
 
-    }
-
-    function setValue() {
-        $('#SoLuongNhomLopLT').change(function () {
-            $('#SoLuongConLaiLT').val(lt * $(this).val());
-        });
-        $('#SoLuongNhomLopTH').change(function () {
-            $('#SoLuongConLaiTH').val(th * $(this).val());
-        });
     }
 
     function bindFormActions() {
@@ -331,6 +315,35 @@ var XoaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                 });
                 return false;
             });
+    }
+
+
+
+    return {
+        init: init
+    }
+})(PhanCongNhomLopModule);
+
+
+var CheDoXemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
+
+    function init() {
+        PhanCongNhomLopModule.loadPhanCongNhomLop();
+        bindFormActions();
+    }
+
+    function bindFormActions() {
+        $("#CheDoXem").change(function () {
+            var tg = $(this).val();
+            if (tg == 0) {
+                $('.chedo0').removeClass("d-none");
+                $('.chedo1').addClass("d-none");
+            }
+            else {
+                $('.chedo1').removeClass("d-none");
+                $('.chedo0').addClass("d-none");
+            }
+        });            
     }
 
 

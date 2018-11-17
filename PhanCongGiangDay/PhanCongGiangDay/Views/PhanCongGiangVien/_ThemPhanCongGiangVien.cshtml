@@ -1,0 +1,44 @@
+﻿@{
+    int i = ViewBag.thutu;
+}
+<tr id="row_@i">
+    <td>
+        <input type="hidden" name="NhomLopPhanCong[0].GiangVienLogID" value="@ViewBag.giangvienID" />
+        @Html.DropDownList("NhomLopPhanCong[" + i + "].PhanCongNhomLopID", (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_" + i })
+        @Html.ValidationMessage("NhomLopPhanCong[" + i + "].PhanCongNhomLopID")
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].SoTietLT", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].SoTietTH", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].SoLuongConLaiLT", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].SoLuongConLaiTH", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK1LT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK1LT")
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK1TH", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK1TH")
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK2LT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK2LT")
+    </td>
+    <td>
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK2TH", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK2TH")
+    </td>
+    <td style="font-size:18pt">
+        <i id="tnl_@i" class="fa fa-plus-circle button-edit-nl" aria-hidden="true"></i>
+        <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl d-none" aria-hidden="true"></i>
+        <input type="hidden" name="NhomLopPhanCong[@i].TrangThai" id="trangthainhomlop_@i" value="2" />
+
+    </td>
+</tr>

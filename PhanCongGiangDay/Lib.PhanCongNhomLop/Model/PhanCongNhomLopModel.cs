@@ -26,14 +26,16 @@ namespace Lib.PhanCongNhomLop.Model
         [Range(0, 100)]
         public int SoLuongNhomLopTH { get; set; }
 
-        [Required(ErrorMessage = "LT còn lại không được để trống.")]
+        [Required(ErrorMessage = "Số lượng SV trên 1 nhóm lớp lý thuyết không được để trống.")]
         [Range(0, 100)]
+        public int SLSVNhomLopLT { get; set; }
+
+        [Required(ErrorMessage = "Số lượng SV trên 1 nhóm lớp thực hành không được để trống.")]
+        [Range(0, 100)]
+        public int SLSVNhomLopTH { get; set; }
+
         public int SoLuongConLaiLT { get; set; }
-
-        [Required(ErrorMessage = "TH còn lại không được để trống.")]
-        [Range(0, 100)]
         public int SoLuongConLaiTH { get; set; }
-
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }
 
@@ -47,5 +49,7 @@ namespace Lib.PhanCongNhomLop.Model
                 return "(" + MaHP + ") " + TenHocPhan;
             }
         }
+        public int SoTietLT { get; set; }
+        public int SoTietTH { get; set; }
     }
 }
