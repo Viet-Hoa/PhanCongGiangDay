@@ -26,5 +26,7 @@ namespace Lib.GiangVien.Model
         public int TongSoTiet { get; set; }
         public int TongSoTietThucTe { get; set; }
         public int GiangVienLogID { get; set; }
+
+        public string LoaiGV { get; set; }
     }
 }

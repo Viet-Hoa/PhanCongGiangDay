@@ -46,20 +46,11 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col-6">
-                        <label class="font-weight-bold">SLSV lớp LT</label><span class="input-required">*</span>
+                        <label class="font-weight-bold">SLSV 1 lớp</label><span class="input-required">*</span>
                     </div>
                     <div class="col-6">
-                        @Html.TextBoxFor(x => x.SLSVNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100" })
-                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLopLT)</small>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-6">
-                        <label class="font-weight-bold">SLSV lớp TH</label><span class="input-required">*</span>
-                    </div>
-                    <div class="col-6">
-                        @Html.TextBoxFor(x => x.SLSVNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100" })
-                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLopTH)</small>
+                        @Html.TextBoxFor(x => x.SLSVNhomLop, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLop)</small>
                     </div>
                 </div>
                 <div class="row mb-2">

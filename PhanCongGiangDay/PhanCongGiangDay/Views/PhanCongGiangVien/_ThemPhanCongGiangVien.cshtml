@@ -20,25 +20,31 @@
         @Html.TextBox("NhomLopPhanCong[" + i + "].SoLuongConLaiTH", "", new { @class = "form-control", @readonly = true })
     </td>
     <td>
-        @Html.TextBox("NhomLopPhanCong[" + i + "].HK1LT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK1LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK1LT")
     </td>
     <td>
-        @Html.TextBox("NhomLopPhanCong[" + i + "].HK1TH", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK1TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK1TH")
     </td>
     <td>
-        @Html.TextBox("NhomLopPhanCong[" + i + "].HK2LT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK2LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK2LT")
     </td>
     <td>
-        @Html.TextBox("NhomLopPhanCong[" + i + "].HK2TH", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+        @Html.TextBox("NhomLopPhanCong[" + i + "].HK2TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK2TH")
     </td>
     <td style="font-size:18pt">
-        <i id="tnl_@i" class="fa fa-plus-circle button-edit-nl" aria-hidden="true"></i>
-        <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl d-none" aria-hidden="true"></i>
+        <i id="tnl_@i" class="fa fa-plus-circle button-edit-nl-partial" aria-hidden="true"></i>
+        <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl-partial d-none" aria-hidden="true"></i>
         <input type="hidden" name="NhomLopPhanCong[@i].TrangThai" id="trangthainhomlop_@i" value="2" />
+        <input type="hidden" name="NhomLopPhanCong[@i].SoTiet" id="NhomLopPhanCongSoTiet_@i" value="0" />
 
     </td>
 </tr>
+<script>
+    $(function () {
+        CapNhatPhanCongGiangVienModule.AddRowNhomLopPartial();
+    });
+</script>

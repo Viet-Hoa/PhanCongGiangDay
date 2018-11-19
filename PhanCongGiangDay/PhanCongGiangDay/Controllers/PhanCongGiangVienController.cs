@@ -61,7 +61,7 @@ namespace PhanCongGiangDay.Controllers
         {
             ViewBag.thutu = i + 1;
             ViewBag.gvID = GiangVienID;
-            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null).Where(x => x.SoLuongConLaiLT > 0 || x.SoLuongConLaiTH > 0);
+            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null);
             ViewBag.hocphanddl = new SelectList(pcnl, "PhanCongNhomLopID", "MaVaTenHP");
             return PartialView("_ThemPhanCongGiangVien");
         }
@@ -72,7 +72,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.thutu = i + 1;
             ViewBag.namhoc = BangPhanCongID;
             ViewBag.gvID = GiangVienID;
-            var pcct = CongTacKhacService.DanhSachCongTacKhac();
+            var pcct = CongTacKhacService.DanhSachCongTacKhac().OrderBy(x=>x.CongTacKhacID);
             ViewBag.congtac = new SelectList(pcct, "CongTacKhacLogID", "TenVaSoTiet");
             return PartialView("_ThemPhanCongCongTac");
         }
@@ -80,10 +80,10 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult CapNhatPhanCongGiangVien(int BangPhanCongID, int GiangVienID)
         {
-            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null).Where(x=>x.SoLuongConLaiLT>0 || x.SoLuongConLaiTH>0);
-            var pcct = CongTacKhacService.DanhSachCongTacKhac();
+            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null);
+            var pcct = CongTacKhacService.DanhSachCongTacKhac().OrderBy(x=>x.CongTacKhacID);
             ViewBag.congtac = new SelectList(pcct, "CongTacKhacLogID", "TenVaSoTiet");
-            ViewBag.hocphanddl = new SelectList(pcnl, "PhanCongNhomLopID", "MaVaTenHP");
+            ViewBag.pcnlddl = new SelectList(pcnl, "PhanCongNhomLopID", "MaVaTenHP");
             ViewBag.conlaiLT = new SelectList(pcnl, "PhanCongNhomLopID", "SoLuongConLaiLT");
             ViewBag.conlaiTH = new SelectList(pcnl, "PhanCongNhomLopID", "SoLuongConLaiTH");
             ViewBag.hocphanlt = new SelectList(pcnl, "PhanCongNhomLopID", "SoTietLT");

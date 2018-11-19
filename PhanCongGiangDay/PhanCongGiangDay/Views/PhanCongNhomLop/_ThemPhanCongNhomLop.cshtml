@@ -13,7 +13,6 @@
     <div class="row">
         <div class="col-3">
             <div class="row">
-                <divc></divc>
                 <div class="col-12">
                     <label class="font-weight-bold">Học phần</label><span class="input-required">*</span>
                 </div>
@@ -25,7 +24,7 @@
         </div>
         <div class="col-9">
             <div class="row">
-                <div class="col-2">
+                <div class="col">
                     <div class="col-12">
                         <label class="font-weight-bold">Số tín chỉ</label>
                     </div>
@@ -33,7 +32,7 @@
                         @Html.TextBox("tSoTinChi", null, new { @class = "form-control", @readonly = true })
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col">
                     <div class="col-12">
                         <label class="font-weight-bold">Số tiết HP</label>
                     </div>
@@ -41,29 +40,18 @@
                         @Html.TextBox("tSoTiet", null, new { @class = "form-control", @readonly = true })
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col">
                     <div class="row">
                         <div class="col-12">
-                            <label class="font-weight-bold">SLSV lớp LT</label><span class="input-required">*</span>
+                            <label class="font-weight-bold">SLSV 1 lớp</label><span class="input-required">*</span>
                         </div>
                         <div class="col-12">
-                            @Html.TextBoxFor(x => x.SLSVNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSLSVNhomLopLT" })
-                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLopLT)</small>
+                            @Html.TextBoxFor(x => x.SLSVNhomLop, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSLSVNhomLop" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLop)</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-2">
-                    <div class="row">
-                        <div class="col-12">
-                            <label class="font-weight-bold">SLSV lớp TH</label><span class="input-required">*</span>
-                        </div>
-                        <div class="col-12">
-                            @Html.TextBoxFor(x => x.SLSVNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSLSVNhomLopTH" })
-                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSVNhomLopTH)</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2">
+                <div class="col">
                     <div class="row">
                         <div class="col-12">
                             <label class="font-weight-bold">SL nhóm lớp LT</label><span class="input-required">*</span>
@@ -74,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col">
                     <div class="row">
                         <div class="col-12">
                             <label class="font-weight-bold">SL nhóm lớp TH</label><span class="input-required">*</span>

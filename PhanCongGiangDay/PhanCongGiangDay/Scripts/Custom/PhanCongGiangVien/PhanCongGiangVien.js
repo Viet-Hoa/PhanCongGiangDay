@@ -77,94 +77,172 @@ var PhanCongGiangVienModule = (function () {
 var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
     var lt = 0, th = 0;
     function init() {
+        bindFormActions();
         setNumber();
         AddRowNhomLop();
         AddRowCongTac();
-        bindFormActions();
+        SelectedValueNhomLop();
+        SelectedValueCongTac();
+    }
+
+    function SelectedValueNhomLop() {
+        $(".nhomlop-row").each(function () {
+            var hidden = $(this).find(".pcnlHidden").val();
+            var $nhomlop = $(this).find(".nhomlopddl");
+            $nhomlop.val(hidden);
+        });
+    }
+
+    function SelectedValueCongTac() {
+        $(".congtac-row").each(function () {
+            var hidden = $(this).find(".pcctHidden").val();
+            var $congtac = $(this).find(".congtackhacddl");
+            $congtac.val(hidden);
+        });
     }
 
     function setNumber() {
-        $('.nhomlopddl').change(function () {
-            var id = $(this).attr('id');
-            var i = parseInt(id.substring(id.search("_") + 1, id.length));            
-            $("#sotietltddl > option").each(function () {
-                if ($(this).val() == $("#"+id).val()) {
-                    var x = parseInt($(this).text());
-                    $("#NhomLopPhanCong_"+i+"__SoTietLT").val(x);              
-                }                
-            });
-            $("#sotietthddl > option").each(function () {
-                if ($(this).val() == $("#" + id).val()) {
-                    var x = parseInt($(this).text());
-                    $("#NhomLopPhanCong_" + i + "__SoTietTH").val(x);
-                }
-            });
-            $("#sotietltclddl > option").each(function () {
-                if ($(this).val() == $("#" + id).val()) {
-                    var x = parseInt($(this).text());
-                    $("#NhomLopPhanCong_" + i + "__SoLuongConLaiLT").val(x);
-                }
-            });
-            $("#sotietthclddl > option").each(function () {
-                if ($(this).val() == $("#" + id).val()) {
-                    var x = parseInt($(this).text());
-                    $("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val(x);
-                }
-            });
-        });
-        
-    }
-
-    function AddRowNhomLop() {
         $(document).ready(function () {
-            $(document).on('click', '.button-edit-nl', function () {
+            $(document).on('change', '.nhomlopddl', function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.length));
-                if (id.search("tnl") != -1) {
-                    $(this).addClass("d-none");
-                    $('#xnl_' + i).removeClass("d-none");
-                    $.ajax({
-                        type: "GET",
-                        url: "/PhanCongGiangVien/ThemPhanCongGiangVien",
-                        data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
-                        success: function (response) {
-                            $('#row_' + i).after(response);
-                        }
-                    });
-                }
-                else {
-                    $('#row_' + i).hide();
-                    $('#trangthainhomlop_' + i).val("0");
-                }
+                $("#sotietltddl > option").each(function () {
+                    if ($(this).val() == $("#" + id).val()) {
+                        var x = parseInt($(this).text());
+                        $("#NhomLopPhanCong_" + i + "__SoTietLT").val(x);
+                    }
+                });
+                $("#sotietthddl > option").each(function () {
+                    if ($(this).val() == $("#" + id).val()) {
+                        var x = parseInt($(this).text());
+                        $("#NhomLopPhanCong_" + i + "__SoTietTH").val(x);
+                    }
+                });
+                $("#sotietltclddl > option").each(function () {
+                    if ($(this).val() == $("#" + id).val()) {
+                        var x = parseInt($(this).text());
+                        $("#NhomLopPhanCong_" + i + "__SoLuongConLaiLT").val(x);
+                    }
+                });
+                $("#sotietthclddl > option").each(function () {
+                    if ($(this).val() == $("#" + id).val()) {
+                        var x = parseInt($(this).text());
+                        $("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val(x);
+                    }
+                });
             });
         });        
     }
 
-    function AddRowCongTac() {
+    function checkValid() {
         $(document).ready(function () {
-            $(document).on('click', '.button-edit-ct', function () {
-                var id = $(this).attr('id');
-                var i = parseInt(id.substring(id.search("_") + 1, id.length));
-                if (id.search("tct") != -1) {
-                    $(this).addClass("d-none");
-                    $('#xct_' + i).removeClass("d-none");
-                    $.ajax({
-                        type: "GET",
-                        url: "/PhanCongGiangVien/ThemPhanCongCongTac",
-                        data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
-                        success: function (response) {
-                            $('#rowct_' + i).after(response);
-                        }
-                    });
-                }
-                else {
-                    $('#rowct_' + i).hide();
-                    $('#trangthaicongtac_' + i).val("0");
-                }
+            $(document).on('keyup', '.lythuyet', function () {
+
             });
+            $(document).on('keyup', '.thuchanh', function () {
+
+            });
+        });
+    }
+
+    function sumAll() {
+        $(document).ready(function () {
+
+        });
+    }
+
+    function AddRowNhomLop() {
+        $('.button-edit-nl').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongGiangVien/ThemPhanCongGiangVien",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainhomlop_' + i).val("-1");
+            }
+        });      
+    }
+
+    function AddRowNhomLopPartial() {
+        $('.button-edit-nl-partial').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongGiangVien/ThemPhanCongGiangVien",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainhomlop_' + i).val("-1");
+            }
+        });
+    }
+
+    function AddRowCongTac() {
+        $('.button-edit-ct').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tct") != -1) {
+                $(this).addClass("d-none");
+                $('#xct_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongGiangVien/ThemPhanCongCongTac",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
+                    success: function (response) {
+                        $('#rowct_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#rowct_' + i).hide();
+                $('#trangthaicongtac_' + i).val("-1");
+            }
         }); 
     }
 
+
+    function AddRowCongTacPartial() {
+        $('.button-edit-ct-partial').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tct") != -1) {
+                $(this).addClass("d-none");
+                $('#xct_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongGiangVien/ThemPhanCongCongTac",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
+                    success: function (response) {
+                        $('#rowct_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#rowct_' + i).hide();
+                $('#trangthaicongtac_' + i).val("-1");
+            }
+        });
+    }
 
     function bindFormActions() {
         $("#btn_CapNhatPhanCongGiangVien").on("click",
@@ -192,7 +270,9 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
     }
 
     return {
-        init: init
+        init: init,
+        AddRowNhomLopPartial: AddRowNhomLopPartial,
+        AddRowCongTacPartial: AddRowCongTacPartial
     }
 })(PhanCongGiangVienModule);
 

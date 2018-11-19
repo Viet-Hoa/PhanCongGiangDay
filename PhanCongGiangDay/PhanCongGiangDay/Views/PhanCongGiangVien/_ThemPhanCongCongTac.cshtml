@@ -8,8 +8,13 @@
         @Html.DropDownList("CongTacKhac[" + i + "].CongTacKhacLogID", (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control" })
     </td>
     <td width="20%" style="font-size:18pt">
-        <i id="tct_@i" class="fa fa-plus-circle button-edit-ct" aria-hidden="true"></i>
-        <i id="xct_@i" class="fa fa-minus-circle button-edit-ct d-none" aria-hidden="true"></i>
+        <i id="tct_@i" class="fa fa-plus-circle button-edit-ct-partial" aria-hidden="true"></i>
+        <i id="xct_@i" class="fa fa-minus-circle button-edit-ct-partial d-none" aria-hidden="true"></i>
         <input type="hidden" name="CongTacKhac['+@i+'].TrangThai" value="2" id="trangthaicongtac_@i" />
     </td>
 </tr>
+<script>
+    $(function () {
+        CapNhatPhanCongGiangVienModule.AddRowCongTacPartial();
+    });
+</script>

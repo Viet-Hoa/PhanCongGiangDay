@@ -105,7 +105,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
-                res = PhanCongGiangVienDA.ThemPhanCongCongTac(model);
+                res = PhanCongGiangVienDA.SuaPhanCongCongTac(model);
             }
             catch (Exception ex)
             {
@@ -152,6 +152,7 @@ namespace PhanCongGiangDay.Services
                     GiangVienLogID = model.GiangVienLogID,
                     TongSoTiet = model.TongSoTiet,
                     SoTietThucTe = model.TongSoTietThucTe,
+                    LoaiGV=model.LoaiGV,
                     NhomLopPhanCong = PhanCongGiangVienDA.DanhSachPhanCongGiangVien(BangPhanCongID, GiangVienID).ToList(),
                     CongTacKhac = PhanCongGiangVienDA.DanhSachPhanCongCongTac(BangPhanCongID, GiangVienID).ToList()
                 };

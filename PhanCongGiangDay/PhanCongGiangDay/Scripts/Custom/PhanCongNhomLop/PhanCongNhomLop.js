@@ -116,14 +116,11 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     if (x > 0) {
                         lt = 1;
                         $('#tSoLuongNhomLopLT').attr("readonly", false);
-                        $('#tSLSVNhomLopLT').attr("readonly", false);
                     }
                     else {
                         lt = 0;
                         $('#tSoLuongNhomLopLT').val(0);
                         $('#tSoLuongNhomLopLT').attr("readonly", true);
-                        $('#tSLSVNhomLopLT').val(0);
-                        $('#tSLSVNhomLopLT').attr("readonly", true);
                     }                    
                 }                
             });
@@ -133,14 +130,11 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     if (x > 0) {
                         th = 1;
                         $('#tSoLuongNhomLopTH').attr("readonly", false);
-                        $('#tSLSVNhomLopTH').attr("readonly", false);
                     }
                     else {
                         th = 0;
                         $('#tSoLuongNhomLopTH').val(0);
                         $('#tSoLuongNhomLopTH').attr("readonly", true);
-                        $('#tSLSVNhomLopTH').val(0);
-                        $('#tSLSVNhomLopTH').attr("readonly", true);
                     }                    
                 }
             });
@@ -217,8 +211,6 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                         lt = 0;
                         $('#SoLuongNhomLopLT').val(0);
                         $('#SoLuongNhomLopLT').attr("readonly", true);
-                        $('#SLSVNhomLopLT').val(0);
-                        $('#SLSVNhomLopLT').attr("readonly", true);
                     }                    
                 }
             });
@@ -233,8 +225,6 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                         th = 0;
                         $('#SoLuongNhomLopTH').val(0);
                         $('#SoLuongNhomLopTH').attr("readonly", true);
-                        $('#SLSVNhomLopTH').val(0);
-                        $('#SLSVNhomLopTH').attr("readonly", true);
                     }                    
                 }
             });

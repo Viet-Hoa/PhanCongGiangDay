@@ -23,9 +23,12 @@
                         <td width="82%" class="text-center font-weight-bold" style="border-right: gray solid 1px">
                             Nhóm lớp
                         </td>
-                        <td width="18%" class="text-center font-weight-bold">
-                            Công tác khác
-                        </td>
+                        @if (Model.LoaiGV == 2.ToString())
+                        {
+                            <td width="18%" class="text-center font-weight-bold">
+                                Công tác khác
+                            </td>
+                        }
                     </tr>
                     <tr>
                         <td style="border-right: gray solid 1px">
@@ -49,11 +52,12 @@
                                     {
                                         for (int i = 0; i < Model.NhomLopPhanCong.Count; i++)
                                         {
-                                            <tr id="row_@i">
+                                            <tr class="nhomlop-row" id="row_@i">
                                                 <td>
                                                     @Html.HiddenFor(x => x.NhomLopPhanCong[i].PhanCongID)
                                                     @Html.HiddenFor(x => x.NhomLopPhanCong[i].GiangVienLogID)
-                                                    @Html.DropDownListFor(x => x.NhomLopPhanCong[i].PhanCongNhomLopID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control nhomlopddl",id="nhomlop_"+i })
+                                                    <input type="hidden" class="pcnlHidden" id="pcnlHidden_@i" value="@Model.NhomLopPhanCong[i].PhanCongNhomLopID" />
+                                                    @Html.DropDownListFor(x => x.NhomLopPhanCong[i].PhanCongNhomLopID, (SelectList)ViewBag.pcnlddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_" + i })
                                                     @Html.ValidationMessageFor(x => x.NhomLopPhanCong[i].PhanCongNhomLopID)
                                                 </td>
                                                 <td>
@@ -95,6 +99,7 @@
                                                         <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl" aria-hidden="true"></i>
                                                     }
                                                     @Html.HiddenFor(x => x.NhomLopPhanCong[i].TrangThai, new { id = "trangthainhomlop_" + i })
+                                                    @Html.HiddenFor(x => x.NhomLopPhanCong[i].SoTiet)
                                                 </td>
                                             </tr>
                                         }
@@ -104,7 +109,7 @@
                                         <tr id="row_0">
                                             <td>
                                                 <input type="hidden" name="NhomLopPhanCong[0].GiangVienLogID" value="@Model.GiangVienLogID" />
-                                                @Html.DropDownList("NhomLopPhanCong[0].PhanCongNhomLopID", (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id="nhomlop_0"})
+                                                @Html.DropDownList("NhomLopPhanCong[0].PhanCongNhomLopID", (SelectList)ViewBag.pcnlddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_0" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].PhanCongNhomLopID)
                                             </td>
                                             <td>
@@ -120,87 +125,92 @@
                                                 @Html.TextBox("NhomLopPhanCong[0].SoLuongConLaiTH", "", new { @class = "form-control", @readonly = true })
                                             </td>
                                             <td>
-                                                @Html.TextBox("NhomLopPhanCong[0].HK1LT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+                                                @Html.TextBox("NhomLopPhanCong[0].HK1LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].HK1LT)
                                             </td>
                                             <td>
-                                                @Html.TextBox("NhomLopPhanCong[0].HK1TH", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+                                                @Html.TextBox("NhomLopPhanCong[0].HK1TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].HK1TH)
                                             </td>
                                             <td>
-                                                @Html.TextBox("NhomLopPhanCong[0].HK2LT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+                                                @Html.TextBox("NhomLopPhanCong[0].HK2LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].HK2LT)
                                             </td>
                                             <td>
-                                                @Html.TextBox("NhomLopPhanCong[0].HK2TH", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+                                                @Html.TextBox("NhomLopPhanCong[0].HK2TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].HK2TH)
                                             </td>
                                             <td style="font-size:18pt">
                                                 <i id="tnl_0" class="fa fa-plus-circle button-edit-nl" aria-hidden="true"></i>
                                                 <i id="xnl_0" class="fa fa-minus-circle button-edit-nl d-none" aria-hidden="true"></i>
                                                 <input type="hidden" name="NhomLopPhanCong[0].TrangThai" id="trangthainhomlop_0" value="2" />
+                                                <input type="hidden" name="NhomLopPhanCong[0].SoTiet" id="NhomLopPhanCongSoTiet_0" value="0" />
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                         </td>
-                        <td>
-                            <table class="table-form pb-5 pt-5" style="width:100%">
-                                <thead class="pb-5">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                @if (Model.CongTacKhac.Any())
-                                {
-                                    for (int i = 0; i < Model.CongTacKhac.Count; i++)
+                        @if (Model.LoaiGV == 2.ToString())
+                        {
+                            <td>
+                                <table class="table-form pb-5 pt-5" style="width:100%">
+                                    <thead class="pb-5">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    @if (Model.CongTacKhac.Any())
                                     {
+                                        for (int i = 0; i < Model.CongTacKhac.Count; i++)
+                                        {
+                                            <tbody>
+                                                <tr class="congtac-row" id="rowct_@i">
+                                                    <td class="pl-4" width="80%">
+                                                        @Html.HiddenFor(x => x.CongTacKhac[i].PhanCongCongTacID)
+                                                        @Html.HiddenFor(x => x.CongTacKhac[i].GiangVienLogID)
+                                                        @Html.HiddenFor(x => x.CongTacKhac[i].BangPhanCongID)
+                                                        <input type="hidden" class="pcctHidden" id="pcctHidden_@i" value="@Model.CongTacKhac[i].CongTacKhacLogID" />
+                                                        @Html.DropDownListFor(x => x.CongTacKhac[i].CongTacKhacLogID, (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control congtackhacddl" })
+                                                    </td>
+                                                    <td width="20%" style="font-size:18pt">
+                                                        @if ((Model.CongTacKhac.Count() - 1) == i)
+                                                        {
+                                                            <i id="tct_@i" class="fa fa-plus-circle button-edit-ct" aria-hidden="true"></i>
+                                                            <i id="xct_@i" class="fa fa-minus-circle button-edit-ct d-none" aria-hidden="true"></i>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i id="xct_@i" class="fa fa-minus-circle button-edit-ct" aria-hidden="true"></i>
+                                                        }
+                                                        @Html.HiddenFor(x => x.CongTacKhac[i].TrangThai, new { id = "trangthaicongtac_" + i })
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <thead></thead>
                                         <tbody>
-                                            <tr id="rowct_@i">
+                                            <tr id="rowct_0">
                                                 <td class="pl-4" width="80%">
-                                                    @Html.HiddenFor(x => x.CongTacKhac[i].PhanCongCongTacID)
-                                                    @Html.HiddenFor(x => x.CongTacKhac[i].GiangVienLogID)
-                                                    @Html.HiddenFor(x => x.CongTacKhac[i].BangPhanCongID)
-                                                    @Html.DropDownListFor(x => x.CongTacKhac[i].CongTacKhacLogID, (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control" })
+                                                    <input type="hidden" name="CongTacKhac[0].GiangVienLogID" value="@Model.GiangVienLogID" />
+                                                    <input type="hidden" name="CongTacKhac[0].BangPhanCongID" value="@ViewBag.namhoc" />
+                                                    @Html.DropDownList("CongTacKhac[0].CongTacKhacLogID", (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control" })
                                                 </td>
                                                 <td width="20%" style="font-size:18pt">
-                                                    @if ((Model.NhomLopPhanCong.Count() - 1) == i)
-                                                    {
-                                                        <i id="tct_@i" class="fa fa-plus-circle button-edit-ct" aria-hidden="true"></i>
-                                                        <i id="xct_@i" class="fa fa-minus-circle button-edit-ct d-none" aria-hidden="true"></i>
-                                                    }
-                                                    else
-                                                    {
-                                                        <i id="xct_@i" class="fa fa-minus-circle button-edit-ct" aria-hidden="true"></i>
-                                                    }
-                                                    @Html.HiddenFor(x => x.NhomLopPhanCong[i].TrangThai, new { id = "trangthaicongtac_" + i })
+                                                    <i id="tct_0" class="fa fa-plus-circle button-edit-ct" aria-hidden="true"></i>
+                                                    <i id="xct_0" class="fa fa-minus-circle button-edit-ct d-none" aria-hidden="true"></i>
+                                                    <input type="hidden" name="CongTacKhac[0].TrangThai" value="2" id="trangthaicongtac_0" />
                                                 </td>
                                             </tr>
                                         </tbody>
                                     }
-                                }
-                                else
-                                {
-                                    <thead></thead>
-                                    <tbody>
-                                        <tr id="rowct_0">
-                                            <td class="pl-4" width="80%">
-                                                <input type="hidden" name="CongTacKhac[0].GiangVienLogID" value="@Model.GiangVienLogID" />
-                                                <input type="hidden" name="CongTacKhac[0].BangPhanCongID" value="@ViewBag.namhoc" />
-                                                @Html.DropDownList("CongTacKhac[0].CongTacKhacLogID", (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control" })
-                                            </td>
-                                            <td width="20%" style="font-size:18pt">
-                                                <i id="tct_0" class="fa fa-plus-circle button-edit-ct" aria-hidden="true"></i>
-                                                <i id="xct_0" class="fa fa-minus-circle button-edit-ct d-none" aria-hidden="true"></i>
-                                                <input type="hidden" name="CongTacKhac[0].TrangThai" value="2" id="trangthaicongtac_0" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                }
-                            </table>
-                        </td>
+                                </table>
+                            </td>
+                        }
                     </tr>
                 </table>
 
@@ -209,9 +219,11 @@
         </div>
         <div class="row pt-4">
             <div class="col-6">
+                @Html.Hidden("TongSoTietGD",Model.TongSoTiet)
                 <span>Tổng số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span>
             </div>
             <div class="col-6">
+                @Html.Hidden("SoTietTT", Model.SoTietThucTe)
                 <span>Tổng số tiết thực tế: <span id="sotietthucte">@Model.SoTietThucTe</span></span>
             </div>
         </div>
