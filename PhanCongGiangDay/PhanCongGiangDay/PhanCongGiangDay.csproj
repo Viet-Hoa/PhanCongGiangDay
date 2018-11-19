@@ -178,6 +178,7 @@
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\XuatExcelController.cs" />
     <Compile Include="Controllers\PhanCongGiangVienController.cs" />
     <Compile Include="Controllers\PhanCongNhomLopController.cs" />
     <Compile Include="Controllers\KhoaController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Infrastructure\Modules\InfrastructureModule.cs" />
     <Compile Include="IServices\ICTDTService.cs" />
     <Compile Include="IServices\ICongTacKhacService.cs" />
+    <Compile Include="IServices\IXuatExcelService.cs" />
     <Compile Include="IServices\IHocPhanService.cs" />
     <Compile Include="IServices\IPhanCongGiangVienService.cs" />
     <Compile Include="IServices\IPhanCongNhomLopService.cs" />
@@ -209,6 +211,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CTDTService.cs" />
     <Compile Include="Services\CongTacKhacService.cs" />
+    <Compile Include="Services\XuatExcelService.cs" />
     <Compile Include="Services\HocPhanService.cs" />
     <Compile Include="Services\PhanCongGiangVienService.cs" />
     <Compile Include="Services\PhanCongNhomLopService.cs" />
@@ -729,6 +732,7 @@
     <Content Include="Views\Khoa\_ThemKhoa.cshtml" />
     <Content Include="Views\Khoa\_XoaKhoa.cshtml" />
     <Content Include="Views\Khoa\Index.cshtml" />
+    <Content Include="Views\XuatExcel\Index.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />
@@ -796,6 +800,10 @@
     <ProjectReference Include="..\Lib.Setting\Lib.Setting.csproj">
       <Project>{b5d6b5c5-b810-4504-881e-69d1daf35767}</Project>
       <Name>Lib.Setting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.XuatExcel\Lib.XuatExcel.csproj">
+      <Project>{55ddd9e8-e940-4490-8462-3c2e487fc86b}</Project>
+      <Name>Lib.XuatExcel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

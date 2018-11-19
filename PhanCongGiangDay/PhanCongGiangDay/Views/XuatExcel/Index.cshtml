@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "XUẤT EXCEL";
+}
+<div class="row">
+    <div class="col-9">
+        <h3 class="text-uppercase pt-3">XUẤT FILE EXCEL</h3>
+    </div>
+    <div class="col-1 pt-3">
+        <span class="font-weight-bold float-right">NĂM HỌC:</span>          
+    </div>
+    <div class="col-2 pt-2">
+        @Html.DropDownList("NamHoc", (SelectList)ViewBag.namhocddl, new { @class = "form-control "})
+    </div>
+</div>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-3">
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_1_hk1" class="ml-2" href="#mau_1_hk1">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            KẾ HOẠCH MỞ NHÓM MÔN CHUYÊN NGÀNH HK1
+                        </a>
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_1_hk2" class="ml-2" href="#mau_1_hk2">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            KẾ HOẠCH MỞ NHÓM MÔN CHUYÊN NGÀNH HK2
+                        </a>
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_2" class="ml-2" href="#mau_2">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            BẢNG PHÂN CÔNG CÔNG TÁC CỦA CÁN BỘ, GIẢNG VIÊN CƠ HỮU
+                        </a>
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_3" class="ml-2" href="#mau_3">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            KẾ HOẠCH MỜI GIẢNG
+                        </a>
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_4" class="ml-2" href="#mau_4">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            KẾ HOẠCH THỈNH GIẢNG
+                        </a>
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_2_bomon" class="ml-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("ChonBoMon","XuatExcel")">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            BẢNG PHÂN CÔNG CÔNG TÁC CỦA CÁN BỘ, GIẢNG VIÊN CƠ HỮU THEO BỘ MÔN
+                        </a>
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <span>
+                        <a id="mau_2_gv" class="ml-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("ChonGiangVien","XuatExcel")">
+                            <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                            BẢNG PHÂN CÔNG CÔNG TÁC CỦA CÁN BỘ, GIẢNG VIÊN CƠ HỮU THEO GIẢNG VIÊN
+                        </a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

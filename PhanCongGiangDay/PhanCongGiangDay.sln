@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.CongTacKhac", "Lib.Cong
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.GiangVien", "Lib.GiangVien\Lib.GiangVien.csproj", "{DDE71D45-87E8-409B-AD61-62FC99E60445}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.XuatExcel", "Lib.XuatExcel\Lib.XuatExcel.csproj", "{55DDD9E8-E940-4490-8462-3C2E487FC86B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{DDE71D45-87E8-409B-AD61-62FC99E60445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE71D45-87E8-409B-AD61-62FC99E60445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE71D45-87E8-409B-AD61-62FC99E60445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55DDD9E8-E940-4490-8462-3C2E487FC86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DDD9E8-E940-4490-8462-3C2E487FC86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DDD9E8-E940-4490-8462-3C2E487FC86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DDD9E8-E940-4490-8462-3C2E487FC86B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

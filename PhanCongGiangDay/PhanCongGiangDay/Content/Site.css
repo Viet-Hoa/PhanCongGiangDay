@@ -674,4 +674,6 @@ select.form-control.error {
     padding-left: 8px;
     padding-right: 8px
 }
-
+a .fa-file-excel-o {
+    color: #2e7d32;
+}
