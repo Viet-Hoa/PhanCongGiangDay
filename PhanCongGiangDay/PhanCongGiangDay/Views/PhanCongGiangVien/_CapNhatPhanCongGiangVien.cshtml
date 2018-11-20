@@ -20,18 +20,18 @@
             <div class="col-12">
                 <table style="width:100%">
                     <tr style="border-bottom: gray solid 1px;font-size:14pt">
-                        <td width="82%" class="text-center font-weight-bold" style="border-right: gray solid 1px">
+                        <td width="82%" class="text-center font-weight-bold">
                             Nhóm lớp
                         </td>
                         @if (Model.LoaiGV == 2.ToString())
                         {
-                            <td width="18%" class="text-center font-weight-bold">
+                            <td width="18%" class="text-center font-weight-bold" style="border-left: gray solid 1px">
                                 Công tác khác
                             </td>
                         }
                     </tr>
                     <tr>
-                        <td style="border-right: gray solid 1px">
+                        <td>
                             <table class="table-form" style="width:100%">
                                 <thead>
                                     <tr>
@@ -42,7 +42,7 @@
                                         <td valign="top" width="8%">Số nhóm TH</td>
                                         <td valign="top" width="8%">HK1 LT</td>
                                         <td valign="top" width="8%">HK1 TH</td>
-                                        <td valign="top" width="8%">HK2 TL</td>
+                                        <td valign="top" width="8%">HK2 LT</td>
                                         <td valign="top" width="8%">HK2 TH</td>
                                         <td width="4%"></td>
                                     </tr>
@@ -153,7 +153,7 @@
                         </td>
                         @if (Model.LoaiGV == 2.ToString())
                         {
-                            <td>
+                            <td style="border-left: gray solid 1px">
                                 <table class="table-form pb-5 pt-5" style="width:100%">
                                     <thead class="pb-5">
                                         <tr>

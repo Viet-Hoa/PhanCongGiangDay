@@ -61,6 +61,7 @@ namespace PhanCongGiangDay.Controllers
         {
             ViewBag.thutu = i + 1;
             ViewBag.gvID = GiangVienID;
+            ViewBag.namhoc = BangPhanCongID;
             var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null);
             ViewBag.hocphanddl = new SelectList(pcnl, "PhanCongNhomLopID", "MaVaTenHP");
             return PartialView("_ThemPhanCongGiangVien");
@@ -123,23 +124,26 @@ namespace PhanCongGiangDay.Controllers
                         return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
                     }  
                 }
-                model.CongTacKhac = model.CongTacKhac.Where(x => x.CongTacKhacLogID != 0).ToList();
-                foreach (var item in model.CongTacKhac)
+                if(model.CongTacKhac!=null)
                 {
-                    if (item.TrangThai == 2)
-                        result = PhanCongGiangVienService.ThemPhanCongCongTac(item);
-                    else
-                        result = PhanCongGiangVienService.SuaPhanCongCongTac(item);
+                    model.CongTacKhac = model.CongTacKhac.Where(x => x.CongTacKhacLogID != 0).ToList();
+                    foreach (var item in model.CongTacKhac)
+                    {
+                        if (item.TrangThai == 2)
+                            result = PhanCongGiangVienService.ThemPhanCongCongTac(item);
+                        else
+                            result = PhanCongGiangVienService.SuaPhanCongCongTac(item);
 
-                    if (result == null)
-                    {
-                        return Json(JsonResponseViewModel.CreateFail("Cập nhật phân công nhóm lớp cho giảng viên thất bại."));
+                        if (result == null)
+                        {
+                            return Json(JsonResponseViewModel.CreateFail("Cập nhật phân công nhóm lớp cho giảng viên thất bại."));
+                        }
+                        else if (result != null && result.ResponseCode == -1)
+                        {
+                            return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                        }
                     }
-                    else if (result != null && result.ResponseCode == -1)
-                    {
-                        return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
-                    }
-                }
+                }                
                 return Json(JsonResponseViewModel.CreateSuccess("Cập nhật phân công nhóm lớp cho giảng viên thành công."));
             }
             catch (Exception ex)

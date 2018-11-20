@@ -3,7 +3,7 @@
 }
 <tr id="row_@i">
     <td>
-        <input type="hidden" name="NhomLopPhanCong[0].GiangVienLogID" value="@ViewBag.giangvienID" />
+        <input type="hidden" name="NhomLopPhanCong[@i].GiangVienLogID" value="@ViewBag.gvID" />
         @Html.DropDownList("NhomLopPhanCong[" + i + "].PhanCongNhomLopID", (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_" + i })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].PhanCongNhomLopID")
     </td>

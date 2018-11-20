@@ -3,14 +3,14 @@
 }
 <tr id="rowct_@i">
     <td class="pl-4" width="80%">
-        <input type="hidden" name="CongTacKhac[0].GiangVienLogID" value="@ViewBag.giangvienID" />
-        <input type="hidden" name="CongTacKhac[0].BangPhanCongID" value="@ViewBag.namhoc" />
+        <input type="hidden" name="CongTacKhac[@i].GiangVienLogID" value="@ViewBag.gvID" />
+        <input type="hidden" name="CongTacKhac[@i].BangPhanCongID" value="@ViewBag.namhoc" />
         @Html.DropDownList("CongTacKhac[" + i + "].CongTacKhacLogID", (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control" })
     </td>
     <td width="20%" style="font-size:18pt">
         <i id="tct_@i" class="fa fa-plus-circle button-edit-ct-partial" aria-hidden="true"></i>
         <i id="xct_@i" class="fa fa-minus-circle button-edit-ct-partial d-none" aria-hidden="true"></i>
-        <input type="hidden" name="CongTacKhac['+@i+'].TrangThai" value="2" id="trangthaicongtac_@i" />
+        <input type="hidden" name="CongTacKhac[@i].TrangThai" value="2" id="trangthaicongtac_@i" />
     </td>
 </tr>
 <script>
