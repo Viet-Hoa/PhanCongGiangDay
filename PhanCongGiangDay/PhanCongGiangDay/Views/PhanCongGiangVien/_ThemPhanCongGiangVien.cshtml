@@ -1,45 +1,45 @@
 ﻿@{
     int i = ViewBag.thutu;
 }
-<tr id="row_@i">
-    <td>
+<tr class="nhomlop-row" id="row_@i">
+    <td valign="top">
         <input type="hidden" name="NhomLopPhanCong[@i].GiangVienLogID" value="@ViewBag.gvID" />
         @Html.DropDownList("NhomLopPhanCong[" + i + "].PhanCongNhomLopID", (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_" + i })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].PhanCongNhomLopID")
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].SoTietLT", "", new { @class = "form-control", @readonly = true })
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].SoTietTH", "", new { @class = "form-control", @readonly = true })
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].SoLuongConLaiLT", "", new { @class = "form-control", @readonly = true })
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].SoLuongConLaiTH", "", new { @class = "form-control", @readonly = true })
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].HK1LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK1LT")
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].HK1TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK1TH")
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].HK2LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK2LT")
     </td>
-    <td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].HK2TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].HK2TH")
     </td>
-    <td style="font-size:18pt">
+    <td valign="top" style="font-size:18pt">
         <i id="tnl_@i" class="fa fa-plus-circle button-edit-nl-partial" aria-hidden="true"></i>
         <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl-partial d-none" aria-hidden="true"></i>
         <input type="hidden" name="NhomLopPhanCong[@i].TrangThai" id="trangthainhomlop_@i" value="2" />
-        <input type="hidden" name="NhomLopPhanCong[@i].SoTiet" id="NhomLopPhanCongSoTiet_@i" value="0" />
+        <input type="hidden" class="sotietSum" name="NhomLopPhanCong[@i].SoTiet" id="NhomLopPhanCongSoTiet_@i" value="0" />
 
     </td>
 </tr>

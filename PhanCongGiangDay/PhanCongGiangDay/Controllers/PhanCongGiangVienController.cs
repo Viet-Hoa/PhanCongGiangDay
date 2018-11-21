@@ -84,6 +84,7 @@ namespace PhanCongGiangDay.Controllers
             var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null);
             var pcct = CongTacKhacService.DanhSachCongTacKhac().OrderBy(x=>x.CongTacKhacID);
             ViewBag.congtac = new SelectList(pcct, "CongTacKhacLogID", "TenVaSoTiet");
+            ViewBag.sotietct = new SelectList(pcct, "CongTacKhacLogID", "SoTiet");
             ViewBag.pcnlddl = new SelectList(pcnl, "PhanCongNhomLopID", "MaVaTenHP");
             ViewBag.conlaiLT = new SelectList(pcnl, "PhanCongNhomLopID", "SoLuongConLaiLT");
             ViewBag.conlaiTH = new SelectList(pcnl, "PhanCongNhomLopID", "SoLuongConLaiTH");

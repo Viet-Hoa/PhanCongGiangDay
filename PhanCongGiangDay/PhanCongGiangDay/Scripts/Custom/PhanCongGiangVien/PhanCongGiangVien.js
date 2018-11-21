@@ -83,6 +83,8 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
         AddRowCongTac();
         SelectedValueNhomLop();
         SelectedValueCongTac();
+        sumAll();
+        checkValid();
     }
 
     function SelectedValueNhomLop() {
@@ -130,6 +132,9 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                         $("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val(x);
                     }
                 });
+                var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
+                var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
+                $("#NhomLopPhanCong_" + i + "__SoTiet").val(stlt + stth);
             });
         });        
     }
@@ -137,17 +142,106 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
     function checkValid() {
         $(document).ready(function () {
             $(document).on('keyup', '.lythuyet', function () {
-
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var lt = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val());
+                if (lt > ~~parseInt($("#NhomLopPhanCong_" + i + "SoLuongConLaiLT").val())) {
+                    $("#" + id).addClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
+                    $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
+                    $valmess.text('Đã nhập quá số lượng còn lại.')
+                }
+                else {
+                    $("#" + id).removeClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('td').find(".field-validation-error");
+                    $valmess.addClass("field-validation-valid").removeClass("field-validation-error");
+                    $valmess.text("");
+                }
             });
             $(document).on('keyup', '.thuchanh', function () {
-
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var th = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val());
+                if (th > ~~parseInt($("#NhomLopPhanCong_" + i + "SoLuongConLaiTH").val())) {
+                    $("#" + id).addClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
+                    $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
+                    $valmess.text('Đã nhập quá số lượng còn lại.')
+                }
+                else {
+                    $("#" + id).removeClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('td').find(".field-validation-error");
+                    $valmess.addClass("field-validation-valid").removeClass("field-validation-error");
+                    $valmess.text("");
+                }
             });
         });
     }
 
     function sumAll() {
         $(document).ready(function () {
+            $(document).on("keyup", ".lythuyet", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
+                var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
+                $("#NhomLopPhanCongSoTiet_" + i).val(stlt + stth);
 
+                var sumst = 0, sumct = 0;
+                $(".nhomlop-row").each(function () {
+                    var hidden = $(this).find(".sotietSum").val();
+                    sumst = parseInt(hidden) + sumst;
+                });
+                if ($('.congtac-row')[0]) {
+                    $(".congtac-row").each(function () {
+                        var hidden = $(this).find(".congtackhacddl").val();
+                        $("#sotietctddl > option").each(function () {
+                            if ($(this).val() == hidden) {
+                                sumct = sumct + parseInt($(this).text());
+                            }
+                        });
+                    });
+                }
+                $('#tongsotiet').text(sumst);
+                $('#sotietthucte').text(sumst + sumct);
+            });
+            $(document).on("keyup", ".thuchanh", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
+                var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
+                $("#NhomLopPhanCongSoTiet_" + i).val(stlt + stth);
+
+                var sumst = 0, sumct = 0;
+                $(".nhomlop-row").each(function () {
+                    var hidden = $(this).find(".sotietSum").val();
+                    sumst = parseInt(hidden) + sumst;
+                });
+                if ($('.congtac-row')[0]) {
+                    $(".congtac-row").each(function () {
+                        var hidden = $(this).find(".congtackhacddl").val();
+                        $("#sotietctddl > option").each(function () {
+                            if ($(this).val() == hidden) {
+                                sumct = sumct + parseInt($(this).text());
+                            }
+                        });
+                    });
+                }
+                $('#tongsotiet').text(sumst);
+                $('#sotietthucte').text(sumst + sumct);
+            });
+            $(document).on("change", ".congtackhacddl", function () {
+                var sumct = 0;
+                $(".congtac-row").each(function () {
+                    var hidden = $(this).find(".congtackhacddl").val();
+                    $("#sotietctddl > option").each(function () {
+                        if ($(this).val() == hidden) {
+                            sumct = sumct + parseInt($(this).text());
+                        }
+                    });
+                });
+                $('#sotietthucte').text(parseInt($('#tongsotiet').text()) + sumct);
+            });
         });
     }
 
