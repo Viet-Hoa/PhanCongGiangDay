@@ -220,10 +220,13 @@
         </div>
         <div class="row pt-4 font-weight-bold">
             <div class="col-6">
+                <span>Giảng viên: @Model.HoTenGV</span>
+            </div>
+            <div class="col-3">
                 @Html.Hidden("TongSoTietGD", Model.TongSoTiet)
                 <span>Tổng số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span>
             </div>
-            <div class="col-6">
+            <div class="col-3">
                 @Html.Hidden("SoTietTT", Model.SoTietThucTe)
                 <span>Tổng số tiết thực tế: <span id="sotietthucte">@Model.SoTietThucTe</span></span>
             </div>

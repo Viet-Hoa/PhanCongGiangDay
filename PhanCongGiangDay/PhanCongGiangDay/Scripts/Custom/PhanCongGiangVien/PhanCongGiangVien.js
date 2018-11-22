@@ -145,7 +145,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
                 var lt = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val());
-                if (lt > ~~parseInt($("#NhomLopPhanCong_" + i + "SoLuongConLaiLT").val())) {
+                if (lt > ~~parseInt($("#NhomLopPhanCong_" + i + "__SoLuongConLaiLT").val())) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
@@ -162,7 +162,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
                 var th = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val());
-                if (th > ~~parseInt($("#NhomLopPhanCong_" + i + "SoLuongConLaiTH").val())) {
+                if (th > ~~parseInt($("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val())) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
