@@ -16,5 +16,6 @@ namespace PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien
         public int SoTietThucTe { get; set; }
         public List<PhanCongGiangVienModel> NhomLopPhanCong { get; set; }
         public List<PhanCongCongTacModel> CongTacKhac { get; set; }
+        public string CongTac { get; set; }
     }
 }

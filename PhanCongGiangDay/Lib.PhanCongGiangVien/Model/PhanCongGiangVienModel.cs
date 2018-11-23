@@ -26,6 +26,15 @@ namespace Lib.PhanCongGiangVien.Model
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }
 
+        public string MaHP { get; set; }
+        public string TenHocPhan { get; set; }
+        public string MaVaTenHP
+        {
+            get
+            {
+                return "(" + MaHP + ") " + TenHocPhan;
+            }
+        }
         public int SoTietLT { get; set; }
         public int SoTietTH { get; set; }
         public int SoLuongConLaiLT { get; set; }
@@ -39,5 +48,15 @@ namespace Lib.PhanCongGiangVien.Model
         public int GiangVienLogID { get; set; }
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }
+
+        public string TenCongTac { get; set; }
+        public int SoTiet { get; set; }
+        public string TenVaSoTiet
+        {
+            get
+            {
+                return  TenCongTac+ "(" + SoTiet + ") ";
+            }
+        }
     }
 }

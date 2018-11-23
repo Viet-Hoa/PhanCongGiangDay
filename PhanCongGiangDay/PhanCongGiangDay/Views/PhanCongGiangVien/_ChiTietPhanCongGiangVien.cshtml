@@ -1,84 +1,95 @@
-﻿@model Lib.PhanCongNhomLop.Model.PhanCongNhomLopModel
-
-@Html.DropDownList("tsotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
-@Html.DropDownList("tsotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
-@Html.DropDownList("tsotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
-@Html.DropDownList("tsotietddl", (SelectList)ViewBag.hocphanst, null, new { @class = "d-none" })
+﻿@model PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien.PhanCongGiangVienViewModel
 
 
-<div class="col-12 p-3" id="Them_panel" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.5rem;margin:auto">
-    @using (Html.BeginForm("ThemPhanCongNhomLop", "PhanCongNhomLop", FormMethod.Post, new { id = "formThemPhanCongNhomLop" }))
-    {
-        @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-4">
-            <div class="row">
-                <divc></divc>
-                <div class="col-12">
-                    <label class="font-weight-bold">Học phần</label><span class="input-required">*</span>
-                </div>
-                <div class="col-12">
-                    @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control", id = "tHocPhanLogID" })
-                    <small class="form-text text-danger">@Html.ValidationMessageFor(x=>x.HocPhanLogID)</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="col-12">
-                <label class="font-weight-bold">Số tín chỉ</label>
-            </div>
-            <div class="col-12">
-                @Html.TextBox("tSoTinChi", null, new { @class = "form-control", @readonly = true })
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="col-12">
-                <label class="font-weight-bold">Số tiết HP</label>
-            </div>
-            <div class="col-12">
-                @Html.TextBox("tSoTiet", null, new { @class = "form-control", @readonly = true })
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="row">
-                <div class="col-12">
-                    <label class="font-weight-bold">Số lượng nhóm lớp LT</label><span class="input-required">*</span>
-                </div>
-                <div class="col-12">
-                    @Html.TextBoxFor(x => x.SoLuongNhomLopLT, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSoLuongNhomLopLT" })
-                    <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopLT)</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="row">
-                <div class="col-12">
-                    <label class="font-weight-bold">Số lượng nhóm lớp TH</label><span class="input-required">*</span>
-                </div>
-                <div class="col-12">
-                    @Html.TextBoxFor(x => x.SoLuongNhomLopTH, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", max = "100", id = "tSoLuongNhomLopTH" })
-                    <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoLuongNhomLopTH)</small>
-                </div>
-            </div>
-        </div>
-        <input type="hidden" id="tconlaiLT" name="SoLuongConLaiLT" value="0" />
-        <input type="hidden" id="tconlaiTH" name="SoLuongConLaiTH" value="0" />
-        <input type="hidden" name="BangPhanCongID" value="@ViewBag.bangpcIDvb" />
-        <input type="hidden" name="KhoaID" value="@ViewBag.khoaidvb" />
-        <input type="hidden" name="TenHocPhan" value="" id="tenhpfor-em"/>
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Chi tiết phân công giảng viên</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-        <div class="row pt-2">
+    <div class="modal-body">
+        <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-default text-uppercase pull-left" id="btn_hide">Đóng</button>
-                <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_themPhanCongNhomLop">Thêm</button>
+                <table style="width:100%">
+                    <tr style="border-bottom: gray solid 1px;font-size:14pt">
+                        <td width="82%" class="text-center font-weight-bold">
+                            Nhóm lớp
+                        </td>
+                        @if (Model.LoaiGV == 2.ToString())
+                        {
+                            <td width="18%" class="text-center font-weight-bold" style="border-left: gray solid 1px">
+                                Công tác khác
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>
+                            <table border="1" class="table-form" style="width:100%;">
+                                <thead>
+                                    <tr class="font-weight-bold">
+                                        <td  width="44%">Học phần</td>
+                                        <td  width="14%">HK1 LT</td>
+                                        <td  width="14%">HK1 TH</td>
+                                        <td  width="14%">HK2 LT</td>
+                                        <td  width="14%">HK2 TH</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.NhomLopPhanCong.Any())
+                                    {
+                                        foreach (var item in Model.NhomLopPhanCong)
+                                        {
+                                            <tr class="nhomlop-row">
+                                                <td>
+                                                    @item.MaVaTenHP
+                                                </td>
+                                                <td>
+                                                    @item.HK1LT
+                                                </td>
+                                                <td>
+                                                    @item.HK1TH
+                                                </td>
+                                                <td>
+                                                    @item.HK2LT
+                                                </td>
+                                                <td>
+                                                    @item.HK2TH
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td class="text-center" colspan="5">Hiện tại chưa có dữ liệu.</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                        @if (Model.LoaiGV == 2.ToString())
+                        {
+                            <td class="flex-wrap">
+                                <p class="p-2 text-center">@(Model.CongTac=="" ? "Hiện tại chưa có dữ liệu." : Model.CongTac)</p>
+                            </td>
+                        }
+                    </tr>
+                </table>
+
+
             </div>
         </div>
-    }
-</div>
+        <div class="row pt-4 font-weight-bold">
+            <div class="col-6">
+                <span>Giảng viên: @Model.HoTenGV</span>
+            </div>
+            <div class="col-3">
+                <span>Tổng số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span>
+            </div>
+            <div class="col-3">
+                <span>Tổng số tiết thực tế: <span id="sotietthucte">@Model.SoTietThucTe</span></span>
+            </div>
+        </div>
+    </div>
 
 
-<script>
-    $(function () {
-        ThemPhanCongNhomLopModule.init();
-    });
-</script>

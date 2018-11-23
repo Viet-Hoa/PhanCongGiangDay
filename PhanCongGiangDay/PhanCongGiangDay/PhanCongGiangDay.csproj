@@ -733,6 +733,9 @@
     <Content Include="Views\Khoa\_XoaKhoa.cshtml" />
     <Content Include="Views\Khoa\Index.cshtml" />
     <Content Include="Views\XuatExcel\Index.cshtml" />
+    <Content Include="Templates\Mau02.xlsx" />
+    <Content Include="Templates\Mau03.xlsx" />
+    <Content Include="Templates\Mau04.xlsx" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />

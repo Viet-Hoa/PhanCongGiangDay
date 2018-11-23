@@ -146,6 +146,16 @@ namespace PhanCongGiangDay.Services
             try
             {
                 var model = PhanCongGiangVienDA.ChiTietGiangVienPhanCong(BangPhanCongID, GiangVienID);
+                var ct = PhanCongGiangVienDA.DanhSachPhanCongCongTac(BangPhanCongID, GiangVienID).ToList();
+                string s = "";
+                if (ct != null && ct.Any())
+                {
+                    foreach(var item in ct)
+                    {
+                        s += item.TenVaSoTiet + ", ";
+                    }
+                    s=s.Remove(s.LastIndexOf(","));
+                }
                 viewmodel = new PhanCongGiangVienViewModel
                 {
                     HoTenGV = model.Ho + " " + model.Ten,
@@ -154,7 +164,8 @@ namespace PhanCongGiangDay.Services
                     SoTietThucTe = model.TongSoTietThucTe,
                     LoaiGV=model.LoaiGV,
                     NhomLopPhanCong = PhanCongGiangVienDA.DanhSachPhanCongGiangVien(BangPhanCongID, GiangVienID).ToList(),
-                    CongTacKhac = PhanCongGiangVienDA.DanhSachPhanCongCongTac(BangPhanCongID, GiangVienID).ToList()
+                    CongTacKhac = ct,
+                    CongTac=s
                 };
             }
             catch (Exception ex)
