@@ -6,10 +6,10 @@
         <h3 class="text-uppercase pt-3">XUẤT FILE EXCEL</h3>
     </div>
     <div class="col-1 pt-3">
-        <span class="font-weight-bold float-right">NĂM HỌC:</span>          
+        <span class="font-weight-bold float-right">NĂM HỌC:</span>
     </div>
     <div class="col-2 pt-2">
-        @Html.DropDownList("NamHoc", (SelectList)ViewBag.namhocddl, new { @class = "form-control "})
+        @Html.DropDownList("NamHoc", (SelectList)ViewBag.namhocddl, new { @class = "form-control " })
     </div>
 </div>
 <div id="main-content">
@@ -84,3 +84,7 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/xuatexcel")
+}

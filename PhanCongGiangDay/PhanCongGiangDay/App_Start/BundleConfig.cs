@@ -91,6 +91,8 @@ namespace PhanCongGiangDay
               "~/Scripts/Custom/PhanCongNhomLop/PhanCongNhomLop.js"));
             bundles.Add(new ScriptBundle("~/bundles/pcgv").Include(
               "~/Scripts/Custom/PhanCongGiangVien/PhanCongGiangVien.js"));
+            bundles.Add(new ScriptBundle("~/bundles/xuatexcel").Include(
+              "~/Scripts/Custom/XuatExcel/XuatExcel.js"));
         }
     }
 }

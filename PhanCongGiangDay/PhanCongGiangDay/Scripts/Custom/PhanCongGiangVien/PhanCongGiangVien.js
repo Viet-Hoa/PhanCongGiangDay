@@ -112,12 +112,32 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                     if ($(this).val() == $("#" + id).val()) {
                         var x = parseInt($(this).text());
                         $("#NhomLopPhanCong_" + i + "__SoTietLT").val(x);
+                        if (x == 0) {
+                            $("#NhomLopPhanCong_" + i + "__HK1LT").val(0);
+                            $("#NhomLopPhanCong_" + i + "__HK1LT").attr("readonly", true);
+                            $("#NhomLopPhanCong_" + i + "__HK2LT").val(0);
+                            $("#NhomLopPhanCong_" + i + "__HK2LT").attr("readonly", true);
+                        }
+                        else {
+                            $("#NhomLopPhanCong_" + i + "__HK1LT").attr("readonly", false);
+                            $("#NhomLopPhanCong_" + i + "__HK2LT").attr("readonly", false);
+                        }
                     }
                 });
                 $("#sotietthddl > option").each(function () {
                     if ($(this).val() == $("#" + id).val()) {
                         var x = parseInt($(this).text());
                         $("#NhomLopPhanCong_" + i + "__SoTietTH").val(x);
+                        if (x == 0) {
+                            $("#NhomLopPhanCong_" + i + "__HK1TH").val(0);
+                            $("#NhomLopPhanCong_" + i + "__HK1TH").attr("readonly", true);
+                            $("#NhomLopPhanCong_" + i + "__HK2TH").val(0);
+                            $("#NhomLopPhanCong_" + i + "__HK2TH").attr("readonly", true);
+                        }
+                        else {
+                            $("#NhomLopPhanCong_" + i + "__HK1TH").attr("readonly", false);
+                            $("#NhomLopPhanCong_" + i + "__HK2TH").attr("readonly", false);
+                        }
                     }
                 });
                 $("#sotietltclddl > option").each(function () {
@@ -144,7 +164,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             $(document).on('keyup', '.lythuyet', function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
-                var lt = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val());
+                var lt = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val()) - (~~parseInt($("#hidden_HK1LT_" + i).val()) + ~~parseInt($("#hidden_HK2LT_" + i).val()));
                 if (lt > ~~parseInt($("#NhomLopPhanCong_" + i + "__SoLuongConLaiLT").val())) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
@@ -161,7 +181,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             $(document).on('keyup', '.thuchanh', function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
-                var th = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val());
+                var th = ~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val()) - (~~parseInt($("#hidden_HK1TH_" + i).val()) + ~~parseInt($("#hidden_HK2TH_" + i).val()));
                 if (th > ~~parseInt($("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val())) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('td').find(".field-validation-valid");

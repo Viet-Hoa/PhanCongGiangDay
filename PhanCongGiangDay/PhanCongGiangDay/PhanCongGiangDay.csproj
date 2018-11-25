@@ -350,6 +350,7 @@
     <Content Include="Scripts\Custom\DonVi\DonVi.js" />
     <Content Include="Scripts\Custom\PhanCongGiangVien\PhanCongGiangVien.js" />
     <Content Include="Scripts\Custom\PhanCongNhomLop\PhanCongNhomLop.js" />
+    <Content Include="Scripts\Custom\XuatExcel\XuatExcel.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />

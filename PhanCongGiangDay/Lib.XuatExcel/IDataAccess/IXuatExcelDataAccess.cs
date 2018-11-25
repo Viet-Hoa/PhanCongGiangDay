@@ -10,9 +10,6 @@ namespace Lib.XuatExcel.IDataAccess
 {
     public interface IXuatExcelDataAccess
     {
-        IEnumerable<XuatExcelModel> DanhSachXuatExcel();
-        XuatExcelModel ChiTietXuatExcel(int XuatExcelID);
-        ResponseResult ThemXuatExcel(XuatExcelModel model);
-        ResponseResult SuaXuatExcel(XuatExcelModel model);
+        IEnumerable<XuatExcelModel04> XuatExcelMau04(int BangPhanCongID);
     }
 }

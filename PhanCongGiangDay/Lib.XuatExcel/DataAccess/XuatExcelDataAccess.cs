@@ -13,12 +13,14 @@ namespace Lib.XuatExcel.DataAccess
 {
     public class XuatExcelDataAccess: IXuatExcelDataAccess
     {
-        public IEnumerable<XuatExcelModel> DanhSachXuatExcel()
+        public IEnumerable<XuatExcelModel04> XuatExcelMau04(int BangPhanCongID)
         {
-            List<XuatExcelModel> list = new List<XuatExcelModel>();
+            List<XuatExcelModel04> list = new List<XuatExcelModel04>();
             try
             {
-                list = DBUtils.ExecuteSPList<XuatExcelModel>("SP_BangPhanCong_DanhSach", null);
+                List<SqlParameter> listParameter = new List<SqlParameter>();
+                listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
+                list = DBUtils.ExecuteSPList<XuatExcelModel04>("SP_XuatExcel_Mau04", listParameter);
             }
             catch (Exception ex)
             {
@@ -26,53 +28,6 @@ namespace Lib.XuatExcel.DataAccess
             }
             return list;
         }
-        public XuatExcelModel ChiTietXuatExcel(int BangPhanCongID)
-        {
-            XuatExcelModel model = null;
-            try
-            {
-                List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
-                model = DBUtils.ExecuteSP<XuatExcelModel>("SP_BangPhanCong_ChiTiet", listParameter);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return model;
-        }
-        public ResponseResult ThemXuatExcel(XuatExcelModel model)
-        {
-            ResponseResult res = null;
-            try
-            {
-                List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@XuatExcel", model.XuatExcel));
-                listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
-                res = DBUtils.ExecuteSP<ResponseResult>("SP_BangPhanCong_Them", listParameter);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return res;
-        }
-        public ResponseResult SuaXuatExcel(XuatExcelModel model)
-        {
-            ResponseResult res = null;
-            try
-            {
-                List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@BangPhanCongID", model.BangPhanCongID));
-                listParameter.Add(new SqlParameter("@XuatExcel", model.XuatExcel));
-                listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
-                res = DBUtils.ExecuteSP<ResponseResult>("SP_BangPhanCong_Sua", listParameter);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return res;
-        }
+        
     }
 }

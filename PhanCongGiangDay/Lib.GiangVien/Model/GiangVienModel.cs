@@ -28,5 +28,6 @@ namespace Lib.GiangVien.Model
         public int GiangVienLogID { get; set; }
 
         public string LoaiGV { get; set; }
+        public string LopPhuTrach { get; set; }
     }
 }

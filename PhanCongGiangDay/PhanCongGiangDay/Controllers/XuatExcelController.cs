@@ -10,6 +10,9 @@ namespace PhanCongGiangDay.Controllers
 {
     public class XuatExcelController : BizController
     {
+        private IXuatExcelService _XuatExcelService;
+        private IXuatExcelService XuatExcelService => _XuatExcelService ?? (_XuatExcelService = new XuatExcelService());
+
         private INamHocService _namHocService;
         private INamHocService NamHocService => _namHocService ?? (_namHocService = new NamHocService());
 
@@ -17,6 +20,13 @@ namespace PhanCongGiangDay.Controllers
         {
             ViewBag.namhocddl = new SelectList(NamHocService.DanhSachNamHoc(), "BangPhanCOngID", "NamHoc");
             return View();
+        }
+
+        public ActionResult XuatExcelMau04(int BangPhanCongID)
+        {
+            var content = XuatExcelService.XuatExcelMau04(BangPhanCongID);
+            var fileName = "KeHoachThinhGiang_Mau04_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            return File(content, "application/vnd.ms-excel", fileName);
         }
     }
 }

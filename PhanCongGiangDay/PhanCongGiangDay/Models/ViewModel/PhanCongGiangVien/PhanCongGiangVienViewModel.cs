@@ -10,6 +10,8 @@ namespace PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien
     {
         public int STT { get; set; }
         public string HoTenGV { get; set; }
+        public string ChucVu { get; set; }
+        public string LopPhuTrach { get; set; }
         public int GiangVienLogID { get; set; }
         public string LoaiGV { get; set; }
         public int TongSoTiet { get; set; }

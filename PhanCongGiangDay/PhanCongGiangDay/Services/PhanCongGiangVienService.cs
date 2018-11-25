@@ -156,16 +156,19 @@ namespace PhanCongGiangDay.Services
                     }
                     s=s.Remove(s.LastIndexOf(","));
                 }
+
                 viewmodel = new PhanCongGiangVienViewModel
                 {
                     HoTenGV = model.Ho + " " + model.Ten,
+                    ChucVu = model.ChucVu,
+                    LopPhuTrach = model.LopPhuTrach,
                     GiangVienLogID = model.GiangVienLogID,
                     TongSoTiet = model.TongSoTiet,
                     SoTietThucTe = model.TongSoTietThucTe,
-                    LoaiGV=model.LoaiGV,
+                    LoaiGV = model.LoaiGV,
                     NhomLopPhanCong = PhanCongGiangVienDA.DanhSachPhanCongGiangVien(BangPhanCongID, GiangVienID).ToList(),
                     CongTacKhac = ct,
-                    CongTac=s
+                    CongTac = s
                 };
             }
             catch (Exception ex)
