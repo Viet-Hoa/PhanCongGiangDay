@@ -114,9 +114,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                         var x = parseInt($(this).text());
                         $("#NhomLopPhanCong_" + i + "__SoTietLT").val(x);
                         if (x == 0) {
-                            $("#NhomLopPhanCong_" + i + "__HK1LT").val(0);
                             $("#NhomLopPhanCong_" + i + "__HK1LT").attr("readonly", true);
-                            $("#NhomLopPhanCong_" + i + "__HK2LT").val(0);
                             $("#NhomLopPhanCong_" + i + "__HK2LT").attr("readonly", true);
                         }
                         else {
@@ -130,9 +128,8 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                         var x = parseInt($(this).text());
                         $("#NhomLopPhanCong_" + i + "__SoTietTH").val(x);
                         if (x == 0) {
-                            $("#NhomLopPhanCong_" + i + "__HK1TH").val(0);
+                            
                             $("#NhomLopPhanCong_" + i + "__HK1TH").attr("readonly", true);
-                            $("#NhomLopPhanCong_" + i + "__HK2TH").val(0);
                             $("#NhomLopPhanCong_" + i + "__HK2TH").attr("readonly", true);
                         }
                         else {
@@ -153,6 +150,10 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                         $("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val(x);
                     }
                 });
+                $("#NhomLopPhanCong_" + i + "__HK1LT").val(0);
+                $("#NhomLopPhanCong_" + i + "__HK2LT").val(0);
+                $("#NhomLopPhanCong_" + i + "__HK1TH").val(0);
+                $("#NhomLopPhanCong_" + i + "__HK2TH").val(0);
                 var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
                 var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
                 $("#NhomLopPhanCong_" + i + "__SoTiet").val(stlt + stth);
@@ -332,6 +333,18 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             else {
                 $('#rowct_' + i).hide();
                 $('#trangthaicongtac_' + i).val("-1");
+                $('#rowct_' + i).removeClass("congtac-row");
+                var sumct = 0;
+                $(".congtac-row").each(function () {
+                    var hidden = $(this).find(".congtackhacddl").val();
+                    $("#sotietctddl > option").each(function () {
+                        if ($(this).val() == hidden) {
+                            sumct = sumct + parseInt($(this).text());
+                        }
+                    });
+                });
+                $('#sotietcongtac').text(sumct);
+                $('#sotietthucte').text(parseInt($('#tongsotiet').text()) + sumct);
             }
         }); 
     }
@@ -356,6 +369,18 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             else {
                 $('#rowct_' + i).hide();
                 $('#trangthaicongtac_' + i).val("-1");
+                $('#rowct_' + i).removeClass("congtac-row");
+                var sumct = 0;
+                $(".congtac-row").each(function () {
+                    var hidden = $(this).find(".congtackhacddl").val();
+                    $("#sotietctddl > option").each(function () {
+                        if ($(this).val() == hidden) {
+                            sumct = sumct + parseInt($(this).text());
+                        }
+                    });
+                });
+                $('#sotietcongtac').text(sumct);
+                $('#sotietthucte').text(parseInt($('#tongsotiet').text()) + sumct);
             }
         });
     }
