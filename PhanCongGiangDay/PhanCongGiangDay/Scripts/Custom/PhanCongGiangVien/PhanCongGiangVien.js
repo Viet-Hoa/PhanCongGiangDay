@@ -38,6 +38,7 @@ var PhanCongGiangVienModule = (function () {
                 { data: "STT" },
                 { data: "HoTenGV" },
                 { data: "TongSoTiet" },
+                { data: "SoTietCongTac" },
                 { data: "SoTietThucTe" },
                 {
                     data: "GiangVienLogID", orderable: false, width: 100, className: "text-center", render: function (data) {
@@ -207,23 +208,13 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                 var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
                 $("#NhomLopPhanCongSoTiet_" + i).val(stlt + stth);
 
-                var sumst = 0, sumct = 0;
+                var sumst = 0;
                 $(".nhomlop-row").each(function () {
                     var hidden = $(this).find(".sotietSum").val();
                     sumst = parseInt(hidden) + sumst;
                 });
-                if ($('.congtac-row')[0]) {
-                    $(".congtac-row").each(function () {
-                        var hidden = $(this).find(".congtackhacddl").val();
-                        $("#sotietctddl > option").each(function () {
-                            if ($(this).val() == hidden) {
-                                sumct = sumct + parseInt($(this).text());
-                            }
-                        });
-                    });
-                }
                 $('#tongsotiet').text(sumst);
-                $('#sotietthucte').text(sumst + sumct);
+                $('#sotietthucte').text(sumst + parseInt($('#sotietcongtac').text()));
             });
             $(document).on("keyup", ".thuchanh", function () {
                 var id = $(this).attr('id');
@@ -232,23 +223,13 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                 var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
                 $("#NhomLopPhanCongSoTiet_" + i).val(stlt + stth);
 
-                var sumst = 0, sumct = 0;
+                var sumst = 0;
                 $(".nhomlop-row").each(function () {
                     var hidden = $(this).find(".sotietSum").val();
                     sumst = parseInt(hidden) + sumst;
-                });
-                if ($('.congtac-row')[0]) {
-                    $(".congtac-row").each(function () {
-                        var hidden = $(this).find(".congtackhacddl").val();
-                        $("#sotietctddl > option").each(function () {
-                            if ($(this).val() == hidden) {
-                                sumct = sumct + parseInt($(this).text());
-                            }
-                        });
-                    });
-                }
+                });                
                 $('#tongsotiet').text(sumst);
-                $('#sotietthucte').text(sumst + sumct);
+                $('#sotietthucte').text(sumst + parseInt($('#sotietcongtac').text()));
             });
             $(document).on("change", ".congtackhacddl", function () {
                 var sumct = 0;
@@ -260,6 +241,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                         }
                     });
                 });
+                $('#sotietcongtac').text(sumct);
                 $('#sotietthucte').text(parseInt($('#tongsotiet').text()) + sumct);
             });
         });
@@ -284,6 +266,16 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             else {
                 $('#row_' + i).hide();
                 $('#trangthainhomlop_' + i).val("-1");
+                $('#row_' + i).removeClass("nhomlop-row");
+                var newv = 0;
+                $(".nhomlop-row").each(function () {
+                    var hidden = $(this).find(".sotietSum").val();
+                    newv = parseInt(hidden) + newv;
+                });
+                var oldv = parseInt($('#tongsotiet').text());
+                $('#tongsotiet').text(newv);
+                var sttt = parseInt($('#sotietthucte').text());
+                $('#sotietthucte').text(sttt - oldv + newv);
             }
         });      
     }
@@ -307,6 +299,16 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             else {
                 $('#row_' + i).hide();
                 $('#trangthainhomlop_' + i).val("-1");
+                $('#row_' + i).removeClass("nhomlop-row");
+                var newv = 0;
+                $(".nhomlop-row").each(function () {
+                    var hidden = $(this).find(".sotietSum").val();
+                    newv = parseInt(hidden) + newv;
+                });
+                var oldv = parseInt($('#tongsotiet').text());
+                $('#tongsotiet').text(newv);
+                var sttt = parseInt($('#sotietthucte').text());
+                $('#sotietthucte').text(sttt - oldv + newv);
             }
         });
     }

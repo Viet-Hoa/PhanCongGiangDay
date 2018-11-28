@@ -40,6 +40,7 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult PhanCong(int NamHoc)
         {
             ViewBag.loai = new SelectList(XMLUtils.BindData("loaigiangvien"), "value", "text");
+            ViewBag.namhoctext = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
             ViewBag.namhocID = NamHoc;
             return View();
         }

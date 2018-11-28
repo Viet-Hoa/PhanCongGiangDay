@@ -3,7 +3,7 @@
     ViewBag.Title = "PHÂN CÔNG GIẢNG VIÊN - PHÂN CÔNG";
 }
 <input type="hidden" id="bangpc" value="@ViewBag.namhocID" />
-<h3 class="text-uppercase pt-3">PHÂN CÔNG GIẢNG VIÊN > <a style="color: #1565c0" href="@Url.Action("Index","PhanCongGiangVien")">NĂM HỌC @ViewBag.namhoc</a></h3>
+<h3 class="text-uppercase pt-3">PHÂN CÔNG GIẢNG VIÊN > <a style="color: #1565c0" href="@Url.Action("Index","PhanCongGiangVien")">NĂM HỌC @ViewBag.namhoctext</a></h3>
 <div id="main-content">
     <div class="container-fluid">
 
@@ -26,6 +26,7 @@
                             <td>STT</td>
                             <td>Họ tên</td>
                             <td>Số tiết giảng dạy</td>
+                            <td>Số tiết công tác</td>
                             <td>Số tiết thực tế</td>
                             <td style="min-width:100px; max-width:200px"></td>
                         </tr>

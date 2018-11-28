@@ -11,5 +11,6 @@ namespace Lib.XuatExcel.IDataAccess
     public interface IXuatExcelDataAccess
     {
         IEnumerable<XuatExcelModel04> XuatExcelMau04(int BangPhanCongID);
+        IEnumerable<XuatExcelModel03> XuatExcelMau03(int BangPhanCongID);
     }
 }

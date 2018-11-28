@@ -226,15 +226,19 @@
             <div class="col-3">
                 <span>Giảng viên: @Model.HoTenGV</span>
             </div>
-            <div class="col-2">
-                <span>Chức vụ: @Model.ChucVu</span>
+            <div class="col-1">
+                <span>Chức vụ: @(Model.ChucVu ?? "Không")</span>
             </div>
             <div class="col-2">
-                <span>Lớp phụ trách: @Model.LopPhuTrach</span>
+                <span>Lớp phụ trách: @(Model.LopPhuTrach ?? "Không")</span>
             </div>
             <div class="col-2">
                 @Html.Hidden("TongSoTietGD", Model.TongSoTiet)
-                <span>Tổng số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span>
+                <span>Số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span>
+            </div>
+            <div class="col-2">
+                @Html.Hidden("SoTietCT", Model.SoTietCongTac)
+                <span>Số tiết công tác: <span id="sotietcongtac">@Model.SoTietCongTac</span></span>
             </div>
             <div class="col-2">
                 @Html.Hidden("SoTietTT", Model.SoTietThucTe)
