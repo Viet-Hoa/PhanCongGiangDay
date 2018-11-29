@@ -86,6 +86,21 @@ namespace Lib.HocPhan.DataAccess
             }
             return model;
         }
+        public HocPhanModel ChiTietHocPhanLog(int HocPhanLogID)
+        {
+            HocPhanModel model = null;
+            try
+            {
+                List<SqlParameter> listParameter = new List<SqlParameter>();
+                listParameter.Add(new SqlParameter("@HocPhanLogID", HocPhanLogID));
+                model = DBUtils.ExecuteSP<HocPhanModel>("SP_HocPhan_ChiTiet_Log", listParameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return model;
+        }
         public ResponseResult ThemHocPhan(HocPhanModel model)
         {
             ResponseResult res = null;

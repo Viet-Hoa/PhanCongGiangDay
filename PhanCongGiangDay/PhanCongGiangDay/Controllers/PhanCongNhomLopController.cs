@@ -75,7 +75,8 @@ namespace PhanCongGiangDay.Controllers
         {
             try
             {
-                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, khoaID).Where(x=>x.HocPhanLogID==model.HocPhanLogID).FirstOrDefault();
+                var hp = HocPhanService.ChiTietHocPhanLog(model.HocPhanLogID);
+                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, khoaID).Where(x=>x.HocPhanID==hp.HocPhanID).FirstOrDefault();
                 if(c!=null)
                 {
                     ModelState.AddModelError("HocPhanLogID", "Học phần \""+model.TenHocPhan+"\" đã phân công nhóm lớp");

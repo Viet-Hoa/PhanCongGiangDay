@@ -28,5 +28,11 @@ namespace PhanCongGiangDay.Controllers
             var fileName = "KeHoachThinhGiang_Mau04_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
+        public ActionResult XuatExcelMau03(int BangPhanCongID)
+        {
+            var content = XuatExcelService.XuatExcelMau03(BangPhanCongID);
+            var fileName = "KeHoachMoiGiang_Mau03_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            return File(content, "application/vnd.ms-excel", fileName);
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace PhanCongGiangDay.IServices
     public interface IXuatExcelService
     {
         Stream XuatExcelMau04(int BangPhanCongID);
+        Stream XuatExcelMau03(int BangPhanCongID);
     }
 }

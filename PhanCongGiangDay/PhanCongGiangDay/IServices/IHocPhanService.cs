@@ -15,6 +15,7 @@ namespace PhanCongGiangDay.IServices
         IEnumerable<HocPhanModel> DanhSachHocPhanTheoKhoa(int? KhoaID);
         IEnumerable<HocPhanModel> DanhSachHocPhanTheoBoMon(int BoMonID);
         HocPhanModel ChiTietHocPhan(int HocPhanID);
+        HocPhanModel ChiTietHocPhanLog(int HocPhanLogID);
         ResponseResult ThemHocPhan(HocPhanModel model);
         ResponseResult SuaHocPhan(HocPhanModel model);
         ResponseResult XoaHocPhan(int HocPhanID, string NguoiTao);

@@ -54,7 +54,7 @@
                                         for (int i = 0; i < Model.NhomLopPhanCong.Count; i++)
                                         {
                                             <tr class="nhomlop-row" id="row_@i">
-                                                <td valign="top">
+                                                <td valign="top" class="text-left">
                                                     @Html.HiddenFor(x => x.NhomLopPhanCong[i].PhanCongID)
                                                     @Html.HiddenFor(x => x.NhomLopPhanCong[i].GiangVienLogID)
                                                     <input type="hidden" class="pcnlHidden" id="pcnlHidden_@i" value="@Model.NhomLopPhanCong[i].PhanCongNhomLopID" />
@@ -112,7 +112,7 @@
                                     else
                                     {
                                         <tr class="nhomlop-row" id="row_0">
-                                            <td valign="top">
+                                            <td valign="top" class="text-left">
                                                 <input type="hidden" name="NhomLopPhanCong[0].GiangVienLogID" value="@Model.GiangVienLogID" />
                                                 @Html.DropDownList("NhomLopPhanCong[0].PhanCongNhomLopID", (SelectList)ViewBag.pcnlddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_0" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].PhanCongNhomLopID)

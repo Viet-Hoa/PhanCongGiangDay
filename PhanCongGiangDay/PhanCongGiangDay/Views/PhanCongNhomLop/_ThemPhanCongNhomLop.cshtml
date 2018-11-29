@@ -17,7 +17,7 @@
                     <label class="font-weight-bold">Học phần</label><span class="input-required">*</span>
                 </div>
                 <div class="col-12">
-                    @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control", id = "tHocPhanLogID" })
+                    @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control hocphansl2t", id = "tHocPhanLogID" })
                     <small class="form-text text-danger">@Html.ValidationMessageFor(x=>x.HocPhanLogID)</small>
                 </div>
             </div>

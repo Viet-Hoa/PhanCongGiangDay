@@ -2,7 +2,7 @@
     int i = ViewBag.thutu;
 }
 <tr class="nhomlop-row" id="row_@i">
-    <td valign="top">
+    <td valign="top" class="text-left">
         <input type="hidden" name="NhomLopPhanCong[@i].GiangVienLogID" value="@ViewBag.gvID" />
         @Html.DropDownList("NhomLopPhanCong[" + i + "].PhanCongNhomLopID", (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_" + i })
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].PhanCongNhomLopID")
@@ -46,5 +46,8 @@
 <script>
     $(function () {
         CapNhatPhanCongGiangVienModule.AddRowNhomLopPartial();
+    });
+    $(document).ready(function () {
+        $('.nhomlopddl').select2();
     });
 </script>

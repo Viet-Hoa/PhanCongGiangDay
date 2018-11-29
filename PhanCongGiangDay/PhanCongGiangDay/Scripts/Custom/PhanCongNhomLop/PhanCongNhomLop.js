@@ -96,6 +96,9 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
         hideThemPanel();
         setNumber();
         bindFormActions();
+        $(document).ready(function () {
+            $('.hocphansl2t').select2();
+        });
     }
     
     function hideThemPanel() {
@@ -174,6 +177,7 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                                 $('.field-validation-error').removeClass('field-validation-error');
                                 $('.input-validation-error').removeClass('input-validation-error');
                                 $("#formThemPhanCongNhomLop").trigger("reset");
+                                $('.hocphansl2t').select2();
                             }
                         },
                         complete: function () {
@@ -196,6 +200,9 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
         setNumber();
         bindFormActions();
         $('#HocPhanLogID').change();
+        $(document).ready(function () {
+            $('.hocphansl2s').select2();
+        });
     }
 
     function setNumber() {

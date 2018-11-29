@@ -83,6 +83,19 @@ namespace PhanCongGiangDay.Services
             }
             return model;
         }
+        public HocPhanModel ChiTietHocPhanLog(int HocPhanLogID)
+        {
+            HocPhanModel model = null;
+            try
+            {
+                model = HocPhanDA.ChiTietHocPhanLog(HocPhanLogID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return model;
+        }
         public ResponseResult ThemHocPhan(HocPhanModel model)
         {
             ResponseResult res = null;

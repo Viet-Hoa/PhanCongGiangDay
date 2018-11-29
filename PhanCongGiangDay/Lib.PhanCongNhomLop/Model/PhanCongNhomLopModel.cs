@@ -35,7 +35,7 @@ namespace Lib.PhanCongNhomLop.Model
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }
 
-
+        public int HocPhanID { get; set; }
         public string MaHP { get; set; }
         public string TenHocPhan { get; set; }
         public string MaVaTenHP

@@ -82,10 +82,14 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
         setNumber();
         AddRowNhomLop();
         AddRowCongTac();
+        $(document).ready(function () {
+            $('.nhomlopddl').select2();
+            $('.congtackhacddl').select2();
+        });
         SelectedValueNhomLop();
         SelectedValueCongTac();
         sumAll();
-        checkValid();
+        checkValid();        
     }
 
     function SelectedValueNhomLop() {

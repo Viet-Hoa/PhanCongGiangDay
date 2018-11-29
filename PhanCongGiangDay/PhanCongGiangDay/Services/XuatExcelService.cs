@@ -92,6 +92,7 @@ namespace PhanCongGiangDay.Services
                     worksheet.Cell("A" + kyten).Value = "Duyệt của Ban Giám Hiệu                          Trưởng P. Kế hoạch - TC                    Trưởng P. Tổ chức - CB                  Trưởng khoa/Ngành/ Bộ môn TT";
                     worksheet.Cell("A" + kyten).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                     worksheet.Cell("A" + kyten).Style.Font.Bold = true;
+                    worksheet.PageSetup.PrintAreas.Add("A1:R" + kyten);
                     var ms = new MemoryStream();
                     workbook.SaveAs(ms);
                     ms.Position = 0;
@@ -133,21 +134,61 @@ namespace PhanCongGiangDay.Services
                             last++;
                         else if (first != last)
                         {
+                            worksheet.Range("R" + first + 1, "R" + last).Clear();
+                            worksheet.Range("R" + first, "R" + last).Merge();
+                            first = i + 1;
+                            last = i + 1;
+                        }
+                        else
+                        {
+                            last = i + 1;
+                            first = i + 1;
+                        }
+                    }
+                    first = 13;
+                    last = 13;
+                    for (int i = 13; i < count + 13; i++)
+                    {
+                        if (worksheet.Cell("P" + (i + 1)).Value.ToString() == worksheet.Cell("P" + i).Value.ToString())
+                            last++;
+                        else if (first != last)
+                        {
+                            worksheet.Range("P" + first + 1, "P" + last).Clear();
+                            worksheet.Range("P" + first, "P" + last).Merge();
+                            worksheet.Range("Q" + first + 1, "Q" + last).Clear();
+                            worksheet.Range("Q" + first, "Q" + last).Merge();
+                            first = i + 1;
+                            last = i + 1;
+                        }
+                        else
+                        {
+                            last = i + 1;
+                            first = i + 1;
+                        }
+                    }
+                    first = 13;
+                    last = 13;
+                    for (int i = 13; i < count + 13; i++)
+                    {
+                        if (worksheet.Cell("B" + (i + 1)).Value.ToString() == worksheet.Cell("B" + i).Value.ToString())
+                            last++;
+                        else if (first != last)
+                        {
                             worksheet.Range("A" + first + 1, "A" + last).Clear();
                             worksheet.Cell("A" + first).Value = STT;
                             worksheet.Range("A" + first, "A" + last).Merge();
-
                             worksheet.Range("B" + first + 1, "B" + last).Clear();
                             worksheet.Range("B" + first, "B" + last).Merge();
-
                             worksheet.Range("C" + first + 1, "C" + last).Clear();
                             worksheet.Range("C" + first, "C" + last).Merge();
-
                             worksheet.Range("D" + first + 1, "D" + last).Clear();
                             worksheet.Range("D" + first, "D" + last).Merge();
-
                             worksheet.Range("E" + first + 1, "E" + last).Clear();
                             worksheet.Range("E" + first, "E" + last).Merge();
+                            worksheet.Range("F" + first + 1, "F" + last).Clear();
+                            worksheet.Range("F" + first, "F" + last).Merge();
+                            worksheet.Range("G" + first + 1, "G" + last).Clear();
+                            worksheet.Range("G" + first, "G" + last).Merge();
                             first = i + 1;
                             last = i + 1;
                             STT++;
@@ -174,6 +215,7 @@ namespace PhanCongGiangDay.Services
                     worksheet.Cell("A" + kyten).Value = "Duyệt của Ban Giám Hiệu                          Trưởng P. Kế hoạch - TC                    Trưởng P. Tổ chức - CB                  Trưởng khoa/Ngành/ Bộ môn TT";
                     worksheet.Cell("A" + kyten).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                     worksheet.Cell("A" + kyten).Style.Font.Bold = true;
+                    worksheet.PageSetup.PrintAreas.Add("A1:R" + kyten);
                     var ms = new MemoryStream();
                     workbook.SaveAs(ms);
                     ms.Position = 0;

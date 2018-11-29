@@ -81,6 +81,14 @@ namespace PhanCongGiangDay
             bundles.Add(new ScriptBundle("~/bundles/underscore").Include(
                "~/Scripts/underscore-min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/select2")
+               .Include("~/Scripts/select2.js")
+               .Include("~/Scripts/select2.min.js"));
+            bundles.Add(new StyleBundle("~/Content/select2css").Include(
+                      "~/Content/css/select2.css",
+                      "~/Content/css/select2.min.css"));
+
+
             bundles.Add(new ScriptBundle("~/bundles/donvi").Include(
                "~/Scripts/Custom/DonVi/DonVi.js"));
             bundles.Add(new ScriptBundle("~/bundles/namhoc").Include(
