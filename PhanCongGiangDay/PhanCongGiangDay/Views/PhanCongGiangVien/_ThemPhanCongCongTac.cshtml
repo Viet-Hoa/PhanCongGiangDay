@@ -2,7 +2,7 @@
     int i = ViewBag.thutu;
 }
 <tr class="congtac-row" id="rowct_@i">
-    <td valign="top" class="pl-4" width="80%">
+    <td valign="top" class="pl-2" width="80%">
         <input type="hidden" name="CongTacKhac[@i].GiangVienLogID" value="@ViewBag.gvID" />
         <input type="hidden" name="CongTacKhac[@i].BangPhanCongID" value="@ViewBag.namhoc" />
         @Html.DropDownList("CongTacKhac[" + i + "].CongTacKhacLogID", (SelectList)ViewBag.congtac, "-- Chọn --", new { @class = "form-control congtackhacddl" })

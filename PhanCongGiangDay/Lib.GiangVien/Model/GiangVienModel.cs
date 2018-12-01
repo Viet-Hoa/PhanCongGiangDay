@@ -19,7 +19,9 @@ namespace Lib.GiangVien.Model
         public string HocVi { get; set; }
         public string ChucVu { get; set; }
         public int DonViID { get; set; }
+        public string TenDonVi { get; set; }
         public int BoMonID { get; set; }
+        public string TenBoMon { get; set; }
         public string Truong { get; set; }
         public string NguoiTao { get; set; }
         public int TrangThai { get; set; }

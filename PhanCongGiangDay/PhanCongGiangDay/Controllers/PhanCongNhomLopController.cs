@@ -66,6 +66,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
             ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
             ViewBag.hocphanst = new SelectList(dshp, "HocPhanLogID", "SoTietHP");
+            ViewBag.bomont = new SelectList(dshp, "HocPhanLogID", "TenBoMon");
             return PartialView("_ThemPhanCongNhomLop");
         }
 
@@ -105,6 +106,7 @@ namespace PhanCongGiangDay.Controllers
                     ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
                     ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
                     ViewBag.hocphanst = new SelectList(dshp, "HocPhanLogID", "SoTietHP");
+                    ViewBag.bomont = new SelectList(dshp, "HocPhanLogID", "TenBoMon");
                     return PartialView("_ThemPhanCongNhomLop");
                }
             }
@@ -124,6 +126,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
             ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
             ViewBag.hocphanst = new SelectList(dshp, "HocPhanLogID", "SoTietHP");
+            ViewBag.bomont = new SelectList(dshp, "HocPhanLogID", "TenBoMon");
             return PartialView("_SuaPhanCongNhomLop",viewModel);
         }
 

@@ -82,6 +82,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
         setNumber();
         AddRowNhomLop();
         AddRowCongTac();
+        disableOption();
         $(document).ready(function () {
             $('.nhomlopddl').select2();
             $('.congtackhacddl').select2();
@@ -90,6 +91,63 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
         SelectedValueCongTac();
         sumAll();
         checkValid();        
+    }
+
+    function disableOption() {
+        $('.nhomlop-row').each(function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            $("#nhomlop_" + i + " > option").each(function () {
+                var valx = $(this).val();
+                if (valx != null && valx != "") {
+                    var cl = 0;
+                    $("#sotietltclddl > option").each(function () {
+                        if ($(this).val() == valx) {
+                            var x = parseInt($(this).text());
+                            cl = x;
+                        }
+                    });
+                    if (cl == 0) {
+                        $("#sotietthclddl > option").each(function () {
+                            if ($(this).val() == valx) {
+                                var x = parseInt($(this).text());
+                                cl = cl + x;
+                            }
+                        });
+                        if (cl == 0) {
+                            $(this).text($(this).text() + " (Hết)");
+                        }
+                    }       
+                }      
+            });
+            i++;
+        });
+    }
+
+    function disableOptionnew(i) {
+        $("#nhomlop_" + i + " > option").each(function () {
+            var valx = $(this).val();
+            if (valx != null && valx != "") {
+                var cl = 0;
+                $("#sotietltclddl > option").each(function () {
+                    if ($(this).val() == valx) {
+                        var x = parseInt($(this).text());
+                        cl = x;
+                    }
+                });
+                if (cl == 0) {
+                    $("#sotietthclddl > option").each(function () {
+                        if ($(this).val() == valx) {
+                            var x = parseInt($(this).text());
+                            cl = cl + x;
+                        }
+                    });
+                    if (cl == 0) {
+                        $(this).text($(this).text() + " (Hết)");
+                    }
+                }
+            }
+        });
     }
 
     function SelectedValueNhomLop() {
@@ -152,6 +210,12 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                     if ($(this).val() == $("#" + id).val()) {
                         var x = parseInt($(this).text());
                         $("#NhomLopPhanCong_" + i + "__SoLuongConLaiTH").val(x);
+                    }
+                });
+                $("#bomonddl > option").each(function () {
+                    if ($(this).val() == $("#" + id).val()) {
+                        var x = $(this).text();
+                        $("#NhomLopPhanCong_" + i + "__TenBoMon").val(x);
                     }
                 });
                 $("#NhomLopPhanCong_" + i + "__HK1LT").val(0);
@@ -417,7 +481,8 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
     return {
         init: init,
         AddRowNhomLopPartial: AddRowNhomLopPartial,
-        AddRowCongTacPartial: AddRowCongTacPartial
+        AddRowCongTacPartial: AddRowCongTacPartial,
+        disableOptionnew: disableOptionnew
     }
 })(PhanCongGiangVienModule);
 

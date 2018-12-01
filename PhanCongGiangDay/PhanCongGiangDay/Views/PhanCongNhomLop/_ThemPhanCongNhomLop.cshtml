@@ -4,6 +4,7 @@
 @Html.DropDownList("tsotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
 @Html.DropDownList("tsotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
 @Html.DropDownList("tsotietddl", (SelectList)ViewBag.hocphanst, null, new { @class = "d-none" })
+@Html.DropDownList("tbomonddl", (SelectList)ViewBag.bomont, null, new { @class = "d-none" })
 
 
 <div class="col-12 p-3" id="Them_panel" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.5rem;margin:auto">
@@ -11,18 +12,26 @@
     {
         @Html.AntiForgeryToken()
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="row">
                 <div class="col-12">
                     <label class="font-weight-bold">Học phần</label><span class="input-required">*</span>
                 </div>
                 <div class="col-12">
                     @Html.DropDownListFor(x => x.HocPhanLogID, (SelectList)ViewBag.hocphanddl, "-- Chọn --", new { @class = "form-control hocphansl2t", id = "tHocPhanLogID" })
-                    <small class="form-text text-danger">@Html.ValidationMessageFor(x=>x.HocPhanLogID)</small>
+                    <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HocPhanLogID)</small>
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-2">
+            <div class="col-12">
+                <label class="font-weight-bold">Bộ môn</label>
+            </div>
+            <div class="col-12">
+                @Html.TextBox("tBoMon", null, new { @class = "form-control", @readonly = true })
+            </div>
+        </div>
+        <div class="col-8">
             <div class="row">
                 <div class="col">
                     <div class="col-12">
@@ -77,7 +86,7 @@
         </div>
         <input type="hidden" name="BangPhanCongID" value="@ViewBag.bangpcIDvb" />
         <input type="hidden" name="KhoaID" value="@ViewBag.khoaidvb" />
-        <input type="hidden" name="TenHocPhan" value="" id="tenhpfor-em"/>
+        <input type="hidden" name="TenHocPhan" value="" id="tenhpfor-em" />
     </div>
         <div class="row pt-2">
             <div class="col-12">

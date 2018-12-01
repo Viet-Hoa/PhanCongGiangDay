@@ -40,5 +40,7 @@ namespace Lib.HocPhan.Model
                 return (int)(SoTietLT+SoTietTH/2);
             }
         }
+
+        public string TenBoMon { get; set; }
     }
 }

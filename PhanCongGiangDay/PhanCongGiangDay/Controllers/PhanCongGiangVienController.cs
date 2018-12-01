@@ -91,6 +91,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.conlaiTH = new SelectList(pcnl, "PhanCongNhomLopID", "SoLuongConLaiTH");
             ViewBag.hocphanlt = new SelectList(pcnl, "PhanCongNhomLopID", "SoTietLT");
             ViewBag.hocphanth = new SelectList(pcnl, "PhanCongNhomLopID", "SoTietTH");
+            ViewBag.bomont = new SelectList(pcnl, "PhanCongNhomLopID", "TenBoMon");
             ViewBag.namhoc = BangPhanCongID;
             var viewModel = PhanCongGiangVienService.ChiTietGiangVienPhanCong(BangPhanCongID, GiangVienID);
             if (viewModel.NhomLopPhanCong == null)

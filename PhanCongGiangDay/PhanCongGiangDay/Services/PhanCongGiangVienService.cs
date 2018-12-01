@@ -168,7 +168,12 @@ namespace PhanCongGiangDay.Services
                     LoaiGV = model.LoaiGV,
                     NhomLopPhanCong = PhanCongGiangVienDA.DanhSachPhanCongGiangVien(BangPhanCongID, GiangVienID).ToList(),
                     CongTacKhac = ct,
-                    CongTac = s
+                    CongTac = s,
+                    Truong = model.Truong,
+                    TenBoMon = model.TenBoMon,
+                    TenDonVi = model.TenDonVi,
+                    ChucDanh = model.ChucDanh,
+                    HocVi = model.HocVi
                 };
             }
             catch (Exception ex)

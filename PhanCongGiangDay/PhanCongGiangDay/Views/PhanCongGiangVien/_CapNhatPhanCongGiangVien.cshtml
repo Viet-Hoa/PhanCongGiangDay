@@ -5,6 +5,7 @@
 @Html.DropDownList("sotietltclddl", (SelectList)ViewBag.conlaiLT, null, new { @class = "d-none" })
 @Html.DropDownList("sotietthclddl", (SelectList)ViewBag.conlaiTH, null, new { @class = "d-none" })
 @Html.DropDownList("sotietctddl", (SelectList)ViewBag.sotietct, null, new { @class = "d-none" })
+@Html.DropDownList("bomonddl", (SelectList)ViewBag.bomont, null, new { @class = "d-none" })
 @Html.Hidden("GiangVienHidden", Model.GiangVienLogID)
 @Html.Hidden("NamHocHidden", (int)ViewBag.namhoc)
 @using (Html.BeginForm("CapNhatPhanCongGiangVien", "PhanCongGiangVien", FormMethod.Post, new { id = "formCapNhatPhanCongGiangVien" }))
@@ -21,7 +22,7 @@
             <div class="col-12">
                 <table style="width:100%">
                     <tr style="border-bottom: gray solid 1px;font-size:14pt">
-                        <td width="82%" class="text-center font-weight-bold">
+                        <td width="86%" class="text-center font-weight-bold">
                             Nhóm lớp
                         </td>
                         @if (Model.LoaiGV == 2.ToString())
@@ -34,17 +35,18 @@
                     <tr>
                         <td>
                             <table class="table-form" style="width:100%">
-                                <thead>
+                                <thead style="font-size:10pt">
                                     <tr class="font-weight-bold">
-                                        <td valign="top" width="32%">Học phần</td>
-                                        <td valign="top" width="8%">Số tiết LT</td>
-                                        <td valign="top" width="8%">Số tiết TH</td>
-                                        <td valign="top" width="8%">Số nhóm LT</td>
-                                        <td valign="top" width="8%">Số nhóm TH</td>
-                                        <td valign="top" width="8%">HK1 LT</td>
-                                        <td valign="top" width="8%">HK1 TH</td>
-                                        <td valign="top" width="8%">HK2 LT</td>
-                                        <td valign="top" width="8%">HK2 TH</td>
+                                        <td valign="top" width="24%">Học phần</td>
+                                        <td valign="top" width="20%">Bộ môn</td>
+                                        <td valign="top" width="7%">Số tiết LT</td>
+                                        <td valign="top" width="7%">Số tiết TH</td>
+                                        <td valign="top" width="7%">Số nhóm LT</td>
+                                        <td valign="top" width="7%">Số nhóm TH</td>
+                                        <td valign="top" width="7%">HK1 LT</td>
+                                        <td valign="top" width="7%">HK1 TH</td>
+                                        <td valign="top" width="7%">HK2 LT</td>
+                                        <td valign="top" width="7%">HK2 TH</td>
                                         <td width="4%"></td>
                                     </tr>
                                 </thead>
@@ -62,6 +64,9 @@
                                                     @Html.ValidationMessageFor(x => x.NhomLopPhanCong[i].PhanCongNhomLopID)
                                                 </td>
                                                 <td valign="top">
+                                                    @Html.TextBoxFor(x => x.NhomLopPhanCong[i].TenBoMon, new { @class = "form-control", @readonly = true })
+                                                </td>
+                                                <td valign="top">
                                                     @Html.TextBoxFor(x => x.NhomLopPhanCong[i].SoTietLT, new { @class = "form-control", @readonly = true })
                                                 </td>
                                                 <td valign="top">
@@ -74,7 +79,7 @@
                                                     @Html.TextBoxFor(x => x.NhomLopPhanCong[i].SoLuongConLaiTH, new { @class = "form-control", @readonly = true })
                                                 </td>
                                                 <td valign="top">
-                                                    @Html.Hidden("hidden_HK1LT_"+i,Model.NhomLopPhanCong[i].HK1LT)
+                                                    @Html.Hidden("hidden_HK1LT_" + i, Model.NhomLopPhanCong[i].HK1LT)
                                                     @Html.TextBoxFor(x => x.NhomLopPhanCong[i].HK1LT, new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
                                                     @Html.ValidationMessageFor(x => x.NhomLopPhanCong[i].HK1LT)
                                                 </td>
@@ -116,6 +121,9 @@
                                                 <input type="hidden" name="NhomLopPhanCong[0].GiangVienLogID" value="@Model.GiangVienLogID" />
                                                 @Html.DropDownList("NhomLopPhanCong[0].PhanCongNhomLopID", (SelectList)ViewBag.pcnlddl, "-- Chọn --", new { @class = "form-control nhomlopddl", id = "nhomlop_0" })
                                                 @Html.ValidationMessageFor(x => x.NhomLopPhanCong[0].PhanCongNhomLopID)
+                                            </td>
+                                            <td valign="top">
+                                                @Html.TextBox("NhomLopPhanCong[0].TenBoMon", "", new { @class = "form-control", @readonly = true })
                                             </td>
                                             <td valign="top">
                                                 @Html.TextBox("NhomLopPhanCong[0].SoTietLT", "", new { @class = "form-control", @readonly = true })
@@ -172,7 +180,7 @@
                                         {
                                             <tbody>
                                                 <tr class="congtac-row" id="rowct_@i">
-                                                    <td valign="top" class="pl-4" width="80%">
+                                                    <td valign="top" class="pl-2" width="80%">
                                                         @Html.HiddenFor(x => x.CongTacKhac[i].PhanCongCongTacID)
                                                         @Html.HiddenFor(x => x.CongTacKhac[i].GiangVienLogID)
                                                         @Html.HiddenFor(x => x.CongTacKhac[i].BangPhanCongID)
@@ -223,24 +231,33 @@
             </div>
         </div>
         <div class="row pt-4 font-weight-bold">
-            <div class="col-3">
-                <span>Giảng viên: @Model.HoTenGV</span>
+            <div class="col-4">
+                <span>Giảng viên: @Model.HoTenGV</span><br />
+                <span>Chức danh: @(Model.ChucDanh ?? "Không")</span><br />
+                <span>Học vị: @(Model.HocVi ?? "Không")</span>
             </div>
-            <div class="col-1">
-                <span>Chức vụ: @(Model.ChucVu ?? "Không")</span>
-            </div>
-            <div class="col-2">
+            <div class="col-5">
+                <span>Chức vụ: @(Model.ChucVu ?? "Không")</span><br />
+                @if (Model.LoaiGV == 2.ToString())
+                {
+                    <span>Bộ môn: @(Model.TenBoMon ?? "Không")</span>
+                }
+                else if (Model.LoaiGV == 3.ToString())
+                {
+                    <span>Đơn vị: @(Model.TenDonVi ?? "Không")</span>
+                }
+                else
+                {
+                    <span>Trường: @(Model.Truong ?? "Không")</span>
+                }
+                <br />
                 <span>Lớp phụ trách: @(Model.LopPhuTrach ?? "Không")</span>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 @Html.Hidden("TongSoTietGD", Model.TongSoTiet)
-                <span>Số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span>
-            </div>
-            <div class="col-2">
+                <span>Số tiết giảng dạy: <span id="tongsotiet">@Model.TongSoTiet</span></span><br />
                 @Html.Hidden("SoTietCT", Model.SoTietCongTac)
-                <span>Số tiết công tác: <span id="sotietcongtac">@Model.SoTietCongTac</span></span>
-            </div>
-            <div class="col-2">
+                <span>Số tiết công tác: <span id="sotietcongtac">@Model.SoTietCongTac</span></span><br />
                 @Html.Hidden("SoTietTT", Model.SoTietThucTe)
                 <span>Tổng số tiết thực tế: <span id="sotietthucte">@Model.SoTietThucTe</span></span>
             </div>

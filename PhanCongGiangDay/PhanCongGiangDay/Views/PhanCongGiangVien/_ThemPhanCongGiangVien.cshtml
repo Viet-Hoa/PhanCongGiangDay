@@ -8,6 +8,9 @@
         @Html.ValidationMessage("NhomLopPhanCong[" + i + "].PhanCongNhomLopID")
     </td>
     <td valign="top">
+        @Html.TextBox("NhomLopPhanCong[" + i + "].TenBoMon", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td valign="top">
         @Html.TextBox("NhomLopPhanCong[" + i + "].SoTietLT", "", new { @class = "form-control", @readonly = true })
     </td>
     <td valign="top">
@@ -45,6 +48,7 @@
 </tr>
 <script>
     $(function () {
+        CapNhatPhanCongGiangVienModule.disableOptionnew(@i);
         CapNhatPhanCongGiangVienModule.AddRowNhomLopPartial();
     });
     $(document).ready(function () {

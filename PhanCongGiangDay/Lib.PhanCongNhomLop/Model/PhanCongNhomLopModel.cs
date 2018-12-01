@@ -47,5 +47,6 @@ namespace Lib.PhanCongNhomLop.Model
         }
         public int SoTietLT { get; set; }
         public int SoTietTH { get; set; }
+        public string TenBoMon { get; set; }
     }
 }

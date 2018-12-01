@@ -667,12 +667,12 @@ select.form-control.error {
 }
 
 .table-form tbody td{
-    padding-left:8px;
-    padding-right:8px
+    padding-left:5px;
+    padding-right:5px
 }
 .table-form thead td {
-    padding-left: 8px;
-    padding-right: 8px
+    padding-left: 5px;
+    padding-right: 5px
 }
 a .fa-file-excel-o {
     color: #2e7d32;

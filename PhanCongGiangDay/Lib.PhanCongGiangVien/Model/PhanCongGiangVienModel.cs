@@ -39,6 +39,7 @@ namespace Lib.PhanCongGiangVien.Model
         public int SoTietTH { get; set; }
         public int SoLuongConLaiLT { get; set; }
         public int SoLuongConLaiTH { get; set; }
+        public string TenBoMon { get; set; }
     }
     public class PhanCongCongTacModel
     {

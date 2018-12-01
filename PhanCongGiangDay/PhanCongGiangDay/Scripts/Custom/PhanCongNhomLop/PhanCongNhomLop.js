@@ -151,6 +151,11 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
                     $('#tSoTiet').val($(this).text());
                 }
             });
+            $("#tbomonddl > option").each(function () {
+                if ($(this).val() == $('#tHocPhanLogID').val()) {
+                    $('#tBoMon').val($(this).text());
+                }
+            });
         });
         
     }
@@ -243,6 +248,11 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
             $("#sotietddl > option").each(function () {
                 if ($(this).val() == $('#HocPhanLogID').val()) {
                     $('#SoTiet').val($(this).text());
+                }
+            });
+            $("#bomonddl > option").each(function () {
+                if ($(this).val() == $('#HocPhanLogID').val()) {
+                    $('#BoMon').val($(this).text());
                 }
             });
         });

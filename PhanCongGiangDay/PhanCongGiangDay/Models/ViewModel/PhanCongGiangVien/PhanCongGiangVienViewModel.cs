@@ -11,6 +11,8 @@ namespace PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien
         public int STT { get; set; }
         public string HoTenGV { get; set; }
         public string ChucVu { get; set; }
+        public string ChucDanh { get; set; }
+        public string HocVi { get; set; }
         public string LopPhuTrach { get; set; }
         public int GiangVienLogID { get; set; }
         public string LoaiGV { get; set; }
@@ -26,5 +28,8 @@ namespace PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien
         public List<PhanCongGiangVienModel> NhomLopPhanCong { get; set; }
         public List<PhanCongCongTacModel> CongTacKhac { get; set; }
         public string CongTac { get; set; }
+        public string Truong { get; set; }
+        public string TenDonVi { get; set; }
+        public string TenBoMon { get; set; }
     }
 }
