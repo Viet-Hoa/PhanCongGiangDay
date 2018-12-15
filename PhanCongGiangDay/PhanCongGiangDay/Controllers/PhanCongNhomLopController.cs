@@ -24,7 +24,6 @@ namespace PhanCongGiangDay.Controllers
         {
             PhanCongNhomLopService = _PhanCongNhomLopService;
         }
-        private int khoaID = 0;
         // GET: PhanCongNhomLop
         public ActionResult Index()
         {
@@ -41,7 +40,6 @@ namespace PhanCongGiangDay.Controllers
         }
         public ActionResult PhanCong(int NamHoc, int Khoa)
         {
-            khoaID = Khoa;
             ViewBag.namhocID = NamHoc;
             ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
             ViewBag.khoaID = Khoa;
@@ -61,6 +59,7 @@ namespace PhanCongGiangDay.Controllers
             var dshp = HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID);
             ViewBag.bangpcIDvb = BangPhanCongID;
             ViewBag.khoaidvb = KhoaID;
+            ViewBag.sv = KhoaService.ChiTietKhoa((int)KhoaID).TTSV;
             ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
             ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
@@ -77,7 +76,7 @@ namespace PhanCongGiangDay.Controllers
             try
             {
                 var hp = HocPhanService.ChiTietHocPhanLog(model.HocPhanLogID);
-                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, khoaID).Where(x=>x.HocPhanID==hp.HocPhanID).FirstOrDefault();
+                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, model.KhoaID).Where(x=>x.HocPhanID==hp.HocPhanID).FirstOrDefault();
                 if(c!=null)
                 {
                     ModelState.AddModelError("HocPhanLogID", "Học phần \""+model.TenHocPhan+"\" đã phân công nhóm lớp");
@@ -121,6 +120,7 @@ namespace PhanCongGiangDay.Controllers
         {
             var viewModel = PhanCongNhomLopService.ChiTietPhanCongNhomLop(id);
             var dshp = HocPhanService.DanhSachHocPhanTheoKhoa(viewModel.KhoaID);
+            ViewBag.sv = KhoaService.ChiTietKhoa(viewModel.KhoaID).TTSV;
             ViewBag.hocphanddl = new SelectList(dshp, "HocPhanLogID", "MaVaTenHP");
             ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");

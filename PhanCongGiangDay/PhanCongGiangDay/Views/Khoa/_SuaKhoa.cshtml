@@ -26,7 +26,7 @@
                         <label class="font-weight-bold">Năm bắt đầu</label><span class="input-required">*</span>
                     </div>
                     <div class="col-6">
-                        @Html.DropDownListFor(x => x.NamBatDau, (SelectList)ViewBag.startyear, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.NamBatDau, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamBatDau)</small>
                     </div>
                 </div>
@@ -35,8 +35,17 @@
                         <label class="font-weight-bold">Năm kết thúc</label><span class="input-required">*</span>
                     </div>
                     <div class="col-6">
-                        @Html.DropDownListFor(x => x.NamKetThuc, (SelectList)ViewBag.endyear, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.NamKetThuc, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)" })
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamKetThuc)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số lượng sinh viên</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SLSV, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SLSV)</small>
                     </div>
                 </div>
                 <div class="row mb-2">

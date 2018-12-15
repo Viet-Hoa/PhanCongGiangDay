@@ -35,8 +35,8 @@
   </chucvu>
 
   <hocvi>
-    <item value="Tiến sĩ" text="Tiến sĩ"/>
     <item value="PGS-TS" text="Phó giáo sư - Tiến sĩ"/>
+    <item value="Tiến sĩ" text="Tiến sĩ"/>
     <item value="Thạc sĩ" text="Thạc sĩ"/>
     <item value="NCS" text="Nghiên cứu sinh"/>
     <item value="Cử nhân" text="Cử nhân"/>

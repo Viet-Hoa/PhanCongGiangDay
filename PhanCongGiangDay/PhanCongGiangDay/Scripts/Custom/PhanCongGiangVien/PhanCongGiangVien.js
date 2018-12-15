@@ -175,14 +175,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                     if ($(this).val() == $("#" + id).val()) {
                         var x = parseInt($(this).text());
                         $("#NhomLopPhanCong_" + i + "__SoTietLT").val(x);
-                        if (x == 0) {
-                            $("#NhomLopPhanCong_" + i + "__HK1LT").attr("readonly", true);
-                            $("#NhomLopPhanCong_" + i + "__HK2LT").attr("readonly", true);
-                        }
-                        else {
-                            $("#NhomLopPhanCong_" + i + "__HK1LT").attr("readonly", false);
-                            $("#NhomLopPhanCong_" + i + "__HK2LT").attr("readonly", false);
-                        }
+                        
                     }
                 });
                 $("#sotietthddl > option").each(function () {

@@ -189,6 +189,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Attributes\CustomLoginAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\EncryptedActionParameter.cs" />
+    <Compile Include="Infrastructure\Attributes\NoCache.cs" />
     <Compile Include="Infrastructure\Caching\CacheKeys.cs" />
     <Compile Include="Infrastructure\Caching\ICacheProvider.cs" />
     <Compile Include="Infrastructure\Caching\MemoryCacheProvider.cs" />
@@ -197,6 +200,9 @@
     <Compile Include="Infrastructure\Extensions\ExceptionExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HtmlExtensions.cs" />
     <Compile Include="Infrastructure\Modules\InfrastructureModule.cs" />
+    <Compile Include="IServices\IAccountService.cs" />
+    <Compile Include="IServices\IGiangVienService.cs" />
+    <Compile Include="IServices\IBoMonService.cs" />
     <Compile Include="IServices\ICTDTService.cs" />
     <Compile Include="IServices\ICongTacKhacService.cs" />
     <Compile Include="IServices\IXuatExcelService.cs" />
@@ -209,6 +215,9 @@
     <Compile Include="Models\ViewModel\PhanCongGiangVien\PhanCongGiangVienViewModel.cs" />
     <Compile Include="Models\ViewModel\Shared\JsonResponseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\BoMonService.cs" />
+    <Compile Include="Services\GiangVienService.cs" />
     <Compile Include="Services\CTDTService.cs" />
     <Compile Include="Services\CongTacKhacService.cs" />
     <Compile Include="Services\XuatExcelService.cs" />
@@ -218,7 +227,9 @@
     <Compile Include="Services\KhoaService.cs" />
     <Compile Include="Services\NamHocService.cs" />
     <Compile Include="Services\DonViService.cs" />
+    <Compile Include="UtilityHelpers\AccountUtils.cs" />
     <Compile Include="UtilityHelpers\DropzoneOptions.cs" />
+    <Compile Include="UtilityHelpers\EncryptedParameterExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\XMLData.xml">
@@ -822,6 +833,10 @@
     <ProjectReference Include="..\Lib.Account\Lib.Account.csproj">
       <Project>{dde797e1-24a8-49e1-9e66-3df7034e7e51}</Project>
       <Name>Lib.Account</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.BoMon\Lib.BoMon.csproj">
+      <Project>{0c19f460-32e8-4d16-936a-124b2b5bd8fb}</Project>
+      <Name>Lib.BoMon</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lib.ChuongTrinhDaoTao\Lib.ChuongTrinhDaoTao.csproj">
       <Project>{5345ac50-2121-4818-82be-990f436816b1}</Project>

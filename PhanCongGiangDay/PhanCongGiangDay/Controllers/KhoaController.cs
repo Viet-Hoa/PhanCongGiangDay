@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Lib.Setting.Model;
 using Lib.Khoa.Model;
+using PhanCongGiangDay.Services;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 
@@ -12,6 +13,9 @@ namespace PhanCongGiangDay.Controllers
 {
     public class KhoaController : BizController
     {
+        private ICTDTService _cTDTService;
+        private ICTDTService CTDTService => _cTDTService ?? (_cTDTService = new CTDTService());
+
         private readonly IKhoaService KhoaService;
         public KhoaController(IKhoaService _KhoaService)
         {
@@ -32,6 +36,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult ThemKhoa()
         {
+            ViewBag.ctdt = new SelectList(CTDTService.DanhSachCTDT(), "CTDTID", "TenCTDT");
             return PartialView("_ThemKhoa");
         }
 
@@ -62,6 +67,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult SuaKhoa(int id)
         {
+            ViewBag.ctdt = new SelectList(CTDTService.DanhSachCTDT(), "CTDTID", "TenCTDT");
             var viewModel = KhoaService.ChiTietKhoa(id);
             return PartialView("_SuaKhoa",viewModel);
         }

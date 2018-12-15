@@ -21,9 +21,7 @@ namespace PhanCongGiangDay.Controllers
         private INamHocService NamHocService => _namHocService ?? (_namHocService = new NamHocService());
         private ICongTacKhacService _congTacKhacService;
         private ICongTacKhacService CongTacKhacService => _congTacKhacService ?? (_congTacKhacService = new CongTacKhacService());
-        private IHocPhanService _hocPhanService;
-        private IHocPhanService HocPhanService => _hocPhanService ?? (_hocPhanService = new HocPhanService());
-        private readonly IPhanCongGiangVienService PhanCongGiangVienService;
+       private readonly IPhanCongGiangVienService PhanCongGiangVienService;
 
         public PhanCongGiangVienController(IPhanCongGiangVienService _PhanCongGiangVienService)
         {

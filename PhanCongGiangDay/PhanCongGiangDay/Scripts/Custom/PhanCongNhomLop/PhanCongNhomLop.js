@@ -113,20 +113,20 @@ var ThemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
     function setNumber() {
         $('#tHocPhanLogID').change(function () {
             $('#tenhpfor-em').val($("#tHocPhanLogID option:selected").text());
-            $("#tsotietltddl > option").each(function () {
-                if ($(this).val() == $('#tHocPhanLogID').val()) {
-                    var x = parseInt($(this).text());
-                    if (x > 0) {
-                        lt = 1;
-                        $('#tSoLuongNhomLopLT').attr("readonly", false);
-                    }
-                    else {
-                        lt = 0;
-                        $('#tSoLuongNhomLopLT').val(0);
-                        $('#tSoLuongNhomLopLT').attr("readonly", true);
-                    }                    
-                }                
-            });
+            //$("#tsotietltddl > option").each(function () {
+            //    if ($(this).val() == $('#tHocPhanLogID').val()) {
+            //        var x = parseInt($(this).text());
+            //        if (x > 0) {
+            //            lt = 1;
+            //            $('#tSoLuongNhomLopLT').attr("readonly", false);
+            //        }
+            //        else {
+            //            lt = 0;
+            //            $('#tSoLuongNhomLopLT').val(0);
+            //            $('#tSoLuongNhomLopLT').attr("readonly", true);
+            //        }                    
+            //    }                
+            //});
             $("#tsotietthddl > option").each(function () {
                 if ($(this).val() == $('#tHocPhanLogID').val()) {
                     var x = parseInt($(this).text());
@@ -212,20 +212,20 @@ var SuaPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
 
     function setNumber() {
         $('#HocPhanLogID').change(function () {
-            $("#sotietltddl > option").each(function () {
-                if ($(this).val() == $('#HocPhanLogID').val()) {
-                    var x = parseInt($(this).text());
-                    if (x > 0) {
-                        lt = 1;
-                        $('#SoLuongNhomLopLT').attr("readonly", false);
-                    }
-                    else {
-                        lt = 0;
-                        $('#SoLuongNhomLopLT').val(0);
-                        $('#SoLuongNhomLopLT').attr("readonly", true);
-                    }                    
-                }
-            });
+            //$("#sotietltddl > option").each(function () {
+            //    if ($(this).val() == $('#HocPhanLogID').val()) {
+            //        var x = parseInt($(this).text());
+            //        if (x > 0) {
+            //            lt = 1;
+            //            $('#SoLuongNhomLopLT').attr("readonly", false);
+            //        }
+            //        else {
+            //            lt = 0;
+            //            $('#SoLuongNhomLopLT').val(0);
+            //            $('#SoLuongNhomLopLT').attr("readonly", true);
+            //        }                    
+            //    }
+            //});
             $("#sotietthddl > option").each(function () {
                 if ($(this).val() == $('#HocPhanLogID').val()) {
                     var x = parseInt($(this).text());

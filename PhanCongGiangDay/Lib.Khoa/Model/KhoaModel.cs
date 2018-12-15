@@ -19,7 +19,10 @@ namespace Lib.Khoa.Model
         public int NamKetThuc { get; set; }
         public int CTDTID { get; set; }
         public string ChuongTrinhDaoTao { get; set; }
+        [Required(ErrorMessage = "Số lượng sinh viên không được để trống.")]
         public int SLSV { get; set; }
         public string NguoiTao { get; set; }
+
+        public string TTSV { get; set; }
     }
 }
