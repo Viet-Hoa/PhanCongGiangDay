@@ -806,6 +806,7 @@
     <Content Include="Templates\Mau02.xlsx" />
     <Content Include="Templates\Mau03.xlsx" />
     <Content Include="Templates\Mau04.xlsx" />
+    <Content Include="Templates\MauBM.xlsx" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />

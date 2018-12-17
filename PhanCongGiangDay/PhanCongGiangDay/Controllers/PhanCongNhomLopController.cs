@@ -79,7 +79,7 @@ namespace PhanCongGiangDay.Controllers
                 var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, model.KhoaID).Where(x=>x.HocPhanID==hp.HocPhanID).FirstOrDefault();
                 if(c!=null)
                 {
-                    ModelState.AddModelError("HocPhanLogID", "Học phần \""+model.TenHocPhan+"\" đã phân công nhóm lớp");
+                    ModelState.AddModelError("HocPhanLogID", "Học phần \""+model.TenHocPhan+"\" đã được phân công nhóm lớp");
                 }
                 if (ModelState.IsValid)
                {

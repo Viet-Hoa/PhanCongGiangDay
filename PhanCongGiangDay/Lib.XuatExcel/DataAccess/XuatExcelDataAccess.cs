@@ -58,5 +58,21 @@ namespace Lib.XuatExcel.DataAccess
             }
             return list;
         }
+        public IEnumerable<XuatExcelModel02> XuatExcelMauBM(int BangPhanCongID, int BoMonID)
+        {
+            List<XuatExcelModel02> list = new List<XuatExcelModel02>();
+            try
+            {
+                List<SqlParameter> listParameter = new List<SqlParameter>();
+                listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
+                listParameter.Add(new SqlParameter("@BoMonID", BoMonID));
+                list = DBUtils.ExecuteSPList<XuatExcelModel02>("SP_XuatExcel_MauBM", listParameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return list;
+        }
     }
 }

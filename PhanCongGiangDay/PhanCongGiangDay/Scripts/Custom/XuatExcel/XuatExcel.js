@@ -7,6 +7,7 @@ var XuatExcelModule = (function () {
         MauSo04();
         MauSo03();
         MauSo02();
+        MauBoMon();
     }
 
     function MauSo04() {
@@ -24,6 +25,12 @@ var XuatExcelModule = (function () {
     function MauSo02() {
         $('#mau_02').click(function () {
             window.location.href = "/XuatExcel/XuatExcelMau02?BangPhanCongID=" + $("#NamHoc").val();
+        });
+    }
+
+    function MauBoMon() {
+        $('#mau_bomon').click(function () {
+            window.location.href = "/XuatExcel/XuatExcelMauBoMon?BangPhanCongID=" + $("#NamHoc").val();
         });
     }
 

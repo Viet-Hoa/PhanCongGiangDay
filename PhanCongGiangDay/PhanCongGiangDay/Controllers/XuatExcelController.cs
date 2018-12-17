@@ -41,30 +41,25 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult XuatExcelMau02(int BangPhanCongID)
         {
             var content = XuatExcelService.XuatExcelMau02(BangPhanCongID);
-            var fileName = "KeHoachMoiGiang_Mau02_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            var fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_Mau02_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
         public ActionResult XuatExcelMau01_HK1(int BangPhanCongID)
         {
             var content = XuatExcelService.XuatExcelMau01(BangPhanCongID,1);
-            var fileName = "KeHoachMoiGiang_Mau01_HK1_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            var fileName = "KeHoachMoMonChuyenNganh_Mau01_HK1_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
         public ActionResult XuatExcelMau01_HK2(int BangPhanCongID)
         {
             var content = XuatExcelService.XuatExcelMau01(BangPhanCongID,2);
-            var fileName = "KeHoachMoiGiang_Mau01_HK2_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            var fileName = "KeHoachMoMonChuyenNganh_Mau01_HK2_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
         public ActionResult XuatExcelMauBoMon(int BangPhanCongID)
         {
-            var ds = BoMonService.DanhSachBoMon();
-            return PartialView("_MauBoMon", ds);
-        }
-        public ActionResult XuatExcelMauBoMon(int BangPhanCongID, List<int> listid)
-        {
-            var content = XuatExcelService.XuatExcelMauBoMon(BangPhanCongID, listid.First());
-            var fileName = "KeHoachMoiGiang_MauBoMon_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            var content = XuatExcelService.XuatExcelMauBoMon(BangPhanCongID);
+            var fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauBoMon_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
         public ActionResult XuatExcelMauGiangVien(int BangPhanCongID)
@@ -75,7 +70,7 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult XuatExcelMauGV(int BangPhanCongID, List<int> listid)
         {
             var content = XuatExcelService.XuatExcelMauGiangVien(BangPhanCongID, listid.First());
-            var fileName = "KeHoachMoiGiang_MauGiangVien_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+            var fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauGiangVien_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
     }
