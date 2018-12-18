@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Services;
+using PhanCongGiangDay.Models.ViewModel.XuatExcel;
 
 namespace PhanCongGiangDay.Controllers
 {
@@ -15,8 +16,6 @@ namespace PhanCongGiangDay.Controllers
 
         private INamHocService _namHocService;
         private INamHocService NamHocService => _namHocService ?? (_namHocService = new NamHocService());
-        private IBoMonService _boMonService;
-        private IBoMonService BoMonService => _boMonService ?? (_boMonService = new BoMonService());
         private IGiangVienService _giangVienService;
         private IGiangVienService GiangVienService => _giangVienService ?? (_giangVienService = new GiangVienService());
 
@@ -62,16 +61,38 @@ namespace PhanCongGiangDay.Controllers
             var fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauBoMon_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
-        public ActionResult XuatExcelMauGiangVien(int BangPhanCongID)
+        [HttpGet]
+        public ActionResult XuatExcelMauGiangVien()
         {
-            var ds = GiangVienService.DanhSachGiangVienTheoLoai(2);
-            return PartialView("_MauGiangVien", ds);
+            var ds = GiangVienService.DanhSachGiangVienTheoLoai(2).ToList().OrderBy(x=>x.MaCB);
+            var viewmodel = new List<GiangVienCheckViewModel>();
+            foreach(var item in ds)
+            {
+                var add = new GiangVienCheckViewModel();
+                add.GiangVienID = item.GiangVienID;
+                add.GiangVien = item.MaCB + " - " + item.Ho + " " + item.Ten;
+                viewmodel.Add(add);
+            }
+            return PartialView("_MauGiangVien", viewmodel);
         }
-        public ActionResult XuatExcelMauGV(int BangPhanCongID, List<int> listid)
+        [HttpPost]
+        public ActionResult XuatExcelMauGiangVien(int BangPhanCongID, List<GiangVienCheckViewModel> model)
         {
-            var content = XuatExcelService.XuatExcelMauGiangVien(BangPhanCongID, listid.First());
-            var fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauGiangVien_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
-            return File(content, "application/vnd.ms-excel", fileName);
+            List<int> list = new List<int>();
+            foreach (var item in model)
+            {
+                if (item.check)
+                    list.Add(item.GiangVienID);
+            }
+            var content = XuatExcelService.XuatExcelMauGiangVien(BangPhanCongID, list);
+            string fileName = "";
+            if(model.Count==1)
+            {
+                fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauGiangVien_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".xlsx";
+                return File(content, "application/vnd.ms-excel", fileName);
+            }
+            fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauGiangVien_" + DateTime.Now.ToString("ddMMyyyyhhmmssfff") + ".zip";
+            return File(content, "application/x-zip-compressed", fileName);
         }
     }
 }

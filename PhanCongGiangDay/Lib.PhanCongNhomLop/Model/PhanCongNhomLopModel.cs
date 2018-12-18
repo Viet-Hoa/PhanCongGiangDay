@@ -27,7 +27,7 @@ namespace Lib.PhanCongNhomLop.Model
         public int SoLuongNhomLopTH { get; set; }
 
         [Required(ErrorMessage = "Số lượng SV trên nhóm lớp không được để trống.")]
-        [Range(0, 100)]
+        [Range(0, 200)]
         public int SLSVNhomLop { get; set; }
 
         public int SoLuongConLaiLT { get; set; }

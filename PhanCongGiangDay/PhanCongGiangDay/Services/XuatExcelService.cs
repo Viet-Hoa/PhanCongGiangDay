@@ -488,7 +488,7 @@ namespace PhanCongGiangDay.Services
                     foreach(var bomon in dsbm)
                     {
                         var worksheet = workbook.Worksheet(bomon.MaBoMon);
-                        var data = XuatExcelDA.XuatExcelMauBM(BangPhanCongID, bomon.BoMonID);
+                        var data = XuatExcelDA.XuatExcelMauBoMon(BangPhanCongID, bomon.BoMonID);
                         worksheet.Cell("G3").Value = "Thành phố Hồ Chí Minh, ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
                         worksheet.Cell("A8").Value = "NĂM HỌC " + NamHocService.ChiTietNamHoc(BangPhanCongID).NamHoc;
                         var range = worksheet.Cell(15, 1).InsertData(data);
@@ -593,7 +593,7 @@ namespace PhanCongGiangDay.Services
             }
         }
 
-        public Stream XuatExcelMauGiangVien(int BangPhanCongID, int GiangVienID)
+        public Stream XuatExcelMauGiangVien(int BangPhanCongID, List<int> GiangVienID)
         {
             try
             {
