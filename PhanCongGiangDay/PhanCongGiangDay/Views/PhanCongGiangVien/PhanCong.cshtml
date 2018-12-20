@@ -1,7 +1,9 @@
-﻿@model List<PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien.PhanCongGiangVienViewModel>
+﻿@using PhanCongGiangDay.UtilityHelpers
+@model List<PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien.PhanCongGiangVienViewModel>
 @{
     ViewBag.Title = "PHÂN CÔNG GIẢNG VIÊN - PHÂN CÔNG";
 }
+@Html.Hidden("role", AccountUtils.CurrentUserLv())
 <input type="hidden" id="bangpc" value="@ViewBag.namhocID" />
 <h3 class="text-uppercase pt-3">PHÂN CÔNG GIẢNG VIÊN > <a style="color: #1565c0" href="@Url.Action("Index","PhanCongGiangVien")">NĂM HỌC @ViewBag.namhoctext</a></h3>
 <div id="main-content">

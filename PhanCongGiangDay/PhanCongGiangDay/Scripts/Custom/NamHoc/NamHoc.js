@@ -31,7 +31,7 @@ var NamHocModule = (function () {
                 },
                 complete: function () {
                     hideLoadingOverlay();
-                    //initRoleNhanVien();
+                    Checkrole();
                 }
             },
 
@@ -56,7 +56,12 @@ var NamHocModule = (function () {
         });
     }
 
-
+    function Checkrole() {
+        if ($('#role').val() == 2) {
+            $('#btnThemNamHoc').addClass("add-disabled");
+            $(".btn-grid").addClass("edit-disabled");
+        }
+    }
 
     function reloadNamHocTable() {
         $NamHocTable.ajax.reload();

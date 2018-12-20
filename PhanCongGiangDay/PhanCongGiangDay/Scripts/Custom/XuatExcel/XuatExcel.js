@@ -38,6 +38,9 @@ var XuatExcelModule = (function () {
 
     function MauGV() {
         $('#BPC-hidden').val($("#NamHoc").val());
+        $('#check-all').click(function () {
+            $("input:checkbox").prop('checked', $(this).prop("checked"));
+        });
         $('#btn_xuatGV').click(function () {
             $('#modal').modal("hide");
             //var d = new Date();

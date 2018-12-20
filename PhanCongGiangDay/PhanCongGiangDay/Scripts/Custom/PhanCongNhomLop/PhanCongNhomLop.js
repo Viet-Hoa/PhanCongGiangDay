@@ -45,7 +45,7 @@ var PhanCongNhomLopModule = (function () {
                 },
                 complete: function () {
                     hideLoadingOverlay("#PhanCongNhomLop-container");
-                    //initRoleNhanVien();
+                    Checkrole();
                 }
             },
 
@@ -75,7 +75,12 @@ var PhanCongNhomLopModule = (function () {
         });
     }
 
-
+    function Checkrole() {
+        if ($('#role').val() < 2) {
+            $(".btn-grid").addClass("edit-disabled");
+            $("#btnThemPhanCongNhomLop").addClass("add-disabled");
+        }
+    }
 
     function reloadPhanCongNhomLopTable() {
         $PhanCongNhomLopTable.ajax.reload();

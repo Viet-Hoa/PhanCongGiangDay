@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "PHÂN CÔNG NHÓM LỚP - KHOÁ";
 }
+@Html.Hidden("role", AccountUtils.CurrentUserLv())
 <input type="hidden" id="bangpc" value="@ViewBag.namhocID" />
 <div class="row">
     <div class="col-9">

@@ -31,7 +31,7 @@ var KhoaModule = (function () {
                 },
                 complete: function () {
                     hideLoadingOverlay();
-                    //initRoleNhanVien();
+                    Checkrole();
                 }
             },
 
@@ -60,7 +60,12 @@ var KhoaModule = (function () {
         });
     }
 
-
+    function Checkrole() {
+        if ($('#role').val() == 2) {
+            $('#btnThemKhoa').addClass("add-disabled");
+            $(".btn-grid").addClass("edit-disabled");
+        }
+    }
 
     function reloadKhoaTable() {
         $KhoaTable.ajax.reload();

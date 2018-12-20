@@ -1,7 +1,8 @@
-﻿@{
+﻿@using PhanCongGiangDay.UtilityHelpers
+@{
     ViewBag.Title = "KHOÁ";
 }
-
+@Html.Hidden("role", AccountUtils.CurrentUserLv())
 <h3 class="text-uppercase pt-3">Khoá</h3>
 <div id="main-content">
     <div class="container-fluid">

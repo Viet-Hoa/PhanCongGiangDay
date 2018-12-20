@@ -31,7 +31,7 @@ var DonViModule = (function () {
                 },
                 complete: function () {
                     hideLoadingOverlay();
-                    //initRoleNhanVien();
+                    Checkrole();
                 }
             },
 
@@ -57,7 +57,12 @@ var DonViModule = (function () {
         });
     }
 
-
+    function Checkrole() {
+        if ($('#role').val() == 2) {
+            $('#btnThemDonVi').addClass("add-disabled");
+            $(".btn-grid").addClass("edit-disabled");
+        }
+    }
 
     function reloadDonViTable() {
         $DonViTable.ajax.reload();
