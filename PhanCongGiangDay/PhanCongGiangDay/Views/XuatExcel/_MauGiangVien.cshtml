@@ -19,6 +19,7 @@
                             </th>
                             <th>
                                 Giảng viên
+                                <input id="BPC-hidden" type="hidden" name="BangPhanCongID" value="" />
                             </th>
                         </tr>
                     </thead>
@@ -43,11 +44,11 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
-        <button type="button" class="btn btn-success text-uppercase pull-right" id="btn_suaNamHoc">Xuất Excel</button>
+        <button type="submit" class="btn btn-success text-uppercase pull-right"  id="btn_xuatGV">Xuất Excel</button>
     </div>
 }
 <script>
     $(function () {
-        SuaNamHocModule.init();
+        XuatExcelModule.MauGV();
     });
 </script>

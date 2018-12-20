@@ -7,9 +7,10 @@ using Lib.Setting.Model;
 using Lib.DonVi.Model;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
-
+using PhanCongGiangDay.Infrastructure.Attributes;
 namespace PhanCongGiangDay.Controllers
 {
+    [CustomLoginAuthorize]
     public class DonViController : BizController
     {
         private readonly IDonViService DonViService;

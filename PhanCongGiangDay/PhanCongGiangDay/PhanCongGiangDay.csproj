@@ -94,6 +94,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
@@ -215,6 +217,7 @@
     <Compile Include="Models\ViewModel\PhanCongGiangVien\PhanCongGiangVienViewModel.cs" />
     <Compile Include="Models\ViewModel\Shared\JsonResponseViewModel.cs" />
     <Compile Include="Models\ViewModel\XuatExcel\GiangVienCheckViewModel.cs" />
+    <Compile Include="Models\ViewModel\XuatExcel\MauGVViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\BoMonService.cs" />
@@ -359,6 +362,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Scripts\Custom\Account\Account.js" />
     <Content Include="Scripts\Custom\Khoa\Khoa.js" />
     <Content Include="Scripts\Custom\NamHoc\NamHoc.js" />
     <Content Include="Scripts\Custom\DonVi\DonVi.js" />
@@ -808,6 +812,8 @@
     <Content Include="Templates\Mau03.xlsx" />
     <Content Include="Templates\Mau04.xlsx" />
     <Content Include="Templates\MauBM.xlsx" />
+    <Content Include="Templates\MauGV.xlsx" />
+    <Content Include="Templates\Mau01.xlsx" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />
@@ -826,6 +832,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Model\" />
+    <Folder Include="Templates\MauExcelGiangVien\" />
+    <Folder Include="Templates\Temp\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

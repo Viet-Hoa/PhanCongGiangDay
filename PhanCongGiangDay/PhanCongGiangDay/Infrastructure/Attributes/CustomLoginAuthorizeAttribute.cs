@@ -102,12 +102,12 @@ namespace PhanCongGiangDay.Infrastructure.Attributes
             if (httpContext == null) throw new ArgumentNullException("httpContext");
 
             string controller = Protect.ToString(httpContext.Request.RequestContext.RouteData.Values["controller"]).Trim();
-            string action = Protect.ToString(httpContext.Request.RequestContext.RouteData.Values["action"]).Trim();            
+            string action = Protect.ToString(httpContext.Request.RequestContext.RouteData.Values["action"]).Trim();
             // check LoginSessionKey
-            var loginSessionKey = Sessions.GetMessage("LoginKey");
+            var loginSessionKey = AccountUtils.CurrentSessionKey();
             var res = AccountDA.CheckSession(AccountUtils.CurrentSessionKey());
             // invalid session
-            if (res.ResponseCode == 0)
+            if (res!=null && res.ResponseCode == 0)
             {
                 Sessions.AddMessage("SessionExpired", "Hết hạn lượt truy cập.");
                 return false;
