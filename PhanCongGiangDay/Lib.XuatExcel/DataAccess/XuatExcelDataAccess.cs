@@ -74,15 +74,31 @@ namespace Lib.XuatExcel.DataAccess
             }
             return list;
         }
-        public IEnumerable<XuatExcelModel02> XuatExcelMauGiangVien(int BangPhanCongID, int GiangVienID)
+        public IEnumerable<XuatExcelModelGV> XuatExcelMauGiangVien(int BangPhanCongID, int GiangVienID)
         {
-            List<XuatExcelModel02> list = new List<XuatExcelModel02>();
+            List<XuatExcelModelGV> list = new List<XuatExcelModelGV>();
             try
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
                 listParameter.Add(new SqlParameter("@GiangVienID", GiangVienID));
-                list = DBUtils.ExecuteSPList<XuatExcelModel02>("SP_XuatExcel_MauBM", listParameter);
+                list = DBUtils.ExecuteSPList<XuatExcelModelGV>("SP_XuatExcel_MauGV", listParameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return list;
+        }
+        public IEnumerable<XuatExcelModel01> XuatExcelMau01(int BangPhanCongID, int HocKi)
+        {
+            List<XuatExcelModel01> list = new List<XuatExcelModel01>();
+            try
+            {
+                List<SqlParameter> listParameter = new List<SqlParameter>();
+                listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
+                listParameter.Add(new SqlParameter("@HocKi", HocKi));
+                list = DBUtils.ExecuteSPList<XuatExcelModel01>("SP_XuatExcel_Mau01", listParameter);
             }
             catch (Exception ex)
             {

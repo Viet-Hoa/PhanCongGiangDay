@@ -14,6 +14,7 @@ namespace Lib.XuatExcel.IDataAccess
         IEnumerable<XuatExcelModel03> XuatExcelMau03(int BangPhanCongID);
         IEnumerable<XuatExcelModel02> XuatExcelMau02(int BangPhanCongID);
         IEnumerable<XuatExcelModel02> XuatExcelMauBoMon(int BangPhanCongID, int BoMonID);
-        IEnumerable<XuatExcelModel02> XuatExcelMauGiangVien(int BangPhanCongID, int GiangVienID);
+        IEnumerable<XuatExcelModelGV> XuatExcelMauGiangVien(int BangPhanCongID, int GiangVienID);
+        IEnumerable<XuatExcelModel01> XuatExcelMau01(int BangPhanCongID, int HocKi);
     }
 }

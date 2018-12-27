@@ -8,9 +8,10 @@ using Lib.NamHoc.Model;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 using Lib.Setting;
-
+using PhanCongGiangDay.Infrastructure.Attributes;
 namespace PhanCongGiangDay.Controllers
 {
+    [CustomLoginAuthorize]
     public class NamHocController : BizController
     {
         private readonly INamHocService NamHocService;

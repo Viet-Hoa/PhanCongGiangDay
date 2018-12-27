@@ -1,7 +1,9 @@
-﻿@model List<Lib.Khoa.Model.KhoaModel>
+﻿@using PhanCongGiangDay.UtilityHelpers
+@model List<Lib.Khoa.Model.KhoaModel>
 @{
     ViewBag.Title = "PHÂN CÔNG NHÓM LỚP - KHOÁ";
 }
+@Html.Hidden("role", AccountUtils.CurrentUserLv())
 <input type="hidden" id="bangpc" value="@ViewBag.namhocID" />
 <div class="row">
     <div class="col-9">
@@ -21,7 +23,7 @@
                         @foreach (var item in Model)
                         {
                             <div class="box_home_app card-hover" title="@item.TenKhoa">
-                                <a href="@Url.Action("PhanCong","PhanCongNhomLop",new { NamHoc=ViewBag.namhocID, Khoa=item.KhoaID})">
+                                <a href="@Url.EncodedActionLink("PhanCong","PhanCongNhomLop",new { NamHoc=ViewBag.namhocID, Khoa=item.KhoaID})">
                                     <div class="box_home_app_header">
                                         <h4>Khoá @item.TenKhoa</h4>
                                         <h5>(@item.SLSV SV)</h5>

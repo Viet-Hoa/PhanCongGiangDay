@@ -8,9 +8,10 @@ using Lib.Khoa.Model;
 using PhanCongGiangDay.Services;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
-
+using PhanCongGiangDay.Infrastructure.Attributes;
 namespace PhanCongGiangDay.Controllers
 {
+    [CustomLoginAuthorize]
     public class KhoaController : BizController
     {
         private ICTDTService _cTDTService;

@@ -20,7 +20,7 @@ namespace Lib.Account.DataAccess
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@UserName", username));
-                listParameter.Add(new SqlParameter("@Pawword", password));
+                listParameter.Add(new SqlParameter("@Password", password));
                 model = DBUtils.ExecuteSP<AccountModel>("SP_Account_Login", listParameter);
             }
             catch(Exception ex)

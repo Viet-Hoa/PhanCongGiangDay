@@ -10,9 +10,10 @@ using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Services;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 using PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien;
-
+using PhanCongGiangDay.Infrastructure.Attributes;
 namespace PhanCongGiangDay.Controllers
 {
+    [CustomLoginAuthorize]
     public class PhanCongGiangVienController : BizController
     {
         private IPhanCongNhomLopService _phanCongNhomLopService;
@@ -34,12 +35,12 @@ namespace PhanCongGiangDay.Controllers
             var model = NamHocService.DanhSachNamHoc().ToList();
             return View(model);
         }
-
-        public ActionResult PhanCong(int NamHoc)
+        [EncryptedActionParameter]
+        public ActionResult PhanCong(string NamHoc)
         {
             ViewBag.loai = new SelectList(XMLUtils.BindData("loaigiangvien"), "value", "text");
-            ViewBag.namhoctext = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
-            ViewBag.namhocID = NamHoc;
+            ViewBag.namhoctext = NamHocService.ChiTietNamHoc(int.Parse(NamHoc)).NamHoc;
+            ViewBag.namhocID = int.Parse(NamHoc);
             return View();
         }
 

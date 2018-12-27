@@ -28,7 +28,7 @@ namespace PhanCongGiangDay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(AccountModel userViewModel)
         {
-            var user = AccountService.Login(userViewModel.UserName, userViewModel.Password);
+            var user = AccountService.Login(userViewModel.UserName, Cryptography.EncryptMD5(userViewModel.Password));
 
             if (user != null)
             {
@@ -72,7 +72,7 @@ namespace PhanCongGiangDay.Controllers
         {
             try
             {
-                var res = AccountService.ChangePassord(oldPassword, newPassword);
+                var res = AccountService.ChangePassord(Cryptography.EncryptMD5(oldPassword), Cryptography.EncryptMD5(newPassword));
                 if (res != null && res.ResponseCode == 1)
                     return Json(JsonResponseViewModel.CreateSuccess("Đổi mật khẩu thành công!"));
                 else
@@ -106,6 +106,7 @@ namespace PhanCongGiangDay.Controllers
         {
             try
             {
+                viewModel.Password = Cryptography.EncryptMD5(viewModel.Password);
                 var res = AccountService.CreateAccount(viewModel);
                 if (res != null && res.ResponseCode == 1)
                     return Json(JsonResponseViewModel.CreateSuccess("Tạo tài khoản thành công!"));

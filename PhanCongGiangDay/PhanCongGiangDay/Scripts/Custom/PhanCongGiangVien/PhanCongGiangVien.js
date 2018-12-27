@@ -30,7 +30,7 @@ var PhanCongGiangVienModule = (function () {
                 },
                 complete: function () {
                     hideLoadingOverlay("#PhanCongGiangVien-container");
-                    //initRoleNhanVien();
+                    Checkrole();
                 }
             },
 
@@ -62,6 +62,12 @@ var PhanCongGiangVienModule = (function () {
             $PhanCongGiangVienTable.destroy();
             initPhanCongGiangVienDataTable();
         });
+    }
+
+    function Checkrole() {
+        if ($('#role').val() < 2) {
+            $(".btn-grid").addClass("edit-disabled");
+        }
     }
 
     function reloadPhanCongGiangVienTable() {

@@ -8,9 +8,10 @@ using Lib.PhanCongNhomLop.Model;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Services;
 using PhanCongGiangDay.Models.ViewModel.Shared;
-
+using PhanCongGiangDay.Infrastructure.Attributes;
 namespace PhanCongGiangDay.Controllers
 {
+    [CustomLoginAuthorize]
     public class PhanCongNhomLopController : BizController
     {
         private IHocPhanService _hocPhanService;
@@ -30,20 +31,22 @@ namespace PhanCongGiangDay.Controllers
             var model = NamHocService.DanhSachNamHoc().ToList();
             return View(model);
         }
-        public ActionResult Khoa(int NamHoc)
+        [EncryptedActionParameter]
+        public ActionResult Khoa(string NamHoc)
         {
             var model = KhoaService.DanhSachKhoa();
-            ViewBag.namhocID = NamHoc;
-            ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
+            ViewBag.namhocID = int.Parse(NamHoc);
+            ViewBag.namhoc = NamHocService.ChiTietNamHoc(int.Parse(NamHoc)).NamHoc;
             ViewBag.loai = new SelectList(XMLUtils.BindData("chedoxempcnl"), "value", "text");
             return View(model);
         }
-        public ActionResult PhanCong(int NamHoc, int Khoa)
+        [EncryptedActionParameter]
+        public ActionResult PhanCong(string NamHoc, string Khoa)
         {
-            ViewBag.namhocID = NamHoc;
-            ViewBag.namhoc = NamHocService.ChiTietNamHoc(NamHoc).NamHoc;
+            ViewBag.namhocID = int.Parse(NamHoc);
+            ViewBag.namhoc = NamHocService.ChiTietNamHoc(int.Parse(NamHoc)).NamHoc;
             ViewBag.khoaID = Khoa;
-            var k = KhoaService.ChiTietKhoa(Khoa);
+            var k = KhoaService.ChiTietKhoa(int.Parse(Khoa));
             ViewBag.khoa = k.TenKhoa + " (" + k.SLSV + " SV)";
             return View();
         }
