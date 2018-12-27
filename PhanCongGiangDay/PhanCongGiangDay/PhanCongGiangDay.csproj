@@ -180,6 +180,7 @@
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\GiangVienController.cs" />
     <Compile Include="Controllers\XuatExcelController.cs" />
     <Compile Include="Controllers\PhanCongGiangVienController.cs" />
     <Compile Include="Controllers\PhanCongNhomLopController.cs" />
@@ -363,6 +364,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Scripts\Custom\Account\Account.js" />
+    <Content Include="Scripts\Custom\GiangVien\GiangVien.js" />
     <Content Include="Scripts\Custom\Khoa\Khoa.js" />
     <Content Include="Scripts\Custom\NamHoc\NamHoc.js" />
     <Content Include="Scripts\Custom\DonVi\DonVi.js" />
@@ -814,6 +816,10 @@
     <Content Include="Templates\MauBM.xlsx" />
     <Content Include="Templates\MauGV.xlsx" />
     <Content Include="Templates\Mau01.xlsx" />
+    <Content Include="Views\GiangVien\Index.cshtml" />
+    <Content Include="Views\GiangVien\_SuaGiangVien.cshtml" />
+    <Content Include="Views\GiangVien\_ThemGiangVien.cshtml" />
+    <Content Include="Views\GiangVien\_XoaGiangVien.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />

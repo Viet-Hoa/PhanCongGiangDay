@@ -47,6 +47,7 @@ var GiangVienModule = (function () {
                 { data: "TenDonVi" },
                 { data: "TenBoMon" },
                 { data: "Truong" },
+                { data: "ChuyenNganhDaoTao" },
                 {
                     data: "GiangVienID", orderable: false, width: 140, className: "text-center", render: function (data) {
                         return '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/GiangVien/SuaGiangVien?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' + ' ' +
