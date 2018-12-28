@@ -7,12 +7,15 @@ using Lib.Setting.Model;
 using Lib.GiangVien.Model;
 using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
+using PhanCongGiangDay.Services;
 
 namespace PhanCongGiangDay.Controllers
 {
     public class GiangVienController : BizController
     {
         private readonly IGiangVienService GiangVienService;
+        private IBoMonService BoMonService = new BoMonService();
+        private IDonViService DonViService = new DonViService();
         public GiangVienController(IGiangVienService _giangVienService)
         {
             GiangVienService = _giangVienService;
@@ -32,6 +35,8 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult ThemGiangVien()
         {
+            ViewBag.bomon_list = new SelectList(BoMonService.DanhSachBoMon(), "BoMonID", "TenBoMon");
+            ViewBag.donvi_list = new SelectList(DonViService.DanhSachDonvi(), "DonViID", "TenDonVi");
             return PartialView("_ThemGiangVien");
         }
 
@@ -63,6 +68,8 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult SuaGiangVien(int id)
         {
             var viewModel = GiangVienService.ChiTietGiangVien(id);
+            ViewBag.bomon_list = new SelectList(BoMonService.DanhSachBoMon(), "BoMonID", "TenBoMon");
+            ViewBag.donvi_list = new SelectList(DonViService.DanhSachDonvi(), "DonViID", "TenDonVi");
             return PartialView("_SuaGiangVien",viewModel);
         }
 

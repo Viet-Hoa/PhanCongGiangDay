@@ -3,7 +3,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="modal-header">
-        <h5 class="modal-title text-uppercase">Thêm đơn vị</h5>
+        <h5 class="modal-title text-uppercase">Thêm giảng viên</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -13,20 +13,108 @@
             <div class="col-12">
                 <div class="row mb-2">
                     <div class="col-6">
-                        <label class="font-weight-bold">Mã cán bộ</label><span class="input-required">*</span>
+                        <label class="font-weight-bold">Mã cán bộ</label>
+                        <span class="input-required">*</span>
                     </div>
                     <div class="col-6">
                         @Html.TextBoxFor(x => x.MaCB, new { @class = "form-control" })
-                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaGiangVien)</small>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaCB)</small>
                     </div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-6">
-                        <label class="font-weight-bold">Họ</label><span class="input-required">*</span>
+                        <label class="font-weight-bold">Họ</label>
+                        <span class="input-required">*</span>
                     </div>
                     <div class="col-6">
                         @Html.TextBoxFor(x => x.Ho, new { @class = "form-control" })
-                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenGiangVien)</small>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Ho)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Tên</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.Ten, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Ten)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Năm sinh</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.NamSinh, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamSinh)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Chức danh</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.ChucDanh, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.ChucDanh)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Học vị</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.HocVi, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HocVi)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Chức vụ</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.ChucVu, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.ChucVu)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Trường</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.Truong, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Truong)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Chuyên ngành đào tạo</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.ChuyenNganhDaoTao, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.ChuyenNganhDaoTao)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Bộ môn</label>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.BoMonID, (SelectList)ViewBag.bomon_list, "---", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Đơn vị</label>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.DonViID, (SelectList)ViewBag.donvi_list, "---", new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -38,8 +126,8 @@
     </div>
 }
 
-    <script>
+<script>
     $(function () {
         ThemGiangVienModule.init();
     });
-    </script>
+</script>
