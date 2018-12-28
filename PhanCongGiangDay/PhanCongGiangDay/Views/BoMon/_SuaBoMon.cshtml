@@ -1,0 +1,54 @@
+﻿@model Lib.BoMon.Model.BoMonModel
+@using (Html.BeginForm("SuaBoMon", "BoMon", FormMethod.Post, new { id = "formSuaBoMon" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.BoMonID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa bộ môn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Mã bộ môn</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.MaBoMon, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaBoMon)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Tên bộ môn</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.TenBoMon, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenBoMon)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Khoa</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.DonViID, (SelectList)ViewBag.donvi_list, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenDonVi)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaBoMon">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaBoMonModule.init();
+    });
+</script>
