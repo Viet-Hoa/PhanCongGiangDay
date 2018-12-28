@@ -86,6 +86,7 @@ namespace Lib.GiangVien.DataAccess
                 listParameter.Add(new SqlParameter("@ChucVu", model.ChucVu));
                 listParameter.Add(new SqlParameter("@DonViID", model.DonViID));
                 listParameter.Add(new SqlParameter("@BoMonID", model.BoMonID));
+                listParameter.Add(new SqlParameter("@ChuyenNganhDaoTao", model.ChuyenNganhDaoTao));
                 listParameter.Add(new SqlParameter("@Truong", model.Truong));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_GiangVien_Them", listParameter);
@@ -112,6 +113,7 @@ namespace Lib.GiangVien.DataAccess
                 listParameter.Add(new SqlParameter("@ChucVu", model.ChucVu));
                 listParameter.Add(new SqlParameter("@DonViID", model.DonViID));
                 listParameter.Add(new SqlParameter("@BoMonID", model.BoMonID));
+                listParameter.Add(new SqlParameter("@ChuyenNganhDaoTao", model.ChuyenNganhDaoTao));
                 listParameter.Add(new SqlParameter("@Truong", model.Truong));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_GiangVien_Sua", listParameter);

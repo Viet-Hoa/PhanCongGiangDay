@@ -180,6 +180,7 @@
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\HocPhanController.cs" />
     <Compile Include="Controllers\GiangVienController.cs" />
     <Compile Include="Controllers\XuatExcelController.cs" />
     <Compile Include="Controllers\PhanCongGiangVienController.cs" />
@@ -364,6 +365,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Scripts\Custom\Account\Account.js" />
+    <Content Include="Scripts\Custom\HocPhan\HocPhan.js" />
     <Content Include="Scripts\Custom\GiangVien\GiangVien.js" />
     <Content Include="Scripts\Custom\Khoa\Khoa.js" />
     <Content Include="Scripts\Custom\NamHoc\NamHoc.js" />
@@ -820,6 +822,10 @@
     <Content Include="Views\GiangVien\_SuaGiangVien.cshtml" />
     <Content Include="Views\GiangVien\_ThemGiangVien.cshtml" />
     <Content Include="Views\GiangVien\_XoaGiangVien.cshtml" />
+    <Content Include="Views\HocPhan\_SuaHocPhan.cshtml" />
+    <Content Include="Views\HocPhan\_ThemHocPhan.cshtml" />
+    <Content Include="Views\HocPhan\_XoaHocPhan.cshtml" />
+    <Content Include="Views\HocPhan\Index.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />

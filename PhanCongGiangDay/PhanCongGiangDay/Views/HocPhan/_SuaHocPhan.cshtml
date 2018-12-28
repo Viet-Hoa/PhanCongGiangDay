@@ -1,0 +1,85 @@
+﻿@model Lib.HocPhan.Model.HocPhanModel
+@using (Html.BeginForm("SuaHocPhan", "HocPhan", FormMethod.Post, new { id = "formSuaHocPhan" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.HocPhanID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa học phần</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Mã học phần</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.MaHP, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaHP)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Tên học phần</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.TenHocPhan, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenHocPhan)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Bộ môn</label>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.BoMonID, (SelectList)ViewBag.bomon_list, "---", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số tín chỉ</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoTC, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoTC)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số tiết LT</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoTietLT, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoTietLT)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Số tiết TH</label>
+                        <span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.SoTietTH, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoTietTH)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaHocPhan">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaHocPhanModule.init();
+    });
+</script>
