@@ -36,6 +36,7 @@ var GiangVienModule = (function () {
             },
 
             columns: [
+                //Reduce columns in this table
                 { data: "STT" },
                 { data: "MaCB" },
                 { data: "Ho" },

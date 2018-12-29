@@ -10,7 +10,7 @@ namespace Lib.CTDT.Model
     public class CTDTModel
     {
         public int STT { get; set; }
-        public int CTDTID { get; set; }
+        public int ChuongTrinhDaoTaoID { get; set; }
         [Required(ErrorMessage = "Mã chương trình đào tạo không được để trống.")]
         public string MaCTDT { get; set; }
         [Required(ErrorMessage = "Tên chương trình đào tạo không được để trống.")]

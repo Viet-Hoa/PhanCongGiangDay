@@ -47,7 +47,7 @@ namespace Lib.CTDT.DataAccess
             try
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@CTDTID", CTDTID));
+                listParameter.Add(new SqlParameter("@ChuongTrinhDaoTaoID", CTDTID));
                 model = DBUtils.ExecuteSP<CTDTModel>("SP_ChuongTrinhDaoTao_ChiTiet", listParameter);
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace Lib.CTDT.DataAccess
             try
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@CTDTID", model.CTDTID));
+                listParameter.Add(new SqlParameter("@ChuongTrinhDaoTaoID", model.ChuongTrinhDaoTaoID));
                 listParameter.Add(new SqlParameter("@MaCTDT", model.MaCTDT));
                 listParameter.Add(new SqlParameter("@TenCTDT", model.TenCTDT));
                 listParameter.Add(new SqlParameter("@NamBatDau", model.NamBatDau));
@@ -101,7 +101,7 @@ namespace Lib.CTDT.DataAccess
             try
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@CTDTID", CTDTID));
+                listParameter.Add(new SqlParameter("@ChuongTrinhDaoTaoID", CTDTID));
                 listParameter.Add(new SqlParameter("@NguoiTao", NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_ChuongTrinhDaoTao_Xoa", listParameter);
             }
