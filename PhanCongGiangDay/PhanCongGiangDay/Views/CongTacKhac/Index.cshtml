@@ -1,0 +1,46 @@
+﻿@using PhanCongGiangDay.UtilityHelpers
+@{
+    ViewBag.Title = "CÔNG TÁC KHÁC";
+}
+@Html.Hidden("role",AccountUtils.CurrentUserLv())
+<h3 class="text-uppercase pt-3">CÔNG TÁC KHÁC</h3>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+                <div class="search-box">
+                    @Html.TextBox("CongTacKhac-search", null, new { @class = "form-control", @maxlength = "20" })
+                    <button type="button" class="search-button"><i class="material-icons">search</i></button>
+                </div>
+            </div>
+            <div class="col-3 text-right">
+                <a id="btnThemCongTacKhac" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modal" data-url="@Url.Action("ThemCongTacKhac", "CongTacKhac")"><i class="fa fa-plus btn-icon-word-size"></i>Thêm công tác khác</a>
+            </div>
+        </div>
+        <div class="row">
+            <div id="cong-tac-khac-container" style="width: 100%">
+                <table class="table table-hover table-bordered table-custom pl-0 pr-0" cellspacing="0" id="cong-tac-khac-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>STT</td>
+                            <td>Tên công tác khác</td>
+                            <td>Số tiết</td>
+                            <td style="min-width:140px; max-width:200px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/congtackhac")
+    <script>
+        $(function () {
+            CongTacKhacModule.timKiem();
+        });
+    </script>
+
+}

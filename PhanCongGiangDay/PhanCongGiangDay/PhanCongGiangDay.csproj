@@ -180,6 +180,7 @@
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\CongTacKhacController.cs" />
     <Compile Include="Controllers\ChuongTrinhDaoTaoController.cs" />
     <Compile Include="Controllers\BoMonController.cs" />
     <Compile Include="Controllers\HocPhanController.cs" />
@@ -367,6 +368,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Scripts\Custom\Account\Account.js" />
+    <Content Include="Scripts\Custom\CongTacKhac\CongTacKhac.js" />
     <Content Include="Scripts\Custom\ChuongTrinhDaoTao\ChuongTrinhDaoTao.js" />
     <Content Include="Scripts\Custom\BoMon\BoMon.js" />
     <Content Include="Scripts\Custom\HocPhan\HocPhan.js" />
@@ -838,6 +840,10 @@
     <Content Include="Views\ChuongTrinhDaoTao\_ThemChuongTrinhDaoTao.cshtml" />
     <Content Include="Views\ChuongTrinhDaoTao\_XoaChuongTrinhDaoTao.cshtml" />
     <Content Include="Views\ChuongTrinhDaoTao\Index.cshtml" />
+    <Content Include="Views\CongTacKhac\_SuaCongTacKhac.cshtml" />
+    <Content Include="Views\CongTacKhac\_ThemCongTacKhac.cshtml" />
+    <Content Include="Views\CongTacKhac\_XoaCongTacKhac.cshtml" />
+    <Content Include="Views\CongTacKhac\Index.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />

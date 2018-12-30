@@ -95,6 +95,8 @@ namespace PhanCongGiangDay
                "~/Scripts/Custom/BoMon/BoMon.js"));
             bundles.Add(new ScriptBundle("~/bundles/chuongtrinhdaotao").Include(
                "~/Scripts/Custom/ChuongTrinhDaoTao/ChuongTrinhDaoTao.js"));
+            bundles.Add(new ScriptBundle("~/bundles/congtackhac").Include(
+              "~/Scripts/Custom/CongTacKhac/CongTacKhac.js"));
             bundles.Add(new ScriptBundle("~/bundles/giangvien").Include(
               "~/Scripts/Custom/GiangVien/GiangVien.js"));
             bundles.Add(new ScriptBundle("~/bundles/hocphan").Include(
