@@ -37,7 +37,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult ThemKhoa()
         {
-            ViewBag.ctdt = new SelectList(CTDTService.DanhSachCTDT(), "CTDTID", "TenCTDT");
+            ViewBag.ctdt = new SelectList(CTDTService.DanhSachCTDT(), "ChuongTrinhDaoTaoID", "TenCTDT");
             return PartialView("_ThemKhoa");
         }
 
@@ -68,7 +68,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult SuaKhoa(int id)
         {
-            ViewBag.ctdt = new SelectList(CTDTService.DanhSachCTDT(), "CTDTID", "TenCTDT");
+            ViewBag.ctdt = new SelectList(CTDTService.DanhSachCTDT(), "ChuongTrinhDaoTaoID", "TenCTDT");
             var viewModel = KhoaService.ChiTietKhoa(id);
             return PartialView("_SuaKhoa",viewModel);
         }
