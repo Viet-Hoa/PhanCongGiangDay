@@ -183,6 +183,7 @@
     <Compile Include="Controllers\CongTacKhacController.cs" />
     <Compile Include="Controllers\ChuongTrinhDaoTaoController.cs" />
     <Compile Include="Controllers\BoMonController.cs" />
+    <Compile Include="Controllers\LopController.cs" />
     <Compile Include="Controllers\HocPhanController.cs" />
     <Compile Include="Controllers\GiangVienController.cs" />
     <Compile Include="Controllers\XuatExcelController.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Infrastructure\Extensions\HtmlExtensions.cs" />
     <Compile Include="Infrastructure\Modules\InfrastructureModule.cs" />
     <Compile Include="IServices\IAccountService.cs" />
+    <Compile Include="IServices\ILopService.cs" />
     <Compile Include="IServices\IGiangVienService.cs" />
     <Compile Include="IServices\IBoMonService.cs" />
     <Compile Include="IServices\ICTDTService.cs" />
@@ -229,6 +231,7 @@
     <Compile Include="Services\GiangVienService.cs" />
     <Compile Include="Services\CTDTService.cs" />
     <Compile Include="Services\CongTacKhacService.cs" />
+    <Compile Include="Services\LopService.cs" />
     <Compile Include="Services\XuatExcelService.cs" />
     <Compile Include="Services\HocPhanService.cs" />
     <Compile Include="Services\PhanCongGiangVienService.cs" />
@@ -371,6 +374,7 @@
     <Content Include="Scripts\Custom\CongTacKhac\CongTacKhac.js" />
     <Content Include="Scripts\Custom\ChuongTrinhDaoTao\ChuongTrinhDaoTao.js" />
     <Content Include="Scripts\Custom\BoMon\BoMon.js" />
+    <Content Include="Scripts\Custom\Lop\Lop.js" />
     <Content Include="Scripts\Custom\HocPhan\HocPhan.js" />
     <Content Include="Scripts\Custom\GiangVien\GiangVien.js" />
     <Content Include="Scripts\Custom\Khoa\Khoa.js" />
@@ -844,6 +848,10 @@
     <Content Include="Views\CongTacKhac\_ThemCongTacKhac.cshtml" />
     <Content Include="Views\CongTacKhac\_XoaCongTacKhac.cshtml" />
     <Content Include="Views\CongTacKhac\Index.cshtml" />
+    <Content Include="Views\Lop\_SuaLop.cshtml" />
+    <Content Include="Views\Lop\_ThemLop.cshtml" />
+    <Content Include="Views\Lop\_XoaLop.cshtml" />
+    <Content Include="Views\Lop\Index.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />
@@ -871,6 +879,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Lib.Lop.csproj">
+      <Project>{499942d9-517f-4e9c-97a9-31b6f55cbdb9}</Project>
+      <Name>Lib.Lop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lib.Account\Lib.Account.csproj">
       <Project>{dde797e1-24a8-49e1-9e66-3df7034e7e51}</Project>
       <Name>Lib.Account</Name>

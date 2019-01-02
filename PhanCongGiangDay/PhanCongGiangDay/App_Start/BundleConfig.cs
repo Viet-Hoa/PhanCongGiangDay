@@ -105,6 +105,8 @@ namespace PhanCongGiangDay
                "~/Scripts/Custom/NamHoc/NamHoc.js"));
             bundles.Add(new ScriptBundle("~/bundles/khoa").Include(
                "~/Scripts/Custom/Khoa/Khoa.js"));
+            bundles.Add(new ScriptBundle("~/bundles/lop").Include(
+               "~/Scripts/Custom/Lop/Lop.js"));
             bundles.Add(new ScriptBundle("~/bundles/pcnl").Include(
               "~/Scripts/Custom/PhanCongNhomLop/PhanCongNhomLop.js"));
             bundles.Add(new ScriptBundle("~/bundles/pcgv").Include(

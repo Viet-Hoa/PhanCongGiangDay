@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.XuatExcel", "Lib.XuatEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.BoMon", "Lib.BoMon\Lib.BoMon.csproj", "{0C19F460-32E8-4D16-936A-124B2B5BD8FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Lop", "ClassLibrary1\Lib.Lop.csproj", "{499942D9-517F-4E9C-97A9-31B6F55CBDB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{0C19F460-32E8-4D16-936A-124B2B5BD8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C19F460-32E8-4D16-936A-124B2B5BD8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C19F460-32E8-4D16-936A-124B2B5BD8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499942D9-517F-4E9C-97A9-31B6F55CBDB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499942D9-517F-4E9C-97A9-31B6F55CBDB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499942D9-517F-4E9C-97A9-31B6F55CBDB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499942D9-517F-4E9C-97A9-31B6F55CBDB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

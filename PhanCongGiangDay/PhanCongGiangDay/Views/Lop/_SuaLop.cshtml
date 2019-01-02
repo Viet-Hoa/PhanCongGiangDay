@@ -1,0 +1,54 @@
+﻿@model Lib.Lop.Model.LopModel
+@using (Html.BeginForm("SuaLop", "Lop", FormMethod.Post, new { id = "formSuaLop" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.LopID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa lớp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Mã lớp</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.MaLop, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaLop)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Giảng viên hướng dẫn</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.GiangVienID, (SelectList)ViewBag.giangvien_list, new { @class = "form-control giangviensl2s" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.GiangVienID)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Khoá đào tạo</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(x => x.KhoaID, (SelectList)ViewBag.khoa_list, new { @class = "form-control khoasl2s" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.KhoaID)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaLop">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaLopModule.init();
+    });
+</script>
