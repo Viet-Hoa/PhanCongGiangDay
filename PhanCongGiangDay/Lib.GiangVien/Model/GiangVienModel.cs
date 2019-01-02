@@ -31,5 +31,6 @@ namespace Lib.GiangVien.Model
         public string ChuyenNganhDaoTao { get; set; }
         public string LoaiGV { get; set; }
         public string LopPhuTrach { get; set; }
+        public string HoTen { get; set; }
     }
 }
