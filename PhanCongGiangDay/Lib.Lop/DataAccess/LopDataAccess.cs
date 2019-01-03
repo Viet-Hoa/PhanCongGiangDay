@@ -47,9 +47,9 @@ namespace Lib.Lop.DataAccess
             try
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
-                listParameter.Add(new SqlParameter("@TenLop", model.MaLop));
-                listParameter.Add(new SqlParameter("@NamBatDau", model.KhoaID));
-                listParameter.Add(new SqlParameter("@NamKetThuc", model.GiangVienID));
+                listParameter.Add(new SqlParameter("@MaLop", model.MaLop));
+                listParameter.Add(new SqlParameter("@KhoaID", model.KhoaID));
+                listParameter.Add(new SqlParameter("@GiangVienID", model.GiangVienID));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_Lop_Them", listParameter);
             }
@@ -66,9 +66,9 @@ namespace Lib.Lop.DataAccess
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@LopID", model.LopID));
-                listParameter.Add(new SqlParameter("@TenLop", model.MaLop));
-                listParameter.Add(new SqlParameter("@NamBatDau", model.KhoaID));
-                listParameter.Add(new SqlParameter("@NamKetThuc", model.GiangVienID));
+                listParameter.Add(new SqlParameter("@MaLop", model.MaLop));
+                listParameter.Add(new SqlParameter("@KhoaID", model.KhoaID));
+                listParameter.Add(new SqlParameter("@GiangVienID", model.GiangVienID));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_Lop_Sua", listParameter);
             }

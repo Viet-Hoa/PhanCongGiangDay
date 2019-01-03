@@ -13,7 +13,9 @@ namespace Lib.Lop.Model
         public int LopID { get; set; }
         public string MaLop { get; set; }
         public int KhoaID { get; set; }
+        public string TenKhoa { get; set; }
         public int GiangVienID { get; set; }
+        public string HoTenGV { get; set; }
         public string NguoiTao { get; set; }
     }
 }

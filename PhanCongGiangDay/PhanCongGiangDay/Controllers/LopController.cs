@@ -9,6 +9,9 @@ using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 using PhanCongGiangDay.Infrastructure.Attributes;
 using PhanCongGiangDay.Services;
+using System.Xml;
+using System.Reflection;
+using System.IO;
 
 namespace PhanCongGiangDay.Controllers
 {
@@ -21,12 +24,19 @@ namespace PhanCongGiangDay.Controllers
         private IGiangVienService _giangVienService;
         private IGiangVienService GiangVienService => _giangVienService ?? (_giangVienService = new GiangVienService());
         private readonly ILopService LopService;
+        private int loaiGV_CoHuu;
+
         public LopController(ILopService _lopService)
         {
             LopService = _lopService;
-        }
-
-        // GET: Lop
+            /*
+            XmlDocument xmlData = new XmlDocument();
+            xmlData.Load(AppDomain.CurrentDomain.GetData("DataDirectory").ToString());
+            loaiGV_CoHuu = int.Parse(xmlData.SelectSingleNode("/chucdanh/item[@text='Giảng viên cơ hữu']").Attributes["value"].Value);
+            */
+            // Chưa đọc được từ file XML do lỗi Access denied, tạm hard-code
+            loaiGV_CoHuu = 2;
+        }        // GET: Lop
         public ActionResult Index()
         {
             return View();
@@ -42,7 +52,7 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult ThemLop()
         {
             ViewBag.khoa_list = new SelectList(KhoaService.DanhSachKhoa(), "KhoaID", "TenKhoa");
-            ViewBag.giangvien_list = new SelectList(GiangVienService.DanhSachGiangVien(), "GiangVienID", "HoTen");
+            ViewBag.giangvien_list = new SelectList(GiangVienService.DanhSachGiangVienTheoLoai(loaiGV_CoHuu), "GiangVienID", "HoTen");
             return PartialView("_ThemLop");
         }
 
@@ -74,8 +84,8 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult SuaLop(int id)
         {
             var viewModel = LopService.ChiTietLop(id);
-            ViewBag.khoa_list = new SelectList(KhoaService.DanhSachKhoa(), "KhoaID", "TenKhoa");
-            ViewBag.giangvien_list = new SelectList(GiangVienService.DanhSachGiangVien(), "GiangVienID", "HoTen");
+            ViewBag.khoa_list = new SelectList(KhoaService.DanhSachKhoa(), "KhoaID", "TenKhoa");         
+            ViewBag.giangvien_list = new SelectList(GiangVienService.DanhSachGiangVienTheoLoai(loaiGV_CoHuu), "GiangVienID", "HoTen");
             return PartialView("_SuaLop", viewModel);
         }
 
