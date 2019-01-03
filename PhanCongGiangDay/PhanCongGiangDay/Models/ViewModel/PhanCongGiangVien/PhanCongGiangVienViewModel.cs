@@ -31,5 +31,33 @@ namespace PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien
         public string Truong { get; set; }
         public string TenDonVi { get; set; }
         public string TenBoMon { get; set; }
+        public int BoMonID { get; set; }
+    }
+
+    public class PhanCongGiangVienTheoNhomLopViewModel
+    {
+        public int PhanCongNhomLopID { get; set; }
+        public int BangPhanCongID { get; set; }
+        public int KhoaID { get; set; }
+        public int HocPhanLogID { get; set; }
+        public int SoLuongNhomLopLT { get; set; }
+        public int SoLuongNhomLopTH { get; set; }
+        public int SLSVNhomLop { get; set; }
+        public int SoLuongConLaiLT { get; set; }
+        public int SoLuongConLaiTH { get; set; }
+        public string MaHP { get; set; }
+        public string TenHocPhan { get; set; }
+        public string MaVaTenHP
+        {
+            get
+            {
+                return "(" + MaHP + ") " + TenHocPhan;
+            }
+        }
+        public int SoTietLT { get; set; }
+        public int SoTietTH { get; set; }
+        public string TenBoMon { get; set; }
+        public int BoMonID { get; set; }
+        public List<PhanCongGiangVienModel> GiangVienPhanCong { get; set; }
     }
 }

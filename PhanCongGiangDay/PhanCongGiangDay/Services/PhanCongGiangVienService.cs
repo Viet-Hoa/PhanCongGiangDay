@@ -7,7 +7,7 @@ using Lib.Setting.Model;
 using Lib.PhanCongGiangVien.DataAccess;
 using Lib.PhanCongGiangVien.IDataAccess;
 using Lib.PhanCongGiangVien.Model;
-using Lib.GiangVien.Model;
+using Lib.PhanCongNhomLop.Model;
 using PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien;
 
 namespace PhanCongGiangDay.Services
@@ -19,6 +19,8 @@ namespace PhanCongGiangDay.Services
         {
             get { return _PhanCongGiangVienDA ?? (_PhanCongGiangVienDA = new PhanCongGiangVienDataAccess()); }
         }
+        private IPhanCongNhomLopService _phanCongNhomLopService;
+        private IPhanCongNhomLopService PhanCongNhomLopService => _phanCongNhomLopService ?? (_phanCongNhomLopService = new PhanCongNhomLopService());
 
         public IEnumerable<PhanCongGiangVienModel> DanhSachPhanCongGiangVien(int BangPhanCongID, int GiangVienID)
         {
@@ -138,6 +140,40 @@ namespace PhanCongGiangDay.Services
                 throw ex;
             }
             return list;
+        }
+
+        public PhanCongGiangVienTheoNhomLopViewModel ChiTietNhomLopPhanCong(int BangPhanCongID, int PhanCongNhomLopID)
+        {
+            PhanCongGiangVienTheoNhomLopViewModel viewModel = null;
+            try
+            {
+                var model = PhanCongNhomLopService.ChiTietPhanCongNhomLop(PhanCongNhomLopID);
+                var pc = PhanCongGiangVienDA.DanhSachPhanCongGiangVienTheoNhomLop(BangPhanCongID, PhanCongNhomLopID).ToList();
+                viewModel = new PhanCongGiangVienTheoNhomLopViewModel
+                {
+                    PhanCongNhomLopID = model.PhanCongNhomLopID,
+                    MaHP = model.MaHP,
+                    TenHocPhan = model.TenHocPhan,
+                    TenBoMon = model.TenBoMon,
+                    BangPhanCongID = model.BangPhanCongID,
+                    HocPhanLogID = model.HocPhanLogID,
+                    KhoaID = model.KhoaID,
+                    SLSVNhomLop = model.SLSVNhomLop,
+                    SoLuongNhomLopLT = model.SoLuongNhomLopLT,
+                    SoLuongNhomLopTH = model.SoLuongNhomLopTH,
+                    SoLuongConLaiLT = model.SoLuongConLaiLT,
+                    SoLuongConLaiTH = model.SoLuongConLaiTH,
+                    SoTietLT = model.SoTietLT,
+                    SoTietTH = model.SoTietTH,
+                    BoMonID = model.BoMonID,
+                    GiangVienPhanCong = pc.ToList()
+                };
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return viewModel;
         }
 
         public PhanCongGiangVienViewModel ChiTietGiangVienPhanCong(int BangPhanCongID, int GiangVienID)

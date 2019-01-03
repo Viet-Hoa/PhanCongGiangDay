@@ -10,6 +10,11 @@
     <item text="Không hoạt động" value="0" />
   </trangthaihoatdong>
 
+  <hienthiphancong>
+    <item text="Theo nhóm lớp" value="0" />
+    <item text="Theo giảng viên" value="1" />
+  </hienthiphancong>
+  
   <chucdanh>
     <item value="GVC" text="Giảng viên chính"/>
     <item value="GV" text="Giảng viên"/>

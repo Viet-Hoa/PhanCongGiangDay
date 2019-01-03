@@ -2,9 +2,12 @@
 var PhanCongGiangVienModule = (function () {
     var $PhanCongGiangVienTable;    
     var PhanCongGiangVienUrl = "/PhanCongGiangVien/DanhSachGiangVien";
+    var PhanCongNhomLopUrl = "/PhanCongGiangVien/DanhSachNhomLop";
 
     function init() {
+        loadPhanCongNhomLop();
         loadPhanCongGiangVien();
+        BoMonChange();
         loadLoai();
     }
 
@@ -74,9 +77,88 @@ var PhanCongGiangVienModule = (function () {
         $PhanCongGiangVienTable.ajax.reload();
     }
 
+    function loadPhanCongNhomLop() {
+        initPhanCongNhomLopDataTable();
+    }
+
+    function initPhanCongNhomLopDataTable() {
+        $PhanCongNhomLopTable = $("#phanCongNhomLop-table").DataTable({
+            searching: true,
+            order: [],
+            pageLength: 10,
+            lengthChange: false,
+            ajax: {
+                url: PhanCongNhomLopUrl,
+                data: {
+                    NamHoc: $('#bangpc').val(), BoMonID: $('#BoMonID').val()
+                },
+                method: "GET",
+                beforeSend: function () {
+                    showLoadingOverlay("#PhanCongNhomLop-container");
+                },
+                complete: function () {
+                    hideLoadingOverlay("#PhanCongNhomLop-container");
+                }
+            },
+
+            columns: [
+                { data: "STT" },
+                { data: "MaHP" },
+                { data: "TenHocPhan" },
+                { data: "SoLuongNhomLopLT" },
+                { data: "SoLuongNhomLopTH" },
+                { data: "SoLuongConLaiLT" },
+                { data: "SoLuongConLaiTH" },
+                {
+                    data: "PhanCongNhomLopID", orderable: false, width: 100, className: "text-center", render: function (data) {
+                        return '<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modalLarge" data-url="/PhanCongGiangVien/ChiTietPhanCongCuaGiangVien?BangPhanCongID=' + $('#bangpc').val() + '&PhanCongNhomLopID=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
+                            '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modalLarge" data-url="/PhanCongGiangVien/CapNhatPhanCongGiangVienNhomLop?BangPhanCongID=' + $('#bangpc').val() + '&PhanCongNhomLopID=' + data + '"><i class="fa fa-pencil-square-o"></i></button>';
+                            //'<button class="btn btn-sm btn-outline-danger btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/PhanCongNhomLop/XoaPhanCongNhomLop?id=' + data + '"><i class="fa fa-trash-o"></i></button>';
+                        //'<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modal" data-url="/PhanCongNhomLop/ChiTietPhanCongNhomLop?id=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
+                    }
+                }
+            ]
+        });
+        $('#phanCongNhomLop-table_filter').hide();
+
+    }
+    function timKiemNL() {
+        $('#PhanCongNhomLop-search').keyup(function () {
+            $PhanCongNhomLopTable.search($(this).val()).draw();
+        });
+    }
+
+    function reloadPhanCongNhomLopTable() {
+        $PhanCongNhomLopTable.ajax.reload();
+
+    }
+
+    function BoMonChange() {
+        $('#BoMonID').change(function () {
+            $PhanCongNhomLopTable.destroy();
+            initPhanCongNhomLopDataTable();
+        });
+    }
+
+    function displayPC() {
+        $('#hienthiddl').change(function () {
+            if ($(this).val() == 1) {
+                $('#gv_area').removeClass("d-none");
+                $('#nl_area').addClass("d-none");
+            }
+            else {
+                $('#gv_area').addClass("d-none");
+                $('#nl_area').removeClass("d-none");
+            }
+        });
+    }
+
     return {
         init: init,
         timKiem: timKiem,
+        timKiemNL: timKiemNL,
+        displayPC: displayPC,
+        reloadPhanCongNhomLopTable: reloadPhanCongNhomLopTable,
         reloadPhanCongGiangVienTable: reloadPhanCongGiangVienTable
     }
 })();
@@ -485,3 +567,132 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
     }
 })(PhanCongGiangVienModule);
 
+
+var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) {
+    function init() {
+        bindFormActions();
+        AddRowGiangVien();
+        $(document).ready(function () {
+            $('.gvddl').select2();
+        });
+        SelectedValueGiangVien();
+        sumAll();
+    }
+
+    
+    function SelectedValueGiangVien() {
+        $(".row-gv").each(function () {
+            var hidden = $(this).find(".gv-hidden-val").val();
+            var $nhomlop = $(this).find(".gvddl");
+            $nhomlop.val(hidden);
+        });
+    }
+    
+    function sumAll() {
+        $(document).ready(function () {
+            $(document).on("keyup", ".lythuyet", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var stlt = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2LT").val())) * ~~parseInt($("#sotietlt").text());
+                var stth = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2TH").val())) * ~~parseInt($("#sotietth").text()) / 2;
+                $("#GiangVienPhanCongSoTiet_" + i).val(stlt + stth);
+            });
+            $(document).on("keyup", ".thuchanh", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var stlt = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2LT").val())) * ~~parseInt($("#sotietlt").text());
+                var stth = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2TH").val())) * ~~parseInt($("#sotietth").text()) / 2;
+                $("#GiangVienPhanCongSoTiet_" + i).val(stlt + stth);
+            });            
+        });
+    }
+
+    function AddRowGiangVien() {
+        $('.button-edit-gv').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tgv") != -1) {
+                $(this).addClass("d-none");
+                $('#xgv_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongGiangVien/ThemPhanCongGiangVienNhomLop",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), i: i },
+                    success: function (response) {
+                        $('#gv_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#gv_' + i).hide();
+                $('#trangthaigv_' + i).val("-1");
+                $('#gv_' + i).removeClass("row-gv");
+                
+                
+            }
+        });
+    }
+
+    function AddRowNhomLopPartial() {
+        $('.button-edit-nl-partial').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongGiangVien/ThemPhanCongGiangVien",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainhomlop_' + i).val("-1");
+                $('#row_' + i).removeClass("nhomlop-row");
+                var newv = 0;
+                $(".nhomlop-row").each(function () {
+                    var hidden = $(this).find(".sotietSum").val();
+                    newv = parseInt(hidden) + newv;
+                });
+                var oldv = parseInt($('#tongsotiet').text());
+                $('#tongsotiet').text(newv);
+                var sttt = parseInt($('#sotietthucte').text());
+                $('#sotietthucte').text(sttt - oldv + newv);
+            }
+        });
+    }
+
+    function bindFormActions() {
+        $("#btn_CapNhatPhanCongGiangVien").on("click",
+            function () {
+                if ($("#formCapNhatPhanCongGiangVien").valid()) {
+                    $.ajax({
+                        type: $("#formCapNhatPhanCongGiangVien").prop("method"),
+                        url: $("#formCapNhatPhanCongGiangVien").prop("action"),
+                        data: $("#formCapNhatPhanCongGiangVien").serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages }, { type: "danger" });
+                            } else {
+                                $.notify({ message: response.Messages }, { type: "success" });
+                            }
+                        },
+                        complete: function () {
+                            $("#modalPhanCong").modal("hide");
+                            PhanCongGiangVienModule.reloadPhanCongGiangVienTable();
+                        }
+                    });
+                }
+                return false;
+            });
+    }
+
+    return {
+        init: init,
+        AddRowNhomLopPartial: AddRowNhomLopPartial
+    }
+})(PhanCongGiangVienModule);

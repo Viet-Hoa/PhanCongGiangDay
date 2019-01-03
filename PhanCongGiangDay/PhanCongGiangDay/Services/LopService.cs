@@ -1,5 +1,5 @@
 ﻿using Lib.Lop.IDataAccess;
-using Lib.Lop.LopDataAccess;
+using Lib.Lop.DataAccess;
 using Lib.Lop.Model;
 using Lib.Setting.Model;
 using System;
@@ -8,7 +8,7 @@ using PhanCongGiangDay.IServices;
 
 namespace PhanCongGiangDay.Services
 {
-    public class LopService: ILopService
+    public class LopService : ILopService
     {
         private ILopDataAccess _LopDA;
         private ILopDataAccess LopDA

@@ -15,11 +15,11 @@ namespace PhanCongGiangDay.Controllers
     [CustomLoginAuthorize]
     public class LopController : BizController
     {
-        
+
         private IKhoaService _khoaService;
         private IKhoaService KhoaService => _khoaService ?? (_khoaService = new KhoaService());
         private IGiangVienService _giangVienService;
-        private IGiangVienService GiangVienService => _giangVienService ?? (_giangVienService  = new GiangVienService());
+        private IGiangVienService GiangVienService => _giangVienService ?? (_giangVienService = new GiangVienService());
         private readonly ILopService LopService;
         public LopController(ILopService _lopService)
         {
@@ -76,7 +76,7 @@ namespace PhanCongGiangDay.Controllers
             var viewModel = LopService.ChiTietLop(id);
             ViewBag.khoa_list = new SelectList(KhoaService.DanhSachKhoa(), "KhoaID", "TenKhoa");
             ViewBag.giangvien_list = new SelectList(GiangVienService.DanhSachGiangVien(), "GiangVienID", "HoTen");
-            return PartialView("_SuaLop",viewModel);
+            return PartialView("_SuaLop", viewModel);
         }
 
         [HttpPost]
@@ -106,7 +106,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult XoaLop(int id)
         {
-            return PartialView("_XoaLop",id);
+            return PartialView("_XoaLop", id);
         }
 
         [HttpPost]

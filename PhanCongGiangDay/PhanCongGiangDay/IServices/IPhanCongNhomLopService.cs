@@ -10,7 +10,7 @@ namespace PhanCongGiangDay.IServices
 {
     public interface IPhanCongNhomLopService
     {
-        IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID);
+        IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID, int? BoMonID);
         PhanCongNhomLopModel ChiTietPhanCongNhomLop(int PhanCongNhomLopID);
         ResponseResult ThemPhanCongNhomLop(PhanCongNhomLopModel model);
         ResponseResult SuaPhanCongNhomLop(PhanCongNhomLopModel model);

@@ -18,11 +18,13 @@ namespace PhanCongGiangDay.Controllers
     {
         private IPhanCongNhomLopService _phanCongNhomLopService;
         private IPhanCongNhomLopService PhanCongNhomLopService => _phanCongNhomLopService ?? (_phanCongNhomLopService = new PhanCongNhomLopService());
+        private IBoMonService _boMonService;
+        private IBoMonService BoMonService => _boMonService ?? (_boMonService = new BoMonService());
         private INamHocService _namHocService;
         private INamHocService NamHocService => _namHocService ?? (_namHocService = new NamHocService());
         private ICongTacKhacService _congTacKhacService;
         private ICongTacKhacService CongTacKhacService => _congTacKhacService ?? (_congTacKhacService = new CongTacKhacService());
-       private readonly IPhanCongGiangVienService PhanCongGiangVienService;
+        private readonly IPhanCongGiangVienService PhanCongGiangVienService;
 
         public PhanCongGiangVienController(IPhanCongGiangVienService _PhanCongGiangVienService)
         {
@@ -39,6 +41,8 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult PhanCong(string NamHoc)
         {
             ViewBag.loai = new SelectList(XMLUtils.BindData("loaigiangvien"), "value", "text");
+            ViewBag.hienthi = new SelectList(XMLUtils.BindData("hienthiphancong"), "value", "text");
+            ViewBag.bomon = new SelectList(BoMonService.DanhSachBoMon(), "BoMonID", "TenBoMon");
             ViewBag.namhoctext = NamHocService.ChiTietNamHoc(int.Parse(NamHoc)).NamHoc;
             ViewBag.namhocID = int.Parse(NamHoc);
             return View();
@@ -47,6 +51,12 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult DanhSachGiangVien(int NamHoc, int? Loc)
         {
             var viewModel = PhanCongGiangVienService.DanhSachGiangVienPhanCong(NamHoc,Loc ?? 0);
+            return Json(new { data = viewModel }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DanhSachNhomLop(int NamHoc, int? BoMonID)
+        {
+            var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLop(NamHoc,null,BoMonID);
             return Json(new { data = viewModel }, JsonRequestBehavior.AllowGet);
         }
 
@@ -62,7 +72,7 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.thutu = i + 1;
             ViewBag.gvID = GiangVienID;
             ViewBag.namhoc = BangPhanCongID;
-            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null);
+            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null, null);
             ViewBag.hocphanddl = new SelectList(pcnl, "PhanCongNhomLopID", "MaVaTenHP");
             return PartialView("_ThemPhanCongGiangVien");
         }
@@ -81,7 +91,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult CapNhatPhanCongGiangVien(int BangPhanCongID, int GiangVienID)
         {
-            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID, null);
+            var pcnl = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID,null, null);
             var pcct = CongTacKhacService.DanhSachCongTacKhac().OrderBy(x=>x.CongTacKhacID);
             ViewBag.congtac = new SelectList(pcct, "CongTacKhacLogID", "TenVaSoTiet");
             ViewBag.sotietct = new SelectList(pcct, "CongTacKhacLogID", "SoTiet");
@@ -152,6 +162,25 @@ namespace PhanCongGiangDay.Controllers
             {
                 return Json(JsonResponseViewModel.CreateFail(ex));
             }
+        }
+
+        [HttpGet]
+        public ActionResult CapNhatPhanCongGiangVienNhomLop(int BangPhanCongID, int PhanCongNhomLopID)
+        {
+            var viewModel = PhanCongGiangVienService.ChiTietNhomLopPhanCong(BangPhanCongID, PhanCongNhomLopID);
+            var gv = PhanCongGiangVienService.DanhSachGiangVienPhanCong(BangPhanCongID, 0);
+            //ViewBag.gvbomonddl = new SelectList(gv.Where(x=>x.BoMonID==viewModel.BoMonID), "GiangVienLogID", "HoTenGV");
+            ViewBag.giangvienddl = new SelectList(gv,"GiangVienLogID", "HoTenGV");
+            ViewBag.namhoc = BangPhanCongID;
+            return PartialView("_CapNhatPhanCongGiangVienNhomLop", viewModel);
+        }
+        [HttpGet]
+        public ActionResult ThemPhanCongGiangVienNhomLop(int BangPhanCongID, int i)
+        {
+            ViewBag.thutu = i + 1;
+            var gv = PhanCongGiangVienService.DanhSachGiangVienPhanCong(BangPhanCongID, 0);
+            ViewBag.giangvienddl = new SelectList(gv, "GiangVienLogID", "HoTenGV");
+            return PartialView("_ThemPhanCongGiangVienNhomLop");
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Lib.PhanCongGiangVien.IDataAccess
     public interface IPhanCongGiangVienDataAccess
     {
         IEnumerable<PhanCongGiangVienModel> DanhSachPhanCongGiangVien(int BangPhanCongID, int GiangVienID);
+        IEnumerable<PhanCongGiangVienModel> DanhSachPhanCongGiangVienTheoNhomLop(int BangPhanCongID, int PhanCongNhomLopID);
         ResponseResult ThemPhanCongGiangVien(PhanCongGiangVienModel model);
         ResponseResult SuaPhanCongGiangVien(PhanCongGiangVienModel model);
         ResponseResult XoaPhanCongGiangVien(int id, string NguoiTao);

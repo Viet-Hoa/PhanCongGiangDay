@@ -13,7 +13,7 @@ namespace Lib.PhanCongNhomLop.DataAccess
 {
     public class PhanCongNhomLopDataAccess: IPhanCongNhomLopDataAccess
     {
-        public IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID)
+        public IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID, int? BoMonID )
         {
             List<PhanCongNhomLopModel> list = new List<PhanCongNhomLopModel>();
             try
@@ -21,6 +21,7 @@ namespace Lib.PhanCongNhomLop.DataAccess
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
                 listParameter.Add(new SqlParameter("@KhoaID", KhoaID));
+                listParameter.Add(new SqlParameter("@BoMonID", BoMonID));
                 list = DBUtils.ExecuteSPList<PhanCongNhomLopModel>("SP_PhanCongNhomLop_DanhSach", listParameter);
             }
             catch (Exception ex)

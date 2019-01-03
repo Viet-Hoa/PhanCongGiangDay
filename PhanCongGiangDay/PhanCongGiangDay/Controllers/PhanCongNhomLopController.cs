@@ -52,7 +52,7 @@ namespace PhanCongGiangDay.Controllers
         }
         public ActionResult DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID)
         {
-            var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID,KhoaID);
+            var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLop(BangPhanCongID,KhoaID,null);
             return Json(new { data = viewModel }, JsonRequestBehavior.AllowGet);
         }
 
@@ -79,7 +79,7 @@ namespace PhanCongGiangDay.Controllers
             try
             {
                 var hp = HocPhanService.ChiTietHocPhanLog(model.HocPhanLogID);
-                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, model.KhoaID).Where(x=>x.HocPhanID==hp.HocPhanID).FirstOrDefault();
+                var c= PhanCongNhomLopService.DanhSachPhanCongNhomLop(model.BangPhanCongID, model.KhoaID,null).Where(x=>x.HocPhanID==hp.HocPhanID).FirstOrDefault();
                 if(c!=null)
                 {
                     ModelState.AddModelError("HocPhanLogID", "Học phần \""+model.TenHocPhan+"\" đã được phân công nhóm lớp");

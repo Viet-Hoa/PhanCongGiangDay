@@ -867,6 +867,8 @@
     <Content Include="Views\PhanCongGiangVien\_ThemPhanCongGiangVien.cshtml" />
     <Content Include="Views\PhanCongGiangVien\_ChiTietPhanCongGiangVien.cshtml" />
     <Content Include="Views\XuatExcel\_MauGiangVien.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\_CapNhatPhanCongGiangVienNhomLop.cshtml" />
+    <Content Include="Views\PhanCongGiangVien\_ThemPhanCongGiangVienNhomLop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Model\" />
@@ -879,10 +881,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Lib.Lop.csproj">
-      <Project>{499942d9-517f-4e9c-97a9-31b6f55cbdb9}</Project>
-      <Name>Lib.Lop</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lib.Account\Lib.Account.csproj">
       <Project>{dde797e1-24a8-49e1-9e66-3df7034e7e51}</Project>
       <Name>Lib.Account</Name>
@@ -914,6 +912,10 @@
     <ProjectReference Include="..\Lib.Khoa\Lib.Khoa.csproj">
       <Project>{3cf0c2b8-5188-455a-ba7a-431a447031e8}</Project>
       <Name>Lib.Khoa</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.Lop\Lib.Lop.csproj">
+      <Project>{af158305-4dc3-490b-8e87-50f3187d74c9}</Project>
+      <Name>Lib.Lop</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lib.NamHoc\Lib.NamHoc.csproj">
       <Project>{4f8cdc9f-a3cc-4c29-95a9-475000cd7c50}</Project>

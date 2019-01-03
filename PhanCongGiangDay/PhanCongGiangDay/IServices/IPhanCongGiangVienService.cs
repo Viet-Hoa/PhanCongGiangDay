@@ -23,5 +23,6 @@ namespace PhanCongGiangDay.IServices
 
         IEnumerable<PhanCongGiangVienViewModel> DanhSachGiangVienPhanCong(int BangPhanCongID,int Loc);
         PhanCongGiangVienViewModel ChiTietGiangVienPhanCong(int BangPhanCongID, int GiangVienID);
+        PhanCongGiangVienTheoNhomLopViewModel ChiTietNhomLopPhanCong(int BangPhanCongID, int PhanCongNhomLopID);
     }
 }

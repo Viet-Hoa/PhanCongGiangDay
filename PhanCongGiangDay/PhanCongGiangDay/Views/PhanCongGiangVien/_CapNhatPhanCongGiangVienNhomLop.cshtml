@@ -1,0 +1,160 @@
+﻿@model PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien.PhanCongGiangVienTheoNhomLopViewModel
+
+@Html.DropDownList("gvall", (SelectList)ViewBag.giangvienddl, null, new { @class = "d-none" })
+@*@Html.DropDownList("gvbomon", (SelectList)ViewBag.gvbomonddl, null, new { @class = "d-none" })*@
+@Html.Hidden("NamHocHidden", (int)ViewBag.namhoc)
+@using (Html.BeginForm("CapNhatPhanCongGiangVien", "PhanCongGiangVien", FormMethod.Post, new { id = "formCapNhatPhanCongGiangVien" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Cập nhật phân công giảng viên theo nhóm lớp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row font-weight-bold">
+            <div class="col-3">
+                Học phần
+            </div>
+            <div class="col-3">
+                Bộ môn
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col">
+                        Số tiết LT
+                    </div>
+                    <div class="col">
+                        Số tiết TH
+                    </div>
+                    <div class="col">
+                        Số nhóm LT
+                    </div>
+                    <div class="col">
+                        Số nhóm TH
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row font-weight-bold pb-2">
+            <div class="col-3">
+                @Model.MaVaTenHP
+                @Html.HiddenFor(x=>x.PhanCongNhomLopID)
+            </div>
+            <div class="col-3">
+                @Model.TenBoMon
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <span id="sotietlt">@Model.SoTietLT</span>
+                    </div>
+                    <div class="col">
+                        <span id="sotietth">@Model.SoTietTH</span>
+                    </div>
+                    <div class="col">
+                        <span id="sotietcllt">@Model.SoLuongConLaiLT</span>
+                    </div>
+                    <div class="col">
+                        <span id="sotietclth">@Model.SoLuongConLaiTH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row font-weight-bold" style="border-top: gray solid 1px">
+            <div class="col-3">
+                Giảng viên
+            </div>
+            <div class="col-2">
+                HK1 LT
+            </div>
+            <div class="col-2">
+                HK1 TH
+            </div>
+            <div class="col-2">
+                HK2 LT
+            </div>
+            <div class="col-2">
+                HK2 TH
+            </div>
+        </div>
+        @if (Model.GiangVienPhanCong.Any())
+        {
+            for (int i = 0; i < Model.GiangVienPhanCong.Count; i++)
+            {
+                <div class="row row-gv" id="gv_@i">
+                    <div class="col-3">
+                        @Html.Hidden("gv-hidden_"+i, Model.GiangVienPhanCong[i].GiangVienLogID,new { @class="gv-hidden-val" })
+                        @Html.DropDownListFor(x => x.GiangVienPhanCong[i].GiangVienLogID, (SelectList)ViewBag.gvbomonddl, "-- Chọn --", new { @class = "form-control gvddl", id = "giangvien_"+i })
+                        @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].GiangVienLogID)
+                    </div>
+                    <div class="col-2">
+                        @Html.TextBoxFor(x => x.GiangVienPhanCong[i].HK1LT, new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
+                        @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK1LT)
+                    </div>
+                    <div class="col-2">
+                        @Html.TextBoxFor(x => x.GiangVienPhanCong[i].HK1TH, new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
+                        @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK1TH)
+                    </div>
+                    <div class="col-2">
+                        @Html.TextBoxFor(x => x.GiangVienPhanCong[i].HK2LT, new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
+                        @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK2LT)
+                    </div>
+                    <div class="col-2">
+                        @Html.TextBoxFor(x => x.GiangVienPhanCong[i].HK2TH, new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
+                        @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK2TH)
+                    </div>
+                    <div class="col-1 text-center" style="font-size:18pt">
+                        <i id="tgv_@i" class="fa fa-plus-circle button-edit-gv" aria-hidden="true"></i>
+                        <i id="xgv_@i" class="fa fa-minus-circle button-edit-gv d-none" aria-hidden="true"></i>
+                        <input type="hidden" name="GiangVienPhanCong[@i].TrangThai" id="trangthaigv_@i" value="2" />
+                        <input type="hidden" class="sotietSum" name="GiangVienPhanCong[@i].SoTiet" id="NhomLopPhanCongSoTiet_@i" value="0" />
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="row row-gv" id="gv_0">
+                <div class="col-3">
+                    @Html.DropDownList("GiangVienPhanCong[0].GiangVienLogID", (SelectList)ViewBag.giangvienddl, "-- Chọn --", new { @class = "form-control gvddl", id = "giangvien_0" })
+                    @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].GiangVienLogID)
+                </div>
+                <div class="col-2">
+                    @Html.TextBox("GiangVienPhanCong[0].HK1LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
+                    @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK1LT)
+                </div>
+                <div class="col-2">
+                    @Html.TextBox("GiangVienPhanCong[0].HK1TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
+                    @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK1TH)
+                </div>
+                <div class="col-2">
+                    @Html.TextBox("GiangVienPhanCong[0].HK2LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
+                    @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK2LT)
+                </div>
+                <div class="col-2">
+                    @Html.TextBox("GiangVienPhanCong[0].HK2TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
+                    @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK2TH)
+                </div>
+                <div class="col-1 text-center" style="font-size:18pt">
+                    <i id="tgv_0" class="fa fa-plus-circle button-edit-gv" aria-hidden="true"></i>
+                    <i id="xgv_0" class="fa fa-minus-circle button-edit-gv d-none" aria-hidden="true"></i>
+                    <input type="hidden" name="GiangVienPhanCong[0].TrangThai" id="trangthaigv_0" value="2" />
+                    <input type="hidden" class="sotietSum" name="GiangVienPhanCong[0].SoTiet" id="NhomLopPhanCongSoTiet_0" value="0" />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_CapNhatPhanCongGiangVienNhomLop">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        CapNhatPhanCongGiangVienNhomLopModule.init();
+    });
+</script>
+
+

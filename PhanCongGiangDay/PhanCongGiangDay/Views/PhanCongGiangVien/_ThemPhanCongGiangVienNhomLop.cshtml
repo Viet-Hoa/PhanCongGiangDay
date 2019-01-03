@@ -1,0 +1,36 @@
+﻿@{
+    int i = ViewBag.thutu;
+}
+<div class="row row-gv" id="gv_@i">
+    <div class="col-3">
+        @Html.DropDownList("GiangVienPhanCong[" + i + "].GiangVienLogID", (SelectList)ViewBag.giangvienddl, "-- Chọn --", new { @class = "form-control gvddl", id = "giangvien_"+i })
+        @Html.ValidationMessage("GiangVienPhanCong[" + i + "].GiangVienLogID")
+    </div>
+    <div class="col-2">
+        @Html.TextBox("GiangVienPhanCong[0].HK1LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("GiangVienPhanCong[" + i + "].HK1LT")
+    </div>
+    <div class="col-2">
+        @Html.TextBox("GiangVienPhanCong[0].HK1TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("GiangVienPhanCong[" + i + "].HK1TH")
+    </div>
+    <div class="col-2">
+        @Html.TextBox("GiangVienPhanCong[0].HK2LT", "0", new { @class = "form-control lythuyet", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("GiangVienPhanCong[" + i + "].HK2LT")
+    </div>
+    <div class="col-2">
+        @Html.TextBox("GiangVienPhanCong[0].HK2TH", "0", new { @class = "form-control thuchanh", onkeypress = "validateUnsignedInt(event)" })
+        @Html.ValidationMessage("GiangVienPhanCong[" + i + "].HK2TH")
+    </div>
+    <div class="col-1 text-center" style="font-size:18pt">
+        <i id="tgv_@i" class="fa fa-plus-circle button-edit-gv" aria-hidden="true"></i>
+        <i id="xgv_@i" class="fa fa-minus-circle button-edit-gv d-none" aria-hidden="true"></i>
+        <input type="hidden" name="GiangVienPhanCong[@i].TrangThai" id="trangthaigv_@i" value="2" />
+        <input type="hidden" class="sotietSum" name="GiangVienPhanCong[@i].SoTiet" id="NhomLopPhanCongSoTiet_@i" value="0" />
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.gvddl').select2();
+    });
+</script>

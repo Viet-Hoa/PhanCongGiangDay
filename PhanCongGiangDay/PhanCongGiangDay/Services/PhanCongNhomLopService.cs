@@ -18,12 +18,12 @@ namespace PhanCongGiangDay.Services
             get { return _PhanCongNhomLopDA ?? (_PhanCongNhomLopDA = new PhanCongNhomLopDataAccess()); }
         }
 
-        public IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID)
+        public IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLop(int BangPhanCongID, int? KhoaID, int? BoMonID)
         {
             IEnumerable<PhanCongNhomLopModel> list = null;
             try
             {
-                list= PhanCongNhomLopDA.DanhSachPhanCongNhomLop(BangPhanCongID,KhoaID);                
+                list= PhanCongNhomLopDA.DanhSachPhanCongNhomLop(BangPhanCongID,KhoaID,BoMonID);                
             }
             catch(Exception ex)
             {
