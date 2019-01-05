@@ -320,7 +320,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
-                    $valmess.text('Đã nhập quá số lượng còn lại.')
+                    $valmess.text('Đã nhập quá số lượng còn lại.');
                 }
                 else {
                     $("#" + id).removeClass("input-validation-error");
@@ -337,7 +337,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('td').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
-                    $valmess.text('Đã nhập quá số lượng còn lại.')
+                    $valmess.text('Đã nhập quá số lượng còn lại.');
                 }
                 else {
                     $("#" + id).removeClass("input-validation-error");
@@ -569,6 +569,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
 
 
 var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) {
+
     function init() {
         bindFormActions();
         AddRowGiangVien();
@@ -577,6 +578,7 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
         });
         SelectedValueGiangVien();
         sumAll();
+        setNumber();
     }
 
     
@@ -593,18 +595,64 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
             $(document).on("keyup", ".lythuyet", function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
-                var stlt = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2LT").val())) * ~~parseInt($("#sotietlt").text());
-                var stth = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2TH").val())) * ~~parseInt($("#sotietth").text()) / 2;
-                $("#GiangVienPhanCongSoTiet_" + i).val(stlt + stth);
+                var stlt = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2LT").val())) * ~~parseInt($("#SoTietLT").val());
+                var stth = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2TH").val())) * ~~parseInt($("#SoTietTH").val()) / 2;
+                $("#GiangVienPhanCongSoTiet_" + i).val(stlt + stth);                
             });
             $(document).on("keyup", ".thuchanh", function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
-                var stlt = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2LT").val())) * ~~parseInt($("#sotietlt").text());
-                var stth = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2TH").val())) * ~~parseInt($("#sotietth").text()) / 2;
+                var stlt = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2LT").val())) * ~~parseInt($("#SoTietLT").val());
+                var stth = (~~parseInt($("#GiangVienPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#GiangVienPhanCong_" + i + "__HK2TH").val())) * ~~parseInt($("#SoTietTH").val()) / 2;
                 $("#GiangVienPhanCongSoTiet_" + i).val(stlt + stth);
             });            
         });
+    }
+
+    function setNumber() {
+        $(document).ready(function () {
+            $(document).on("keyup", ".lythuyet", function () {
+                var tlt = 0;
+                $(".row-gv").each(function () {
+                    tlt = tlt + ~~parseInt($(this).find(".hk1lt").val()) + ~~parseInt($(this).find(".hk2lt").val());
+                });
+                $('#sotietcllt').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tlt);
+                var id = $(this).attr('id');
+                if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tlt)<0) {
+                    $("#" + id).addClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
+                    $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
+                    $valmess.text('Đã nhập quá số lượng còn lại.');
+                }
+                else {
+                    $("#" + id).removeClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-error");
+                    $valmess.addClass("field-validation-valid").removeClass("field-validation-error");
+                    $valmess.text("");
+                }
+            });
+            $(document).on("keyup", ".thuchanh", function () {
+                var tth = 0;
+                $(".row-gv").each(function () {
+                    tth = tth + ~~parseInt($(this).find(".hk1th").val()) + ~~parseInt($(this).find(".hk2th").val());
+                });
+                $('#sotietclth').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tth);
+                var id = $(this).attr('id');
+                if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tlt) < 0) {
+                    $("#" + id).addClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
+                    $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
+                    $valmess.text('Đã nhập quá số lượng còn lại.');
+                }
+                else {
+                    $("#" + id).removeClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-error");
+                    $valmess.addClass("field-validation-valid").removeClass("field-validation-error");
+                    $valmess.text("");
+                }
+            });
+        });
+
     }
 
     function AddRowGiangVien() {
@@ -633,47 +681,39 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
         });
     }
 
-    function AddRowNhomLopPartial() {
-        $('.button-edit-nl-partial').on('click', function () {
+    function AddRowGiangVienPartial() {
+        $('.button-edit-gv-partial').on('click', function () {
             var id = $(this).attr('id');
             var i = parseInt(id.substring(id.search("_") + 1, id.length));
-            if (id.search("tnl") != -1) {
+            if (id.search("tgv") != -1) {
                 $(this).addClass("d-none");
-                $('#xnl_' + i).removeClass("d-none");
+                $('#xgv_' + i).removeClass("d-none");
                 $.ajax({
                     type: "GET",
-                    url: "/PhanCongGiangVien/ThemPhanCongGiangVien",
-                    data: { BangPhanCongID: $('#NamHocHidden').val(), GiangVienID: $('#GiangVienHidden').val(), i: i },
+                    url: "/PhanCongGiangVien/ThemPhanCongGiangVienNhomLop",
+                    data: { BangPhanCongID: $('#NamHocHidden').val(), i: i },
                     success: function (response) {
-                        $('#row_' + i).after(response);
+                        $('#gv_' + i).after(response);
                     }
                 });
             }
             else {
-                $('#row_' + i).hide();
-                $('#trangthainhomlop_' + i).val("-1");
-                $('#row_' + i).removeClass("nhomlop-row");
-                var newv = 0;
-                $(".nhomlop-row").each(function () {
-                    var hidden = $(this).find(".sotietSum").val();
-                    newv = parseInt(hidden) + newv;
-                });
-                var oldv = parseInt($('#tongsotiet').text());
-                $('#tongsotiet').text(newv);
-                var sttt = parseInt($('#sotietthucte').text());
-                $('#sotietthucte').text(sttt - oldv + newv);
+                $('#gv_' + i).hide();
+                $('#trangthaigv_' + i).val("-1");
+                $('#gv_' + i).removeClass("row-gv");
+                
             }
         });
     }
 
     function bindFormActions() {
-        $("#btn_CapNhatPhanCongGiangVien").on("click",
+        $("#btn_CapNhatPhanCongGiangVienNhomLop").on("click",
             function () {
-                if ($("#formCapNhatPhanCongGiangVien").valid()) {
+                if ($("#formCapNhatPhanCongGiangVienNhomLop").valid()) {
                     $.ajax({
-                        type: $("#formCapNhatPhanCongGiangVien").prop("method"),
-                        url: $("#formCapNhatPhanCongGiangVien").prop("action"),
-                        data: $("#formCapNhatPhanCongGiangVien").serialize(),
+                        type: $("#formCapNhatPhanCongGiangVienNhomLop").prop("method"),
+                        url: $("#formCapNhatPhanCongGiangVienNhomLop").prop("action"),
+                        data: $("#formCapNhatPhanCongGiangVienNhomLop").serialize(),
                         success: function (response) {
                             if (!response.IsSuccess) {
                                 $.notify({ message: response.Messages }, { type: "danger" });
@@ -682,8 +722,8 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
                             }
                         },
                         complete: function () {
-                            $("#modalPhanCong").modal("hide");
-                            PhanCongGiangVienModule.reloadPhanCongGiangVienTable();
+                            $("#modalLarge").modal("hide");
+                            PhanCongGiangVienModule.reloadPhanCongNhomLopTable();
                         }
                     });
                 }
@@ -693,6 +733,6 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
 
     return {
         init: init,
-        AddRowNhomLopPartial: AddRowNhomLopPartial
+        AddRowGiangVienPartial: AddRowGiangVienPartial
     }
 })(PhanCongGiangVienModule);
