@@ -160,8 +160,15 @@
                         @Html.ValidationMessageFor(x => x.GiangVienPhanCong[0].HK2TH)
                     </div>
                     <div class="col-1 text-center" style="font-size:18pt">
-                        <i id="tgv_@i" class="fa fa-plus-circle button-edit-gv" aria-hidden="true"></i>
-                        <i id="xgv_@i" class="fa fa-minus-circle button-edit-gv d-none" aria-hidden="true"></i>
+                        @if ((Model.GiangVienPhanCong.Count() - 1) == i)
+                        {
+                            <i id="tgv_@i" class="fa fa-plus-circle button-edit-gv" aria-hidden="true"></i>
+                            <i id="xgv_@i" class="fa fa-minus-circle button-edit-gv d-none" aria-hidden="true"></i>
+                        }
+                        else
+                        {
+                            <i id="xgv_@i" class="fa fa-minus-circle button-edit-gv" aria-hidden="true"></i>
+                        }
                         <input type="hidden" name="GiangVienPhanCong[@i].TrangThai" id="trangthaigv_@i" value="2" />
                         <input type="hidden" class="sotietSum" name="GiangVienPhanCong[@i].SoTiet" id="GiangVienPhanCongSoTiet_@i" value="0" />
                     </div>
