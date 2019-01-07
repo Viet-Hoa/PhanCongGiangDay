@@ -74,6 +74,7 @@ namespace Lib.PhanCongGiangVien.DataAccess
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@PhanCongID", model.PhanCongID));
+                listParameter.Add(new SqlParameter("@GiangVienLogID", model.GiangVienLogID));
                 listParameter.Add(new SqlParameter("@PhanCongNhomLopID", model.PhanCongNhomLopID));
                 listParameter.Add(new SqlParameter("@HK1LT", model.HK1LT));
                 listParameter.Add(new SqlParameter("@HK1TH", model.HK1TH));

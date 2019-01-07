@@ -217,7 +217,7 @@ namespace Lib.XuatExcel.Model
                 return SoTietLT + SoTietTH / 2;
             }
         }
-        public float HeSo
+        public double HeSo
         {
             get
             {

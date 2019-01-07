@@ -44,9 +44,8 @@ var ChuongTrinhDaoTaoModule = (function () {
                 {
                     data: "ChuongTrinhDaoTaoID", orderable: false, width: 140, className: "text-center", render: function (data) {
                         return '<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/ChiTietChuongTrinhDaoTao?id=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
-                            '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/SuaChuongTrinhDaoTao?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' + ' ' +
-                            '<button class="btn btn-sm btn-outline-danger btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/XoaChuongTrinhDaoTao?id=' + data + '"><i class="fa fa-trash-o"></i></button>';
-                        
+				'<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/SuaChuongTrinhDaoTao?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' + ' ' +
+                            '<button class="btn btn-sm btn-outline-danger btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/XoaChuongTrinhDaoTao?id=' + data + '"><i class="fa fa-trash-o"></i></button>';                       
                     }
                 }
             ]

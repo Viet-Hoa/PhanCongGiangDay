@@ -182,5 +182,40 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.giangvienddl = new SelectList(gv, "GiangVienLogID", "HoTenGV");
             return PartialView("_ThemPhanCongGiangVienNhomLop");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CapNhatPhanCongGiangVienNhomLop(PhanCongGiangVienTheoNhomLopViewModel model)
+        {
+            try
+            {
+                ResponseResult result = null;
+                model.GiangVienPhanCong = model.GiangVienPhanCong.Where(x => x.GiangVienLogID != 0).ToList();
+                foreach (var item in model.GiangVienPhanCong)
+                {
+                    item.PhanCongNhomLopID = model.PhanCongNhomLopID;
+                    if (item.TrangThai == 2)
+                        result = PhanCongGiangVienService.ThemPhanCongGiangVien(item);
+                    else if (item.TrangThai == -1)
+                        result = PhanCongGiangVienService.XoaPhanCongGiangVien(item.PhanCongID, "");
+                    else
+                        result = PhanCongGiangVienService.SuaPhanCongGiangVien(item);
+
+                    if (result == null)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail("Cập nhật phân công giảng viên cho nhóm lớp thất bại."));
+                    }
+                    else if (result != null && result.ResponseCode == -1)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                    }
+                }
+                return Json(JsonResponseViewModel.CreateSuccess("Cập nhật phân công giản viên cho nhóm lớp thành công."));
+
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonResponseViewModel.CreateFail(ex));
+            }
+        }
     }
 }
