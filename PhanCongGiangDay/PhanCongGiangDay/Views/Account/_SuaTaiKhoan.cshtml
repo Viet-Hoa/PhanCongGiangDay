@@ -1,0 +1,54 @@
+﻿@model Lib.Account.Model.AccountModel
+@using (Html.BeginForm("SuaAccount", "Account", FormMethod.Post, new { id = "formSuaAccount" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.UserName)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa tài khoản</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Tên tài khoản</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.UserName)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Email</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Email)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Cấp độ phân quyền</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.Lv, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Lv)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaAccount">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaAccountModule.init();
+    });
+</script>

@@ -10,7 +10,8 @@ namespace Lib.Account.Model
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string Lv { get; set; } 
+        public string Lv { get; set; }
+        public string Email { get; set; }
         public string SessionKey { get; set; }
         public string ReturnUrl { get; set; }
     }

@@ -52,6 +52,7 @@ namespace Lib.Account.DataAccess
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@UserName", model.UserName));
                 listParameter.Add(new SqlParameter("@Password", model.Password));
+                listParameter.Add(new SqlParameter("@Email", model.Email));
                 listParameter.Add(new SqlParameter("@Lv", model.Lv));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_Account_Create", listParameter);
             }
@@ -68,6 +69,7 @@ namespace Lib.Account.DataAccess
             {
                 List<SqlParameter> listParameter = new List<SqlParameter>();
                 listParameter.Add(new SqlParameter("@UserName", model.UserName));
+                listParameter.Add(new SqlParameter("@Email", model.Email));
                 listParameter.Add(new SqlParameter("@Lv", model.Lv));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_Account_Edit", listParameter);
             }

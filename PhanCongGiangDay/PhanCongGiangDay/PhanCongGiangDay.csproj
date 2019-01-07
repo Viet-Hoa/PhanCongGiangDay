@@ -853,6 +853,10 @@
     <Content Include="Views\Lop\_ThemLop.cshtml" />
     <Content Include="Views\Lop\_XoaLop.cshtml" />
     <Content Include="Views\Lop\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\_SuaTaiKhoan.cshtml" />
+    <Content Include="Views\Account\_ThemTaiKhoan.cshtml" />
+    <Content Include="Views\Account\_XoaTaiKhoan.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />
