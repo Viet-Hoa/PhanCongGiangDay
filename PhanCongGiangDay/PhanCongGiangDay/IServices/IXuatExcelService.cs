@@ -17,5 +17,7 @@ namespace PhanCongGiangDay.IServices
         Stream XuatExcelMau01(int BangPhanCongID, int HocKi);
         Stream XuatExcelMauBoMon(int BangPhanCongID);
         Stream XuatExcelMauGiangVien(int BangPhanCongID, List<int> GiangVienID);
+
+        Stream XuatExcelPhanCong(int BangPhanCongID);
     }
 }

@@ -62,6 +62,12 @@ namespace PhanCongGiangDay.Controllers
             var fileName = "BangPhanCongCongTacCanBoGiangVienCoHuu_MauBoMon_" + DateTime.Now.ToString("ddMMyyyyhhmmss") + ".xlsx";
             return File(content, "application/vnd.ms-excel", fileName);
         }
+        public ActionResult XuatExcelPhanCong(int BangPhanCongID, string NamHoc)
+        {
+            var content = XuatExcelService.XuatExcelPhanCong(BangPhanCongID);
+            var fileName = "BangPhanCongCongTac_" + NamHoc + "_" + DateTime.Now.ToString("ddMMyyyyhhmmss") + ".xlsx";
+            return File(content, "application/vnd.ms-excel", fileName);
+        }
         [HttpGet]
         public ActionResult XuatExcelMauGiangVien()
         {

@@ -45,9 +45,20 @@ namespace Lib.PhanCongNhomLop.Model
                 return "(" + MaHP + ") " + TenHocPhan;
             }
         }
+        public int SoTC { get; set; }
         public int SoTietLT { get; set; }
         public int SoTietTH { get; set; }
+        public int SoTietTC
+        {
+            get
+            {
+                return SoTietLT + SoTietTH / 2;
+            }
+        }
         public string TenBoMon { get; set; }
         public int BoMonID { get; set; }
+        public string HocKi { get; set; }
+        public string TenKhoa { get; set; }
+        public string CTDT { get; set; }
     }
 }
