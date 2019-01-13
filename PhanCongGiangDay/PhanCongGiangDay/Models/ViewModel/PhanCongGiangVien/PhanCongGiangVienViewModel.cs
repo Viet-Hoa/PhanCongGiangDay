@@ -47,6 +47,8 @@ namespace PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien
         public int SoLuongConLaiTH { get; set; }
         public string MaHP { get; set; }
         public string TenHocPhan { get; set; }
+        public string HocKi { get; set; }
+        public string TenCTDT { get; set; }
         public string MaVaTenHP
         {
             get

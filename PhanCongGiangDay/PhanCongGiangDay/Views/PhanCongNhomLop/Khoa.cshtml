@@ -17,7 +17,7 @@
 <div id="main-content">
     <div id="main-content">
         <div class="container-fluid">
-            <div class="chedo1">
+            <div class="chedo1 d-none">
                 <div class="row">
                     <div class="col-12">
                         @foreach (var item in Model)
@@ -34,7 +34,18 @@
                     </div>
                 </div>
             </div>
-            <div class="chedo0 d-none">
+            <div class="chedo0">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="search-box">
+                            @Html.TextBox("PhanCongNhomLop-search", null, new { @class = "form-control", @maxlength = "20" })
+                            <button type="button" class="search-button"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                    <div class="col-3 text-right">
+                        <a id="btnPhanCongNhomLopTuDong" href="#" class="btn btn-primary">Phân công nhóm lớp tự động</a>
+                    </div>
+                </div>
                 <div class="row">
                     <div id="PhanCongNhomLop-container" style="width: 100%">
                         <table class="table table-hover table-bordered table-custom pl-0 pr-0" cellspacing="0" id="phanCongNhomLop-table" style="width: 100%">
@@ -43,8 +54,10 @@
                                     <td>STT</td>
                                     <td>Mã học phần</td>
                                     <td>Tên học phần</td>
-                                    <td>Số lượng nhóm lớp LT</td>
-                                    <td>Số lượng nhóm lớp TH</td>
+                                    <td>CTDT</td>
+                                    <td>Học kì</td>
+                                    <td>SL nhóm lớp LT</td>
+                                    <td>SL nhóm lớp TH</td>
                                     <td>LT còn lại</td>
                                     <td>TH còn lại</td>
                                     <td style="min-width:100px; max-width:200px"></td>
@@ -63,6 +76,7 @@
     <script>
         $(function () {
             CheDoXemPhanCongNhomLopModule.init();
+            PhanCongNhomLopModule.timKiem();
         });
     </script>
 

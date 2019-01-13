@@ -46,13 +46,16 @@ var PhanCongNhomLopModule = (function () {
                 complete: function () {
                     hideLoadingOverlay("#PhanCongNhomLop-container");
                     Checkrole();
+                    disabled_auto();
                 }
             },
 
             columns: [
                 { data: "STT" },
                 { data: "MaHP" },
-                { data: "TenHocPhan" },
+                { data: "TenHocPhan", className: "custom-wrap" },
+                { data: "TenCTDT" },
+                { data: "HocKi" },
                 { data: "SoLuongNhomLopLT" },
                 { data: "SoLuongNhomLopTH" },
                 { data: "SoLuongConLaiLT" },
@@ -79,9 +82,15 @@ var PhanCongNhomLopModule = (function () {
         if ($('#role').val() < 2) {
             $(".btn-grid").addClass("edit-disabled");
             $("#btnThemPhanCongNhomLop").addClass("add-disabled");
+            $("#btnPhanCongNhomLopTuDong").addClass("add-disabled");
         }
     }
 
+    function disabled_auto() {
+        if ($PhanCongNhomLopTable.data().count() > 0)
+            $('#btnPhanCongNhomLopTuDong').addClass("add-disabled");
+    }
+    
     function reloadPhanCongNhomLopTable() {
         $PhanCongNhomLopTable.ajax.reload();
 

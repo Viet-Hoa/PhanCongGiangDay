@@ -9,6 +9,7 @@ using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Services;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 using PhanCongGiangDay.Infrastructure.Attributes;
+using Lib.Setting.Model;
 namespace PhanCongGiangDay.Controllers
 {
     [CustomLoginAuthorize]
@@ -180,6 +181,43 @@ namespace PhanCongGiangDay.Controllers
                 }
                 else
                     return Json(JsonResponseViewModel.CreateFail("Xoá phân công nhóm lớp thất bại."));
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonResponseViewModel.CreateFail(ex));
+            }
+        }
+
+        [HttpGet]
+        public ActionResult PhanCongNhomLopTuDong(int BangPhanCongID)
+        {
+            ViewBag.namhoc = BangPhanCongID;
+            var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLopTuDong(BangPhanCongID);
+            return PartialView("_PhanCongNhomLopTuDong", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult PhanCongNhomLopTuDong(List<PhanCongNhomLopModel> model)
+        {
+            try
+            {
+                ResponseResult result = null;
+                model = model.Where(x => x.HocPhanLogID != 0).ToList();
+                foreach (var item in model)
+                {
+                    result = PhanCongNhomLopService.ThemPhanCongNhomLop(item);
+
+                    if (result == null)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail("Thêm phân công nhóm lớp thất bại."));
+                    }
+                    else if (result != null && result.ResponseCode == -1)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                    }
+                }
+                return Json(JsonResponseViewModel.CreateSuccess("Thêm phân công nhóm lớp thành công."));
+
             }
             catch (Exception ex)
             {

@@ -166,6 +166,8 @@ namespace PhanCongGiangDay.Services
                     SoTietLT = model.SoTietLT,
                     SoTietTH = model.SoTietTH,
                     BoMonID = model.BoMonID,
+                    HocKi=model.HocKi,
+                    TenCTDT=model.TenCTDT,
                     GiangVienPhanCong = pc.ToList()
                 };
             }

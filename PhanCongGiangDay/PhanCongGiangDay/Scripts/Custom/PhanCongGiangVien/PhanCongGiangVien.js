@@ -104,7 +104,9 @@ var PhanCongGiangVienModule = (function () {
             columns: [
                 { data: "STT" },
                 { data: "MaHP" },
-                { data: "TenHocPhan" },
+                { data: "TenHocPhan", className:"custom-wrap" },
+                { data: "TenCTDT" },
+                { data: "HocKi" },
                 { data: "SoLuongNhomLopLT" },
                 { data: "SoLuongNhomLopTH" },
                 { data: "SoLuongConLaiLT" },
@@ -638,7 +640,7 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
                 });
                 $('#sotietclth').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tth);
                 var id = $(this).attr('id');
-                if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tlt) < 0) {
+                if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tth) < 0) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
