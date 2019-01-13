@@ -11,8 +11,9 @@ namespace Lib.NamHoc.IDataAccess
     public interface INamHocDataAccess
     {
         IEnumerable<NamHocModel> DanhSachNamHoc();
-        NamHocModel ChiTietNamHoc(int NamHocID);
+        NamHocModel ChiTietNamHoc(int BangPhanCongID);
         ResponseResult ThemNamHoc(NamHocModel model);
         ResponseResult SuaNamHoc(NamHocModel model);
+        ResponseResult XoaNamHoc(int BangPhanCongID);
     }
 }

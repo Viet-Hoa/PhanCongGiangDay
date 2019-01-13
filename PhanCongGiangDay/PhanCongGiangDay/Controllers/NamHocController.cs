@@ -100,7 +100,35 @@ namespace PhanCongGiangDay.Controllers
                 return Json(JsonResponseViewModel.CreateFail(ex));
             }
         }
+        [HttpGet]
+        public ActionResult XoaNamHoc(int id)
+        {
+            return PartialView("_XoaNamHoc", id);
+        }
 
-                
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult XoaNamHocConfirmed(int BangPhanCongID)
+        {
+            try
+            {
+                var result = NamHocService.XoaNamHoc(BangPhanCongID);
+                if (result != null && result.ResponseCode == 1)
+                {
+                    return Json(JsonResponseViewModel.CreateSuccess("Xoá năm học thành công."));
+                }
+                else if (result != null && result.ResponseCode == -1)
+                {
+                    return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                }
+                else
+                    return Json(JsonResponseViewModel.CreateFail("Xoá năm học thất bại."));
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonResponseViewModel.CreateFail(ex));
+            }
+        }
+
     }
 }

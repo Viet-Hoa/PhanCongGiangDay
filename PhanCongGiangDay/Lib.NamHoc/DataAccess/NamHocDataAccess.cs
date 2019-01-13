@@ -74,5 +74,20 @@ namespace Lib.NamHoc.DataAccess
             }
             return res;
         }
+        public ResponseResult XoaNamHoc(int BangPhanCongID)
+        {
+            ResponseResult res = null;
+            try
+            {
+                List<SqlParameter> listParameter = new List<SqlParameter>();
+                listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
+                res = DBUtils.ExecuteSP<ResponseResult>("SP_BangPhanCong_Xoa", listParameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return res;
+        }
     }
 }
