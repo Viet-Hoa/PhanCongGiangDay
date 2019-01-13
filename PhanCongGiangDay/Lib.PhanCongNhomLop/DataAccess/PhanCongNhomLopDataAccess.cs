@@ -30,6 +30,21 @@ namespace Lib.PhanCongNhomLop.DataAccess
             }
             return list;
         }
+        public IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLopTuDong(int BangPhanCongID)
+        {
+            List<PhanCongNhomLopModel> list = new List<PhanCongNhomLopModel>();
+            try
+            {
+                List<SqlParameter> listParameter = new List<SqlParameter>();
+                listParameter.Add(new SqlParameter("@BangPhanCongID", BangPhanCongID));
+                list = DBUtils.ExecuteSPList<PhanCongNhomLopModel>("SP_PhanCongNhomLop_DanhSach_PhanCong_TuDong", listParameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return list;
+        }
         public PhanCongNhomLopModel ChiTietPhanCongNhomLop(int PhanCongNhomLopID)
         {
             PhanCongNhomLopModel model = null;

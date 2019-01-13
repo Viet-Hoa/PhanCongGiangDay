@@ -221,7 +221,7 @@ namespace Lib.XuatExcel.Model
         {
             get
             {
-                return (SoTietLT + SoTietTH / 2) / (SoTietLT + SoTietTH);
+                return (double)TongSoTiet / (double)(SoTietLT + SoTietTH);
             }
         }
         public int SNLLT { get; set; }

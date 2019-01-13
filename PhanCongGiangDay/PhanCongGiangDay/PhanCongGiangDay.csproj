@@ -828,7 +828,7 @@
     <Content Include="Templates\Mau04.xlsx" />
     <Content Include="Templates\MauBM.xlsx" />
     <Content Include="Templates\MauGV.xlsx" />
-    <Content Include="Templates\Mau01.xlsx" />
+    <Content Include="Templates\MauXuatExcel.xlsx" />
     <Content Include="Views\GiangVien\Index.cshtml" />
     <Content Include="Views\GiangVien\_SuaGiangVien.cshtml" />
     <Content Include="Views\GiangVien\_ThemGiangVien.cshtml" />

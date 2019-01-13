@@ -31,6 +31,19 @@ namespace PhanCongGiangDay.Services
             }
             return list;
         }
+        public IEnumerable<PhanCongNhomLopModel> DanhSachPhanCongNhomLopTuDong(int BangPhanCongID)
+        {
+            IEnumerable<PhanCongNhomLopModel> list = null;
+            try
+            {
+                list = PhanCongNhomLopDA.DanhSachPhanCongNhomLopTuDong(BangPhanCongID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return list;
+        }
         public PhanCongNhomLopModel ChiTietPhanCongNhomLop(int PhanCongNhomLopID)
         {
             PhanCongNhomLopModel model = null;

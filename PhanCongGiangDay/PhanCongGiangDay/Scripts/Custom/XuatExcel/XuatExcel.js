@@ -10,6 +10,7 @@ var XuatExcelModule = (function () {
         MauBoMon();
         Mau01HK1();
         Mau01HK2();
+        MauPhanCong();
     }
 
     function MauSo04() {
@@ -33,6 +34,12 @@ var XuatExcelModule = (function () {
     function MauBoMon() {
         $('#mau_bomon').click(function () {
             window.location.href = "/XuatExcel/XuatExcelMauBoMon?BangPhanCongID=" + $("#NamHoc").val();
+        });
+    }
+
+    function MauPhanCong() {
+        $('#mau_phancong').click(function () {
+            window.location.href = "/XuatExcel/XuatExcelPhanCong?BangPhanCongID=" + $("#NamHoc").val() + "&NamHoc=" + $("#NamHoc :selected").text();
         });
     }
 
