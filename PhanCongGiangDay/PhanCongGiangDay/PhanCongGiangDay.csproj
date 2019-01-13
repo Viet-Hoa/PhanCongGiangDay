@@ -874,6 +874,7 @@
     <Content Include="Views\XuatExcel\_MauGiangVien.cshtml" />
     <Content Include="Views\PhanCongGiangVien\_CapNhatPhanCongGiangVienNhomLop.cshtml" />
     <Content Include="Views\PhanCongGiangVien\_ThemPhanCongGiangVienNhomLop.cshtml" />
+    <Content Include="Views\NamHoc\_XoaNamHoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Model\" />

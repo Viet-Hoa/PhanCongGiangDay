@@ -70,5 +70,18 @@ namespace PhanCongGiangDay.Services
             }
             return res;
         }
+        public ResponseResult XoaNamHoc(int BangPhanCongID)
+        {
+            ResponseResult res = null;
+            try
+            {
+                res = NamHocDA.XoaNamHoc(BangPhanCongID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return res;
+        }
     }
 }

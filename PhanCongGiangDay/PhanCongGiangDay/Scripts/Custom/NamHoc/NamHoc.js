@@ -40,8 +40,8 @@ var NamHocModule = (function () {
                 { data: "NamHoc" },
                 {
                     data: "BangPhanCongID", orderable: false, width: 140, className: "text-center", render: function (data) {
-                        return '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/NamHoc/SuaNamHoc?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' //+ ' ' +
-                            //'<button class="btn btn-sm btn-outline-danger btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/NamHoc/XoaNamHoc?id=' + data + '"><i class="fa fa-trash-o"></i></button>';
+                        return '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/NamHoc/SuaNamHoc?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' + ' ' +
+                            '<button class="btn btn-sm btn-outline-danger btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/NamHoc/XoaNamHoc?id=' + data + '"><i class="fa fa-trash-o"></i></button>';
                         //'<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modal" data-url="/NamHoc/ChiTietNamHoc?id=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
                     }
                 }
@@ -144,6 +144,45 @@ var SuaNamHocModule = (function (NamHocModule) {
                 return false;
             });
     }
+
+    return {
+        init: init
+    }
+})(NamHocModule);
+
+var XoaNamHocModule = (function (NamHocModule) {
+    var $formXoaNamHoc;
+
+    function init() {
+        bindFormActions();
+    }
+
+    function bindFormActions() {
+        $("#xoa-NamHoc-btn").on("click",
+            function () {
+                showLoadingOverlay();
+                $.ajax({
+                    type: $("#formXoaNamHoc").prop("method"),
+                    url: $("#formXoaNamHoc").prop("action"),
+                    data: $("#formXoaNamHoc").serialize(),
+                    success: function (response) {
+                        if (!response.IsSuccess) {
+                            $.notify({ message: response.Messages }, { type: "danger" });
+                        } else {
+                            $.notify({ message: response.Messages }, { type: "success" });
+                            NamHocModule.reloadNamHocTable();
+                        }
+                    },
+                    complete: function () {
+                        $('#modal').modal("hide");
+                        hideLoadingOverlay();
+                    }
+                });
+                return false;
+            });
+    }
+
+
 
     return {
         init: init

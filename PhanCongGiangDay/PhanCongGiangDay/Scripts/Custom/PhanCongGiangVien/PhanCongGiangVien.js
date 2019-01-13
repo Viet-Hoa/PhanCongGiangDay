@@ -8,7 +8,7 @@ var PhanCongGiangVienModule = (function () {
         loadPhanCongNhomLop();
         loadPhanCongGiangVien();
         BoMonChange();
-        loadLoai();
+        loadLoai();;
     }
 
 

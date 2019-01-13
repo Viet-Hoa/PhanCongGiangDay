@@ -14,5 +14,6 @@ namespace PhanCongGiangDay.IServices
         NamHocModel ChiTietNamHoc(int BangPhanCongID);
         ResponseResult ThemNamHoc(NamHocModel model);
         ResponseResult SuaNamHoc(NamHocModel model);
+        ResponseResult XoaNamHoc(int BangPhanCongID);
     }
 }
