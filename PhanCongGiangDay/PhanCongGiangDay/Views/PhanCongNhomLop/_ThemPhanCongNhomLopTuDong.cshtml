@@ -1,0 +1,53 @@
+﻿@{ 
+    int i = ViewBag.thutu;
+}
+
+<tr class="row-nl" id="row_@i">
+    <td>
+        <input type="hidden" name="[@i].BangPhanCongID" value="@ViewBag.namhoc" />
+        @Html.DropDownList("[" + i + "].HocPhanLogID",(SelectList)ViewBag.hocphanddl, "--Chọn--", new { @class = "form-control nhomlopddl", id = "nhomlop_" + i })
+        @Html.ValidationMessage("[" + i + "].HocPhanLogID")
+    </td>
+    <td>
+        @Html.DropDownList("[" + i + "].KhoaID", (SelectList)ViewBag.khoa_ddl,"--Chọn--", new { @class = "form-control khoaddl", id = "khoa_" + i })
+        @Html.ValidationMessage("[" + i + "].HocPhanLogID")
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].TenCTDT", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].HocKi", "", new { @class = "form-control", @readonly = true })
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].SoTC", "0", new { @class = "form-control", @readonly = true, id = "SoTC_" + i })
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].SoTietLT", "0", new { @class = "form-control", @readonly = true, id= "SoTietLT_"+i })
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].SoTietTH", "0", new { @class = "form-control", @readonly = true, id = "SoTietTH_" + i })
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].SLSVNhomLop", "0", new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", id= "SLSVNhomLop_"+i, disabled=true })
+        @Html.ValidationMessage("[" + i + "].SLSVNhomLop")
+    </td>
+    <td>
+        @Html.TextBox("[" + i + "].SoLuongNhomLopLT", "0", new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)", id = "SoLuongNhomLopLT_"+i, disabled=true })
+        @Html.ValidationMessage("[" + i + "].SoLuongNhomLopLT")
+        <input type="hidden" name="[@i].SoLuongNhomLopTH" value="0" id="SoLuongNhomLopTH_@i" />
+    </td>
+    <td style="font-size:18pt">
+        <i id="tnl_@i" class="fa fa-plus-circle button-edit-nl-partial" aria-hidden="true"></i>
+        <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl-partial d-none" aria-hidden="true"></i>
+        <input type="hidden" name="[@i].TrangThai" value="1" id="trangthainl_@i" />
+    </td>
+</tr>
+<script>
+    $(function () {
+        PhanCongNhomLopTuDongModule.AddRowNhomLopPartial();
+        PhanCongNhomLopTuDongModule.setNumber();
+    });
+    $(document).ready(function () {
+        $('.nhomlopddl').select2();
+    });
+</script>

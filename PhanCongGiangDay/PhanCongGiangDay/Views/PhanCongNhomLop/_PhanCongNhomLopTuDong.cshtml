@@ -1,0 +1,98 @@
+﻿@model List<Lib.PhanCongNhomLop.Model.PhanCongNhomLopModel>
+@Html.DropDownList("sotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
+@Html.DropDownList("sotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
+@Html.DropDownList("sotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
+@using (Html.BeginForm("PhanCongNhomLopTuDong", "PhanCongNhomLop", FormMethod.Post, new { id = "formPhanCongNhomLopTuDong" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Phân công nhóm lớp tự động</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <table class="table-form" style="width:100%">
+                    <thead style="font-size:10pt">
+                        <tr class="font-weight-bold">
+                            <td valign="top" width="28%">Học phần</td>
+                            <td valign="top" width="12%">Khoá</td>
+                            <td valign="top" width="10%">CTDT</td>
+                            <td valign="top" width="6%">Học kì</td>
+                            <td valign="top" width="5%">TC</td>
+                            <td valign="top" width="7%">LT</td>
+                            <td valign="top" width="7%">TH</td>
+                            <td valign="top" width="10%">SLSV/Nhóm</td>
+                            <td valign="top" width="10%">Số nhóm</td>
+                            <td width="4%"></td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr class="row-nl" id="row_@i">
+                                <td>
+                                    @Html.HiddenFor(x => x[i].BangPhanCongID)
+                                    @Model[i].MaVaTenHP
+                                    @Html.HiddenFor(x => x[i].HocPhanLogID)
+                                </td>
+                                <td>
+                                    <span title="@Model[i].SLSVKhoa">@Model[i].TenKhoa</span>
+                                    @Html.HiddenFor(x => x[i].KhoaID)
+                                </td>
+                                <td>
+                                    @Model[i].TenCTDT
+                                </td>
+                                <td>
+                                    @Model[i].HocKi
+                                </td>
+                                <td>
+                                    @Model[i].SoTC
+                                </td>
+                                <td>
+                                    @Model[i].SoTietLT
+                                </td>
+                                <td>
+                                    @Model[i].SoTietTH
+                                    @Html.Hidden("[" + i + "].SoTietTH", Model[i].SoTietTH, new { id= "SoTietTH_"+i })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x[i].SLSVNhomLop, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)" })
+                                    @Html.ValidationMessageFor(x => x[i].SLSVNhomLop)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x[i].SoLuongNhomLopLT, new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+                                    @Html.ValidationMessageFor(x => x[i].SoLuongNhomLopLT)
+                                    @Html.HiddenFor(x => x[i].SoLuongNhomLopTH, new { id = "SoLuongNhomLopTH_" + i })
+                                </td>
+                                <td style="font-size:18pt">
+                                    @if ((Model.Count() - 1) == i)
+                                    {
+                                        <i id="tnl_@i" class="fa fa-plus-circle button-edit-nl" aria-hidden="true"></i>
+                                        <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl d-none" aria-hidden="true"></i>
+                                    }
+                                    else
+                                    {
+                                        <i id="xnl_@i" class="fa fa-minus-circle button-edit-nl" aria-hidden="true"></i>
+                                    }
+                                    @Html.HiddenFor(x => x[i].TrangThai, new { id = "trangthainl_" + i })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_PhanCongNhomLopTuDong">Lưu</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        PhanCongNhomLopTuDongModule.init();
+    })
+</script>

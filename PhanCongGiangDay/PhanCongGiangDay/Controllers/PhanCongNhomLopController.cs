@@ -21,6 +21,8 @@ namespace PhanCongGiangDay.Controllers
         private INamHocService NamHocService => _namHocService ?? (_namHocService = new NamHocService());
         private IKhoaService _khoaService;
         private IKhoaService KhoaService => _khoaService ?? (_khoaService = new KhoaService());
+        private ICTDTService _cTDTService;
+        private ICTDTService CTDTService => _cTDTService ?? (_cTDTService = new CTDTService());
         private readonly IPhanCongNhomLopService PhanCongNhomLopService;
         public PhanCongNhomLopController(IPhanCongNhomLopService _PhanCongNhomLopService)
         {
@@ -193,7 +195,21 @@ namespace PhanCongGiangDay.Controllers
         {
             ViewBag.namhoc = BangPhanCongID;
             var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLopTuDong(BangPhanCongID);
-            return PartialView("_PhanCongNhomLopTuDong", viewModel);
+            var dshp = HocPhanService.DanhSachHocPhan();
+            ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
+            ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
+            ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
+            return PartialView("_PhanCongNhomLopTuDong", viewModel.ToList());
+        }
+
+        public ActionResult ThemPhanCongNhomLopTuDong(int BangPhanCongID, int i)
+        {
+            ViewBag.namhoc = BangPhanCongID;
+            ViewBag.thutu = i + 1;
+            var khoa = KhoaService.DanhSachKhoa().Where(x => x.NamKetThuc >= DateTime.Now.Year);
+            ViewBag.khoa_ddl = new SelectList(khoa, "KhoaID", "TenKhoa");
+            ViewBag.hocphanddl = new SelectList(HocPhanService.DanhSachHocPhan(), "HocPhanLogID", "MaVaTenHP");
+            return PartialView("_ThemPhanCongNhomLopTuDong");
         }
 
         [HttpPost]
@@ -202,7 +218,7 @@ namespace PhanCongGiangDay.Controllers
             try
             {
                 ResponseResult result = null;
-                model = model.Where(x => x.HocPhanLogID != 0).ToList();
+                model = model.Where(x => x.HocPhanLogID != 0 && x.TrangThai != -1).ToList();
                 foreach (var item in model)
                 {
                     result = PhanCongNhomLopService.ThemPhanCongNhomLop(item);
@@ -223,6 +239,11 @@ namespace PhanCongGiangDay.Controllers
             {
                 return Json(JsonResponseViewModel.CreateFail(ex));
             }
+        }
+        public ActionResult DanhSachHocPhan(int KhoaID)
+        {
+            var model = HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

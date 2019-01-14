@@ -373,3 +373,105 @@ var CheDoXemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
         init: init
     }
 })(PhanCongNhomLopModule);
+
+var PhanCongNhomLopTuDongModule = (function (PhanCongNhomLopModule) {
+    function init() {
+        AddRowNhomLop();
+        setSLNhom();
+    }
+
+    function AddRowNhomLop() {
+        $('.button-edit-nl').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongNhomLop/ThemPhanCongNhomLopTuDong",
+                    data: { BangPhanCongID: $('#bangpc').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainl_' + i).val("-1");
+            }
+        });
+    }
+
+    function AddRowNhomLopPartial() {
+        $('.button-edit-nl-partial').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongNhomLop/ThemPhanCongNhomLopTuDong",
+                    data: { BangPhanCongID: $('#bangpc').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainl_' + i).val("-1");
+            }
+        });
+    }
+
+    function setNumber() {
+        $('.nhomlopddl').change(function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length)); 
+            $("#sotietltddl > option").each(function () {
+                if ($(this).val() == $('#'+id).val()) {
+                    var x = parseInt($(this).text());
+                    $('#SoTietLT_' + i).val(x);
+                }
+            });
+            $("#sotietthddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    var x = parseInt($(this).text());
+                    $('#SoTietTH_' + i).val(x);
+                }
+            });
+            $("#sotinchiddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    $('#SoTC_'+i).val($(this).text());
+                }
+            });
+            if ($('#' + id).val() != null || $('#' + id).val() != "") {
+                $('#SoLuongNhomLopLT_' + i).attr("disabled", false);
+                $('#SLSVNhomLop_' + i).attr("disabled", false);
+            }
+        });
+
+    }
+
+    function setSLNhom() {
+        $(document).ready(function () {
+            $(document).on("keyup", ".slnl", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.length));
+                if ($('#SoTietTH_' + i).val() != 0) {
+                    $('#SoLuongNhomLopTH_' + i).val($('#' + id).val());
+                }
+            });
+        });
+    }
+    
+
+    return {
+        init: init,
+        AddRowNhomLopPartial: AddRowNhomLopPartial,
+        setNumber: setNumber,
+        setSLNhom: setSLNhom
+    }
+})(PhanCongNhomLopModule);

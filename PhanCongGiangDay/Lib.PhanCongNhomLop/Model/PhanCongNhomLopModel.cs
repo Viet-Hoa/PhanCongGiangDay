@@ -60,7 +60,9 @@ namespace Lib.PhanCongNhomLop.Model
         public string HocKi { get; set; }
         public string TenKhoa { get; set; }
         public string CTDT { get; set; }
-        public string SVKhoa { get; set; }
+        public string SLSVKhoa { get; set; }
+        public int SLSV { get; set; }
+        public int SLCN { get; set; }
         public string TenCTDT { get; set; }
 
     }

@@ -581,6 +581,7 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
         SelectedValueGiangVien();
         sumAll();
         setNumber();
+        disableNumber();
     }
 
     
@@ -733,8 +734,16 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
             });
     }
 
+    function disableNumber() {
+        $(document).ready(function () {
+            if ($('#SoTietTH').val() == 0)
+                $('.thuchanh').attr("readonly", true);
+        });
+    }
+
     return {
         init: init,
-        AddRowGiangVienPartial: AddRowGiangVienPartial
+        AddRowGiangVienPartial: AddRowGiangVienPartial,
+        disableNumber: disableNumber
     }
 })(PhanCongGiangVienModule);

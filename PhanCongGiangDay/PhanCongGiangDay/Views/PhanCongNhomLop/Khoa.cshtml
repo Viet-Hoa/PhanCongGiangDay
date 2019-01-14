@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-3 text-right">
-                        <a id="btnPhanCongNhomLopTuDong" href="#" class="btn btn-primary">Phân công nhóm lớp tự động</a>
+                        <a id="btnPhanCongNhomLopTuDong" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modalPhanCong" data-url="@Url.Action("PhanCongNhomLopTuDong","PhanCongNhomLop",new { BangPhanCongID = ViewBag.namhocID})">Phân công nhóm lớp tự động</a>
                     </div>
                 </div>
                 <div class="row">
@@ -70,6 +70,21 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalPhanCong" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-phancong-custom">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    @@media (min-width: 800px) {
+        .modal-phancong-custom {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+    }
+</style>
 @section Scripts
 {
     @Scripts.Render("~/bundles/pcnl")

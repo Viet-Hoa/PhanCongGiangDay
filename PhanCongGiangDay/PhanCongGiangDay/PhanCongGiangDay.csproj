@@ -875,6 +875,8 @@
     <Content Include="Views\PhanCongGiangVien\_CapNhatPhanCongGiangVienNhomLop.cshtml" />
     <Content Include="Views\PhanCongGiangVien\_ThemPhanCongGiangVienNhomLop.cshtml" />
     <Content Include="Views\NamHoc\_XoaNamHoc.cshtml" />
+    <Content Include="Views\PhanCongNhomLop\_PhanCongNhomLopTuDong.cshtml" />
+    <Content Include="Views\PhanCongNhomLop\_ThemPhanCongNhomLopTuDong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Model\" />
