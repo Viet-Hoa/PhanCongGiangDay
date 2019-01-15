@@ -9,6 +9,7 @@ using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Services;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 using PhanCongGiangDay.Infrastructure.Attributes;
+using Lib.Setting.Model;
 namespace PhanCongGiangDay.Controllers
 {
     [CustomLoginAuthorize]
@@ -20,6 +21,8 @@ namespace PhanCongGiangDay.Controllers
         private INamHocService NamHocService => _namHocService ?? (_namHocService = new NamHocService());
         private IKhoaService _khoaService;
         private IKhoaService KhoaService => _khoaService ?? (_khoaService = new KhoaService());
+        private ICTDTService _cTDTService;
+        private ICTDTService CTDTService => _cTDTService ?? (_cTDTService = new CTDTService());
         private readonly IPhanCongNhomLopService PhanCongNhomLopService;
         public PhanCongNhomLopController(IPhanCongNhomLopService _PhanCongNhomLopService)
         {
@@ -185,6 +188,65 @@ namespace PhanCongGiangDay.Controllers
             {
                 return Json(JsonResponseViewModel.CreateFail(ex));
             }
+        }
+
+        [HttpGet]
+        public ActionResult PhanCongNhomLopTuDong(int BangPhanCongID)
+        {
+            ViewBag.namhoc = BangPhanCongID;
+            var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLopTuDong(BangPhanCongID);
+            var dshp = HocPhanService.DanhSachHocPhan();
+            var khoa = KhoaService.DanhSachKhoa();
+            ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
+            ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
+            ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
+            ViewBag.hocphantuchon = new SelectList(dshp, "HocPhanLogID", "CheckTuChon");
+            ViewBag.khoasvddl = new SelectList(khoa, "KhoaID", "SLSVKhoa");
+            ViewBag.khoacnddl = new SelectList(khoa, "KhoaID", "SLCN");
+            return PartialView("_PhanCongNhomLopTuDong", viewModel.ToList());
+        }
+
+        public ActionResult ThemPhanCongNhomLopTuDong(int BangPhanCongID, int i)
+        {
+            ViewBag.namhoc = BangPhanCongID;
+            ViewBag.thutu = i + 1;
+            ViewBag.khoa_ddl = new SelectList(KhoaService.DanhSachKhoa(), "KhoaID", "TenKhoa");
+            ViewBag.hocphanddl = new SelectList(HocPhanService.DanhSachHocPhan(), "HocPhanLogID", "MaVaTenHP");
+            return PartialView("_ThemPhanCongNhomLopTuDong");
+        }
+
+        [HttpPost]
+        public ActionResult PhanCongNhomLopTuDong(List<PhanCongNhomLopModel> model)
+        {
+            try
+            {
+                ResponseResult result = null;
+                model = model.Where(x => x.HocPhanLogID != 0 && x.TrangThai != -1).ToList();
+                foreach (var item in model)
+                {
+                    result = PhanCongNhomLopService.ThemPhanCongNhomLop(item);
+
+                    if (result == null)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail("Thêm phân công nhóm lớp thất bại."));
+                    }
+                    else if (result != null && result.ResponseCode == -1)
+                    {
+                        return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                    }
+                }
+                return Json(JsonResponseViewModel.CreateSuccess("Thêm phân công nhóm lớp thành công."));
+
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonResponseViewModel.CreateFail(ex));
+            }
+        }
+        public ActionResult DanhSachHocPhan(int KhoaID)
+        {
+            var model = HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -46,13 +46,16 @@ var PhanCongNhomLopModule = (function () {
                 complete: function () {
                     hideLoadingOverlay("#PhanCongNhomLop-container");
                     Checkrole();
+                    disabled_auto();
                 }
             },
 
             columns: [
                 { data: "STT" },
                 { data: "MaHP" },
-                { data: "TenHocPhan" },
+                { data: "TenHocPhan", className: "custom-wrap" },
+                { data: "TenCTDT" },
+                { data: "HocKi" },
                 { data: "SoLuongNhomLopLT" },
                 { data: "SoLuongNhomLopTH" },
                 { data: "SoLuongConLaiLT" },
@@ -79,9 +82,15 @@ var PhanCongNhomLopModule = (function () {
         if ($('#role').val() < 2) {
             $(".btn-grid").addClass("edit-disabled");
             $("#btnThemPhanCongNhomLop").addClass("add-disabled");
+            $("#btnPhanCongNhomLopTuDong").addClass("add-disabled");
         }
     }
 
+    function disabled_auto() {
+        if ($PhanCongNhomLopTable.data().count() > 0)
+            $('#btnPhanCongNhomLopTuDong').addClass("add-disabled");
+    }
+    
     function reloadPhanCongNhomLopTable() {
         $PhanCongNhomLopTable.ajax.reload();
 
@@ -362,5 +371,162 @@ var CheDoXemPhanCongNhomLopModule = (function (PhanCongNhomLopModule) {
 
     return {
         init: init
+    }
+})(PhanCongNhomLopModule);
+
+var PhanCongNhomLopTuDongModule = (function (PhanCongNhomLopModule) {
+    function init() {
+        AddRowNhomLop();
+        setSLNhom();
+        setSLSV();
+    }
+
+    function AddRowNhomLop() {
+        $('.button-edit-nl').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongNhomLop/ThemPhanCongNhomLopTuDong",
+                    data: { BangPhanCongID: $('#bangpc').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainl_' + i).val("-1");
+            }
+        });
+    }
+
+    function AddRowNhomLopPartial() {
+        $('.button-edit-nl-partial').on('click', function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length));
+            if (id.search("tnl") != -1) {
+                $(this).addClass("d-none");
+                $('#xnl_' + i).removeClass("d-none");
+                $.ajax({
+                    type: "GET",
+                    url: "/PhanCongNhomLop/ThemPhanCongNhomLopTuDong",
+                    data: { BangPhanCongID: $('#bangpc').val(), i: i },
+                    success: function (response) {
+                        $('#row_' + i).after(response);
+                    }
+                });
+            }
+            else {
+                $('#row_' + i).hide();
+                $('#trangthainl_' + i).val("-1");
+            }
+        });
+    }
+
+    function setNumber() {
+        $('.nhomlopddl').change(function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length)); 
+            $("#sotietltddl > option").each(function () {
+                if ($(this).val() == $('#'+id).val()) {
+                    var x = parseInt($(this).text());
+                    $('#SoTietLT_' + i).val(x);
+                }
+            });
+            $("#sotietthddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    var x = parseInt($(this).text());
+                    $('#SoTietTH_' + i).val(x);
+                }
+            });
+            $("#sotinchiddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    $('#SoTC_'+i).val($(this).text());
+                }
+            });
+            if ($('#' + id).val() != null || $('#' + id).val() != "") {
+                $('#SoLuongNhomLopLT_' + i).attr("disabled", false);
+            }
+            $("#tuchonddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    $('#tuchon_' + i).val($(this).text());
+                }
+            });
+        });
+
+    }
+
+    function enableSLSV() {
+        $('.khoaddl').change(function () {
+            var id = $(this).attr('id');
+            var i = parseInt(id.substring(id.search("_") + 1, id.length)); 
+            if ($(this).val() != null || $(this).val() != "") {
+                $('#SLSVNhomLop_' + i).attr("disabled", false);
+            }
+            $("#svkhoaddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    $('#slsvkhoa_' + i).val($(this).text());
+                    $('#' + id).attr("title", $(this).text());
+                }
+            }); 
+            $("#cnkhoaddl > option").each(function () {
+                if ($(this).val() == $('#' + id).val()) {
+                    $('#slcn_' + i).val($(this).text());
+                }
+            }); 
+        });
+    }
+
+    function setSLNhom() {
+        $(document).ready(function () {
+            $(document).on("keyup", ".slnl", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.length));
+                if ($('#SoTietTH_' + i).val() != 0) {
+                    $('#SoLuongNhomLopTH_' + i).val($('#' + id).val());
+                }
+            });
+        });
+    }
+    
+    function setSLSV() {
+        $(document).ready(function () {
+            $(document).on("keyup", ".slsvnl", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.length));
+                var slsv = ~~parseInt($(this).val());
+                var str = $('#slsvkhoa_' + i).val();
+                if (str.search(":")!=-1) {
+                    str = str.substring(str.search(":") + 2, str.search(";"));
+                }
+                var sl = ~~parseInt(str);
+                if ($('#tuchon_' + i).val() == 1) {
+                    var cn = ~~parseInt($('#slcn_' + i).val());
+                    if (cn < 1) {
+                        cn = 1;
+                    }
+                    $('#SoLuongNhomLopLT_' + i).val(~~parseInt(sl / cn / slsv));
+                    $('#SoLuongNhomLopTH_' + i).val(~~parseInt(sl / cn / slsv));
+                }
+                else {
+                    $('#SoLuongNhomLopLT_' + i).val(~~parseInt(sl / slsv));
+                    $('#SoLuongNhomLopTH_' + i).val(~~parseInt(sl / slsv));
+                }
+            });
+        });
+    }
+
+
+    return {
+        init: init,
+        AddRowNhomLopPartial: AddRowNhomLopPartial,
+        setNumber: setNumber,
+        setSLNhom: setSLNhom,
+        enableSLSV: enableSLSV
+
     }
 })(PhanCongNhomLopModule);

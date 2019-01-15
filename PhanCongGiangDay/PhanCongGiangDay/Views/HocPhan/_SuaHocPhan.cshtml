@@ -70,6 +70,13 @@
                         <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoTietTH)</small>
                     </div>
                 </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        @Html.CheckBoxFor(x => x.TuChon)
+                        <label for="TuChon" class="font-weight-bold">Số tiết TH</label>
+                        <span class="input-required">*</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

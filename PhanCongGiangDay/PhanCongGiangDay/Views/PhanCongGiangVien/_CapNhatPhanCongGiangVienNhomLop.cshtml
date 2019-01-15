@@ -16,55 +16,54 @@
         <div class="row font-weight-bold">
             <div class="col-12">
                 <table class="table-form" style="width:100%">
-                    <thead>
-                        <tr>
-                            <td width="26%">
-                                Học phần
-                            </td>
-                            <td width="26%">
-                                Bộ môn
-                            </td>
-                            <td width="10%">
-                                Số tiết LT
-                            </td>
-                            <td width="10%">
-                                Số tiết TH
-                            </td>
-                            <td width="12%">
-                                Số nhóm LT
-                            </td>
-                            <td width="12%">
-                                Số nhóm TH
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                @Model.MaVaTenHP
-                                @Html.HiddenFor(x=>x.PhanCongNhomLopID)
-                            </td>
-                            <td>
-                                @Model.TenBoMon
-                            </td>
-                            <td>
-                                <span id="sotietltt">@Model.SoTietLT</span>
-                                @Html.HiddenFor(x=>x.SoTietLT)
-                            </td>
-                            <td>
-                                <span id="sotiettht">@Model.SoTietTH</span>
-                                @Html.HiddenFor(x => x.SoTietTH)
-                            </td>
-                            <td>
-                                <span id="sotietcllt">@Model.SoLuongConLaiLT</span>
-                                @Html.HiddenFor(x=>x.SoLuongNhomLopLT)
-                            </td>
-                            <td>
-                                <span id="sotietclth">@Model.SoLuongConLaiTH</span>
-                                @Html.HiddenFor(x => x.SoLuongNhomLopTH)
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tr>
+                        <td>
+                            Học phần
+                        </td>
+                        <td>
+                            Bộ môn
+                        </td>
+                        <td>
+                            CTDT
+                        </td>
+                        <td>
+                            Học kì
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @Model.MaVaTenHP
+                            @Html.HiddenFor(x => x.PhanCongNhomLopID)
+                        </td>
+                        <td>
+                            @Model.TenBoMon
+                        </td>
+                        <td>
+                            @Model.TenCTDT
+                        </td>
+                        <td>
+                            @Model.HocKi
+                        </td>                        
+                    </tr>
+                    <tr style="border-top:solid gray 1px">
+                        <td>                            
+                            Số tiết LT: <span id="sotietltt">@Model.SoTietLT</span>
+                            @Html.HiddenFor(x => x.SoTietLT)
+                        </td>
+                        <td>
+                            Số tiết TH: <span id="sotiettht">@Model.SoTietTH</span>
+                            @Html.HiddenFor(x => x.SoTietTH)
+                        </td>
+                        <td>
+                            Số nhóm LT: <span id="sotietcllt">@Model.SoLuongConLaiLT</span>
+                            @Html.HiddenFor(x => x.SoLuongNhomLopLT)
+                        </td>
+                        <td>
+                            Số nhóm TH: <span id="sotietclth">@Model.SoLuongConLaiTH</span>
+                            @Html.HiddenFor(x => x.SoLuongNhomLopTH)
+                        </td>
+                    </tr>
+                    
                 </table>
             </div>
             @*<div class="col-3">
@@ -169,7 +168,7 @@
                         {
                             <i id="xgv_@i" class="fa fa-minus-circle button-edit-gv" aria-hidden="true"></i>
                         }
-                        <input type="hidden" name="GiangVienPhanCong[@i].TrangThai" id="trangthaigv_@i" value="2" />
+                        <input type="hidden" name="GiangVienPhanCong[@i].TrangThai" id="trangthaigv_@i" value="@Model.GiangVienPhanCong[i].TrangThai" />
                         <input type="hidden" class="sotietSum" name="GiangVienPhanCong[@i].SoTiet" id="GiangVienPhanCongSoTiet_@i" value="0" />
                     </div>
                 </div>

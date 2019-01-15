@@ -43,5 +43,16 @@ namespace Lib.HocPhan.Model
         }
 
         public string TenBoMon { get; set; }
+        public bool TuChon { get; set; }
+        public int CheckTuChon
+        {
+            get
+            {
+                if (TuChon)
+                    return 1;
+                else
+                    return 0;
+            }
+        }
     }
 }

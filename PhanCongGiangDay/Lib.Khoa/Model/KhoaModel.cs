@@ -24,5 +24,7 @@ namespace Lib.Khoa.Model
         public string NguoiTao { get; set; }
 
         public string TTSV { get; set; }
+        public string SLSVKhoa { get; set; }
+        public int SLCN { get; set; }
     }
 }

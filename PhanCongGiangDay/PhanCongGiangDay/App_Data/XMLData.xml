@@ -48,8 +48,8 @@
   </hocvi>
 
   <chedoxempcnl>
-    <item text="Xem theo từng khoá" value="1" />
     <item text="Xem tất cả khoá" value="0" />
+    <item text="Xem theo từng khoá" value="1" />
   </chedoxempcnl>
   
   <month>
