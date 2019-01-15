@@ -88,6 +88,8 @@ namespace PhanCongGiangDay
                       "~/Content/css/select2.css",
                       "~/Content/css/select2.min.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqwerty").Include(
+                       "~/Scripts/jwerty.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/donvi").Include(
                "~/Scripts/Custom/DonVi/DonVi.js"));

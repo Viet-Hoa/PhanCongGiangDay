@@ -61,9 +61,18 @@ namespace Lib.PhanCongNhomLop.Model
         public string TenKhoa { get; set; }
         public string CTDT { get; set; }
         public string SLSVKhoa { get; set; }
-        public int SLSV { get; set; }
-        public int SLCN { get; set; }
         public string TenCTDT { get; set; }
-
+        public bool TuChon { get; set; }
+        public int CheckTuChon
+        {
+            get
+            {
+                if (TuChon)
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+        public int SLCN { get; set; }
     }
 }

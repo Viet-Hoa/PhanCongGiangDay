@@ -196,9 +196,13 @@ namespace PhanCongGiangDay.Controllers
             ViewBag.namhoc = BangPhanCongID;
             var viewModel = PhanCongNhomLopService.DanhSachPhanCongNhomLopTuDong(BangPhanCongID);
             var dshp = HocPhanService.DanhSachHocPhan();
+            var khoa = KhoaService.DanhSachKhoa();
             ViewBag.hocphanlt = new SelectList(dshp, "HocPhanLogID", "SoTietLT");
             ViewBag.hocphanth = new SelectList(dshp, "HocPhanLogID", "SoTietTH");
             ViewBag.hocphantc = new SelectList(dshp, "HocPhanLogID", "SoTC");
+            ViewBag.hocphantuchon = new SelectList(dshp, "HocPhanLogID", "CheckTuChon");
+            ViewBag.khoasvddl = new SelectList(khoa, "KhoaID", "SLSVKhoa");
+            ViewBag.khoacnddl = new SelectList(khoa, "KhoaID", "SLCN");
             return PartialView("_PhanCongNhomLopTuDong", viewModel.ToList());
         }
 
@@ -206,8 +210,7 @@ namespace PhanCongGiangDay.Controllers
         {
             ViewBag.namhoc = BangPhanCongID;
             ViewBag.thutu = i + 1;
-            var khoa = KhoaService.DanhSachKhoa().Where(x => x.NamKetThuc >= DateTime.Now.Year);
-            ViewBag.khoa_ddl = new SelectList(khoa, "KhoaID", "TenKhoa");
+            ViewBag.khoa_ddl = new SelectList(KhoaService.DanhSachKhoa(), "KhoaID", "TenKhoa");
             ViewBag.hocphanddl = new SelectList(HocPhanService.DanhSachHocPhan(), "HocPhanLogID", "MaVaTenHP");
             return PartialView("_ThemPhanCongNhomLopTuDong");
         }

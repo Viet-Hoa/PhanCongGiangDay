@@ -2,6 +2,10 @@
 @Html.DropDownList("sotietltddl", (SelectList)ViewBag.hocphanlt, null, new { @class = "d-none" })
 @Html.DropDownList("sotietthddl", (SelectList)ViewBag.hocphanth, null, new { @class = "d-none" })
 @Html.DropDownList("sotinchiddl", (SelectList)ViewBag.hocphantc, null, new { @class = "d-none" })
+@Html.DropDownList("tuchonddl", (SelectList)ViewBag.hocphantuchon, null, new { @class = "d-none" })
+@Html.DropDownList("svkhoaddl", (SelectList)ViewBag.khoasvddl, null, new { @class = "d-none" })
+@Html.DropDownList("cnkhoaddl", (SelectList)ViewBag.khoacnddl, null, new { @class = "d-none" })
+
 @using (Html.BeginForm("PhanCongNhomLopTuDong", "PhanCongNhomLop", FormMethod.Post, new { id = "formPhanCongNhomLopTuDong" }))
 {
     @Html.AntiForgeryToken()
@@ -41,6 +45,9 @@
                                 <td>
                                     <span title="@Model[i].SLSVKhoa">@Model[i].TenKhoa</span>
                                     @Html.HiddenFor(x => x[i].KhoaID)
+                                    <input type="hidden" id="slsvkhoa_@i" value="@Model[i].SLSVKhoa" />
+                                    <input type="hidden" id="tuchon_@i" value="@Model[i].CheckTuChon" />
+                                    <input type="hidden" id="slcn_@i" value="@Model[i].SLCN" />
                                 </td>
                                 <td>
                                     @Model[i].TenCTDT
@@ -56,14 +63,14 @@
                                 </td>
                                 <td>
                                     @Model[i].SoTietTH
-                                    @Html.Hidden("[" + i + "].SoTietTH", Model[i].SoTietTH, new { id= "SoTietTH_"+i })
+                                    @Html.Hidden("[" + i + "].SoTietTH", Model[i].SoTietTH, new { id = "SoTietTH_" + i })
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(x => x[i].SLSVNhomLop, new { @class = "form-control", onkeypress = "validateUnsignedInt(event)" })
+                                    @Html.TextBoxFor(x => x[i].SLSVNhomLop, new { @class = "form-control slsvnl", onkeypress = "validateUnsignedInt(event)", id = "SLSVNhomLop_" + i })
                                     @Html.ValidationMessageFor(x => x[i].SLSVNhomLop)
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(x => x[i].SoLuongNhomLopLT, new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)" })
+                                    @Html.TextBoxFor(x => x[i].SoLuongNhomLopLT, new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)", id = "SoLuongNhomLopLT_" + i })
                                     @Html.ValidationMessageFor(x => x[i].SoLuongNhomLopLT)
                                     @Html.HiddenFor(x => x[i].SoLuongNhomLopTH, new { id = "SoLuongNhomLopTH_" + i })
                                 </td>

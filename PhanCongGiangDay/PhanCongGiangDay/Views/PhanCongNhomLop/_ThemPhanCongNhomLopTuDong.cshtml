@@ -9,8 +9,11 @@
         @Html.ValidationMessage("[" + i + "].HocPhanLogID")
     </td>
     <td>
-        @Html.DropDownList("[" + i + "].KhoaID", (SelectList)ViewBag.khoa_ddl,"--Chọn--", new { @class = "form-control khoaddl", id = "khoa_" + i })
+        @Html.DropDownList("[" + i + "].KhoaID", (SelectList)ViewBag.khoa_ddl, "--Chọn--", new { @class = "form-control khoaddl", id = "khoa_" + i })
         @Html.ValidationMessage("[" + i + "].HocPhanLogID")
+        <input type="hidden" id="slsvkhoa_@i" value="" />
+        <input type="hidden" id="tuchon_@i" value="" />
+        <input type="hidden" id="slcn_@i" value="" />
     </td>
     <td>
         @Html.TextBox("[" + i + "].TenCTDT", "", new { @class = "form-control", @readonly = true })
@@ -28,7 +31,7 @@
         @Html.TextBox("[" + i + "].SoTietTH", "0", new { @class = "form-control", @readonly = true, id = "SoTietTH_" + i })
     </td>
     <td>
-        @Html.TextBox("[" + i + "].SLSVNhomLop", "0", new { @class = "form-control", onkeypress = "validateUnsignedInt(event)", id= "SLSVNhomLop_"+i, disabled=true })
+        @Html.TextBox("[" + i + "].SLSVNhomLop", "0", new { @class = "form-control slsvnl", onkeypress = "validateUnsignedInt(event)", id= "SLSVNhomLop_"+i, disabled=true })
         @Html.ValidationMessage("[" + i + "].SLSVNhomLop")
     </td>
     <td>
@@ -46,6 +49,7 @@
     $(function () {
         PhanCongNhomLopTuDongModule.AddRowNhomLopPartial();
         PhanCongNhomLopTuDongModule.setNumber();
+        PhanCongNhomLopTuDongModule.enableSLSV();
     });
     $(document).ready(function () {
         $('.nhomlopddl').select2();

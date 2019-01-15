@@ -113,6 +113,7 @@ namespace Lib.HocPhan.DataAccess
                 listParameter.Add(new SqlParameter("@SoTietLT", model.SoTietLT));
                 listParameter.Add(new SqlParameter("@SoTietTH", model.SoTietTH));
                 listParameter.Add(new SqlParameter("@BoMonID", model.BoMonID));
+                listParameter.Add(new SqlParameter("@TuChon", model.TuChon));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_HocPhan_Them", listParameter);
             }
@@ -135,6 +136,7 @@ namespace Lib.HocPhan.DataAccess
                 listParameter.Add(new SqlParameter("@SoTietLT", model.SoTietLT));
                 listParameter.Add(new SqlParameter("@SoTietTH", model.SoTietTH));
                 listParameter.Add(new SqlParameter("@BoMonID", model.BoMonID));
+                listParameter.Add(new SqlParameter("@TuChon", model.TuChon));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_HocPhan_Sua", listParameter);
             }

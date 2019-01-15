@@ -8,7 +8,7 @@ var PhanCongGiangVienModule = (function () {
         loadPhanCongNhomLop();
         loadPhanCongGiangVien();
         BoMonChange();
-        loadLoai();;
+        loadLoai();
     }
 
 
@@ -356,6 +356,12 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             $(document).on("keyup", ".lythuyet", function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                if (id.search("HK1LT") != -1) {
+                    $("#NhomLopPhanCong_" + i + "__HK1TH").val($(this).val());
+                }
+                else if (id.search("HK2LT") != -1) {
+                    $("#NhomLopPhanCong_" + i + "__HK2TH").val($(this).val());
+                }
                 var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
                 var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
                 $("#NhomLopPhanCongSoTiet_" + i).val(stlt + stth);
@@ -370,7 +376,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             });
             $(document).on("keyup", ".thuchanh", function () {
                 var id = $(this).attr('id');
-                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));                
                 var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
                 var stth = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1TH").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2TH").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietTH").val()) / 2;
                 $("#NhomLopPhanCongSoTiet_" + i).val(stlt + stth);
@@ -615,13 +621,37 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
     function setNumber() {
         $(document).ready(function () {
             $(document).on("keyup", ".lythuyet", function () {
+                var id = $(this).attr('id');
+                var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
+                if (id.search("HK1LT") != -1) {
+                    $("#GiangVienPhanCong_" + i + "__HK1TH").val($(this).val());
+                }
+                else if (id.search("HK2LT") != -1) {
+                    $("#GiangVienPhanCong_" + i + "__HK2TH").val($(this).val());
+                }
                 var tlt = 0;
                 $(".row-gv").each(function () {
                     tlt = tlt + ~~parseInt($(this).find(".hk1lt").val()) + ~~parseInt($(this).find(".hk2lt").val());
                 });
                 $('#sotietcllt').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tlt);
-                var id = $(this).attr('id');
                 if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tlt)<0) {
+                    $("#" + id).addClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
+                    $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
+                    $valmess.text('Đã nhập quá số lượng còn lại.');
+                }
+                else {
+                    $("#" + id).removeClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-error");
+                    $valmess.addClass("field-validation-valid").removeClass("field-validation-error");
+                    $valmess.text("");
+                }
+                var tth = 0;
+                $(".row-gv").each(function () {
+                    tth = tth + ~~parseInt($(this).find(".hk1th").val()) + ~~parseInt($(this).find(".hk2th").val());
+                });
+                $('#sotietclth').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tth);
+                if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tth) < 0) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
@@ -635,13 +665,31 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
                 }
             });
             $(document).on("keyup", ".thuchanh", function () {
+                var id = $(this).attr('id');                
                 var tth = 0;
                 $(".row-gv").each(function () {
                     tth = tth + ~~parseInt($(this).find(".hk1th").val()) + ~~parseInt($(this).find(".hk2th").val());
                 });
                 $('#sotietclth').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tth);
-                var id = $(this).attr('id');
                 if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tth) < 0) {
+                    $("#" + id).addClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
+                    $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
+                    $valmess.text('Đã nhập quá số lượng còn lại.');
+                }
+                else {
+                    $("#" + id).removeClass("input-validation-error");
+                    var $valmess = $("#" + id).closest('div').find(".field-validation-error");
+                    $valmess.addClass("field-validation-valid").removeClass("field-validation-error");
+                    $valmess.text("");
+                }
+
+                var tlt = 0;
+                $(".row-gv").each(function () {
+                    tlt = tlt + ~~parseInt($(this).find(".hk1lt").val()) + ~~parseInt($(this).find(".hk2lt").val());
+                });
+                $('#sotietcllt').text(~~parseInt($('#SoLuongNhomLopLT').val()) - tlt);
+                if ((~~parseInt($('#SoLuongNhomLopTH').val()) - tlt) < 0) {
                     $("#" + id).addClass("input-validation-error");
                     var $valmess = $("#" + id).closest('div').find(".field-validation-valid");
                     $valmess.addClass("field-validation-error").removeClass("field-validation-valid");
