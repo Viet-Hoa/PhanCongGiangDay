@@ -214,6 +214,7 @@
     <Compile Include="IServices\IBoMonService.cs" />
     <Compile Include="IServices\ICTDTService.cs" />
     <Compile Include="IServices\ICongTacKhacService.cs" />
+    <Compile Include="IServices\IHocPhanTheoCTDTService.cs" />
     <Compile Include="IServices\IXuatExcelService.cs" />
     <Compile Include="IServices\IHocPhanService.cs" />
     <Compile Include="IServices\IPhanCongGiangVienService.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\BoMonService.cs" />
+    <Compile Include="Services\HocPhanTheoCTDTService.cs" />
     <Compile Include="Services\GiangVienService.cs" />
     <Compile Include="Services\CTDTService.cs" />
     <Compile Include="Services\CongTacKhacService.cs" />
@@ -375,6 +377,7 @@
     <Content Include="Scripts\Custom\CongTacKhac\CongTacKhac.js" />
     <Content Include="Scripts\Custom\ChuongTrinhDaoTao\ChuongTrinhDaoTao.js" />
     <Content Include="Scripts\Custom\BoMon\BoMon.js" />
+    <Content Include="Scripts\Custom\HocPhanTheoCTDT\HocPhanTheoCTDT.js" />
     <Content Include="Scripts\Custom\Lop\Lop.js" />
     <Content Include="Scripts\Custom\HocPhan\HocPhan.js" />
     <Content Include="Scripts\Custom\GiangVien\GiangVien.js" />
@@ -857,6 +860,7 @@
     <Content Include="Views\Account\_SuaTaiKhoan.cshtml" />
     <Content Include="Views\Account\_ThemTaiKhoan.cshtml" />
     <Content Include="Views\Account\_XoaTaiKhoan.cshtml" />
+    <Content Include="Views\ChuongTrinhDaoTao\ChiTietChuongTrinhDaoTao.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />
@@ -910,6 +914,10 @@
     <ProjectReference Include="..\Lib.GiangVien\Lib.GiangVien.csproj">
       <Project>{dde71d45-87e8-409b-ad61-62fc99e60445}</Project>
       <Name>Lib.GiangVien</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.HocPhanTheoCTDT\Lib.HocPhanTheoCTDT.csproj">
+      <Project>{5a52d71e-672c-474e-aa07-538758ae78a9}</Project>
+      <Name>Lib.HocPhanTheoCTDT</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lib.HocPhan\Lib.HocPhan.csproj">
       <Project>{b3b0fe8a-ce9d-44eb-9f79-ed22f4ac2adb}</Project>

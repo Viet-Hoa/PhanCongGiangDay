@@ -13,6 +13,11 @@ namespace PhanCongGiangDay.Controllers
     {
         private readonly ICTDTService ChuongTrinhDaoTaoService;
         private IDonViService DonViService = new DonViService();
+        private IHocPhanService _hocPhanService;
+        private IHocPhanService HocPhanService => _hocPhanService ?? (_hocPhanService = new HocPhanService());
+        private IHocPhanTheoCTDTService _hocPhanTheoCTDTService;
+        private IHocPhanTheoCTDTService HocPhanTheoCTDTService => _hocPhanTheoCTDTService ?? (_hocPhanTheoCTDTService = new HocPhanTheoCTDTService());
+
         public ChuongTrinhDaoTaoController(ICTDTService _ChuongTrinhDaoTaoService)
         {
             ChuongTrinhDaoTaoService = _ChuongTrinhDaoTaoService;
@@ -63,7 +68,7 @@ namespace PhanCongGiangDay.Controllers
         public ActionResult SuaChuongTrinhDaoTao(int id)
         {
             var viewModel = ChuongTrinhDaoTaoService.ChiTietCTDT(id);
-            return PartialView("_SuaChuongTrinhDaoTao",viewModel);
+            return PartialView("_SuaChuongTrinhDaoTao", viewModel);
         }
 
         [HttpPost]
@@ -93,7 +98,7 @@ namespace PhanCongGiangDay.Controllers
         [HttpGet]
         public ActionResult XoaChuongTrinhDaoTao(int id)
         {
-            return PartialView("_XoaChuongTrinhDaoTao",id);
+            return PartialView("_XoaChuongTrinhDaoTao", id);
         }
 
         [HttpPost]
@@ -119,5 +124,44 @@ namespace PhanCongGiangDay.Controllers
                 return Json(JsonResponseViewModel.CreateFail(ex));
             }
         }
+
+        [HttpGet]
+        public ActionResult ChiTietChuongTrinhDaoTao(int id)
+        {
+            ViewBag.TenCTDT = ChuongTrinhDaoTaoService.ChiTietCTDT(id).TenCTDT;
+            return View(id);
+        }
+
+        public ActionResult DanhSachHocPhanTheoCTDT(int id)
+        {
+            var viewModel = HocPhanTheoCTDTService.DanhSachHocPhanTheoCTDT(id);
+            return Json(new { data = viewModel }, JsonRequestBehavior.AllowGet);
+        }
+        /*
+             [HttpPost]
+             [ValidateAntiForgeryToken]
+             public ActionResult XoaChuongTrinhDaoTaoConfirmed(int ChuongTrinhDaoTaoid)
+             {
+                 try
+                 {
+                     var result = ChuongTrinhDaoTaoService.XoaCTDT(ChuongTrinhDaoTaoid, "");//làm xong phần accout sẽ bổ sung
+                     if (result != null && result.ResponseCode == 1)
+                     {
+                         return Json(JsonResponseViewModel.CreateSuccess("Xoá chương trình đào tạo thành công."));
+                     }
+                     else if (result != null && result.ResponseCode == -1)
+                     {
+                         return Json(JsonResponseViewModel.CreateFail(result.ResponseMessage));
+                     }
+                     else
+                         return Json(JsonResponseViewModel.CreateFail("Xoá chương trình đào tạo thất bại."));
+                 }
+                 catch (Exception ex)
+                 {
+                     return Json(JsonResponseViewModel.CreateFail(ex));
+                 }
+             }
+         }
+         */
     }
 }

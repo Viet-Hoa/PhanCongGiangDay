@@ -23,6 +23,7 @@ namespace Lib.HocPhan.Model
         [Required(ErrorMessage = "Số tiết thực hành không được để trống.")]
         public int SoTietTH { get; set; }
         public int? BoMonID { get; set; }
+        public string HocKi { get; set; }
         public string NguoiTao { get; set; }
 
         public string MaVaTenHP
