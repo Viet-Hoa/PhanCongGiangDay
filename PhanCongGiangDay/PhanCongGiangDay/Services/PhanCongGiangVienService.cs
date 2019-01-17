@@ -9,6 +9,7 @@ using Lib.PhanCongGiangVien.IDataAccess;
 using Lib.PhanCongGiangVien.Model;
 using Lib.PhanCongNhomLop.Model;
 using PhanCongGiangDay.Models.ViewModel.PhanCongGiangVien;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -41,6 +42,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = PhanCongGiangVienDA.ThemPhanCongGiangVien(model);
             }
             catch (Exception ex)
@@ -94,6 +96,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = PhanCongGiangVienDA.ThemPhanCongCongTac(model);
             }
             catch (Exception ex)

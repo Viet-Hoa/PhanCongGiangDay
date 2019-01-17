@@ -1,0 +1,45 @@
+﻿@model PhanCongGiangDay.Models.ViewModel.HocPhanTheoCTDT.ImportFile
+@using (Html.BeginForm("Import", "ChuongTrinhDaoTao", FormMethod.Post, new
+{
+    id = "import-form",
+    enctype = "multipart/form-data"
+}))
+{
+    @*@Html.AntiForgeryToken()*@
+    <div class="modal-header">
+        <h5 class="text-uppercase">Import Excel</h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="import-nv">
+        <div class="row">
+            <div class="col-md-3">
+                <span class="float-right" style="padding-top:10px"><label>Chọn file</label><span class="input-required float-right">*</span></span>
+            </div>
+            <div class="col-md-9">
+                @Html.TextBoxFor(m => m.File, new {@class = "form-control", id = "excel", @type = "file", @style = "height:40%;width:100%", @accept = ".xlsx" })
+                <input type="hidden" name="CTDTID", value="@ViewBag.id" />
+                <div class="pt-2" style="font-size:10pt">
+                    <span>
+                        <span>Tạo file excel từ file .doc chu kỳ đào tạo 20xx-20xx, nên xoá bớt các học phần không có phân công trong khoa (giáo dục thể chất, quốc phòng...), file mẫu</span>
+                        <a target="_blank" href="~/Templates/CTDT-2016-2020.xlsx">tại đây</a>.
+                    </span><br />
+                    <span>Chấp nhận file: XLSX</span><br />
+                    @Html.ValidationMessageFor(m => m)
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <div style="text-align:right;width:100%">
+            <button class="btn btn-default text-uppercase pull-left" data-dismiss="modal" aria-hidden="true">Hủy</button>
+            <button type="button" class="btn btn-danger text-uppercase pull-right" aria-hidden="true" id="bnt-import">Lưu</button>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        ImportHocPhanTheoCTDTModule.init();
+    });
+</script>
+

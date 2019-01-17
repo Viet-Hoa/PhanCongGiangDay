@@ -231,6 +231,7 @@
     <Compile Include="IServices\IKhoaService.cs" />
     <Compile Include="IServices\INamHocService.cs" />
     <Compile Include="IServices\IDonViService.cs" />
+    <Compile Include="Models\ViewModel\HocPhanTheoCTDT\ImportFile.cs" />
     <Compile Include="Models\ViewModel\PhanCongGiangVien\PhanCongGiangVienViewModel.cs" />
     <Compile Include="Models\ViewModel\Shared\JsonResponseViewModel.cs" />
     <Compile Include="Models\ViewModel\XuatExcel\GiangVienCheckViewModel.cs" />
@@ -873,6 +874,8 @@
     <Content Include="Views\Account\_ThemTaiKhoan.cshtml" />
     <Content Include="Views\Account\_XoaTaiKhoan.cshtml" />
     <Content Include="Views\ChuongTrinhDaoTao\ChiTietChuongTrinhDaoTao.cshtml" />
+    <Content Include="Views\ChuongTrinhDaoTao\_Import.cshtml" />
+    <Content Include="Templates\CTDT-2016-2020.xlsx" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />

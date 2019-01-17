@@ -9,14 +9,15 @@
 <div id="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-9">
+            <div class="col-6">
                 <div class="search-box">
                     @Html.TextBox("HocPhanTheoCTDT-search", null, new { @class = "form-control", @maxlength = "20" })
                     <button type="button" class="search-button"><i class="material-icons">search</i></button>
                 </div>
             </div>
-            <div class="col-3 text-right">
-                <a id="btnThemHocPhanTheoCTDT" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modal" data-url="@Url.Action("ThemHocPhanTheoCTDT", "ChuongTrinhDaoTao")"><i class="fa fa-plus btn-icon-word-size"></i>Thêm học phần vào chương trình đào tạo</a>
+            <div class="col-6 text-right">
+                <a id="btnThemHocPhanTheoCTDT" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modal" data-url="@Url.Action("ThemHocPhanTheoCTDT", "ChuongTrinhDaoTao", new { CTDTID=Model})">Thêm học phần vào CTĐT</a>
+                <a id="btnImport" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modal" data-url="@Url.Action("Import", "ChuongTrinhDaoTao", new { CTDTID=Model})">Import Excell</a>
             </div>
         </div>
         <div class="row">

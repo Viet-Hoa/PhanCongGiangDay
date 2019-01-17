@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.DonVi.DataAccess;
 using Lib.DonVi.IDataAccess;
 using Lib.DonVi.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -49,6 +50,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = DonViDA.ThemDonvi(model);
             }
             catch (Exception ex)

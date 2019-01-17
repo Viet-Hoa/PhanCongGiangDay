@@ -5,6 +5,7 @@ using PhanCongGiangDay.IServices;
 using PhanCongGiangDay.Models.ViewModel.Shared;
 using PhanCongGiangDay.Infrastructure.Attributes;
 using PhanCongGiangDay.Services;
+using System.Web;
 
 namespace PhanCongGiangDay.Controllers
 {
@@ -163,5 +164,34 @@ namespace PhanCongGiangDay.Controllers
              }
          }
          */
+        public ActionResult Import(int CTDTID)
+        {
+            ViewBag.id = CTDTID;
+            return PartialView("_Import");
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Import(HttpPostedFileBase file_imp, int CTDTID)
+        {
+            try
+            {
+                var c = Request.Files[0];
+
+                var result = HocPhanTheoCTDTService.Import(c, CTDTID);
+                if (result == null)
+                {
+                    return Json(JsonResponseViewModel.CreateFail("Import học phần theo CTDT không thành công."));
+                }
+                else if(!String.IsNullOrEmpty(result.ResponseMessage))
+                    return Json(JsonResponseViewModel.CreateSuccess("Import học phần theo CTDT thành công. \r\nMã học phần không tìm thấy trong database: "+result.ResponseMessage+"."));
+                return Json(JsonResponseViewModel.CreateSuccess("Import học phần theo CTDT thành công."));
+
+            }
+            catch (Exception ex)
+            {
+                return Json(JsonResponseViewModel.CreateFail(ex));
+            }
+        }
     }
 }

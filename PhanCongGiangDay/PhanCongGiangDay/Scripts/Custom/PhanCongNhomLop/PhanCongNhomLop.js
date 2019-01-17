@@ -379,6 +379,7 @@ var PhanCongNhomLopTuDongModule = (function (PhanCongNhomLopModule) {
         AddRowNhomLop();
         setSLNhom();
         setSLSV();
+        bindFormActions();
     }
 
     function AddRowNhomLop() {
@@ -509,17 +510,56 @@ var PhanCongNhomLopTuDongModule = (function (PhanCongNhomLopModule) {
                     if (cn < 1) {
                         cn = 1;
                     }
-                    $('#SoLuongNhomLopLT_' + i).val(~~parseInt(sl / cn / slsv));
-                    $('#SoLuongNhomLopTH_' + i).val(~~parseInt(sl / cn / slsv));
+                    var res = ~~parseInt(sl / (cn/2) / slsv);
+                    if (res < 1) {
+                        res = 1;
+                    }
+                    $('#SoLuongNhomLopLT_' + i).val(res);
+                    $('#SoLuongNhomLopTH_' + i).val(res);
                 }
                 else {
-                    $('#SoLuongNhomLopLT_' + i).val(~~parseInt(sl / slsv));
-                    $('#SoLuongNhomLopTH_' + i).val(~~parseInt(sl / slsv));
+                    var res = ~~parseInt(sl / slsv);
+                    if (res < 1) {
+                        res = 1;
+                    }
+                    $('#SoLuongNhomLopLT_' + i).val(~~parseInt(res));
+                    $('#SoLuongNhomLopTH_' + i).val(~~parseInt(res));
                 }
             });
         });
     }
 
+    function bindFormActions() {
+        $("#btn_PhanCongNhomLopTuDong").on("click",
+            function () {
+                if ($("#formPhanCongNhomLopTuDong").valid()) {
+                    showLoadingOverlay();
+                    $.ajax({
+                        type: $("#formPhanCongNhomLopTuDong").prop("method"),
+                        url: $("#formPhanCongNhomLopTuDong").prop("action"),
+                        data: $("#formPhanCongNhomLopTuDong").serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages }, { type: "danger" });
+                            } else {
+                                PhanCongNhomLopModule.reloadPhanCongNhomLopTable();
+                                $.notify({ message: response.Messages }, { type: "success" });
+
+                            }
+                        },
+                        complete: function () {
+                            $('#modalPhanCong').modal("hide");
+                            hideLoadingOverlay();
+                        }
+                    });
+                }
+                return false;
+            });
+    }
+
+    function checkDuplicated() {
+
+    }
 
     return {
         init: init,

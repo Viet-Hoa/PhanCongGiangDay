@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.NamHoc.DataAccess;
 using Lib.NamHoc.IDataAccess;
 using Lib.NamHoc.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -49,6 +50,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = NamHocDA.ThemNamHoc(model);
             }
             catch (Exception ex)

@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.CongTacKhac.DataAccess;
 using Lib.CongTacKhac.IDataAccess;
 using Lib.CongTacKhac.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -49,6 +50,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = CongTacKhacDA.ThemCongTacKhac(model);
             }
             catch (Exception ex)

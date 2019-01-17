@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.HocPhan.DataAccess;
 using Lib.HocPhan.IDataAccess;
 using Lib.HocPhan.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -101,6 +102,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = HocPhanDA.ThemHocPhan(model);
             }
             catch (Exception ex)

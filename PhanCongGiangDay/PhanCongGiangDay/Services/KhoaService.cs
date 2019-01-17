@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.Khoa.DataAccess;
 using Lib.Khoa.IDataAccess;
 using Lib.Khoa.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -49,6 +50,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = KhoaDA.ThemKhoa(model);
             }
             catch (Exception ex)

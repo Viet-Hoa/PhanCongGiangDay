@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PhanCongGiangDay.IServices
 {
@@ -13,5 +14,7 @@ namespace PhanCongGiangDay.IServices
         IEnumerable<HocPhanTheoCTDTModel> DanhSachHocPhanTheoCTDT(int ChuongTrinhDaoTaoID);
         ResponseResult ThemHocPhanTheoCTDT(HocPhanTheoCTDTModel model);
         ResponseResult XoaHocPhanTheoCTDT(int id, string NguoiTao);
+        ResponseResult Import(HttpPostedFileBase file, int CTDTID);
+
     }
 }

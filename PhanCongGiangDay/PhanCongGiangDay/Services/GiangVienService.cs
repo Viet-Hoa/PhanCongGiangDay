@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.GiangVien.DataAccess;
 using Lib.GiangVien.IDataAccess;
 using Lib.GiangVien.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -75,6 +76,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = GiangVienDA.ThemGiangVien(model);
             }
             catch (Exception ex)

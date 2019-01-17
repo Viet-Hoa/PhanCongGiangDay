@@ -1,4 +1,6 @@
-﻿$(function () {
+﻿//import { jwerty } from "./jwerty";
+
+$(function () {
     $.ajaxSetup({
         // Disable caching of AJAX responses
         cache: false
@@ -227,3 +229,29 @@ function validateUnsignedInt(e) {
         if (ev.preventDefault) ev.preventDefault();
     }
 }
+
+//function hotkeyCustom(id) {
+//    jwerty.key('shift+→', function () {
+//        $('#' + id).next('.form-control').focus();
+//    });
+//    jwerty.key('shift+←', function () {
+//        $('#' + id).prev('.form-control').focus();
+//    });
+//    var cl = $('#' + id).attr("class");
+//    cl = cl.replace("valid", "");
+//    cl = cl.replace("input-validation-error", "");
+//    cl = "." + cl.split(" ").join(" .");
+//    jwerty.key('shift+↑', function () {
+//        $('#' + id).prev(cl).focus();
+//    });
+//    jwerty.key('shift+↓', function () {
+//        $('#' + id).next(cl).focus();
+//    });    
+//}
+
+//function newFormLine (id, type){
+//    jwerty.key('shift+↩', function () {
+//        var i = parseInt(id.substring(id.search("_") + 1, id.length));
+//        $('#' + type + i).click();
+//    });
+//}

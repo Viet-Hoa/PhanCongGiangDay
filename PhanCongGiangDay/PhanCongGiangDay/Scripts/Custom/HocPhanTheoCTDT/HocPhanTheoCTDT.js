@@ -184,3 +184,42 @@ var XoaHocPhanTheoCTDTModule = (function (HocPhanTheoCTDTModule) {
         init: init
     }
 })(HocPhanTheoCTDTModule);
+
+var ImportHocPhanTheoCTDTModule = (function (HocPhanTheoCTDTModule) {
+    var $formImport;
+
+    function init() {
+        bindFormActions();
+    }
+
+    function bindFormActions() {
+        $("#bnt-import").on("click",
+            function () {
+                if ($("#import-form").valid()) {
+                    showLoadingOverlay();
+                    $.ajax({
+                        type: $("#import-form").prop("method"),
+                        url: $("#import-form").prop("action"),
+                        data: $("#import-form").serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages }, { type: "danger" });
+                            } else {
+                                $.notify({ message: response.Messages }, { type: "success" });
+                                HocPhanTheoCTDTModule.reloadHocPhanTheoCTDTTable();
+                            }
+                        },
+                        complete: function () {
+                            $('#modal').modal("hide");
+                            hideLoadingOverlay();
+                        }
+                    });
+                }
+                return false;
+            });
+    }
+    
+    return {
+        init: init
+    }
+})(HocPhanTheoCTDTModule);

@@ -5,6 +5,7 @@ using Lib.Setting.Model;
 using System;
 using System.Collections.Generic;
 using PhanCongGiangDay.IServices;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -47,6 +48,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = LopDA.ThemLop(model);
             }
             catch (Exception ex)

@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.BoMon.DataAccess;
 using Lib.BoMon.IDataAccess;
 using Lib.BoMon.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -49,6 +50,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = BoMonDA.ThemBoMon(model);
             }
             catch (Exception ex)

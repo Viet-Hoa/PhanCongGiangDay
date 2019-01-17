@@ -8,6 +8,7 @@ using Lib.CTDT.DataAccess;
 using Lib.CTDT.IDataAccess;
 using Lib.CTDT.Model;
 
+
 namespace PhanCongGiangDay.Services
 {
     public class CTDTService: ICTDTService
@@ -83,5 +84,7 @@ namespace PhanCongGiangDay.Services
             }
             return res;
         }
+
+        
     }
 }

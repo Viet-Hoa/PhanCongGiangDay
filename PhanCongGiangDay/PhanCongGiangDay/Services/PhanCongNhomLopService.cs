@@ -7,6 +7,7 @@ using Lib.Setting.Model;
 using Lib.PhanCongNhomLop.DataAccess;
 using Lib.PhanCongNhomLop.IDataAccess;
 using Lib.PhanCongNhomLop.Model;
+using PhanCongGiangDay.UtilityHelpers;
 
 namespace PhanCongGiangDay.Services
 {
@@ -62,6 +63,7 @@ namespace PhanCongGiangDay.Services
             ResponseResult res = null;
             try
             {
+                model.NguoiTao = AccountUtils.CurrentUsername();
                 res = PhanCongNhomLopDA.ThemPhanCongNhomLop(model);
             }
             catch (Exception ex)
