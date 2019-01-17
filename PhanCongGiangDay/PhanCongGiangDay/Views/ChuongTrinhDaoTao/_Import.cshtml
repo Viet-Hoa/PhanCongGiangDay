@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-9">
                 @Html.TextBoxFor(m => m.File, new {@class = "form-control", id = "excel", @type = "file", @style = "height:40%;width:100%", @accept = ".xlsx" })
-                <input type="hidden" name="CTDTID", value="@ViewBag.id" />
+                <input type="hidden" id="ctdt-ID" name="CTDTID", value="@ViewBag.id" />
                 <div class="pt-2" style="font-size:10pt">
                     <span>
                         <span>Tạo file excel từ file .doc chu kỳ đào tạo 20xx-20xx, nên xoá bớt các học phần không có phân công trong khoa (giáo dục thể chất, quốc phòng...), file mẫu</span>

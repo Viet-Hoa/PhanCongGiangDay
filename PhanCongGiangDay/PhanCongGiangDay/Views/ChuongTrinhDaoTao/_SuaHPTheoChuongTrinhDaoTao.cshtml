@@ -1,0 +1,63 @@
+﻿@model Lib.CTDT.Model.CTDTModel
+@using (Html.BeginForm("SuaChuongTrinhDaoTao", "ChuongTrinhDaoTao", FormMethod.Post, new { id = "formSuaChuongTrinhDaoTao" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.ChuongTrinhDaoTaoID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Sửa chương trình đào tạo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Mã chương trình đào tạo</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.MaCTDT, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaCTDT)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Tên chương trình đào tạo</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.TenCTDT, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenCTDT)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Năm bắt đầu</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.NamBatDau, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamBatDau)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label class="font-weight-bold">Năm kết thúc</label><span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.TextBoxFor(x => x.NamKetThuc, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NamKetThuc)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Huỷ</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_suaChuongTrinhDaoTao">Lưu</button>
+    </div>
+}
+<script>
+    $(function () {
+        SuaChuongTrinhDaoTaoModule.init();
+    });
+</script>

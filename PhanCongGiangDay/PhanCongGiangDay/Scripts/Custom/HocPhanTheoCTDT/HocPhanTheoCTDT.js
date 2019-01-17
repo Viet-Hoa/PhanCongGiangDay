@@ -41,9 +41,9 @@ var HocPhanTheoCTDTModule = (function () {
                 { data: "HocKi" },
                 {
                     data: "HocPhanTheoCTDT_ID", orderable: false, width: 140, className: "text-center", render: function (data) {
-                        return //'<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/SuaHocPhanTheoCTDT?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' + ' ' +
+                        return '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/SuaHocPhanTheoCTDT?id=' + data + '"><i class="fa fa-pencil-square-o"></i></button>' + ' ' +
                                '<button class="btn btn-sm btn-outline-danger btn-custom-size btn-grid" data-trigger="modal" data-target="#modal" data-url="/ChuongTrinhDaoTao/XoaHocPhanTheoCTDT?id=' + data + '"><i class="fa fa-trash-o"></i></button>';
-                        //'<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modal" data-url="/HocPhanTheoCTDT/ChiTietHocPhanTheoCTDT?id=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
+                               //'<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modal" data-url="/HocPhanTheoCTDT/ChiTietHocPhanTheoCTDT?id=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
                     }
                 }
             ]
@@ -190,6 +190,15 @@ var ImportHocPhanTheoCTDTModule = (function (HocPhanTheoCTDTModule) {
 
     function init() {
         bindFormActions();
+        prepareUpload();
+    }
+
+    var formData = new FormData();
+    function prepareUpload() {
+        $("#excel").change(function (e) {
+            formData.append('file_imp', e.target.files[0]);
+            formData.append('CTDTID', $("#ctdt-ID").val());
+        }).change();
     }
 
     function bindFormActions() {
@@ -200,7 +209,10 @@ var ImportHocPhanTheoCTDTModule = (function (HocPhanTheoCTDTModule) {
                     $.ajax({
                         type: $("#import-form").prop("method"),
                         url: $("#import-form").prop("action"),
-                        data: $("#import-form").serialize(),
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
                         success: function (response) {
                             if (!response.IsSuccess) {
                                 $.notify({ message: response.Messages }, { type: "danger" });
@@ -213,7 +225,7 @@ var ImportHocPhanTheoCTDTModule = (function (HocPhanTheoCTDTModule) {
                             $('#modal').modal("hide");
                             hideLoadingOverlay();
                         }
-                    });
+                    }, 'json');
                 }
                 return false;
             });

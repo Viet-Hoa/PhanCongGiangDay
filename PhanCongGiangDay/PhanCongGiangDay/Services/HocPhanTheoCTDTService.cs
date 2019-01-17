@@ -67,6 +67,8 @@ namespace PhanCongGiangDay.Services
             string s = "";
             try
             {
+                List<HocPhanTheoCTDTModel> dt = new List<HocPhanTheoCTDTModel>();
+
                 file.InputStream.Position = 0;
                 var memoryStream = new MemoryStream();
                 file.InputStream.CopyTo(memoryStream);
@@ -74,35 +76,36 @@ namespace PhanCongGiangDay.Services
                 {
                     //Read the first Sheet from Excel file.
                     IXLWorksheet workSheet = workBook.Worksheet(1);
-                    List<HocPhanTheoCTDTModel> dt = new List<HocPhanTheoCTDTModel>();
                     foreach (IXLRow row in workSheet.Rows())
                     {
                         int i = 0;
-                        if (!String.IsNullOrEmpty(row.Cell(3).ToString()) && int.TryParse(row.Cell(3).ToString(), out i))
+                        string check = row.Cell(3).Value.ToString();
+                        if (!String.IsNullOrEmpty(check) && int.TryParse(check, out i) && int.Parse(check)>0)
                         {
                             var a = new HocPhanTheoCTDTModel();
                             a.ChuongTrinhDaoTaoID = CTDTID;
-                            a.MaHP = row.Cell(3).ToString();
+                            a.MaHP = row.Cell(3).Value.ToString();
                             a.HocKi = "";
-                            if (!String.IsNullOrEmpty(row.Cell(5).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(5).Value.ToString()))
                                 a.HocKi += "1,";
-                            if (!String.IsNullOrEmpty(row.Cell(6).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(6).Value.ToString()))
                                 a.HocKi += "2,";
-                            if (!String.IsNullOrEmpty(row.Cell(7).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(7).Value.ToString()))
                                 a.HocKi += "3,";
-                            if (!String.IsNullOrEmpty(row.Cell(8).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(8).Value.ToString()))
                                 a.HocKi += "4,";
-                            if (!String.IsNullOrEmpty(row.Cell(9).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(9).Value.ToString()))
                                 a.HocKi += "5,";
-                            if (!String.IsNullOrEmpty(row.Cell(10).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(10).Value.ToString()))
                                 a.HocKi += "6,";
-                            if (!String.IsNullOrEmpty(row.Cell(11).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(11).Value.ToString()))
                                 a.HocKi += "7,";
-                            if (!String.IsNullOrEmpty(row.Cell(12).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(12).Value.ToString()))
                                 a.HocKi += "8,";
-                            if (!String.IsNullOrEmpty(row.Cell(13).ToString()))
+                            if (!String.IsNullOrEmpty(row.Cell(13).Value.ToString()))
                                 a.HocKi += "9,";
-                            a.HocKi = a.HocKi.Remove(a.HocKi.LastIndexOf(','));
+                            if(a.HocKi!="")
+                                a.HocKi = a.HocKi.Remove(a.HocKi.LastIndexOf(','));
                             a.NguoiTao = AccountUtils.CurrentUsername();
 
                             if (dt.Where(x => x.MaHP == a.MaHP) != null)
@@ -115,23 +118,23 @@ namespace PhanCongGiangDay.Services
                                     break;
                                 }
                             }
-                        }
-                        foreach(var item in dt)
-                        {
-                            res = HocPhanTheoCTDT_DA.ThemHocPhanTheoCTDT(item);
-                            if (res.ResponseMessage != null)
-                                s += res.ResponseMessage + ", ";
-                            else if (res == null)
-                                break;
-                        }
-                    }
-                    if (s != "")
-                    {
-                        s = s.Remove(s.LastIndexOf(','));
-                        if (res != null)
-                            res.ResponseMessage = s;
-                    }
-                }                
+                        }                        
+                    }                    
+                }
+                foreach (var item in dt)
+                {
+                    res = HocPhanTheoCTDT_DA.ThemHocPhanTheoCTDT(item);
+                    if (res.ResponseMessage != null)
+                        s += res.ResponseMessage + ", ";
+                    else if (res == null && dt.Count > 0)
+                        break;
+                }
+                if (s != "")
+                {
+                    s = s.Remove(s.LastIndexOf(','));
+                    if (res != null)
+                        res.ResponseMessage = s;
+                }
             }
             catch (Exception ex)
             {

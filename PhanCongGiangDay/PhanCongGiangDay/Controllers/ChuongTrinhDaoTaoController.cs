@@ -176,9 +176,7 @@ namespace PhanCongGiangDay.Controllers
         {
             try
             {
-                var c = Request.Files[0];
-
-                var result = HocPhanTheoCTDTService.Import(c, CTDTID);
+                var result = HocPhanTheoCTDTService.Import(file_imp, CTDTID);
                 if (result == null)
                 {
                     return Json(JsonResponseViewModel.CreateFail("Import học phần theo CTDT không thành công."));
