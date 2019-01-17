@@ -1,6 +1,4 @@
-﻿//import { jwerty } from "./jwerty";
-
-$(function () {
+﻿$(function () {
     $.ajaxSetup({
         // Disable caching of AJAX responses
         cache: false
@@ -230,26 +228,29 @@ function validateUnsignedInt(e) {
     }
 }
 
-//function hotkeyCustom(id) {
-//    jwerty.key('shift+→', function () {
-//        $('#' + id).next('.form-control').focus();
-//    });
-//    jwerty.key('shift+←', function () {
-//        $('#' + id).prev('.form-control').focus();
-//    });
-//    var cl = $('#' + id).attr("class");
-//    cl = cl.replace("valid", "");
-//    cl = cl.replace("input-validation-error", "");
-//    cl = "." + cl.split(" ").join(" .");
-//    jwerty.key('shift+↑', function () {
-//        $('#' + id).prev(cl).focus();
-//    });
-//    jwerty.key('shift+↓', function () {
-//        $('#' + id).next(cl).focus();
-//    });    
-//}
+function hotkeyCustom(id, e) {
+    if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which).toLowerCase() === 'c')) {
+        console.log("You pressed CTRL + C");
+    }
+    //jwerty.key('ctrl+→', function () {
+    //    $('#' + id).next('.form-control').focus();
+    //});
+    //jwerty.key('ctrl+←', function () {
+    //    $('#' + id).prev('.form-control').focus();
+    //});
+    //var cl = $('#' + id).attr("class");
+    //cl = cl.replace("valid", "");
+    //cl = cl.replace("input-validation-error", "");
+    //cl = "." + cl.split(" ").join(" .");
+    //jwerty.key('ctrl+↑', function () {
+    //    $('#' + id).prev(cl).focus();
+    //});
+    //jwerty.key('shift+↓', function () {
+    //    $('#' + id).next(cl).focus();
+    //});    
+}
 
-//function newFormLine (id, type){
+//function newFormLine (id, type,e){
 //    jwerty.key('shift+↩', function () {
 //        var i = parseInt(id.substring(id.search("_") + 1, id.length));
 //        $('#' + type + i).click();

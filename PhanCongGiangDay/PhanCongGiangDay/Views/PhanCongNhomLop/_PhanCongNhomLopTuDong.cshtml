@@ -66,11 +66,11 @@
                                     @Html.Hidden("[" + i + "].SoTietTH", Model[i].SoTietTH, new { id = "SoTietTH_" + i })
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(x => x[i].SLSVNhomLop, new { @class = "form-control slsvnl", onkeypress = "validateUnsignedInt(event)", id = "SLSVNhomLop_" + i })
+                                    @Html.TextBoxFor(x => x[i].SLSVNhomLop, new { @class = "form-control slsvnl", onkeypress = "validateUnsignedInt(event);hotkeyCustom(SLSVNhomLop_" + i + ",event);", id = "SLSVNhomLop_" + i })
                                     @Html.ValidationMessageFor(x => x[i].SLSVNhomLop)
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(x => x[i].SoLuongNhomLopLT, new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event)", id = "SoLuongNhomLopLT_" + i })
+                                    @Html.TextBoxFor(x => x[i].SoLuongNhomLopLT, new { @class = "form-control slnl", onkeypress = "validateUnsignedInt(event);hotkeyCustom(SLSVNhomLop_" + i + ",event);", id = "SoLuongNhomLopLT_" + i })
                                     @Html.ValidationMessageFor(x => x[i].SoLuongNhomLopLT)
                                     @Html.HiddenFor(x => x[i].SoLuongNhomLopTH, new { id = "SoLuongNhomLopTH_" + i })
                                 </td>
