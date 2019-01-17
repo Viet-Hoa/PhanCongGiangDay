@@ -35,21 +35,38 @@ var PhanCongGiangVienModule = (function () {
                     hideLoadingOverlay("#PhanCongGiangVien-container");
                     Checkrole();
                 }
-            },
-
+            },            
             columns: [
                 { data: "STT" },
                 { data: "HoTenGV" },
-                { data: "TongSoTiet" },
-                { data: "SoTietCongTac" },
-                { data: "SoTietThucTe" },
+                {
+                    data: "TongSoTiet", createdCell: function (td, data) {
+                        if (data > 500) {
+                            $(td).css('color', 'red');
+                        }
+                    }
+                },
+                {
+                    data: "SoTietCongTac", createdCell: function (td, data) {
+                        if (data > 500) {
+                            $(td).css('color', 'red');
+                        }
+                    }
+                },
+                {
+                    data: "SoTietThucTe", createdCell: function (td,data) {
+                        if (data > 500) {
+                            $(td).css('color', 'red');
+                        }
+                    }
+                },
                 {
                     data: "GiangVienLogID", orderable: false, width: 100, className: "text-center", render: function (data) {
                         return '<button class="btn btn-sm btn-outline-success btn-custom-size" data-trigger="modal" data-target="#modalPhanCong" data-url="/PhanCongGiangVien/ChiTietPhanCongCuaGiangVien?BangPhanCongID=' + $('#bangpc').val() + '&GiangVienID=' + data + '"><i class="fa fa-bars"></i></button>' + ' ' +
                             '<button class="btn btn-sm btn-outline-primary btn-custom-size btn-grid" data-trigger="modal" data-target="#modalPhanCong" data-url="/PhanCongGiangVien/CapNhatPhanCongGiangVien?BangPhanCongID=' + $('#bangpc').val() + '&GiangVienID=' + data + '"><i class="fa fa-pencil-square-o"></i></button>';
                     }
                 }
-            ]
+            ]            
         });
         $('#phanCongGiangVien-table_filter').hide();
 
@@ -59,7 +76,6 @@ var PhanCongGiangVienModule = (function () {
             $PhanCongGiangVienTable.search($(this).val()).draw();
         });
     }
-
     function loadLoai() {
         $('#Loc').change(function () {
             $PhanCongGiangVienTable.destroy();
@@ -356,10 +372,10 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
             $(document).on("keyup", ".lythuyet", function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
-                if (id.search("HK1LT") != -1) {
+                if (id.search("HK1LT") != -1 && $('#NhomLopPhanCong_' + i + '__SoTietTH').val()!=0) {
                     $("#NhomLopPhanCong_" + i + "__HK1TH").val($(this).val());
                 }
-                else if (id.search("HK2LT") != -1) {
+                else if (id.search("HK2LT") != -1 && $('#NhomLopPhanCong_' + i + '__SoTietTH').val() != 0) {
                     $("#NhomLopPhanCong_" + i + "__HK2TH").val($(this).val());
                 }
                 var stlt = (~~parseInt($("#NhomLopPhanCong_" + i + "__HK1LT").val()) + ~~parseInt($("#NhomLopPhanCong_" + i + "__HK2LT").val())) * parseInt($("#NhomLopPhanCong_" + i + "__SoTietLT").val());
@@ -623,10 +639,10 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
             $(document).on("keyup", ".lythuyet", function () {
                 var id = $(this).attr('id');
                 var i = parseInt(id.substring(id.search("_") + 1, id.search("__")));
-                if (id.search("HK1LT") != -1) {
+                if (id.search("HK1LT") != -1 && ~~parseInt($('#sotiettht').text()) > 0) {
                     $("#GiangVienPhanCong_" + i + "__HK1TH").val($(this).val());
                 }
-                else if (id.search("HK2LT") != -1) {
+                else if (id.search("HK2LT") != -1 && ~~parseInt($('#sotiettht').text()) > 0) {
                     $("#GiangVienPhanCong_" + i + "__HK2TH").val($(this).val());
                 }
                 var tlt = 0;

@@ -39,7 +39,7 @@
                             <tr class="row-nl" id="row_@i">
                                 <td>
                                     @Html.HiddenFor(x => x[i].BangPhanCongID)
-                                    @Model[i].MaVaTenHP
+                                    <span id="mavaten_@i" class="">@Model[i].MaVaTenHP</span>
                                     @Html.HiddenFor(x => x[i].HocPhanLogID)
                                 </td>
                                 <td>

@@ -876,6 +876,9 @@
     <Content Include="Views\ChuongTrinhDaoTao\ChiTietChuongTrinhDaoTao.cshtml" />
     <Content Include="Views\ChuongTrinhDaoTao\_Import.cshtml" />
     <Content Include="Templates\CTDT-2016-2020.xlsx" />
+    <Content Include="Views\ChuongTrinhDaoTao\_SuaHPTheoChuongTrinhDaoTao.cshtml" />
+    <Content Include="Views\ChuongTrinhDaoTao\_ThemHPTheoChuongTrinhDaoTao.cshtml" />
+    <Content Include="Views\ChuongTrinhDaoTao\_XoaHPTheoChuongTrinhDaoTao.cshtml" />
     <None Include="Views\NamHoc\_ThemNamHoc.cshtml" />
     <Content Include="Views\NamHoc\Index.cshtml" />
     <Content Include="Views\PhanCongNhomLop\Index.cshtml" />
