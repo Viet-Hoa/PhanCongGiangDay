@@ -11,7 +11,7 @@
   </trangthaihoatdong>
 
   <hienthiphancong>
-    <item text="Theo nhóm lớp" value="0" />
+    <item text="Theo học phần" value="0" />
     <item text="Theo giảng viên" value="1" />
   </hienthiphancong>
   

@@ -50,6 +50,7 @@ namespace Lib.Khoa.DataAccess
                 listParameter.Add(new SqlParameter("@TenKhoa", model.TenKhoa));
                 listParameter.Add(new SqlParameter("@NamBatDau", model.NamBatDau));
                 listParameter.Add(new SqlParameter("@NamKetThuc", model.NamKetThuc));
+                listParameter.Add(new SqlParameter("@SLSV", model.SLSV));
                 listParameter.Add(new SqlParameter("@CTDTID", model.CTDTID));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_Khoa_Them", listParameter);
@@ -70,6 +71,7 @@ namespace Lib.Khoa.DataAccess
                 listParameter.Add(new SqlParameter("@TenKhoa", model.TenKhoa));
                 listParameter.Add(new SqlParameter("@NamBatDau", model.NamBatDau));
                 listParameter.Add(new SqlParameter("@NamKetThuc", model.NamKetThuc));
+                listParameter.Add(new SqlParameter("@SLSV", model.SLSV));
                 listParameter.Add(new SqlParameter("@CTDTID", model.CTDTID));
                 listParameter.Add(new SqlParameter("@NguoiTao", model.NguoiTao));
                 res = DBUtils.ExecuteSP<ResponseResult>("SP_Khoa_Sua", listParameter);
