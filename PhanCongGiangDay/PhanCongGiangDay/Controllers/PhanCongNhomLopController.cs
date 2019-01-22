@@ -243,10 +243,10 @@ namespace PhanCongGiangDay.Controllers
                 return Json(JsonResponseViewModel.CreateFail(ex));
             }
         }
-        public ActionResult DanhSachHocPhan(int KhoaID)
-        {
-            var model = HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID);
-            return Json(model, JsonRequestBehavior.AllowGet);
-        }
+        //public ActionResult DanhSachHocPhan(int KhoaID)
+        //{
+        //    var model = HocPhanService.DanhSachHocPhanTheoKhoa(KhoaID);
+        //    return Json(model, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

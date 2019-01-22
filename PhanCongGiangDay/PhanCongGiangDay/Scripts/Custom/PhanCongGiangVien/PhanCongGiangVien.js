@@ -576,6 +576,7 @@ var CapNhatPhanCongGiangVienModule = (function (PhanCongGiangVienModule) {
                         complete: function () {
                             $("#modalPhanCong").modal("hide");
                             PhanCongGiangVienModule.reloadPhanCongGiangVienTable();
+                            PhanCongGiangVienModule.reloadPhanCongNhomLopTable();
                         }
                     });
                 }
@@ -791,6 +792,7 @@ var CapNhatPhanCongGiangVienNhomLopModule = (function (PhanCongGiangVienModule) 
                         complete: function () {
                             $("#modalLarge").modal("hide");
                             PhanCongGiangVienModule.reloadPhanCongNhomLopTable();
+                            PhanCongGiangVienModule.reloadPhanCongGiangVienTable();
                         }
                     });
                 }
